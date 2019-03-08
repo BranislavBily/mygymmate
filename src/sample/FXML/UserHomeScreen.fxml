@@ -18,8 +18,8 @@
     <AnchorPane layoutX="336.0" minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="690.0" style="-fx-background-color: #e1f2f1;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="228.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="663.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="228.0" layoutX="14.0" layoutY="268.0" stroke="BLACK" strokeType="INSIDE" width="663.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="228.0" layoutX="14.0" layoutY="521.0" stroke="BLACK" strokeType="INSIDE" width="663.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="228.0" layoutX="14.0" layoutY="260.0" stroke="BLACK" strokeType="INSIDE" width="663.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="228.0" layoutX="14.0" layoutY="510.0" stroke="BLACK" strokeType="INSIDE" width="663.0" />
          </children></AnchorPane>
    </children>
 </Pane>
