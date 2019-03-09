@@ -153,9 +153,6 @@
          <image>
             <Image url="@../Images/logo.png" />
          </image>
-         <effect>
-            <DropShadow />
-         </effect>
       </ImageView>
    </children>
    <effect>
