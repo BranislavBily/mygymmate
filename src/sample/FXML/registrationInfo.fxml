@@ -14,7 +14,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #e1f2f1; -fx-background-image: file:C:\Users\Sebastian\Downloads/workout.jpg;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import java.net.URL?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0"  styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@../Login.css" />
+   </stylesheets>
    <children>
       <AnchorPane layoutX="315.0" layoutY="119.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: #033830; -fx-background-image: file:C:/Users/Documents/workout.jpg;">
          <children>
