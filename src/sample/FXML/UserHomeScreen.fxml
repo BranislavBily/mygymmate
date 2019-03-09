@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="763.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="336.0" style="-fx-background-color: #03383f;">
          <children>
