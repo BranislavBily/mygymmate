@@ -24,14 +24,14 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="68.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <DropShadow />
-               </effect></ImageView>
             <Circle fill="WHITE" layoutX="168.0" layoutY="145.0" radius="100.0" stroke="BLACK" strokeType="INSIDE">
                <effect>
                   <DropShadow />
                </effect></Circle>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/user.png" />
+               </image></ImageView>
          </children>
          <effect>
             <DropShadow />

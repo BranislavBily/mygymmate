@@ -151,11 +151,8 @@
       </AnchorPane>
       <ImageView fitHeight="101.0" fitWidth="175.0" layoutX="436.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/53241081_356868828498784_1053589867511939072_n.png" />
+            <Image url="@../Images/logo.png" />
          </image>
-         <effect>
-            <DropShadow />
-         </effect>
       </ImageView>
    </children>
    <effect>
