@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #e1f2f1;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-image: url '@../Images/workout.jpg'; " xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: #033830;">
          <children>
@@ -82,7 +82,7 @@
       </AnchorPane>
       <ImageView fitHeight="103.0" fitWidth="167.0" layoutX="442.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/53241081_356868828498784_1053589867511939072_n.png" />
+            <Image url="@../Images/logo.png" />
          </image>
          <effect>
             <DropShadow />
