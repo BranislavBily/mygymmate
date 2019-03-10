@@ -2,10 +2,7 @@
     -fx-background-image: url("../Images/workoutLogin.jpg");
 
 }
-.anchor{
-    -fx-opacity: 0.75;
-    -fx-background-color:  #107f74;
-}
+
 
 .text-field:focused{
     -fx-faint-focus-color: #03383f;
