@@ -19,10 +19,7 @@
         <URL value="@../CSS/Login.css" />
     </stylesheets>
     <children>
-      <AnchorPane layoutX="314.0" layoutY="117.0" prefHeight="550.0" prefWidth="400.0" styleClass="anchor">
-          <stylesheets>
-              <URL value="@../CSS/Login.css" />
-          </stylesheets>
+      <AnchorPane layoutX="314.0" layoutY="117.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">
          <children>
             <TextField layoutX="65.0" layoutY="104.0" prefHeight="60.0" prefWidth="275.0" promptText="Username" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="104.0">
                <font>

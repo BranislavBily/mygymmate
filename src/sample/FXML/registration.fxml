@@ -14,12 +14,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.RegisterController">
+=======
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> db8479be95bbfd270463f0599b914ea7810f0b47
 
     <stylesheets>
         <URL value="@../CSS/Login.css" />
     </stylesheets><children>
-      <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: #033830;">
+      <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">
          <children>
             <TextField layoutX="65.0" layoutY="104.0" prefHeight="60.0" prefWidth="275.0" promptText="Username" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="104.0">
                <font>
@@ -74,9 +78,9 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <ImageView fitHeight="101.0" fitWidth="175.0" layoutX="436.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="167.0" layoutX="839.0" layoutY="643.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Images/logo.png" />
+            <Image url="@../Images/logoWhite.png" />
          </image>
       </ImageView>
    </children>
