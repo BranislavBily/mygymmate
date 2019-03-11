@@ -11,7 +11,7 @@
     -fx-faint-focus-color: #03383f;
 }
 
-#login {
+#buttonLogIn {
     -fx-background-color: #ffff;
     -fx-text-fill: #107f74;
 }
