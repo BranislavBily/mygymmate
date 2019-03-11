@@ -15,8 +15,7 @@ public class Controller {
     }
 
     private void changeScene(Stage stage, String fxml, String title) {
-        String name = "../FXML/" + fxml;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
