@@ -7,11 +7,24 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Moduls.ModulTitles;
 
+import javax.swing.*;
+import java.net.URL;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("FXML/login.fxml"));
+
+        URL iconURL = Main.class.getResource("Images/logoIcon.png");
+        java.awt.Image image = new ImageIcon(iconURL).getImage();
+
+        //Mac users
+        com.apple.eawt.Application.getApplication().setDockIconImage(image);
+
+        //Windows users
+//        primaryStage.getIcons().add(new Image("Images/logoIcon.png"));
+
         primaryStage.setTitle(ModulTitles.LOG_IN);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
