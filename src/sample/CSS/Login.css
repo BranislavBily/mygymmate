@@ -1,8 +1,6 @@
 .pane {
     -fx-background-image: url("../Images/workoutLogin.jpg");
-
 }
-
 
 .text-field:focused{
     -fx-faint-focus-color: #03383f;
