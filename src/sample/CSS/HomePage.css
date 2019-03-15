@@ -1,0 +1,11 @@
+
+
+#buttonLogOut{
+    -fx-background-color: #107f74;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-alignment: LEFT;
+}
+#buttonLogOut:hover{
+    -fx-background-color: #0b5851;
+}
