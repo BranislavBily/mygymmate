@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.User;
 
 import java.io.IOException;
 
@@ -21,6 +22,27 @@ public class Controller {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle(title);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void setScene(Scene scene, String fxml, String title, User user) {
+        Stage stage = (Stage) scene.getWindow();
+        changeScene(stage, fxml, title, user);
+    }
+
+    private void changeScene(Stage stage, String fxml, String title, User user) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            RegisterInfoController registerInfoController = new RegisterInfoController();
+            registerInfoController.setUser(user);
+            stage.setScene(scene);
+            stage.setTitle(user.getUsername());
             stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
