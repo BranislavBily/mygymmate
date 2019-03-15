@@ -14,85 +14,101 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.RegisterController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+      prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.Controllers.RegisterController">
+
 
         <stylesheets>
-            <URL value="@../CSS/Login.css" />
+            <URL value="@../CSS/Login.css"/>
         </stylesheets>
         <children>
-            <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">
+            <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0"
+                        style="-fx-background-color: rgb(16,127,116,0.75);">
                 <children>
 
-                    <TextField fx:id="textFieldUsername" layoutX="65.0" layoutY="104.0" prefHeight="60.0" prefWidth="275.0" promptText="Username" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="104.0">
+                    <TextField fx:id="textFieldUsername" layoutX="65.0" layoutY="104.0" prefHeight="60.0"
+                               prefWidth="275.0" promptText="Username" AnchorPane.bottomAnchor="385.0"
+                               AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="104.0">
 
                         <font>
-                            <Font name="System Bold" size="18.0" />
+                            <Font name="System Bold" size="18.0"/>
                         </font>
                         <effect>
-                            <DropShadow />
+                            <DropShadow/>
                         </effect>
                     </TextField>
 
-                    <Button layoutX="140.0" layoutY="440.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: #107f74;" text="Sign Up" textFill="WHITE" onAction="#onButtonSignUpPressed">
+                    <Button layoutX="140.0" layoutY="440.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="126.0"
+                            style="-fx-background-color: #107f74;" text="Sign Up" textFill="WHITE"
+                            onAction="#onButtonSignUpPressed">
 
                         <font>
-                            <Font name="Arial Black" size="18.0" />
+                            <Font name="Arial Black" size="18.0"/>
                         </font>
                         <effect>
-                            <DropShadow />
+                            <DropShadow/>
                         </effect>
                         <cursor>
-                            <Cursor fx:constant="HAND" />
+                            <Cursor fx:constant="HAND"/>
                         </cursor>
                     </Button>
 
-                    <PasswordField fx:id="passwordFieldPassword" layoutX="65.0" layoutY="210.0" prefHeight="60.0" prefWidth="275.0" promptText="Password" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="59.80000000000001" AnchorPane.topAnchor="210.0">
+                    <PasswordField fx:id="passwordFieldPassword" layoutX="65.0" layoutY="210.0" prefHeight="60.0"
+                                   prefWidth="275.0" promptText="Password" AnchorPane.bottomAnchor="280.0"
+                                   AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="59.80000000000001"
+                                   AnchorPane.topAnchor="210.0">
 
                         <font>
-                            <Font name="System Bold" size="18.0" />
+                            <Font name="System Bold" size="18.0"/>
                         </font>
                         <effect>
-                            <DropShadow />
+                            <DropShadow/>
                         </effect>
                     </PasswordField>
                     <Label layoutX="130.0" layoutY="23.0" text="Sign Up" textFill="WHITE">
                         <font>
-                            <Font name="Arial Black" size="36.0" />
+                            <Font name="Arial Black" size="36.0"/>
                         </font>
                         <effect>
-                            <DropShadow />
+                            <DropShadow/>
                         </effect>
                     </Label>
 
-                    <PasswordField fx:id="passwordFieldPasswordAgain" layoutX="65.0" layoutY="321.0" prefHeight="60.0" prefWidth="275.0" promptText="Password again">
+                    <PasswordField fx:id="passwordFieldPasswordAgain" layoutX="65.0" layoutY="321.0" prefHeight="60.0"
+                                   prefWidth="275.0" promptText="Password again">
 
                         <font>
-                            <Font name="System Bold" size="18.0" />
+                            <Font name="System Bold" size="18.0"/>
                         </font>
                         <effect>
-                            <DropShadow />
+                            <DropShadow/>
                         </effect>
                     </PasswordField>
 
-                    <Hyperlink fx:id="hyperLinkAlreadyMember" layoutX="87.0" layoutY="500.0" onAction="#onHyperLinkPressed" prefHeight="31.0" prefWidth="227.0" text="Already member? Log in!" textAlignment="CENTER" textFill="WHITE">
+                    <Hyperlink fx:id="hyperLinkAlreadyMember" layoutX="87.0" layoutY="500.0"
+                               onAction="#onHyperLinkPressed" prefHeight="31.0" prefWidth="227.0"
+                               text="Already member? Log in!" textAlignment="CENTER" textFill="WHITE">
 
                         <font>
-                            <Font size="18.0" />
+                            <Font size="18.0"/>
                         </font>
                     </Hyperlink>
                 </children>
                 <effect>
-                    <DropShadow />
+                    <DropShadow/>
                 </effect>
             </AnchorPane>
-            <ImageView fitHeight="103.0" fitWidth="167.0" layoutX="839.0" layoutY="643.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="103.0" fitWidth="167.0" layoutX="839.0" layoutY="643.0" pickOnBounds="true"
+                       preserveRatio="true">
                 <image>
-                    <Image url="@../Images/logoWhite.png" />
+                    <Image url="@../Images/logoWhite.png"/>
                 </image>
             </ImageView>
         </children>
         <effect>
-            <DropShadow />
+            <DropShadow/>
         </effect>
     </Pane>
 

@@ -1,13 +1,11 @@
 package db;
 
-//import sample.Data.User;
 
 import sample.Moduls.ModulTables;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -43,26 +41,18 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
-//    public boolean isInDatabase(String user) throws SQLException {
-//        String sql = "Select * from users where username = ?";
-//        PreparedStatement preparedStatement = null;
-//        ResultSet resultSet = null;
-//        try {
-//            preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setString(1, user);
-//            resultSet = preparedStatement.executeQuery();
-//            return resultSet.next();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            assert preparedStatement != null;
-//            preparedStatement.close();
-//            assert resultSet != null;
-//            resultSet.close();
-//        }
-//    }
+    public boolean isUsernameTaken(String username) {
+        ResultSet resultSet;
+        String query = "select * from "+ModulTables.USERS+" where Username = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 //
 //    public boolean registerUser(String name, String pass) throws SQLException {
 //        String sql = "insert into users(username, password, status) values(?, ?, ?)";
