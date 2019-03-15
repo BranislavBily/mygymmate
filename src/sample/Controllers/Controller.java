@@ -40,7 +40,6 @@ public class Controller {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             RegisterInfoController registerInfoController = loader.getController();
-            System.out.println(registerInfoController == null);
             registerInfoController.setUser(user);
             stage.setScene(scene);
             stage.setTitle(user.getUsername());
