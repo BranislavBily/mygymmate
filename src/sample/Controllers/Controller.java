@@ -9,7 +9,7 @@ import sample.User;
 import java.io.IOException;
 
 //Class that changes scenes
-public class Controller {
+class Controller {
     void setScene(Scene scene, String fxml, String title) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, title);
