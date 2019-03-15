@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModulTitles;
 
+import java.awt.event.MouseEvent;
+import java.beans.EventHandler;
+
 public class LoginController extends Controller {
 
     @FXML
@@ -58,5 +61,7 @@ public class LoginController extends Controller {
     private void onButtonSignUpPressed() {
         setScene(buttonLogIn.getScene(), ModulFXML.REGISTER, ModulTitles.REGISTER);
     }
+
+
 
 }

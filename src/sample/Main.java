@@ -20,6 +20,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("FXML/login.fxml"));
+<<<<<<< HEAD
+=======
+
+
+        URL iconURL = Main.class.getResource("Images/logoIcon.png");
+        java.awt.Image image = new ImageIcon(iconURL).getImage();
+>>>>>>> fb74192ff58ce155bb5d740cd495ee3c3963dbc8
         primaryStage.setTitle(ModulTitles.LOG_IN);
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

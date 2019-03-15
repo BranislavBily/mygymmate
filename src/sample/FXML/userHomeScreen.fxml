@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.UserHomeScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.UserHomeScreenController">
 
     <children>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="336.0" style="-fx-background-color: #03383f;">
@@ -20,7 +20,7 @@
 
                     </effect>
                <children>
-                  <Button fx:id="buttonLogOut" layoutX="32.0" layoutY="311.0" mnemonicParsing="false" onAction="#onButtonLogOutPressed" prefHeight="27.0" prefWidth="272.0" style="-fx-background-color: #107f74 #107f74;" text="Log out">
+                  <Button fx:id="buttonLogOut" layoutX="32.0" layoutY="311.0" mnemonicParsing="false" onAction="#onButtonLogOutPressed" prefHeight="50.0" prefWidth="272.0" style="-fx-background-color: #107f74 #107f74;" text="Log out">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
