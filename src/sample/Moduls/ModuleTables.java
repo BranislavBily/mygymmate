@@ -1,6 +1,6 @@
 package sample.Moduls;
 
-public interface ModulTables {
+public interface ModuleTables {
 
     String USERS = "Users";
     String USER_INFO = "UserInfo";

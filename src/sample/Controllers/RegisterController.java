@@ -6,10 +6,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Moduls.ModulFXML;
-import sample.Moduls.ModulTitles;
+import sample.Moduls.ModuleTitles;
 import sample.User;
-
-import java.sql.SQLException;
 
 public class RegisterController extends Controller {
 
@@ -47,7 +45,7 @@ public class RegisterController extends Controller {
 
     @FXML
     private void onHyperLinkPressed() {
-        setScene(hyperLinkAlreadyMember.getScene(), ModulFXML.LOGIN, ModulTitles.LOG_IN);
+        setScene(hyperLinkAlreadyMember.getScene(), ModulFXML.LOGIN, ModuleTitles.LOG_IN);
     }
 
 }

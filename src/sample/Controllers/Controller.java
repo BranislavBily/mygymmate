@@ -47,6 +47,7 @@ public class Controller {
             stage.setResizable(false);
             stage.show();
             registerInfoController.setLabelUsername();
+            registerInfoController.setChoiceBoxItems();
         } catch (IOException e) {
             e.printStackTrace();
         }
