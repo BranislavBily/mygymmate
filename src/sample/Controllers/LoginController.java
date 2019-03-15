@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModuleTitles;
 
-public class LoginController extends Controller {
+public class LoginController extends FeedBackController {
 
     @FXML
     private TextField textFieldUserName;
@@ -36,28 +36,16 @@ public class LoginController extends Controller {
         if (databaseModuleUser.isUser(username, password)) {
             setScene(buttonLogIn.getScene(), ModulFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
         } else {
-
-            passwordFieldPassword.setText(null);
-            DropShadow passwordShadow = (DropShadow) passwordFieldPassword.getEffect();
-            passwordShadow.setColor(Color.RED);
-            passwordShadow.setRadius(30);
-
-            textFieldUserName.setText(null);
-            DropShadow usernameShadow = (DropShadow) textFieldUserName.getEffect();
-            usernameShadow.setColor(Color.RED);
-            usernameShadow.setRadius(30);
-
+            displayErrorFeedbackUsername(textFieldUserName);
+            displayErrorFeedbackPassword(passwordFieldPassword);
 
             loginError.setVisible(true);
             System.out.println("Login not successful");
         }
-
     }
 
     @FXML
     private void onButtonSignUpPressed() {
         setScene(buttonLogIn.getScene(), ModulFXML.REGISTER, ModuleTitles.REGISTER);
     }
-
-
 }

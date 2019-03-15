@@ -7,12 +7,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModuleTitles;
 import sample.User;
 
-public class RegisterController extends Controller {
+public class RegisterController extends FeedBackController {
+
+    @FXML
+    private Pane pane;
 
     @FXML
     private Hyperlink hyperLinkAlreadyMember;
@@ -27,13 +31,14 @@ public class RegisterController extends Controller {
     private PasswordField passwordFieldPasswordAgain;
 
     @FXML
-    private Label passwordMismatch;
+    private Label labelPasswordMismatch;
 
     @FXML
-    private Label usernameTaken;
+    private Label labelUsernameTaken;
 
     @FXML
     private void onButtonSignUpPressed() {
+        resetAllFeedback();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUsername.getText();
         System.out.println(username);
@@ -41,13 +46,13 @@ public class RegisterController extends Controller {
         String passwordAgain = passwordFieldPasswordAgain.getText();
         if (databaseModuleUser.isUsernameTaken(username)) {
             displayErrorFeedbackUsername(textFieldUsername);
-            usernameTaken.setVisible(true);
+            labelUsernameTaken.setVisible(true);
             System.out.println("Username taken");
 
-
         } else if (!password.equals(passwordAgain)) {
-            displayErrorFeedbackPassword(passwordFieldPassword, passwordFieldPasswordAgain);
-            passwordMismatch.setVisible(true);
+            displayErrorFeedbackPassword(passwordFieldPassword);
+            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
+            labelPasswordMismatch.setVisible(true);
             System.out.println("Passwords do not match");
 
         } else {
@@ -56,30 +61,14 @@ public class RegisterController extends Controller {
         }
     }
 
-
+    //In case user corrects himself, All feedback must be gone so when he makes mistake only the correct feedback will be shown
+    private void resetAllFeedback() {
+        labelPasswordMismatch.setVisible(false);
+        labelUsernameTaken.setVisible(false);
+    }
     @FXML
     private void onHyperLinkPressed() {
         setScene(hyperLinkAlreadyMember.getScene(), ModulFXML.LOGIN, ModuleTitles.LOG_IN);
-    }
-    private void displayErrorFeedbackUsername(TextField textField){
-        textField.setText(null);
-        DropShadow usernameShadow = (DropShadow) textField.getEffect();
-        usernameShadow.setColor(Color.RED);
-        usernameShadow.setRadius(30);
-
-    }
-
-    private void displayErrorFeedbackPassword(PasswordField passwordField, PasswordField passwordField2){
-        passwordField.setText(null);
-        DropShadow passwordShadow = (DropShadow) passwordField.getEffect();
-        passwordShadow.setColor(Color.RED);
-        passwordShadow.setRadius(30);
-
-        passwordField2.setText(null);
-        DropShadow passwordShadowAgain = (DropShadow) passwordField2.getEffect();
-        passwordShadowAgain.setColor(Color.RED);
-        passwordShadowAgain.setRadius(30);
-
     }
 
 }
