@@ -29,22 +29,24 @@ public class Controller {
         }
     }
 
-    void setScene(Scene scene, String fxml, String title, User user) {
+    void setScene(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, fxml, title, user);
+        changeScene(stage, fxml, user);
     }
 
-    private void changeScene(Stage stage, String fxml, String title, User user) {
+    private void changeScene(Stage stage, String fxml, User user) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            RegisterInfoController registerInfoController = new RegisterInfoController();
+            RegisterInfoController registerInfoController = loader.getController();
+            System.out.println(registerInfoController == null);
             registerInfoController.setUser(user);
             stage.setScene(scene);
             stage.setTitle(user.getUsername());
             stage.setResizable(false);
             stage.show();
+            registerInfoController.setLabelUsername();
         } catch (IOException e) {
             e.printStackTrace();
         }

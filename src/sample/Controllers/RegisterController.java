@@ -26,7 +26,7 @@ public class RegisterController extends Controller {
     private PasswordField passwordFieldPasswordAgain;
 
     @FXML
-    private void onButtonSignUpPressed() throws SQLException {
+    private void onButtonSignUpPressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUsername.getText();
         System.out.println(username);
@@ -40,7 +40,7 @@ public class RegisterController extends Controller {
             System.out.println("Passwords do not match");
         } else {
             User user = new User(username, password);
-            setScene(textFieldUsername.getScene(), ModulFXML.REGISTER_INFO, ModulTitles.REGISTER_INFO, user);
+            setScene(textFieldUsername.getScene(), ModulFXML.REGISTER_INFO, user);
         }
     }
 
