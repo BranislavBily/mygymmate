@@ -8,8 +8,6 @@ import javafx.scene.control.TextField;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModulTitles;
 
-import java.sql.SQLException;
-
 public class LoginController extends Controller {
 
     @FXML
@@ -37,13 +35,9 @@ public class LoginController extends Controller {
 
     }
 
+    @FXML
     private void onButtonSignUpPressed() {
         setScene(buttonLogIn.getScene(), ModulFXML.REGISTER, ModulTitles.REGISTER);
     }
-
-
-
-
-
 
 }
