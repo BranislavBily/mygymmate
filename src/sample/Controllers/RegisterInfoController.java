@@ -4,9 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import sample.User;
 
-import javax.annotation.Resources;
-import java.net.URL;
-
 public class RegisterInfoController {
 
     private User user;
@@ -19,9 +16,7 @@ public class RegisterInfoController {
         System.out.println(user.toString());
     }
 
-    @FXML
-    protected void initialize(URL location, Resources resources) {
-        labelUsername.setText(user.getUsername());
+    void setLabelUsername() {
+        labelUsername.setText("Hi "+user.getUsername() + "!");
     }
-
 }
