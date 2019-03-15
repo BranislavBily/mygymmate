@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import sample.Moduls.ModulTitles;
 
@@ -18,13 +19,6 @@ public class Main extends Application {
 
         URL iconURL = Main.class.getResource("Images/logoIcon.png");
         java.awt.Image image = new ImageIcon(iconURL).getImage();
-
-        //Mac users
-        com.apple.eawt.Application.getApplication().setDockIconImage(image);
-
-        //Windows users
-//        primaryStage.getIcons().add(new Image("Images/logoIcon.png"));
-
         primaryStage.setTitle(ModulTitles.LOG_IN);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
