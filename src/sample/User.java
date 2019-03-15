@@ -28,6 +28,8 @@ public class User {
 
     @Override
     public String toString() {
-        return getUsername() + "  " + getPassword();
+        StringBuilder sb = new StringBuilder();
+        sb.append("{Username: ").append(getUsername()).append(", Password: ").append(getPassword());
+        return sb.toString();
     }
 }
