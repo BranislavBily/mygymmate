@@ -39,19 +39,7 @@ public class LoginController extends Controller {
         if(databaseModuleUser.isUser(username, password)) {
             setScene(buttonLogIn.getScene(), ModulFXML.USER_HOME_SCREEN, ModulTitles.USER_HOME_SCREEN);
         } else {
-
-            passwordFieldPassword.setText(null);
-           DropShadow passwordShadow = (DropShadow) passwordFieldPassword.getEffect();
-                passwordShadow.setColor(Color.RED);
-                passwordShadow.setRadius(30);
-
-                textFieldUserName.setText(null);
-           DropShadow usernameShadow = (DropShadow) textFieldUserName.getEffect();
-                usernameShadow.setColor(Color.RED);
-                usernameShadow.setRadius(30);
-
-
-                loginError.setVisible(true);
+            displayErrorFeedback(textFieldUserName, passwordFieldPassword);
             System.out.println("Login not successful");
         }
 
@@ -63,5 +51,22 @@ public class LoginController extends Controller {
     }
 
 
+
+    private void displayErrorFeedback(TextField textFieldUserName, PasswordField passwordFieldPassword){
+        textFieldUserName.setText(null);
+
+        DropShadow usernameShadow = (DropShadow) textFieldUserName.getEffect();
+            usernameShadow.setColor(Color.RED);
+            usernameShadow.setRadius(30);
+
+        passwordFieldPassword.setText(null);
+
+        DropShadow passwordShadow = (DropShadow) passwordFieldPassword.getEffect();
+            passwordShadow.setColor(Color.RED);
+            passwordShadow.setRadius(30);
+
+        loginError.setVisible(true);
+
+    }
 
 }

@@ -119,7 +119,9 @@ public class DatabaseModule {
                 "Gender varchar(255) not null, " +
                 "DateOfBirth varchar(255) not null," +
                 "Email varchar(255)," +
-                "PhoneNumber varchar(255))";
+                "PhoneNumber varchar(255),"+
+                "FirstName varchar (255),"+
+                "LastName varchar(255))";
     }
 
     private String createUserInfoTableQuery() {

@@ -1,5 +1,5 @@
 .pane {
-    -fx-background-image: url("../Images/workoutLogin.jpg");
+    -fx-background-image: url("../Images/gradientBackground.jpg");
 }
 
 .text-field:focused{

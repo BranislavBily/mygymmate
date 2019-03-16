@@ -34,7 +34,7 @@
                         </effect>
                     </TextField>
 
-                    <Button layoutX="140.0" layoutY="440.0" mnemonicParsing="false" onAction="#onButtonSignUpPressed" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: #107f74;" text="Sign Up" textFill="WHITE">
+                    <Button defaultButton="true" layoutX="140.0" layoutY="440.0" mnemonicParsing="false" onAction="#onButtonSignUpPressed" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: #107f74;" text="Sign Up" textFill="WHITE">
 
                         <font>
                             <Font name="Arial Black" size="18.0" />
@@ -75,7 +75,7 @@
                         </effect>
                     </PasswordField>
 
-                    <Hyperlink fx:id="hyperLinkAlreadyMember" layoutX="92.0" layoutY="500.0" onAction="#onHyperLinkPressed" prefHeight="31.0" prefWidth="227.0" text="Already member? Log in!" textAlignment="CENTER" textFill="WHITE">
+                    <Hyperlink fx:id="hyperLinkAlreadyMember" layoutX="92.0" layoutY="500.0" onAction="#onHyperLinkPressed" prefHeight="31.0" prefWidth="227.0" text="Already member? Log in !" textAlignment="CENTER" textFill="WHITE">
 
                         <font>
                             <Font size="18.0" />
@@ -87,6 +87,16 @@
                </font>
             </Label>
             <Label fx:id="passwordMismatch" layoutX="109.0" layoutY="386.0" prefHeight="18.0" prefWidth="194.0" text="Passwords do not match !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="mandatoryError2" layoutX="116.0" layoutY="176.0" text="This is mandatory field !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="mandatoryError" layoutX="116.0" layoutY="386.0" text="This is mandatory field !" textFill="RED" visible="false">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
