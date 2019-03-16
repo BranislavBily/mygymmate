@@ -32,6 +32,7 @@ class Controller {
     void setScene(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, user);
+
     }
 
     private void changeScene(Stage stage, String fxml, User user) {

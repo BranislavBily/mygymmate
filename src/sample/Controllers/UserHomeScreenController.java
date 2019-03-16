@@ -10,9 +10,18 @@ public class UserHomeScreenController extends Controller {
 
     @FXML
     private Button buttonLogOut;
+    @FXML
+    private Button buttonWorkout;
+    @FXML
+    private Button buttonDiet;
+    @FXML
+    private Button buttonMeasure;
+
+
 
     @FXML
     private void onButtonLogOutPressed() {
         setScene(buttonLogOut.getScene(), ModulFXML.LOGIN, ModuleTitles.LOG_IN);
     }
+
 }

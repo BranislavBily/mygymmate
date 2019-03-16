@@ -1,11 +1,29 @@
 
+/*#107f74 farba zelena*/
 
-#buttonLogOut{
+.sidebarButtons {
     -fx-background-color: #107f74;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-alignment: LEFT;
+    -fx-pref-height: 40;
+    -fx-pref-width: 272;
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 21;
+    -fx-text-fill: white;
 }
-#buttonLogOut:hover{
+.sidebarButtons:hover{
     -fx-background-color: #0b5851;
+}
+.mainButtons {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, #107f74, 10, 0.3, 0, 0);
+}
+
+#buttonDiet{
+    -fx-background-image: url("../Images/dietnabutton.png");
+}
+
+.mainButtons:hover{
+    -fx-effect: dropshadow(three-pass-box, #107f74, 10, 0.7, 0, 0);
 }

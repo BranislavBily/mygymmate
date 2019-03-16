@@ -34,10 +34,12 @@ public class LoginController extends LoginRegistrationController {
         if (databaseModuleUser.isUser(username, password)) {
             setScene(buttonLogIn.getScene(), ModulFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
         } else {
+
             displayErrorFeedbackUsername(textFieldUserName);
             displayErrorFeedbackPassword(passwordFieldPassword);
 
             loginError.setVisible(true);
+
             System.out.println("Login not successful");
         }
     }
@@ -46,4 +48,7 @@ public class LoginController extends LoginRegistrationController {
     private void onButtonSignUpPressed() {
         setScene(buttonLogIn.getScene(), ModulFXML.REGISTER, ModuleTitles.REGISTER);
     }
+
+
+
 }
