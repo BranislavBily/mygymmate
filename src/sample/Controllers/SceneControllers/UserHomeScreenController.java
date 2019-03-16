@@ -1,9 +1,10 @@
-package sample.Controllers;
+package sample.Controllers.SceneControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import sample.Moduls.ModulFXML;
-import sample.Moduls.ModuleTitles;
+import sample.Controllers.Controller;
+import sample.Modules.ModuleFXML;
+import sample.Modules.ModuleTitles;
 
 
 public class UserHomeScreenController extends Controller {
@@ -21,7 +22,7 @@ public class UserHomeScreenController extends Controller {
 
     @FXML
     private void onButtonLogOutPressed() {
-        setScene(buttonLogOut.getScene(), ModulFXML.LOGIN, ModuleTitles.LOG_IN);
+        setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
     }
 
 }

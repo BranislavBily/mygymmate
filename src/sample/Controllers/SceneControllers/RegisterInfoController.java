@@ -1,20 +1,14 @@
-package sample.Controllers;
+package sample.Controllers.SceneControllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Button;
-
 import javafx.scene.control.ChoiceBox;
-
 import javafx.scene.control.Label;
-import sample.Moduls.ModulFXML;
-
-import sample.Moduls.ModuleTitles;
+import sample.Controllers.Controller;
+import sample.Modules.ModuleFXML;
+import sample.Modules.ModuleTitles;
 import sample.User;
-
-import java.awt.event.ActionEvent;
 
 public class RegisterInfoController extends Controller {
 
@@ -30,12 +24,12 @@ public class RegisterInfoController extends Controller {
     @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
 
-    void setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
         System.out.println(user.toString());
     }
 
-    void setLabelUsername() {
+    public void setLabelUsername() {
 
         labelUsername.setText("Hi "+user.getUsername() + " !");
         labelUsername.setLayoutX(182-((user.getUsername().length()+1)*5.5));
@@ -44,13 +38,13 @@ public class RegisterInfoController extends Controller {
     }
 
     @FXML
-    private void onGoBackButtonPressed(){
-        setScene(goBackButton.getScene(), ModulFXML.REGISTER, ModuleTitles.REGISTER);
+    protected void onGoBackButtonPressed(){
+        setScene(goBackButton.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
     }
 
 
 
-    void setChoiceBoxItems() {
+    public void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(
                 "male", "female")
         );

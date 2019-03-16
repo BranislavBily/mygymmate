@@ -1,4 +1,4 @@
-package sample.Controllers;
+package sample.Controllers.SceneControllers;
 
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
@@ -9,8 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import sample.Moduls.ModulFXML;
-import sample.Moduls.ModuleTitles;
+import sample.Controllers.LoginRegistrationController;
+import sample.Modules.ModuleFXML;
+import sample.Modules.ModuleTitles;
 import sample.User;
 
 public class RegisterController extends LoginRegistrationController {
@@ -51,10 +52,12 @@ public class RegisterController extends LoginRegistrationController {
         String password = passwordFieldPassword.getText();
         String passwordAgain = passwordFieldPasswordAgain.getText();
 
+        hideAllFeedback();
+
         if (databaseModuleUser.isUsernameTaken(username)) {
             displayErrorFeedbackUsername(textFieldUsername);
 
-            if (mandatoryError2.isVisible()){
+            if (mandatoryError2.isVisible()) {
                 mandatoryError2.setVisible(false);
             }
 
@@ -63,8 +66,9 @@ public class RegisterController extends LoginRegistrationController {
 
         } else if (!password.equals(passwordAgain)) {
 
-            displayErrorFeedbackPassword(passwordFieldPassword, passwordFieldPasswordAgain);
-            if(mandatoryError.isVisible()){
+            displayErrorFeedbackPassword(passwordFieldPassword);
+            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
+            if (mandatoryError.isVisible()) {
                 mandatoryError.setVisible(false);
             }
 
@@ -74,10 +78,10 @@ public class RegisterController extends LoginRegistrationController {
 
             System.out.println("Passwords do not match");
 
-        }
-        else if (passwordFieldPassword.getText().equals("")) {
+        } else if (passwordFieldPassword.getText().equals("")) {
             displayErrorFeedbackUsername(textFieldUsername);
-            displayErrorFeedbackPassword(passwordFieldPassword, passwordFieldPasswordAgain);
+            displayErrorFeedbackPassword(passwordFieldPassword);
+            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
             if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
                 labelUsernameTaken.setVisible(false);
                 labelPasswordMismatch.setVisible(false);
@@ -87,10 +91,10 @@ public class RegisterController extends LoginRegistrationController {
             mandatoryError2.setVisible(true);
             System.out.println("These fields are mandatory");
 
-        }else if ((!databaseModuleUser.isUsernameTaken(username)&& !password.equals(passwordAgain))||(
-                !databaseModuleUser.isUsernameTaken(username)&& password.equals("")&&passwordAgain.equals(""))){
+        } else if ((!databaseModuleUser.isUsernameTaken(username) && !password.equals(passwordAgain)) || (
+                !databaseModuleUser.isUsernameTaken(username) && password.equals("") && passwordAgain.equals(""))) {
             DropShadow usernameShadow = (DropShadow) textFieldUsername.getEffect();
-            if(usernameShadow.getColor().equals(Color.RED)) {
+            if (usernameShadow.getColor().equals(Color.RED)) {
                 usernameShadow.setColor(Color.BLACK);
                 textFieldUsername.setEffect(usernameShadow);
                 mandatoryError2.setVisible(false);
@@ -100,11 +104,10 @@ public class RegisterController extends LoginRegistrationController {
 
             }
 
-        }
-        else if ((databaseModuleUser.isUsernameTaken(username)&& password.equals(passwordAgain))||(
-                databaseModuleUser.isUsernameTaken(username)&& !password.equals("")&&!passwordAgain.equals(""))){
+        } else if ((databaseModuleUser.isUsernameTaken(username) && password.equals(passwordAgain)) || (
+                databaseModuleUser.isUsernameTaken(username) && !password.equals("") && !passwordAgain.equals(""))) {
             DropShadow passwordShadow = (DropShadow) passwordFieldPassword.getEffect();
-            if(passwordShadow.getColor().equals(Color.RED)) {
+            if (passwordShadow.getColor().equals(Color.RED)) {
                 passwordShadow.setColor(Color.BLACK);
                 passwordFieldPassword.setEffect(passwordShadow);
                 passwordFieldPasswordAgain.setEffect(passwordShadow);
@@ -113,12 +116,11 @@ public class RegisterController extends LoginRegistrationController {
                 mandatoryError.setVisible(false);
 
 
-
             }
 
-        }
-        else if (passwordFieldPassword.getText().equals("")){
-            displayErrorFeedbackPassword(passwordFieldPassword,passwordFieldPasswordAgain);
+        } else if (passwordFieldPassword.getText().equals("")) {
+            displayErrorFeedbackPassword(passwordFieldPassword);
+            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
             if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
                 labelUsernameTaken.setVisible(false);
                 labelPasswordMismatch.setVisible(false);
@@ -126,8 +128,7 @@ public class RegisterController extends LoginRegistrationController {
             mandatoryError.setVisible(true);
             System.out.println("This field is mandatory");
 
-        }
-        else if (textFieldUsername.getText().equals("")){
+        } else if (textFieldUsername.getText().equals("")) {
             displayErrorFeedbackUsername(textFieldUsername);
             if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
                 labelUsernameTaken.setVisible(false);
@@ -135,12 +136,9 @@ public class RegisterController extends LoginRegistrationController {
             }
             mandatoryError2.setVisible(true);
             System.out.println("This field is mandatory");
-        }
-
-
-        else {
+        } else {
             User user = new User(username, password);
-            setScene(textFieldUsername.getScene(), ModulFXML.REGISTER_INFO, user);
+            setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
         }
     }
 
@@ -151,39 +149,16 @@ public class RegisterController extends LoginRegistrationController {
         labelPasswordMismatch.setVisible(false);
         labelUsernameTaken.setVisible(false);
     }
+
     @FXML
     private void onHyperLinkPressed() {
 
-        setScene(hyperLinkAlreadyMember.getScene(), ModulFXML.LOGIN, ModuleTitles.LOG_IN);
+        setScene(hyperLinkAlreadyMember.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
     }
-    void displayErrorFeedbackUsername(TextField textField){
-        textField.setText("");
-        DropShadow usernameShadow = (DropShadow) textField.getEffect();
-        usernameShadow.setColor(Color.RED);
-        usernameShadow.setRadius(30);
+
+    private void hideAllFeedback() {
 
     }
 
-    private void displayErrorFeedbackPassword(PasswordField passwordField, PasswordField passwordField2){
-        passwordField.setText("");
-        DropShadow passwordShadow = (DropShadow) passwordField.getEffect();
-        passwordShadow.setColor(Color.RED);
-        passwordShadow.setRadius(30);
-
-        passwordField2.setText("");
-        DropShadow passwordShadowAgain = (DropShadow) passwordField2.getEffect();
-        passwordShadowAgain.setColor(Color.RED);
-        passwordShadowAgain.setRadius(30);
-
-
-
-    }
-
-
-
-
-
-
-
-    }
+}
 
