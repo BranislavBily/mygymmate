@@ -5,5 +5,4 @@ public interface ModulFXML {
     String REGISTER = "../FXML/registration.fxml";
     String REGISTER_INFO = "../FXML/registrationInfo.fxml";
     String USER_HOME_SCREEN = "../FXML/userHomeScreen.fxml";
-
 }

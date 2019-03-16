@@ -1,6 +1,6 @@
 package db;
 
-import sample.Moduls.ModulTables;
+import sample.Moduls.ModuleTables;
 
 import java.sql.*;
 
@@ -111,7 +111,7 @@ public class DatabaseModule {
 //    }
 
     private String createUserTableQuery() {
-        return "create table if not EXISTS " + ModulTables.USERS + "(" +
+        return "create table if not EXISTS " + ModuleTables.USERS + "(" +
                 "ID INTEGER primary key autoincrement," +
                 "Username varchar(255) not null," +
                 "Password varchar(255) not null ," +
@@ -125,7 +125,7 @@ public class DatabaseModule {
     }
 
     private String createUserInfoTableQuery() {
-        return "CREATE TABLE IF NOT EXISTS " + ModulTables.USER_INFO + "(" +
+        return "CREATE TABLE IF NOT EXISTS " + ModuleTables.USER_INFO + "(" +
                 "ID INTEGER primary key autoincrement," +
                 "Weight real not null," +
                 "Height real not null," +

@@ -9,7 +9,7 @@ import sample.User;
 import java.io.IOException;
 
 //Class that changes scenes
-public class Controller {
+class Controller {
     void setScene(Scene scene, String fxml, String title) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, title);
@@ -41,13 +41,13 @@ public class Controller {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             RegisterInfoController registerInfoController = loader.getController();
-            System.out.println(registerInfoController == null);
             registerInfoController.setUser(user);
             stage.setScene(scene);
             stage.setTitle(user.getUsername());
             stage.setResizable(false);
             stage.show();
             registerInfoController.setLabelUsername();
+            registerInfoController.setChoiceBoxItems();
         } catch (IOException e) {
             e.printStackTrace();
         }

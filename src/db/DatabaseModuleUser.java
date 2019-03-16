@@ -1,7 +1,7 @@
 package db;
 
 
-import sample.Moduls.ModulTables;
+import sample.Moduls.ModuleTables;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +29,7 @@ public class DatabaseModuleUser extends DatabaseModule {
 
     public boolean isUser(String user, String pass) {
         ResultSet resultSet;
-        String query = "select * from "+ModulTables.USERS+" where Username = ? and Password = ?";
+        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, pass);
@@ -43,7 +43,7 @@ public class DatabaseModuleUser extends DatabaseModule {
 
     public boolean isUsernameTaken(String username) {
         ResultSet resultSet;
-        String query = "select * from "+ModulTables.USERS+" where Username = ?";
+        String query = "select * from "+ ModuleTables.USERS+" where Username = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
