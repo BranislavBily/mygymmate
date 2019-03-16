@@ -1,7 +1,7 @@
 package db;
 
 
-import sample.Moduls.ModuleTables;
+import sample.Modules.ModuleTables;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

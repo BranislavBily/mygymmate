@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.Moduls.ModuleTitles;
+import sample.Modules.ModuleTitles;
 
 import java.sql.Connection;
 

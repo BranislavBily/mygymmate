@@ -4,13 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Controllers.SceneControllers.RegisterInfoController;
 import sample.User;
 
 import java.io.IOException;
 
 //Class that changes scenes
-class Controller {
-    void setScene(Scene scene, String fxml, String title) {
+public class Controller {
+    protected void setScene(Scene scene, String fxml, String title) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, title);
     }
@@ -29,7 +30,7 @@ class Controller {
         }
     }
 
-    void setScene(Scene scene, String fxml, User user) {
+    protected void setScene(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, user);
 
