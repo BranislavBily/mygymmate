@@ -6,7 +6,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModuleTitles;
 import sample.User;
@@ -73,7 +75,7 @@ public class RegisterController extends LoginRegistrationController {
             System.out.println("Passwords do not match");
 
         }
-        else if (passwordFieldPassword.getText().equals("")&&textFieldUsername.getText().equals("")) {
+        else if (passwordFieldPassword.getText().equals("")) {
             displayErrorFeedbackUsername(textFieldUsername);
             displayErrorFeedbackPassword(passwordFieldPassword, passwordFieldPasswordAgain);
             if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
@@ -141,6 +143,8 @@ public class RegisterController extends LoginRegistrationController {
             setScene(textFieldUsername.getScene(), ModulFXML.REGISTER_INFO, user);
         }
     }
+
+    //TODO Password Checker
 
     //In case user corrects himself, All feedback must be gone so when he makes mistake only the correct feedback will be shown
     private void resetAllFeedback() {
