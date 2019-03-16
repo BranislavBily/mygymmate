@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 
-class FeedBackController extends Controller {
+class LoginRegistrationController extends Controller {
 
     //Treba zmenit aj focus
 

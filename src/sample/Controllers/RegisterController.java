@@ -6,14 +6,12 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModuleTitles;
 import sample.User;
 
-public class RegisterController extends FeedBackController {
+public class RegisterController extends LoginRegistrationController {
 
     @FXML
     private Pane pane;

@@ -6,12 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import sample.Moduls.ModulFXML;
 import sample.Moduls.ModuleTitles;
 
-public class LoginController extends FeedBackController {
+public class LoginController extends LoginRegistrationController {
 
     @FXML
     private TextField textFieldUserName;
