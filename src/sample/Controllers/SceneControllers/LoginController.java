@@ -1,4 +1,4 @@
-package sample.Controllers;
+package sample.Controllers.SceneControllers;
 
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
@@ -6,12 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
-import sample.Moduls.ModulFXML;
-import sample.Moduls.ModuleTitles;
+import sample.Controllers.LoginRegistrationController;
+import sample.Modules.ModuleFXML;
+import sample.Modules.ModuleTitles;
 
-public class LoginController extends FeedBackController {
+public class LoginController extends LoginRegistrationController {
 
     @FXML
     private TextField textFieldUserName;
@@ -34,7 +33,7 @@ public class LoginController extends FeedBackController {
         String username = textFieldUserName.getText();
         String password = passwordFieldPassword.getText();
         if (databaseModuleUser.isUser(username, password)) {
-            setScene(buttonLogIn.getScene(), ModulFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+            setScene(buttonLogIn.getScene(), ModuleFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
         } else {
 
             displayErrorFeedbackUsername(textFieldUserName);
@@ -48,7 +47,7 @@ public class LoginController extends FeedBackController {
 
     @FXML
     private void onButtonSignUpPressed() {
-        setScene(buttonLogIn.getScene(), ModulFXML.REGISTER, ModuleTitles.REGISTER);
+        setScene(buttonLogIn.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
     }
 
 

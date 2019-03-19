@@ -5,11 +5,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 
-class FeedBackController extends Controller {
+public class LoginRegistrationController extends Controller {
 
     //Treba zmenit aj focus
 
-    void displayErrorFeedbackUsername(TextField textField){
+    protected void displayErrorFeedbackUsername(TextField textField){
         textField.setText(null);
         DropShadow usernameShadow = (DropShadow) textField.getEffect();
         usernameShadow.setColor(Color.RED);
@@ -17,7 +17,7 @@ class FeedBackController extends Controller {
 
     }
 
-    void displayErrorFeedbackPassword(PasswordField passwordField){
+    protected void displayErrorFeedbackPassword(PasswordField passwordField){
         passwordField.setText(null);
         DropShadow passwordShadow = (DropShadow) passwordField.getEffect();
         passwordShadow.setColor(Color.RED);
@@ -25,7 +25,7 @@ class FeedBackController extends Controller {
     }
 
     //Reverse vsetok feedback aby to vyzeralo tak ako pred zobrazenim feedbacku
-    void reverseFeedback() {
+    protected void reverseFeedback() {
 
     }
 }

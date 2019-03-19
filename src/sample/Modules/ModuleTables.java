@@ -1,4 +1,4 @@
-package sample.Moduls;
+package sample.Modules;
 
 public interface ModuleTables {
 
