@@ -35,6 +35,7 @@ public class RegisterInfoController extends Controller {
         labelUsername.setLayoutX(182-((user.getUsername().length()+1)*5.5));
 
         System.out.println(labelUsername.getLayoutX());
+        choiceBoxGender.getValue();
     }
 
     @FXML

@@ -45,6 +45,7 @@ public class RegisterController extends LoginRegistrationController {
 
     @FXML
     private void onButtonSignUpPressed() {
+        boolean errorRegistering = false;
         resetAllFeedback();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUsername.getText();
@@ -52,112 +53,60 @@ public class RegisterController extends LoginRegistrationController {
         String password = passwordFieldPassword.getText();
         String passwordAgain = passwordFieldPasswordAgain.getText();
 
-        hideAllFeedback();
+        resetAllFeedback();
 
-        if (databaseModuleUser.isUsernameTaken(username)) {
+        //If username is empty
+        if (textFieldUsername.getText().equals("")) {
             displayErrorFeedbackUsername(textFieldUsername);
-
-            if (mandatoryError2.isVisible()) {
-                mandatoryError2.setVisible(false);
-            }
-
+            mandatoryError.setVisible(true);
+            System.out.println("This field is mandatory");
+            errorRegistering = true;
+            //Else if username is in the databse
+        } else if (databaseModuleUser.isUsernameTaken(username)) {
+            displayErrorFeedbackUsername(textFieldUsername);
             labelUsernameTaken.setVisible(true);
+            errorRegistering = true;
             System.out.println("Username taken");
 
-        } else if (!password.equals(passwordAgain)) {
-
-            displayErrorFeedbackPassword(passwordFieldPassword);
-            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
-            if (mandatoryError.isVisible()) {
-                mandatoryError.setVisible(false);
-            }
-
+        }
+        //If password do not match
+        if (!password.equals(passwordAgain)) {
             displayErrorFeedbackPassword(passwordFieldPassword);
             displayErrorFeedbackPassword(passwordFieldPasswordAgain);
             labelPasswordMismatch.setVisible(true);
-
+            errorRegistering = true;
             System.out.println("Passwords do not match");
-
-        } else if (passwordFieldPassword.getText().equals("")) {
-            displayErrorFeedbackUsername(textFieldUsername);
-            displayErrorFeedbackPassword(passwordFieldPassword);
-            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
-            if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
-                labelUsernameTaken.setVisible(false);
-                labelPasswordMismatch.setVisible(false);
-            }
-
-            mandatoryError.setVisible(true);
-            mandatoryError2.setVisible(true);
-            System.out.println("These fields are mandatory");
-
-        } else if ((!databaseModuleUser.isUsernameTaken(username) && !password.equals(passwordAgain)) || (
-                !databaseModuleUser.isUsernameTaken(username) && password.equals("") && passwordAgain.equals(""))) {
-            DropShadow usernameShadow = (DropShadow) textFieldUsername.getEffect();
-            if (usernameShadow.getColor().equals(Color.RED)) {
-                usernameShadow.setColor(Color.BLACK);
-                textFieldUsername.setEffect(usernameShadow);
-                mandatoryError2.setVisible(false);
-                labelUsernameTaken.setVisible(false);
-                mandatoryError.setVisible(true);
-
-
-            }
-
-        } else if ((databaseModuleUser.isUsernameTaken(username) && password.equals(passwordAgain)) || (
-                databaseModuleUser.isUsernameTaken(username) && !password.equals("") && !passwordAgain.equals(""))) {
-            DropShadow passwordShadow = (DropShadow) passwordFieldPassword.getEffect();
-            if (passwordShadow.getColor().equals(Color.RED)) {
-                passwordShadow.setColor(Color.BLACK);
-                passwordFieldPassword.setEffect(passwordShadow);
-                passwordFieldPasswordAgain.setEffect(passwordShadow);
-                mandatoryError2.setVisible(false);
-                labelUsernameTaken.setVisible(true);
-                mandatoryError.setVisible(false);
-
-
-            }
-
+            //If one of them is empty, both are empty
         } else if (passwordFieldPassword.getText().equals("")) {
             displayErrorFeedbackPassword(passwordFieldPassword);
             displayErrorFeedbackPassword(passwordFieldPasswordAgain);
-            if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
-                labelUsernameTaken.setVisible(false);
-                labelPasswordMismatch.setVisible(false);
-            }
-            mandatoryError.setVisible(true);
-            System.out.println("This field is mandatory");
 
-        } else if (textFieldUsername.getText().equals("")) {
-            displayErrorFeedbackUsername(textFieldUsername);
-            if (labelUsernameTaken.isVisible() || labelPasswordMismatch.isVisible()) {
-                labelUsernameTaken.setVisible(false);
-                labelPasswordMismatch.setVisible(false);
-            }
+            mandatoryError.setVisible(true);
             mandatoryError2.setVisible(true);
-            System.out.println("This field is mandatory");
-        } else {
+            errorRegistering = true;
+            System.out.println("Error: These fields are mandatory");
+        }
+        if (!errorRegistering) {
             User user = new User(username, password);
             setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
         }
     }
-
-    //TODO Password Checker
-
     //In case user corrects himself, All feedback must be gone so when he makes mistake only the correct feedback will be shown
     private void resetAllFeedback() {
         labelPasswordMismatch.setVisible(false);
         labelUsernameTaken.setVisible(false);
+        mandatoryError.setVisible(false);
+        mandatoryError2.setVisible(false);
+        DropShadow usernameShadow = (DropShadow) textFieldUsername.getEffect();
+        usernameShadow.setColor(Color.BLACK);
+        textFieldUsername.setEffect(usernameShadow);
+        passwordFieldPassword.setEffect(usernameShadow);
+        passwordFieldPasswordAgain.setEffect(usernameShadow);
     }
 
     @FXML
     private void onHyperLinkPressed() {
-
         setScene(hyperLinkAlreadyMember.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
-    }
-
-    private void hideAllFeedback() {
-
     }
 
 }
