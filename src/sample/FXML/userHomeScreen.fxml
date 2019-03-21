@@ -11,8 +11,8 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.UserHomeScreenController">
+
 
     <stylesheets>
         <URL value="@../CSS/HomePage.css" />
@@ -67,7 +67,7 @@
                 <DropShadow />
             </effect>
             <children>
-                <Button fx:id="buttonWorkout" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" text="Button" textAlignment="CENTER" AnchorPane.bottomAnchor="519.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="19.399999999999977" AnchorPane.topAnchor="20.0">
+                <Button fx:id="buttonWorkout" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" textAlignment="CENTER" AnchorPane.bottomAnchor="519.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="19.399999999999977" AnchorPane.topAnchor="20.0">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
                     </effect>
@@ -83,7 +83,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button fx:id="buttonMeasure" layoutX="21.0" layoutY="522.0" mnemonicParsing="false" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" text="Button" textAlignment="CENTER">
+                <Button fx:id="buttonMeasure" layoutX="21.0" layoutY="522.0" mnemonicParsing="false" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" textAlignment="CENTER">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.2" width="40.0" />
                     </effect>
