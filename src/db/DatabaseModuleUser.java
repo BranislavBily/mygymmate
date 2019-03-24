@@ -53,10 +53,11 @@ public class DatabaseModuleUser extends DatabaseModule {
             return false;
         }
     }
-    public boolean isAdmin() {
+    public boolean isAdmin(String username) {
         ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Status = 'admin'";
+        String query = "select * from "+ ModuleTables.USERS+" where Status = 'admin' and Username = ? ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } catch (Exception e) {
@@ -64,10 +65,11 @@ public class DatabaseModuleUser extends DatabaseModule {
             return false;
         }
     }
-    public boolean isTrainer() {
+    public boolean isTrainer(String username) {
         ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Status = 'trainer'";
+        String query = "select * from "+ ModuleTables.USERS+" where Status = 'trainer' and Username = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } catch (Exception e) {

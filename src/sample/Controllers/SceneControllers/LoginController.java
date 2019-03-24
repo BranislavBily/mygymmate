@@ -34,10 +34,10 @@ public class LoginController extends LoginRegistrationController {
         String password = passwordFieldPassword.getText();
         if (databaseModuleUser.isUser(username, password)) {
 
-            if(databaseModuleUser.isAdmin()&& databaseModuleUser.isUser(username,password)){
+            if(databaseModuleUser.isAdmin(username)&& databaseModuleUser.isUser(username,password)){
                 setScene(buttonLogIn.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, ModuleTitles.ADMIN_HOME_SCREEN);
 
-            }else if (databaseModuleUser.isTrainer()&& databaseModuleUser.isUser(username,password)) {
+            }else if (databaseModuleUser.isTrainer(username)&& databaseModuleUser.isUser(username,password)) {
                 setScene(buttonLogIn.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, ModuleTitles.TRAINER_HOME_SCREEN);
 
             } else {
