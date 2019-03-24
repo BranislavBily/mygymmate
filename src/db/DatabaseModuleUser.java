@@ -29,7 +29,7 @@ public class DatabaseModuleUser extends DatabaseModule {
 
     public boolean isUser(String user, String pass) {
         ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ? ";
+        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, pass);
@@ -46,6 +46,28 @@ public class DatabaseModuleUser extends DatabaseModule {
         String query = "select * from "+ ModuleTables.USERS+" where Username = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean isAdmin() {
+        ResultSet resultSet;
+        String query = "select * from "+ ModuleTables.USERS+" where Status = 'admin'";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean isTrainer() {
+        ResultSet resultSet;
+        String query = "select * from "+ ModuleTables.USERS+" where Status = 'trainer'";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } catch (Exception e) {
