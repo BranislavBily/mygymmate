@@ -1,10 +1,14 @@
 package sample.Controllers;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.RegisterInfoController;
+import sample.Modules.ModuleFXML;
+import sample.Modules.ModuleTitles;
 import sample.User;
 
 import java.io.IOException;
@@ -53,4 +57,11 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    @FXML
+    protected void onButtonLogOutPressed(Button buttonLogOut) {
+        setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+    }
+
 }
+
+

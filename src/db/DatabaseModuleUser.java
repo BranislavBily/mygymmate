@@ -29,7 +29,7 @@ public class DatabaseModuleUser extends DatabaseModule {
 
     public boolean isUser(String user, String pass) {
         ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
+        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ? ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, pass);
@@ -53,6 +53,8 @@ public class DatabaseModuleUser extends DatabaseModule {
             return false;
         }
     }
+
+
 //
 //    public boolean registerUser(String name, String pass) throws SQLException {
 //        String sql = "insert into users(username, password, status) values(?, ?, ?)";
