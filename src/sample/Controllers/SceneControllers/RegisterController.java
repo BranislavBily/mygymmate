@@ -12,7 +12,8 @@ import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.User;
+import sample.Users.Trainee.Trainee;
+import sample.Users.User;
 
 public class RegisterController extends LoginRegistrationController {
 
@@ -87,7 +88,7 @@ public class RegisterController extends LoginRegistrationController {
             System.out.println("Error: These fields are mandatory");
         }
         if (!errorRegistering) {
-            User user = new User(username, password);
+            User user = new Trainee(username, password);
             setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
         }
     }

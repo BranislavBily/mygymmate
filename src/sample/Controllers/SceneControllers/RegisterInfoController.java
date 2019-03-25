@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.User;
+import sample.Users.User;
 
 public class RegisterInfoController extends Controller {
 
