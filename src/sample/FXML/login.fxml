@@ -19,7 +19,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginController">
 
     <stylesheets>
-        <URL value="@../CSS/Login.css" />
+        <URL value="@../CSS/LoginAndRegistration.css" />
     </stylesheets>
     <children>
       <AnchorPane layoutX="314.0" layoutY="117.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">
