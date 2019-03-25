@@ -24,6 +24,9 @@ public class DatabaseModuleUser extends DatabaseModule {
     //Module for querying User related data from the database
 
     private Connection connection;
+    private final String status = "Status";
+    private final String admin = "admin";
+    private final String trainer = "trainer";
 
     public DatabaseModuleUser() {
         super();
@@ -62,27 +65,13 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
-    public boolean checkStatus(String status, String username) {
-        ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Status = ? and Username = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1,status);
-            preparedStatement.setString(2,username);
-            resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     private User createUser(ResultSet resultSet, String username, String password) {
-        String status;
+        String userStatus;
         try {
-            status = resultSet.getString("Status");
-            switch (status) {
-                case "admin": return new Admin(username, password);
-                case "trainer": return new Trainer(username, password);
+            userStatus = resultSet.getString(status);
+            switch (userStatus) {
+                case admin: return new Admin(username, password);
+                case trainer: return new Trainer(username, password);
                 default: return new Trainee(username, password);
             }
         } catch (SQLException e) {
@@ -90,9 +79,6 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
         return null;
     }
-
-
-
 //
 //    public boolean registerUser(String name, String pass) throws SQLException {
 //        String sql = "insert into users(username, password, status) values(?, ?, ?)";
