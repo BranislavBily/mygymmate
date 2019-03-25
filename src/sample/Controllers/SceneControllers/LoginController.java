@@ -33,7 +33,16 @@ public class LoginController extends LoginRegistrationController {
         String username = textFieldUserName.getText();
         String password = passwordFieldPassword.getText();
         if (databaseModuleUser.isUser(username, password)) {
-            setScene(buttonLogIn.getScene(), ModuleFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+
+            if(databaseModuleUser.checkStatus("admin",username)){
+                setScene(buttonLogIn.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, ModuleTitles.ADMIN_HOME_SCREEN);
+
+            }else if (databaseModuleUser.checkStatus("trainer",username)) {
+                setScene(buttonLogIn.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, ModuleTitles.TRAINER_HOME_SCREEN);
+
+            } else {
+                setScene(buttonLogIn.getScene(), ModuleFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+            }
         } else {
 
             displayErrorFeedbackUsername(textFieldUserName);
