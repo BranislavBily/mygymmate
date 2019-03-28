@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
@@ -13,10 +14,30 @@ import sample.User;
 public class RegisterInfoController extends Controller {
 
     private User user;
+
     @FXML
-    private Button goBackButton;
+    private Button buttonGoBack;
+
+    @FXML
+    private Button buttonFinish;
+
     @FXML
     private Label labelUsername;
+
+    @FXML
+    private TextField textFieldFirstName;
+
+    @FXML
+    private TextField textFieldLastName;
+
+    @FXML
+    private TextField textFieldWeight;
+
+    @FXML
+    private TextField textFieldHeight;
+
+    @FXML
+    private TextField textFieldDailyIntake;
 
     @FXML
     private ChoiceBox choiceBoxGender;
@@ -30,7 +51,6 @@ public class RegisterInfoController extends Controller {
     }
 
     public void setLabelUsername() {
-
         labelUsername.setText("Hi "+user.getUsername() + " !");
         labelUsername.setLayoutX(182-((user.getUsername().length()+1)*5.5));
 
@@ -40,10 +60,23 @@ public class RegisterInfoController extends Controller {
 
     @FXML
     protected void onGoBackButtonPressed(){
-        setScene(goBackButton.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+        setScene(buttonGoBack.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
     }
 
+    @FXML
+    protected void onFinishButtonPressed() {
+        String firstName = textFieldFirstName.getText();
+        String lastName = textFieldLastName.getText();
+        String weight = textFieldWeight.getText();
+        String height = textFieldHeight.getText();
+        String dailyIntake = textFieldDailyIntake.getText();
 
+        //If Names are empty
+        if(firstName.equals("")&&lastName.equals("")) {
+
+        }
+
+    }
 
     public void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(

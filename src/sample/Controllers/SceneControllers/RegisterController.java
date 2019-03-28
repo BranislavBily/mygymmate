@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
+import sample.Security.PasswordChecker;
 import sample.User;
 
 public class RegisterController extends LoginRegistrationController {
@@ -47,6 +48,7 @@ public class RegisterController extends LoginRegistrationController {
     private void onButtonSignUpPressed() {
         boolean errorRegistering = false;
         resetAllFeedback();
+        PasswordChecker passwordChecker = new PasswordChecker();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUsername.getText();
         System.out.println(username);
@@ -70,7 +72,7 @@ public class RegisterController extends LoginRegistrationController {
 
         }
         //If password do not match
-        if (!password.equals(passwordAgain)) {
+        if (!passwordChecker.passwordEquaility(password, passwordAgain)) {
             displayErrorFeedbackPassword(passwordFieldPassword);
             displayErrorFeedbackPassword(passwordFieldPasswordAgain);
             labelPasswordMismatch.setVisible(true);
@@ -85,6 +87,8 @@ public class RegisterController extends LoginRegistrationController {
             mandatoryError2.setVisible(true);
             errorRegistering = true;
             System.out.println("Error: These fields are mandatory");
+        } else if(passwordChecker.checkPasswordStrength()) {
+
         }
         if (!errorRegistering) {
             User user = new User(username, password);
