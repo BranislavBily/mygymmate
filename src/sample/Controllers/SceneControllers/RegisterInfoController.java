@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.User;
+import sample.Users.User;
 
 public class RegisterInfoController extends Controller {
 
@@ -22,12 +22,6 @@ public class RegisterInfoController extends Controller {
     private Button buttonFinish;
 
     @FXML
-    private Label labelUsername;
-
-    @FXML
-    private TextField textFieldFirstName;
-
-    @FXML
     private TextField textFieldLastName;
 
     @FXML
@@ -37,13 +31,20 @@ public class RegisterInfoController extends Controller {
     private TextField textFieldHeight;
 
     @FXML
-    private TextField textFieldDailyIntake;
+    private TextField textFieldDailyCalories;
+
+    @FXML
+    private TextField textFieldFirstName;
 
     @FXML
     private ChoiceBox choiceBoxGender;
 
     @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
+
+    @FXML
+    private Label labelUsername;
+
 
     public void setUser(User user) {
         this.user = user;
@@ -54,26 +55,39 @@ public class RegisterInfoController extends Controller {
         labelUsername.setText("Hi "+user.getUsername() + " !");
         labelUsername.setLayoutX(182-((user.getUsername().length()+1)*5.5));
 
-        System.out.println(labelUsername.getLayoutX());
         choiceBoxGender.getValue();
     }
 
     @FXML
-    protected void onGoBackButtonPressed(){
+    public void onGoBackButtonPressed(){
         setScene(buttonGoBack.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
     }
 
+
     @FXML
-    protected void onFinishButtonPressed() {
+    public void onFinishButtonPressed() {
         String firstName = textFieldFirstName.getText();
         String lastName = textFieldLastName.getText();
         String weight = textFieldWeight.getText();
         String height = textFieldHeight.getText();
-        String dailyIntake = textFieldDailyIntake.getText();
+        String dailyIntake = textFieldDailyCalories.getText();
 
         //If Names are empty
-        if(firstName.equals("")&&lastName.equals("")) {
+        if(firstName.equals("") && lastName.equals("")) {
+            //display feedback
             System.out.println("Passwords are empty");
+        }
+        if(weight.equals("") || height.equals("")) {
+            System.out.println("Empty Weight or Height");
+        }
+        if(dailyIntake.equals("")) {
+            System.out.println("Empty Daily intake");
+        }
+        if(choiceBoxGender == null) {
+            System.out.println("Empty box gender");
+        }
+        if(choiceBoxTypeOfTraining == null) {
+            System.out.println("Empty box type of training");
         }
 
     }

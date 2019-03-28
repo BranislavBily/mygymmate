@@ -13,7 +13,8 @@ import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Security.PasswordChecker;
-import sample.User;
+import sample.Users.Trainee.Trainee;
+import sample.Users.User;
 
 public class RegisterController extends LoginRegistrationController {
 
@@ -51,7 +52,6 @@ public class RegisterController extends LoginRegistrationController {
         PasswordChecker passwordChecker = new PasswordChecker();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUsername.getText();
-        System.out.println(username);
         String password = passwordFieldPassword.getText();
         String passwordAgain = passwordFieldPasswordAgain.getText();
 
@@ -91,7 +91,7 @@ public class RegisterController extends LoginRegistrationController {
 
         }
         if (!errorRegistering) {
-            User user = new User(username, password);
+            User user = new Trainee(username, password);
             setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
         }
     }

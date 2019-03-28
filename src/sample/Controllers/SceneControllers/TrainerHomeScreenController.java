@@ -6,9 +6,7 @@ import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 
-
-public class UserHomeScreenController extends Controller {
-
+public class TrainerHomeScreenController extends Controller {
     @FXML
     private Button buttonLogOut;
     @FXML
@@ -20,7 +18,10 @@ public class UserHomeScreenController extends Controller {
 
 
 
-   public void onButtonLogOutPressed() {
+    @FXML
+    public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
+
 }
+
