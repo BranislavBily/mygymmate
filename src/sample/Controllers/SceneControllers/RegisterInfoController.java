@@ -73,7 +73,7 @@ public class RegisterInfoController extends Controller {
 
         //If Names are empty
         if(firstName.equals("")&&lastName.equals("")) {
-
+            System.out.println("Passwords are empty");
         }
 
     }
