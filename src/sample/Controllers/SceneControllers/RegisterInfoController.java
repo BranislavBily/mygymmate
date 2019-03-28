@@ -67,6 +67,7 @@ public class RegisterInfoController extends Controller {
 
     @FXML
     public void onFinishButtonPressed() {
+        boolean errorRegistering = false;
         String firstName = textFieldFirstName.getText();
         String lastName = textFieldLastName.getText();
         String weight = textFieldWeight.getText();
@@ -76,21 +77,28 @@ public class RegisterInfoController extends Controller {
         //If Names are empty
         if(firstName.equals("") && lastName.equals("")) {
             //display feedback
+            errorRegistering = true;
             System.out.println("Passwords are empty");
         }
         if(weight.equals("") || height.equals("")) {
+            errorRegistering = true;
             System.out.println("Empty Weight or Height");
         }
         if(dailyIntake.equals("")) {
+            errorRegistering = true;
             System.out.println("Empty Daily intake");
         }
         if(choiceBoxGender == null) {
+            errorRegistering = true;
             System.out.println("Empty box gender");
         }
         if(choiceBoxTypeOfTraining == null) {
+            errorRegistering = true;
             System.out.println("Empty box type of training");
         }
-//        Trainee trainee = createTraineeFromInput();
+        if(!errorRegistering) {
+            //        Trainee trainee = createTraineeFromInput();
+        }
     }
 
 //    private Trainee createTraineeFromInput() {
