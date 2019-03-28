@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
+import sample.Users.Trainee.Trainee;
 import sample.Users.User;
 
 public class RegisterInfoController extends Controller {
@@ -89,8 +90,14 @@ public class RegisterInfoController extends Controller {
         if(choiceBoxTypeOfTraining == null) {
             System.out.println("Empty box type of training");
         }
-
+//        Trainee trainee = createTraineeFromInput();
     }
+
+//    private Trainee createTraineeFromInput() {
+//        double weight = Double.parseDouble()
+//        return new Trainee(user.getUsername(), user.getPassword(), choiceBoxGender.getValue().toString(),
+//                    );
+//    }
 
     public void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(
