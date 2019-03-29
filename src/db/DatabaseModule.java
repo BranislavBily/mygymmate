@@ -125,6 +125,7 @@ public class DatabaseModule {
                 "LastName varchar(255) not null," +
                 "Weight real not null," +
                 "Height real not null," +
+                "Gender varchar(255) not null, " +
                 "TypeOfTraining varchar(255) not null," +
                 "UserID INTEGER not null," +
                 "FOREIGN KEY (UserID) REFERENCES Users(ID))";

@@ -6,11 +6,9 @@ import sample.Users.Admin.Admin;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
+import sample.Users.UserInfo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -65,19 +63,63 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
-    public boolean insertTraineeToDatabase(Trainee trainee) {
+    public boolean insertTraineeInfoToDatabase(Trainee trainee) {
+        if(insertTraineeToDatabase(trainee)) {
+            String query = "insert into " + ModuleTables.USER_INFO + "(UserId, gender, firstName, lastName, Weight, Height, typeOfTraining)" +
+                    "values (?, ?, ?, ?, ?, ?, ?)";
+            try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                Integer id = getUserTableID(trainee);
+                if(id != null) {
+                    UserInfo userInfo = trainee.getUserInfo();
+                    preparedStatement.setInt(1, id);
+                    preparedStatement.setString(2, userInfo.getGender());
+                    preparedStatement.setString(3, userInfo.getFirstName());
+                    preparedStatement.setString(4, userInfo.getLastName());
+                    preparedStatement.setDouble(5, userInfo.getWeight());
+                    preparedStatement.setDouble(6, userInfo.getHeight());
+                    preparedStatement.setString(7, userInfo.getTypeOfTraining().toString());
+                    preparedStatement.executeUpdate();
+                    return true;
+                } else {
+                    System.out.println("Error, no user id found");
+                    return false;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            System.out.println("Could not insert into user table");
+            return false;
+        }
+    }
+
+    private Integer getUserTableID(Trainee trainee) {
         ResultSet resultSet;
+        String query = "select ID from "+ ModuleTables.USERS+" where Username = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, trainee.getUsername());
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.getInt("ID");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean insertTraineeToDatabase(Trainee trainee) {
         String query = "insert into " + ModuleTables.USERS + "(username, password, status) values(?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, trainee.getUsername());
             preparedStatement.setString(2, trainee.getPassword());
             preparedStatement.setString(3, "trainee");
-            resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        } catch (Exception e ) {
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e ) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     private User createUser(ResultSet resultSet, String username, String password) {

@@ -101,7 +101,7 @@ public class RegisterInfoController extends Controller {
             System.out.println(trainee.toString());
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
 
-            databaseModuleUser.insertTraineeToDatabase(trainee);
+            databaseModuleUser.insertTraineeInfoToDatabase(trainee);
         }
 
     }
