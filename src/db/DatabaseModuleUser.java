@@ -63,7 +63,9 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
+    //Inserts Trainee UserInfo into UserInfo table
     public boolean insertTraineeInfoToDatabase(Trainee trainee) {
+        //If user was successfully created
         if(insertTraineeToDatabase(trainee)) {
             String query = "insert into " + ModuleTables.USER_INFO + "(UserId, gender, firstName, lastName, Weight, Height, typeOfTraining)" +
                     "values (?, ?, ?, ?, ?, ?, ?)";
@@ -95,6 +97,7 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
+    //Get foreign key of user
     private Integer getUserTableID(Trainee trainee) {
         ResultSet resultSet;
         String query = "select ID from "+ ModuleTables.USERS+" where Username = ?";
@@ -108,6 +111,7 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
+    //Inserts Trainee to Table User
     public boolean insertTraineeToDatabase(Trainee trainee) {
         String query = "insert into " + ModuleTables.USERS + "(username, password, status) values(?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {

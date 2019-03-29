@@ -95,13 +95,18 @@ public class RegisterInfoController extends Controller {
         }
         if (!errorRegistering) {
             Trainee trainee = new Trainee(user.getUsername(), user.getPassword());
+            //Creates new UserInfo, sets values from user input
             UserInfo userInfoTrainee = new UserInfo(choiceBoxGender.getValue().toString(),firstName, lastName, Double.parseDouble(weight),
                     Double.parseDouble(height),Double.parseDouble(dailyIntake), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
             trainee.setUserInfo(userInfoTrainee);
             System.out.println(trainee.toString());
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
 
-            databaseModuleUser.insertTraineeInfoToDatabase(trainee);
+            if(databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
+                setScene(textFieldDailyCalories.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+            } else {
+                System.out.println("Error while inserting user");
+            }
         }
 
     }
