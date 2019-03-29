@@ -18,8 +18,6 @@ public class TraineeHomeScreen extends Controller {
     @FXML
     private Button buttonMeasure;
 
-
-
    public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }

@@ -96,7 +96,7 @@
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="mandatoryError2" layoutX="116.0" layoutY="386.0" text="This is mandatory field !" textFill="RED" visible="false">
+            <Label fx:id="mandatoryError2" layoutX="116.0" layoutY="386.0" text="Both fields are mandatory!" textFill="RED" visible="false">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>

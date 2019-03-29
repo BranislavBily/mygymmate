@@ -49,21 +49,19 @@ public class RegisterController extends LoginRegistrationController {
         boolean errorRegistering = false;
         resetAllFeedback();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        //There Strings can be null when user just pressed sign up
         String username = textFieldUsername.getText();
-        System.out.println(username);
         String password = passwordFieldPassword.getText();
         String passwordAgain = passwordFieldPasswordAgain.getText();
-        System.out.println("Password 1 " + password + " 2 " + passwordAgain );
 
-        resetAllFeedback();
 
         //If username is empty
-        if (textFieldUsername.getText().equals("")) {
+        if (username == null || username.equals("")) {
             displayErrorFeedbackUsername(textFieldUsername);
             mandatoryError.setVisible(true);
             System.out.println("This field is mandatory");
             errorRegistering = true;
-            //Else if username is in the databse
+            //Else if username is in the database
         } else if (databaseModuleUser.isUsernameTaken(username)) {
             displayErrorFeedbackUsername(textFieldUsername);
             labelUsernameTaken.setVisible(true);
@@ -71,22 +69,20 @@ public class RegisterController extends LoginRegistrationController {
             System.out.println("Username taken");
 
         }
-        //If password do not match
-        if (!password.equals(passwordAgain)) {
+        //If either of them is empty
+        if (password == null || passwordAgain == null || password.equals("") || passwordAgain.equals("")) {
+            displayErrorFeedbackPassword(passwordFieldPassword);
+            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
+            mandatoryError2.setVisible(true);
+            errorRegistering = true;
+            System.out.println("Error: These fields are mandatory");
+            //If passwords do not match
+        } else if (!password.equals(passwordAgain)) {
             displayErrorFeedbackPassword(passwordFieldPassword);
             displayErrorFeedbackPassword(passwordFieldPasswordAgain);
             labelPasswordMismatch.setVisible(true);
             errorRegistering = true;
             System.out.println("Passwords do not match");
-            //If one of them is empty, both are empty
-        } else if (passwordFieldPassword.getText().equals("")) {
-            displayErrorFeedbackPassword(passwordFieldPassword);
-            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
-
-            mandatoryError.setVisible(true);
-            mandatoryError2.setVisible(true);
-            errorRegistering = true;
-            System.out.println("Error: These fields are mandatory");
         }
         if (!errorRegistering) {
             User user = new Trainee(username, password);
