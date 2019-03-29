@@ -5,24 +5,43 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.User;
+import sample.Users.User;
 
 public class RegisterInfoController extends Controller {
 
     private User user;
+
     @FXML
-    private Button goBackButton;
+    private TextField textFieldFirstName;
+
     @FXML
-    private Label labelUsername;
+    private TextField textFieldLastName;
+
+    @FXML
+    private TextField textFieldWeight;
+
+    @FXML
+    private TextField textFieldHeight;
+
+    @FXML
+    private TextField textFieldDailyCalories;
 
     @FXML
     private ChoiceBox choiceBoxGender;
 
     @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
+
+    @FXML
+    private Button buttonGoBack;
+
+    @FXML
+    private Label labelUsername;
+
 
     public void setUser(User user) {
         this.user = user;
@@ -39,8 +58,17 @@ public class RegisterInfoController extends Controller {
     }
 
     @FXML
-    protected void onGoBackButtonPressed(){
-        setScene(goBackButton.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+    private void onButtonGoBackPressed(){
+        setScene(buttonGoBack.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+    }
+
+    @FXML
+    private void onButtonFinishPressed() {
+        checkInputs();
+    }
+
+    private void checkInputs() {
+
     }
 
 

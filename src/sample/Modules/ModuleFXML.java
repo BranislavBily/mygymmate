@@ -7,4 +7,5 @@ public interface ModuleFXML {
     String USER_HOME_SCREEN = "../../FXML/userHomeScreen.fxml";
     String TRAINER_HOME_SCREEN="../../FXML/trainerHomeScreen.fxml";
     String ADMIN_HOME_SCREEN="../../FXML/adminHomeScreen.fxml";
+    String WORKOUTS_HOME_SCREEN="../../FXML/workoutHomeScreen.fxml";
 }

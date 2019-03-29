@@ -18,7 +18,7 @@
 
 
         <stylesheets>
-            <URL value="@../CSS/Login.css" />
+            <URL value="@../CSS/LoginAndRegistration.css" />
         </stylesheets>
         <children>
             <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">

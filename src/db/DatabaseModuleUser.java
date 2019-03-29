@@ -2,10 +2,15 @@ package db;
 
 
 import sample.Modules.ModuleTables;
+import sample.Users.Admin.Admin;
+import sample.Users.Trainee.Trainee;
+import sample.Users.Trainer.Trainer;
+import sample.Users.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -19,6 +24,9 @@ public class DatabaseModuleUser extends DatabaseModule {
     //Module for querying User related data from the database
 
     private Connection connection;
+    private final String status = "Status";
+    private final String admin = "admin";
+    private final String trainer = "trainer";
 
     public DatabaseModuleUser() {
         super();
@@ -27,17 +35,20 @@ public class DatabaseModuleUser extends DatabaseModule {
         super.setConnection(connection);
     }
 
-    public boolean isUser(String user, String pass) {
+    public User isUser(String username, String password) {
         ResultSet resultSet;
         String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, user);
-            preparedStatement.setString(2, pass);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
+            if(resultSet.next()) {
+                return createUser(resultSet, username, password);
+            }
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 
@@ -54,22 +65,21 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
-    public boolean checkStatus(String status, String username) {
-        ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Status = ? and Username = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1,status);
-            preparedStatement.setString(2,username);
-            resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        } catch (Exception e) {
+
+    private User createUser(ResultSet resultSet, String username, String password) {
+        String userStatus;
+        try {
+            userStatus = resultSet.getString(status);
+            switch (userStatus) {
+                case admin: return new Admin(username, password);
+                case trainer: return new Trainer(username, password);
+                default: return new Trainee(username, password);
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+        return null;
     }
-
-
-
 //
 //    public boolean registerUser(String name, String pass) throws SQLException {
 //        String sql = "insert into users(username, password, status) values(?, ?, ?)";
