@@ -65,6 +65,21 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
+    public boolean insertTraineeToDatabase(Trainee trainee) {
+        ResultSet resultSet;
+        String query = "insert into " + ModuleTables.USERS + "(username, password, status) values(?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, trainee.getUsername());
+            preparedStatement.setString(2, trainee.getPassword());
+            preparedStatement.setString(3, "trainee");
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (Exception e ) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private User createUser(ResultSet resultSet, String username, String password) {
         String userStatus;
         try {

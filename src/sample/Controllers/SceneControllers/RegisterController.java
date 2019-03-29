@@ -53,6 +53,7 @@ public class RegisterController extends LoginRegistrationController {
         System.out.println(username);
         String password = passwordFieldPassword.getText();
         String passwordAgain = passwordFieldPasswordAgain.getText();
+        System.out.println("Password 1 " + password + " 2 " + passwordAgain );
 
         resetAllFeedback();
 
