@@ -15,13 +15,29 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.RegisterInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController">
    <stylesheets>
       <URL value="@../CSS/LoginAndRegistration.css" />
    </stylesheets>
    <children>
       <AnchorPane layoutX="315.0" layoutY="119.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color:rgb(16,127,116,0.75);">
          <children>
+            <TextField fx:id="textFieldFirstName" layoutX="25.0" layoutY="77.0" prefHeight="46.0" prefWidth="198.0" promptText="First Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <TextField fx:id="textFieldLastName" layoutX="25.0" layoutY="138.0" prefHeight="46.0" prefWidth="198.0" promptText="Last Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
             <TextField fx:id="textFieldWeight" layoutX="244.0" layoutY="77.0" prefHeight="46.0" prefWidth="126.0" promptText="Weight /kg" AnchorPane.bottomAnchor="427.0" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="77.0">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -30,6 +46,25 @@
                   <DropShadow />
                </effect>
             </TextField>
+            <TextField fx:id="textFieldHeight" layoutX="244.0" layoutY="138.0" prefHeight="46.0" prefWidth="126.0" promptText="Height /cm">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <TextField fx:id="textFieldDailyCalories" layoutX="104.0" layoutY="219.0" prefHeight="46.0" prefWidth="198.0" promptText="Daily calories intake" AnchorPane.leftAnchor="104.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+
+            <ChoiceBox fx:id="choiceBoxGender" layoutX="14.0" layoutY="336.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="221.0" layoutY="336.0" prefWidth="150.0" />
             <Button fx:id="buttonFinish" layoutX="256.0" layoutY="472.0" mnemonicParsing="false" onAction="#onButtonFinishPressed" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #107f74;" text="Finish" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="18.0" />
@@ -59,22 +94,6 @@
                   <DropShadow />
                </effect>
             </Label>
-            <TextField fx:id="textFieldDailyCalories" layoutX="104.0" layoutY="219.0" prefHeight="46.0" prefWidth="198.0" promptText="Daily calories intake" AnchorPane.leftAnchor="104.0">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextField>
-            <TextField fx:id="textFieldHeight" layoutX="244.0" layoutY="138.0" prefHeight="46.0" prefWidth="126.0" promptText="Height /cm">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextField>
             <Label layoutX="33.0" layoutY="275.0" prefHeight="46.0" prefWidth="90.0" text="Gender" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="18.0" />
@@ -118,25 +137,6 @@
                   <DropShadow />
                </effect>
             </Button>
-            <TextField fx:id="textFieldFirstName" layoutX="25.0" layoutY="77.0" prefHeight="46.0" prefWidth="198.0" promptText="First Name">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextField>
-            <TextField fx:id="textFieldLastName" layoutX="25.0" layoutY="138.0" prefHeight="46.0" prefWidth="198.0" promptText="Last Name">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </TextField>
-
-            <ChoiceBox fx:id="choiceBoxGender" layoutX="14.0" layoutY="336.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="221.0" layoutY="336.0" prefWidth="150.0" />
 
          </children>
          <effect>

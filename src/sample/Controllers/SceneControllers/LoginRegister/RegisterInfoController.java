@@ -1,4 +1,4 @@
-package sample.Controllers.SceneControllers;
+package sample.Controllers.SceneControllers.LoginRegister;
 
 import db.DatabaseModuleUser;
 import javafx.collections.FXCollections;
@@ -72,10 +72,10 @@ public class RegisterInfoController extends Controller {
         String dailyIntake = textFieldDailyCalories.getText();
 
         //If Names are empty
-        if (firstName.equals("") && lastName.equals("")) {
+        if (firstName.equals("") || lastName.equals("")) {
             //display feedback
             errorRegistering = true;
-            System.out.println("Passwords are empty");
+            System.out.println("Names are empty");
         }
         if (weight.equals("") || height.equals("")) {
             errorRegistering = true;
@@ -85,11 +85,11 @@ public class RegisterInfoController extends Controller {
             errorRegistering = true;
             System.out.println("Empty Daily intake");
         }
-        if (choiceBoxGender == null) {
+        if (choiceBoxGender.getValue() == null) {
             errorRegistering = true;
             System.out.println("Empty box gender");
         }
-        if (choiceBoxTypeOfTraining == null) {
+        if (choiceBoxTypeOfTraining.getValue() == null) {
             errorRegistering = true;
             System.out.println("Empty box type of training");
         }

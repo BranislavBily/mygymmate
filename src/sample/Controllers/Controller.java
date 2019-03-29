@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import sample.Controllers.SceneControllers.RegisterInfoController;
+import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.User;
