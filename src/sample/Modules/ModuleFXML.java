@@ -9,4 +9,5 @@ package sample.Modules;
         String TRAINER_HOME_SCREEN="../../../FXML/trainerHomeScreen.fxml";
         String ADMIN_HOME_SCREEN="../../../FXML/adminHomeScreen.fxml";
         String WORKOUTS_HOME_SCREEN="../../../FXML/workoutHomeScreen.fxml";
+        String MEASURE_HOME_SCREEN ="../../../FXML/measureHomeScreen.fxml";
     }
