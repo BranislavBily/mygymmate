@@ -1,12 +1,14 @@
 package sample.Users.Trainer;
 
+
+import sample.Users.GymGoer;
 import sample.Users.Trainee.Measurement;
 import sample.Users.Trainee.Trainee;
-import sample.Users.User;
 
 import java.util.ArrayList;
 
-public class Trainer extends User {
+public class Trainer extends GymGoer {
+
 
     private ArrayList<Trainee> trainees;
     private Measurement measurement;

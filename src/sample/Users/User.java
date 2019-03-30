@@ -57,7 +57,7 @@ public abstract class User {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{Username: ").append(getUsername()).append(", Password: ").append(getPassword());
+        sb.append("{Username: ").append(getUsername()).append(", Password: ").append(getPassword()).append("}");
         return sb.toString();
     }
 }
