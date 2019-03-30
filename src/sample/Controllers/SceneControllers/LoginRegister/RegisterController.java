@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
+import sample.Security.PasswordChecker;
 import sample.Users.Trainee.Trainee;
 import sample.Users.User;
 
@@ -100,6 +101,7 @@ public class RegisterController extends LoginRegistrationController {
         textFieldUsername.setEffect(usernameShadow);
         passwordFieldPassword.setEffect(usernameShadow);
         passwordFieldPasswordAgain.setEffect(usernameShadow);
+
     }
 
     @FXML
@@ -108,4 +110,6 @@ public class RegisterController extends LoginRegistrationController {
     }
 
 }
+
+
 

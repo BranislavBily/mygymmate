@@ -63,6 +63,7 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
+
     //Inserts Trainee UserInfo into UserInfo table
     public boolean insertTraineeInfoToDatabase(Trainee trainee) {
         //If user was successfully created
