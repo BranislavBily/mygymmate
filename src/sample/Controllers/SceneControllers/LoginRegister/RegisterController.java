@@ -101,6 +101,7 @@ public class RegisterController extends LoginRegistrationController {
         textFieldUsername.setEffect(usernameShadow);
         passwordFieldPassword.setEffect(usernameShadow);
         passwordFieldPasswordAgain.setEffect(usernameShadow);
+
     }
 
     @FXML

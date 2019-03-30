@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController">
    <stylesheets>
       <URL value="@../CSS/LoginAndRegistration.css" />
    </stylesheets>
@@ -64,8 +64,14 @@
                </effect>
             </TextField>
 
-            <ChoiceBox fx:id="choiceBoxGender" layoutX="14.0" layoutY="336.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="221.0" layoutY="336.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceBoxGender" layoutX="14.0" layoutY="336.0" prefWidth="150.0">
+               <effect>
+                  <DropShadow />
+               </effect></ChoiceBox>
+            <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="221.0" layoutY="336.0" prefWidth="150.0">
+               <effect>
+                  <DropShadow />
+               </effect></ChoiceBox>
             <Button fx:id="buttonFinish" layoutX="256.0" layoutY="472.0" mnemonicParsing="false" onAction="#onButtonFinishPressed" prefHeight="46.0" prefWidth="121.0" style="-fx-background-color: #107f74;" text="Finish" textFill="WHITE">
 
                <font>

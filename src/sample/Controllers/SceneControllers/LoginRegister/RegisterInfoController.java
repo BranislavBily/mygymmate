@@ -51,10 +51,12 @@ public class RegisterInfoController extends Controller {
         this.user = user;
     }
 
-    public void setLabelUsername() {
+    public Label getLabelUsername() {
+        return labelUsername;
+    }
 
-        labelUsername.setText("Hi " + user.getUsername() + " !");
-        labelUsername.setLayoutX(182 - ((user.getUsername().length() + 1) * 5.5));
+    public void setLabelUsername(Label labelUsername) {
+        this.labelUsername = labelUsername;
     }
 
     @FXML
@@ -121,4 +123,6 @@ public class RegisterInfoController extends Controller {
                 "Lose_Weight", "Gain_Muscle")
         );
     }
+
+
 }

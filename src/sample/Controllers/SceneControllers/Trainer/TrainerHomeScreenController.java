@@ -2,11 +2,19 @@ package sample.Controllers.SceneControllers.Trainer;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
+import sample.Users.Trainer.Trainer;
 
 public class TrainerHomeScreenController extends Controller {
+
+
+
+    private Trainer trainer;
+    private Label labelUsername;
+
     @FXML
     private Button buttonLogOut;
     @FXML
@@ -16,12 +24,27 @@ public class TrainerHomeScreenController extends Controller {
     @FXML
     private Button buttonMeasure;
 
+    public Trainer getTrainer() {
+        return trainer;
+    }
 
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public Label getLabelUsername() {
+        return labelUsername;
+    }
+
+    public void setLabelUsername(Label labelUsername) {
+        this.labelUsername = labelUsername;
+    }
 
     @FXML
     public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
+
 
 }
 
