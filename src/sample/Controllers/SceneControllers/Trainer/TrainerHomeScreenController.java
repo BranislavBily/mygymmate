@@ -6,15 +6,9 @@ import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 
-<<<<<<< HEAD:src/sample/Controllers/SceneControllers/UserHomeScreenController.java
-import java.awt.*;
 
-
-public class UserHomeScreenController extends Controller {
-
-=======
 public class TrainerHomeScreenController extends Controller {
->>>>>>> d6e96529a78cb977b3a98df4eda4fc7c0d48ca6e:src/sample/Controllers/SceneControllers/Trainer/TrainerHomeScreenController.java
+
     @FXML
     private Button buttonLogOut;
     @FXML

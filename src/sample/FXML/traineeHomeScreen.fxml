@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.Trainee.TraineeHomeScreen">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.Trainee.TraineeHomeScreen">
 
 
     <stylesheets>
@@ -62,12 +62,12 @@
                </children>
                 </AnchorPane>
 
-                <Circle fill="WHITE" layoutX="168.0" layoutY="145.0" radius="100.0" stroke="BLACK" strokeType="INSIDE">
+                <Circle fill="WHITE" layoutX="168.0" layoutY="125.0" radius="100.0" stroke="BLACK" strokeType="INSIDE">
                     <effect>
                         <DropShadow />
                     </effect>
                 </Circle>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Images/user.png" />
                     </image>
@@ -98,7 +98,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button fx:id="buttonMeasure" layoutX="21.0" layoutY="522.0" mnemonicParsing="false" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" textAlignment="CENTER">
+                <Button fx:id="buttonMeasure" layoutX="21.0" layoutY="522.0" mnemonicParsing="false" onAction="#onButtonMeasurePressed" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" textAlignment="CENTER">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.2" width="40.0" />
                     </effect>

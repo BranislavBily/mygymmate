@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.Admin.AdminHomeScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.WorkoutController">
 
 
     <stylesheets>
@@ -28,22 +28,16 @@
 
                     </effect>
                <children>
-                  <Button fx:id="buttonHome" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Home" />
-                  <Button fx:id="buttonProfile" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Profile" />
-                  <Button fx:id="buttonSettings" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Setting" />
-                  <Button fx:id="buttonAboutUs" layoutX="32.0" layoutY="345.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" styleClass="sidebarButtons" text="About US" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Black" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buttonLogOut" layoutX="32.0" layoutY="410.0" mnemonicParsing="false" onAction="#onButtonLogOutPressed" prefHeight="40.0" prefWidth="272.0" styleClass="sidebarButtons" text="Log out" textFill="WHITE">
+                  <ImageView fx:id="go" fitHeight="74.0" fitWidth="77.0" layoutX="14.0" layoutY="398.0" onMouseClicked="#onGoBackImagePressed" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/goBackButton.png" />
+                     </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
-                     <font>
-                        <Font name="Arial Black" size="21.0" />
-                     </font>
-                  </Button>
+                  </ImageView>
+                  <Button fx:id="buttonMeasures" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Measure" />
+                  <Button fx:id="buttonProgress" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Progress" />
                </children>
                 </AnchorPane>
 
@@ -54,13 +48,14 @@
                 </Circle>
                 <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../Images/admin.png" />
+                        <Image url="@../Images/user.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="110.0" layoutY="233.0" text="Admin" textFill="#fffafa">
+            <Label fx:id="usernameLabel" layoutX="147.0" layoutY="233.0" prefHeight="34.0" prefWidth="242.0" text="Ed" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="32.0" />
-               </font></Label>
+               </font>
+            </Label>
             </children>
             <effect>
                 <DropShadow />
