@@ -3,8 +3,6 @@ package sample.Controllers.SceneControllers.Trainee;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import sample.Controllers.Controller;
-import sample.Modules.ModuleFXML;
-import sample.Modules.ModuleTitles;
 
 
 public class TraineeHomeScreen extends Controller {
