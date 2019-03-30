@@ -59,7 +59,6 @@ public class Controller {
             stage.setTitle(user.getUsername());
             stage.setResizable(false);
             stage.show();
-
             registerInfoController.setLabelUsername(registerInfoController.getLabelUsername(), user, 182, 5.5, "Hi ", " !");
             registerInfoController.setChoiceBoxItems();
         } catch (IOException e) {
@@ -90,15 +89,11 @@ public class Controller {
                 TrainerHomeScreenController trainerHomeScreenController = loader.getController();
                 trainerHomeScreenController.setTrainer((Trainer) user);
                 trainerHomeScreenController.setLabelUsername(trainerHomeScreenController.getLabelUsername(), user, 162, 5.7, "", "");
-
-
             }
             stage.setScene(scene);
-            stage.setTitle("MyGymMate (" + user.getUsername() + ")");
+            stage.setTitle("MyGymMate ("+user.getUsername()+")");
             stage.setResizable(false);
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,7 +103,6 @@ public class Controller {
         labelUsername.setText(bonus + user.getUsername() + bonus2);
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
     }
-
     @FXML
     protected void onButtonLogOutPressed(Button buttonLogOut) {
         setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);

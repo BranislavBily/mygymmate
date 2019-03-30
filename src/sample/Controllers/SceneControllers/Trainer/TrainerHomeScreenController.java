@@ -12,7 +12,6 @@ public class TrainerHomeScreenController extends Controller {
     @FXML
     private Label labelUsername;
 
-
     @FXML
     private Button buttonLogOut;
     @FXML

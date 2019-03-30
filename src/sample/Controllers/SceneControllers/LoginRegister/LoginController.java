@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
-import sample.Controllers.SceneControllers.Trainee.TraineeHomeScreen;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
@@ -30,7 +29,6 @@ public class LoginController extends LoginRegistrationController {
 
     @FXML
     private Label loginError;
-
 
 
     @FXML
@@ -63,7 +61,4 @@ public class LoginController extends LoginRegistrationController {
     private void onButtonSignUpPressed() {
         setScene(buttonLogIn.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
     }
-
-
-
 }
