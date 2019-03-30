@@ -8,12 +8,16 @@ import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Trainer.Trainer;
 
+
 public class TrainerHomeScreenController extends Controller {
 
 
 
+
     private Trainer trainer;
+    @FXML
     private Label labelUsername;
+
 
     @FXML
     private Button buttonLogOut;
@@ -39,6 +43,8 @@ public class TrainerHomeScreenController extends Controller {
     public void setLabelUsername(Label labelUsername) {
         this.labelUsername = labelUsername;
     }
+
+
 
     @FXML
     public void onButtonLogOutPressed() {

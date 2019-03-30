@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import sample.Controllers.Controller;
 import sample.Modules.ModuleTitles;
 
-import javax.swing.text.html.ImageView;
+
 
 public class MeasureController extends Controller {
 
