@@ -6,6 +6,8 @@ import sample.Controllers.Controller;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 
+import java.awt.*;
+
 
 public class UserHomeScreenController extends Controller {
 
@@ -17,6 +19,8 @@ public class UserHomeScreenController extends Controller {
     private Button buttonDiet;
     @FXML
     private Button buttonMeasure;
+
+
 
 
 
