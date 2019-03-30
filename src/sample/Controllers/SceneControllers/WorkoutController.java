@@ -11,8 +11,7 @@ import javax.swing.text.html.ImageView;
 public class WorkoutController extends Controller {
 
 
-@FXML
-   private ImageView goBackImage;
+
 
 @FXML
     private Button buttonWorkouts;
@@ -25,7 +24,7 @@ public class WorkoutController extends Controller {
 
 @FXML
 private void onGoBackImagePressed(){
-    setScene(buttonWorkouts.getScene(), ModuleFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+    setScene(buttonWorkouts.getScene(), "../../FXML/traineeHomeScreen.fxml", ModuleTitles.USER_HOME_SCREEN);
 
 
 }

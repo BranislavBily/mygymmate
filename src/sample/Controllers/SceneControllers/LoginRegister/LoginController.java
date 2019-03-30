@@ -1,4 +1,4 @@
-package sample.Controllers.SceneControllers;
+package sample.Controllers.SceneControllers.LoginRegister;
 
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;

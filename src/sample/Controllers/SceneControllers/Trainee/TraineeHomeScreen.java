@@ -1,4 +1,4 @@
-package sample.Controllers.SceneControllers;
+package sample.Controllers.SceneControllers.Trainee;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +8,7 @@ import sample.Modules.ModuleTitles;
 import sample.Users.User;
 
 
-public class UserHomeScreenController extends Controller {
+public class TraineeHomeScreen extends Controller {
 
 
     private User user;
@@ -22,8 +22,7 @@ public class UserHomeScreenController extends Controller {
     private Button buttonMeasure;
 
 
-@FXML
-   private void onButtonLogOutPressed() {
+   public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
 
