@@ -115,13 +115,7 @@ public class DatabaseModule {
                 "ID INTEGER primary key autoincrement," +
                 "Username varchar(255) not null," +
                 "Password varchar(255) not null ," +
-                "Status varchar(255) not null, " +
-                "Gender varchar(255) not null, " +
-                "DateOfBirth varchar(255) not null," +
-                "Email varchar(255)," +
-                "PhoneNumber varchar(255),"+
-                "FirstName varchar (255),"+
-                "LastName varchar(255))";
+                "Status varchar(255) not null)";
     }
 
     private String createUserInfoTableQuery() {
@@ -131,11 +125,10 @@ public class DatabaseModule {
                 "LastName varchar(255) not null," +
                 "Weight real not null," +
                 "Height real not null," +
-                "RecommendedCalories real not null, " +
-                "RecommendedProtein real not null, " +
-                "RecommendedWater real not null, " +
+                "Gender varchar(255) not null, " +
                 "TypeOfTraining varchar(255) not null," +
                 "UserID INTEGER not null," +
                 "FOREIGN KEY (UserID) REFERENCES Users(ID))";
     }
 }
+

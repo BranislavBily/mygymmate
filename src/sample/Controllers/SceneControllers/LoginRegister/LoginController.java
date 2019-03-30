@@ -1,4 +1,4 @@
-package sample.Controllers.SceneControllers;
+package sample.Controllers.SceneControllers.LoginRegister;
 
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
+import sample.Users.Trainee.Trainee;
+import sample.Users.Trainer.Trainer;
+import sample.Users.User;
 
 public class LoginController extends LoginRegistrationController {
 
@@ -32,10 +35,20 @@ public class LoginController extends LoginRegistrationController {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUserName.getText();
         String password = passwordFieldPassword.getText();
-        if (databaseModuleUser.isUser(username, password)) {
-            setScene(buttonLogIn.getScene(), ModuleFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
-        } else {
+        //Creates user based on login credentials
+        User user = databaseModuleUser.isUser(username, password);
+        if (user != null) {
+            if(user instanceof Trainee) {
+                setScene(textFieldUserName.getScene(), ModuleFXML.USER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+            } else if (user instanceof Trainer) {
 
+                setScene(textFieldUserName.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+            } else {
+                setScene(textFieldUserName.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+
+            }
+        //If user was not logged in
+        } else {
             displayErrorFeedbackUsername(textFieldUserName);
             displayErrorFeedbackPassword(passwordFieldPassword);
 

@@ -15,11 +15,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.LoginController">
 
     <stylesheets>
-        <URL value="@../CSS/Login.css" />
+        <URL value="@../CSS/LoginAndRegistration.css" />
     </stylesheets>
     <children>
       <AnchorPane layoutX="314.0" layoutY="117.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">
@@ -32,6 +31,14 @@
                   <DropShadow />
                </effect>
             </TextField>
+            <PasswordField fx:id="passwordFieldPassword" layoutX="65.0" layoutY="223.0" prefHeight="60.0" prefWidth="275.0" promptText="Password">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </PasswordField>
             <Button id="buttonLogIn" fx:id="buttonLogIn" defaultButton="true" layoutX="140.0" layoutY="310.0" mnemonicParsing="false" onAction="#onButtonLogInPressed" prefHeight="46.0" prefWidth="126.0" text="Log In" textFill="WHITE" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="310.0">
                <font>
                   <Font name="Arial Black" size="18.0" />
@@ -54,14 +61,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <PasswordField fx:id="passwordFieldPassword" layoutX="65.0" layoutY="223.0" prefHeight="60.0" prefWidth="275.0" promptText="Password">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </PasswordField>
             <Label layoutX="151.0" layoutY="11.0" text="Login" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="32.0" />
