@@ -53,5 +53,8 @@ public class TraineeHomeScreen extends Controller {
 
 @FXML private void onButtonMeasurePressed(){setScene(buttonMeasure.getScene(),ModuleFXML.MEASURE_HOME_SCREEN,ModuleTitles.USER_HOME_SCREEN);}
 
+
+@FXML private void onButtonDietPressed(){setScene(buttonDiet.getScene(),ModuleFXML.DIET_HOME_SCREEN,ModuleTitles.USER_HOME_SCREEN);}
+
 }
 

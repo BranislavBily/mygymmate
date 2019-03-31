@@ -99,7 +99,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="buttonDiet" layoutX="21.0" layoutY="270.0" mnemonicParsing="false" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" textAlignment="CENTER">
+                <Button fx:id="buttonDiet" layoutX="21.0" layoutY="270.0" mnemonicParsing="false" onAction="#onButtonDietPressed" prefHeight="224.0" prefWidth="649.0" styleClass="mainButtons" textAlignment="CENTER">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
                     </effect>
