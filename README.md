@@ -12,6 +12,10 @@ You can also check out your trainer and look at his staticstics. Track your musc
 Trainer has the same features and trainee, since he can track his progress too. 
 But, he can also check his trainnes and check their progress and change their workout routine accordingly.
 
+## Admin
+
+Admin has access to terminal inside of application. He can make all the changes to SQLITE3 database.
+
 ## Profile settings
 
 Basic profile settings, such as password change, updating email, name are included. If you so desire, you can delete your profile, but there's no way back from there.
