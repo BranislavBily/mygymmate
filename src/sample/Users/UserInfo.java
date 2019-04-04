@@ -9,16 +9,30 @@ public class UserInfo {
     private String lastName;
     private double weight;
     private double height;
-    private double recommendedCalories;
+    private double actualCalories;
+    private double actualProtein;
+    private double actualHydration;
     private TypeOfTraining typeOfTraining;
 
-    public UserInfo(String gender, String firstName, String lastName, double weight, double height, double recommendedCalories, TypeOfTraining typeOfTraining) {
+    public UserInfo(String gender, String firstName, String lastName, double weight, double height, double actualCalories, double actualProtein, double actualHydration, TypeOfTraining typeOfTraining) {
         this.gender = gender;
         this.firstName = firstName;
         this.lastName = lastName;
         this.weight = weight;
         this.height = height;
-        this.recommendedCalories = recommendedCalories;
+        this.actualCalories = actualCalories;
+        this.actualProtein = actualProtein;
+        this.actualHydration = actualHydration;
+        this.typeOfTraining = typeOfTraining;
+    }
+
+    public UserInfo(String gender, String firstName, String lastName, double weight, double height, double actualCalories, TypeOfTraining typeOfTraining) {
+        this.gender = gender;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.weight = weight;
+        this.height = height;
+        this.actualCalories = actualCalories;
         this.typeOfTraining = typeOfTraining;
     }
 
@@ -42,17 +56,17 @@ public class UserInfo {
         return height;
     }
 
-    public double getRecommendedCalories() {
-        return recommendedCalories;
+    public double getActualCalories() {
+        return actualCalories;
     }
 
-//    public double getRecommendedProtein() {
-//        return recommendedProtein;
-//    }
-//
-//    public double getRecommendedWater() {
-//        return recommendedWater;
-//    }
+    public double getActualProtein() {
+        return actualProtein;
+    }
+
+    public double getActualHydration() {
+        return actualHydration;
+    }
 
     public TypeOfTraining getTypeOfTraining() {
         return typeOfTraining;
@@ -67,7 +81,9 @@ public class UserInfo {
                 ", lastName='" + lastName + '\'' +
                 ", weight=" + weight +
                 ", height=" + height +
-                ", recommendedCalories=" + recommendedCalories +
+                ", actualCalories=" + actualCalories +
+                ", actualProtein=" + actualProtein +
+                ", actualHydration" + actualHydration +
                 ", typeOfTraining=" + typeOfTraining +
                 '}';
     }
