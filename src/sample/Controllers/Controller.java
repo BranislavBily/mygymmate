@@ -66,13 +66,13 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
+    //Method that changes scenes based on users
     protected void setSceneUser(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeSceneUser(stage, fxml, user);
 
     }
-
+//Method that changes login scene to users scene based on status
     private void changeSceneUser(Stage stage, String fxml, User user) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
@@ -105,6 +105,7 @@ public class Controller {
             e.printStackTrace();
         }
     }
+//Centering and setting Labels based on username.
 
     public void setLabelUsername(Label labelUsername,User user,int x,double constant,String bonus,String bonus2) {
         labelUsername.setText(bonus+user.getUsername()+bonus2);
