@@ -1,16 +1,23 @@
 package sample.Controllers.SceneControllers.Admin;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import sample.Controllers.Controller;
+import sample.Modules.ModuleFXML;
 import sample.Users.Admin.Admin;
-import sample.Users.User;
 
 public class AdminHomeScreenController extends Controller {
 
     @FXML
     private Label labelUsername;
+    @FXML
+    private AnchorPane mainFragment;
+    @FXML
+    private Button buttonAboutUs;
+
 
     @FXML
     private Button buttonLogOut;
@@ -38,7 +45,12 @@ public class AdminHomeScreenController extends Controller {
     }
 
 
+    @FXML
+    private void onAboutUsButtonClicked() {
+        Parent fragment= Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
+        mainFragment.getChildren().setAll(fragment);
 
+    }
 
 
 }

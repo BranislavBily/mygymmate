@@ -111,6 +111,16 @@ public class Controller extends AnchorPane {
         setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
     }
 
+    public Parent Fragment(String FXML){
+        Parent fragment = null;
+        try {
+            fragment = FXMLLoader.load(getClass().getResource(FXML));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fragment;
+    }
+
 
 }
 

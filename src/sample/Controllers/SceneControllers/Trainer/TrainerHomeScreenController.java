@@ -1,9 +1,12 @@
 package sample.Controllers.SceneControllers.Trainer;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import sample.Controllers.Controller;
+import sample.Modules.ModuleFXML;
 import sample.Users.Trainer.Trainer;
 
 public class TrainerHomeScreenController extends Controller {
@@ -20,6 +23,12 @@ public class TrainerHomeScreenController extends Controller {
     private Button buttonDiet;
     @FXML
     private Button buttonMeasure;
+    @FXML
+    private AnchorPane mainFragment;
+    @FXML
+    private Button buttonAboutUs;
+
+
 
     public Trainer getTrainer() {
         return trainer;
@@ -42,6 +51,13 @@ public class TrainerHomeScreenController extends Controller {
     @FXML
     public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
+    }
+
+    @FXML
+    private void onAboutUsButtonClicked() {
+        Parent fragment= Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
+        mainFragment.getChildren().setAll(fragment);
+
     }
 
 

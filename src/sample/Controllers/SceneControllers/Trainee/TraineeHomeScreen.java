@@ -1,18 +1,15 @@
 package sample.Controllers.SceneControllers.Trainee;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.Controller;
 
-import sample.Controllers.Fragment;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
-
-import java.io.IOException;
 
 
 public class TraineeHomeScreen extends Controller {
@@ -29,8 +26,8 @@ public class TraineeHomeScreen extends Controller {
     private Button buttonMeasure;
     @FXML
     private AnchorPane mainFragment;
-
-    private Fragment AboutUs;
+    @FXML
+    private Button buttonAboutUs;
 
     @FXML
     private Label labelUsername;
@@ -75,8 +72,8 @@ public class TraineeHomeScreen extends Controller {
 
     @FXML
     private void onAboutUsButtonClicked() {
-        AboutUs=new Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
-        mainFragment.setClip(AboutUs);
+        Parent fragment= Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
+        mainFragment.getChildren().setAll(fragment);
 
     }
 
