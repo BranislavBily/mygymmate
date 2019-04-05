@@ -49,7 +49,7 @@ public class LoginController extends LoginRegistrationController {
 
             } else if (user instanceof Trainer) {
 
-                setScene(textFieldUserName.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, user);
+                setSceneUser(textFieldUserName.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, user);
             } else {
                 setSceneUser(textFieldUserName.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, user);
 

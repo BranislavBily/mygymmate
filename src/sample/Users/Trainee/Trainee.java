@@ -4,14 +4,13 @@ package sample.Users.Trainee;
 import sample.Users.User;
 import sample.Users.UserInfo;
 
-
-import sample.Users.GymGoer;
-import sample.Users.TypeOfTraining;
-
-public class Trainee extends GymGoer {
+public class Trainee extends User {
 
 
     private int trainerID;
+    private String dateOfBirth;
+    private String email;
+    private String phoneNumber;
     private Measurement measurement;
     private UserInfo userInfo;
 
@@ -22,14 +21,24 @@ public class Trainee extends GymGoer {
     }
 
 
-
-    public Trainee(String username, String password, String gender, double weight, double height, double recommendedCalories, double recommendedProtein, double recommendedWater, TypeOfTraining typeOfTraining, int trainerID, Measurement measurement) {
-        super(username, password, gender, weight, height, recommendedCalories, recommendedProtein, recommendedWater, typeOfTraining);
+    public Trainee(int trainerID, String dateOfBirth, String email, String phoneNumber, Measurement measurement, UserInfo userInfo) {
         this.trainerID = trainerID;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.measurement = measurement;
+        this.userInfo = userInfo;
     }
 
-
+    public Trainee(String username, String password, int trainerID, String dateOfBirth, String email, String phoneNumber, Measurement measurement, UserInfo userInfo) {
+        super(username, password);
+        this.trainerID = trainerID;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.measurement = measurement;
+        this.userInfo = userInfo;
+    }
 
     public UserInfo getUserInfo() {
         return userInfo;
