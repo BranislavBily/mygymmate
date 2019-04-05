@@ -32,15 +32,15 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="buttonProfile" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Profile">
+                  <Button fx:id="buttonProfile" layoutX="32.0" layoutY="105.0" onAction="#onProfileButtonClicked" mnemonicParsing="false" styleClass="sidebarButtons" text="Profile">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="buttonSettings" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Setting">
+                  <Button fx:id="buttonSettings" layoutX="32.0" layoutY="170.0" onAction="#onSettingsButtonClicked" mnemonicParsing="false" styleClass="sidebarButtons" text="Setting">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="buttonTrainerInfo" layoutX="32.0" layoutY="235.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Trainee Info">
+                  <Button fx:id="buttonTrainerInfo" layoutX="32.0" layoutY="235.0" onAction="#onTraineeInfoButtonClicked" mnemonicParsing="false" styleClass="sidebarButtons" text="Trainee Info">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>

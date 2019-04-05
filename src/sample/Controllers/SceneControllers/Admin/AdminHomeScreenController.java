@@ -46,10 +46,19 @@ public class AdminHomeScreenController extends Controller {
 
 
     @FXML
+    private void onProfileButtonClicked() {
+        Parent fragment= Fragment(ModuleFXML.PROFILE_FRAGMENT);
+        mainFragment.getChildren().setAll(fragment);
+    }
+    @FXML
+    private void onSettingsButtonClicked() {
+        Parent fragment= Fragment(ModuleFXML.SETTINGS_FRAGMENT);
+        mainFragment.getChildren().setAll(fragment);
+    }
+    @FXML
     private void onAboutUsButtonClicked() {
         Parent fragment= Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
-
     }
 
 
