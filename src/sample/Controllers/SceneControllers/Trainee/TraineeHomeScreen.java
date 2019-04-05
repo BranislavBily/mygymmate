@@ -1,13 +1,18 @@
 package sample.Controllers.SceneControllers.Trainee;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import sample.Controllers.Controller;
 
+import sample.Controllers.Fragment;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
+
+import java.io.IOException;
 
 
 public class TraineeHomeScreen extends Controller {
@@ -22,6 +27,10 @@ public class TraineeHomeScreen extends Controller {
     private Button buttonDiet;
     @FXML
     private Button buttonMeasure;
+    @FXML
+    private AnchorPane mainFragment;
+
+    private Fragment AboutUs;
 
     @FXML
     private Label labelUsername;
@@ -43,18 +52,36 @@ public class TraineeHomeScreen extends Controller {
     }
 
     @FXML
-   public void onButtonLogOutPressed() {
+    public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
 
-@FXML
-    private void onButtonWorkoutPressed(){ setScene(buttonWorkout.getScene(),ModuleFXML.WORKOUTS_HOME_SCREEN,ModuleTitles.USER_HOME_SCREEN);}
+    @FXML
+    private void onButtonWorkoutPressed() {
+        setScene(buttonWorkout.getScene(), ModuleFXML.WORKOUTS_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+    }
 
 
-@FXML private void onButtonMeasurePressed(){setScene(buttonMeasure.getScene(),ModuleFXML.MEASURE_HOME_SCREEN,ModuleTitles.USER_HOME_SCREEN);}
+    @FXML
+    private void onButtonMeasurePressed() {
+        setScene(buttonMeasure.getScene(), ModuleFXML.MEASURE_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+    }
 
 
-@FXML private void onButtonDietPressed(){setScene(buttonDiet.getScene(),ModuleFXML.DIET_HOME_SCREEN,ModuleTitles.USER_HOME_SCREEN);}
+    @FXML
+    private void onButtonDietPressed() {
+        setScene(buttonDiet.getScene(), ModuleFXML.DIET_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+    }
+
+    @FXML
+    private void onAboutUsButtonClicked() {
+        AboutUs=new Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
+        mainFragment.setClip(AboutUs);
+
+    }
+
 
 }
+
+
 

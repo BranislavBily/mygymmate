@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.Admin.AdminHomeScreenController;
 import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
@@ -17,11 +18,12 @@ import sample.Users.Admin.Admin;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
+import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 
 //Class that changes scenes
-public class Controller {
+public class Controller extends AnchorPane {
     protected void setScene(Scene scene, String fxml, String title) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, title);
@@ -65,13 +67,13 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
+    //Method that changes scenes based on users
     protected void setSceneUser(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeSceneUser(stage, fxml, user);
 
     }
-
+//Method that changes login scene to users scene based on status
     private void changeSceneUser(Stage stage, String fxml, User user) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
@@ -98,6 +100,7 @@ public class Controller {
             e.printStackTrace();
         }
     }
+//Centering and setting Labels based on username.
 
     public void setLabelUsername(Label labelUsername, User user, int x, double constant, String bonus, String bonus2) {
         labelUsername.setText(bonus + user.getUsername() + bonus2);
