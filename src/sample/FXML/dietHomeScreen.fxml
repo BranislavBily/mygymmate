@@ -12,7 +12,8 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.WorkoutController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.DietController">
+
 
 
     <stylesheets>
@@ -36,14 +37,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button fx:id="buttonWorkouts" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Measure">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="buttonProgress" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Progress">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                  <Button fx:id="buttonDiets" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Diet" />
+                  <Button fx:id="buttonWeight" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Weight" />
+                  <Button fx:id="buttonBMI" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" styleClass="sidebarButtons" text="BMI" />
                </children>
                 </AnchorPane>
 
@@ -57,9 +53,11 @@
                         <Image url="@../Images/user.png" />
                     </image>
                 </ImageView>
+
             <Label fx:id="usernameLabel" layoutX="145.0" layoutY="233.0" prefHeight="34.0" prefWidth="242.0" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="24.0" />
+
                </font>
             </Label>
             </children>

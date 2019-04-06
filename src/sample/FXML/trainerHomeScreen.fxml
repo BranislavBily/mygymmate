@@ -28,14 +28,29 @@
 
                     </effect>
                <children>
-                  <Button fx:id="buttonHome" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Home" />
-                  <Button fx:id="buttonProfile" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Profile" />
-                  <Button fx:id="buttonSettings" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Setting" />
-                  <Button fx:id="buttonTrainerInfo" layoutX="32.0" layoutY="235.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Trainee Info" />
-                  <Button fx:id="buttonAboutUs" layoutX="32.0" layoutY="345.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" styleClass="sidebarButtons" text="About US" textFill="WHITE">
+                  <Button fx:id="buttonHome" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Home">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="buttonProfile" layoutX="32.0" layoutY="105.0" onAction="#onProfileButtonClicked" mnemonicParsing="false" styleClass="sidebarButtons" text="Profile">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="buttonSettings" layoutX="32.0" layoutY="170.0" onAction="#onSettingsButtonClicked" mnemonicParsing="false" styleClass="sidebarButtons" text="Setting">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="buttonTrainerInfo" layoutX="32.0" layoutY="235.0" onAction="#onTraineeInfoButtonClicked" mnemonicParsing="false" styleClass="sidebarButtons" text="Trainee Info">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="buttonAboutUs" layoutX="32.0" layoutY="345.0" mnemonicParsing="false" prefHeight="0.0" onAction="#onAboutUsButtonClicked" prefWidth="0.0" styleClass="sidebarButtons" text="About US" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="buttonLogOut" layoutX="32.0" layoutY="410.0" mnemonicParsing="false" onAction="#onButtonLogOutPressed" prefHeight="40.0" prefWidth="272.0" styleClass="sidebarButtons" text="Log out" textFill="WHITE">
                      <cursor>
@@ -54,8 +69,7 @@
                     </effect>
                 </Circle>
 
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-
+                <ImageView fitHeight="124.0" fitWidth="137.0" layoutX="100.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Images/trainer.png" />
                     </image>
@@ -65,7 +79,7 @@
                 <DropShadow />
             </effect>
         </AnchorPane>
-        <AnchorPane layoutX="338.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="688.0" style="-fx-background-color: #e1f2f1;">
+        <AnchorPane fx:id="mainFragment" layoutX="338.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="688.0" style="-fx-background-color: #e1f2f1;">
             <effect>
                 <DropShadow />
             </effect>
