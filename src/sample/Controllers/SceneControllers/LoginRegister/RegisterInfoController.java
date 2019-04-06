@@ -12,6 +12,7 @@ import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Modules.TypeOfTraining;
 import sample.Users.Trainee.Trainee;
+import sample.Users.Trainer.Trainer;
 import sample.Users.User;
 import sample.Users.UserInfo;
 
@@ -39,6 +40,9 @@ public class RegisterInfoController extends Controller {
 
     @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
+
+    @FXML
+    private ChoiceBox choiceBoxStatus;
 
     @FXML
     private Button buttonGoBack;
@@ -71,7 +75,7 @@ public class RegisterInfoController extends Controller {
         String lastName = textFieldLastName.getText();
         String weight = textFieldWeight.getText();
         String height = textFieldHeight.getText();
-        String dailyIntake = textFieldDailyCalories.getText();
+
 
         //If Names are empty
         if (firstName.equals("") || lastName.equals("")) {
@@ -83,7 +87,7 @@ public class RegisterInfoController extends Controller {
             errorRegistering = true;
             System.out.println("Empty Weight or Height");
         }
-        if (dailyIntake.equals("")) {
+        if (choiceBoxStatus.equals("")) {
             errorRegistering = true;
             System.out.println("Empty Daily intake");
         }
@@ -96,19 +100,39 @@ public class RegisterInfoController extends Controller {
             System.out.println("Empty box type of training");
         }
         if (!errorRegistering) {
-            Trainee trainee = new Trainee(user.getUsername(), user.getPassword());
-            //Creates new UserInfo, sets values from user input
-            UserInfo userInfoTrainee = new UserInfo(choiceBoxGender.getValue().toString(),firstName, lastName, Double.parseDouble(weight),
-                    Double.parseDouble(height),Double.parseDouble(dailyIntake), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
-            trainee.setUserInfo(userInfoTrainee);
-            System.out.println(trainee.toString());
-            DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
 
-            if(databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
-                setScene(textFieldDailyCalories.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
-            } else {
-                System.out.println("Error while inserting user");
+            //Creates new UserInfo, sets values from user input
+            UserInfo userInfo = new UserInfo(choiceBoxGender.getValue().toString(),firstName, lastName, Double.parseDouble(weight),
+                    Double.parseDouble(height),choiceBoxStatus.getValue().toString(), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
+            if(userInfo.getStatus().equals("Trainee")){
+                Trainee trainee=new Trainee(user.getUsername(),user.getPassword());
+                trainee.setUserInfo(userInfo);
+                System.out.println(trainee.toString());
+                DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+
+                if(databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
+                    setScene(textFieldFirstName.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+                } else {
+                    System.out.println("Error while inserting Trainee");
+                }
+
             }
+            else if(userInfo.getStatus().equals("Trainer")){
+                Trainer trainer=new Trainer(user.getUsername(),user.getPassword());
+                trainer.setUserInfo(userInfo);
+                System.out.println(trainer.toString());
+                DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+
+                if(databaseModuleUser.insertTrainerInfoToDatabase(trainer)) {
+                    setScene(textFieldFirstName.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+                } else {
+                    System.out.println("Error while inserting Trainer");
+                }
+            }
+
+
+
+
         }
 
     }
@@ -116,11 +140,16 @@ public class RegisterInfoController extends Controller {
 
     public void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(
-                "male", "female")
+                "Male", "Female")
         );
 
         choiceBoxTypeOfTraining.setItems(FXCollections.observableArrayList(
                 "Lose_Weight", "Gain_Muscle")
+        );
+
+        choiceBoxStatus.setItems(FXCollections.observableArrayList(
+               "Trainee", "Trainer" )
+
         );
     }
 

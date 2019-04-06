@@ -81,6 +81,40 @@ public class DatabaseModuleUser extends DatabaseModule {
                     preparedStatement.setDouble(5, userInfo.getWeight());
                     preparedStatement.setDouble(6, userInfo.getHeight());
                     preparedStatement.setString(7, userInfo.getTypeOfTraining().toString());
+
+                    preparedStatement.executeUpdate();
+                    return true;
+                } else {
+                    System.out.println("Error, no user id found");
+                    return false;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            System.out.println("Could not insert into user table");
+            return false;
+        }
+    }
+
+    public boolean insertTrainerInfoToDatabase(Trainer trainer) {
+        //If user was successfully created
+        if(insertTrainerToDatabase(trainer)) {
+            String query = "insert into " + ModuleTables.USER_INFO + "(UserId, gender, firstName, lastName, Weight, Height, typeOfTraining)" +
+                    "values (?, ?, ?, ?, ?, ?, ?)";
+            try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                Integer id = getUserTableID(trainer);
+                if(id != null) {
+                    UserInfo userInfo = trainer.getUserInfo();
+                    preparedStatement.setInt(1, id);
+                    preparedStatement.setString(2, userInfo.getGender());
+                    preparedStatement.setString(3, userInfo.getFirstName());
+                    preparedStatement.setString(4, userInfo.getLastName());
+                    preparedStatement.setDouble(5, userInfo.getWeight());
+                    preparedStatement.setDouble(6, userInfo.getHeight());
+                    preparedStatement.setString(7, userInfo.getTypeOfTraining().toString());
                     preparedStatement.executeUpdate();
                     return true;
                 } else {
@@ -99,11 +133,11 @@ public class DatabaseModuleUser extends DatabaseModule {
     }
 
     //Get foreign key of user
-    private Integer getUserTableID(Trainee trainee) {
+    private Integer getUserTableID(User user) {
         ResultSet resultSet;
         String query = "select ID from "+ ModuleTables.USERS+" where Username = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, trainee.getUsername());
+            preparedStatement.setString(1, user.getUsername());
             resultSet = preparedStatement.executeQuery();
             return resultSet.getInt("ID");
         } catch (Exception e) {
@@ -127,6 +161,20 @@ public class DatabaseModuleUser extends DatabaseModule {
         }
     }
 
+
+    public boolean insertTrainerToDatabase(Trainer trainer) {
+        String query = "insert into " + ModuleTables.USERS + "(username, password, status) values(?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, trainer.getUsername());
+            preparedStatement.setString(2, trainer.getPassword());
+            preparedStatement.setString(3, "trainer");
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e ) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     private User createUser(ResultSet resultSet, String username, String password) {
         String userStatus;
         try {
