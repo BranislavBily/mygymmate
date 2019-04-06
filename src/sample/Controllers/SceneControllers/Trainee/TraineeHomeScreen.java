@@ -27,6 +27,12 @@ public class TraineeHomeScreen extends Controller {
     @FXML
     private AnchorPane mainFragment;
     @FXML
+    private Button buttonProfile;
+    @FXML
+    private Button buttonSettings;
+    @FXML
+    private Button buttonTrainerInfo;
+    @FXML
     private Button buttonAboutUs;
 
     @FXML
@@ -74,21 +80,29 @@ public class TraineeHomeScreen extends Controller {
     private void onProfileButtonClicked() {
         Parent fragment= Fragment(ModuleFXML.PROFILE_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        setButtonsColor(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+        buttonProfile.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onSettingsButtonClicked() {
         Parent fragment= Fragment(ModuleFXML.SETTINGS_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        setButtonsColor(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+        buttonSettings.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onTrainerInfoButtonClicked() {
         Parent fragment= Fragment(ModuleFXML.TRAINER_INFO_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        setButtonsColor(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+        buttonTrainerInfo.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onAboutUsButtonClicked() {
         Parent fragment= Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        setButtonsColor(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+        buttonAboutUs.getStyleClass().add("buttonActive");
     }
 
 }
