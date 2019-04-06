@@ -42,6 +42,7 @@ public class LoginController extends LoginRegistrationController {
             if(user instanceof Trainee) {
                 setSceneUser(textFieldUserName.getScene(), ModuleFXML.USER_HOME_SCREEN, user);
             } else if (user instanceof Trainer) {
+
                 setSceneUser(textFieldUserName.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, user);
             } else {
                 setSceneUser(textFieldUserName.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, user);

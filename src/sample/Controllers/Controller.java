@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.Admin.AdminHomeScreenController;
 import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
@@ -17,11 +18,12 @@ import sample.Users.Admin.Admin;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
+import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 
 //Class that changes scenes
-public class Controller {
+public class Controller extends AnchorPane {
     protected void setScene(Scene scene, String fxml, String title) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, title);
@@ -107,6 +109,16 @@ public class Controller {
     @FXML
     protected void onButtonLogOutPressed(Button buttonLogOut) {
         setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+    }
+
+    public Parent Fragment(String FXML){
+        Parent fragment = null;
+        try {
+            fragment = FXMLLoader.load(getClass().getResource(FXML));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fragment;
     }
 
 
