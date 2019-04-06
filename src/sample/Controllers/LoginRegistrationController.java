@@ -1,5 +1,6 @@
 package sample.Controllers;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
@@ -10,19 +11,28 @@ public class LoginRegistrationController extends Controller {
     //Treba zmenit aj focus
 
     protected void displayErrorFeedbackUsername(TextField textField){
-        textField.setText(null);
-        DropShadow usernameShadow = (DropShadow) textField.getEffect();
-        usernameShadow.setColor(Color.RED);
-        usernameShadow.setRadius(30);
-
+        textField.setText("");
+        DropShadow dropShadowUsername = new DropShadow();
+       dropShadowUsername.setRadius(20);
+       dropShadowUsername.setColor(Color.color(1,0,0));
+        textField.setEffect(dropShadowUsername);
     }
 
     protected void displayErrorFeedbackPassword(PasswordField passwordField){
-        passwordField.setText(null);
-        DropShadow passwordShadow = (DropShadow) passwordField.getEffect();
-        passwordShadow.setColor(Color.RED);
-        passwordShadow.setRadius(30);
+        passwordField.setText("");
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setRadius(20);
+        dropShadow.setColor(Color.color(1,0,0));
+        passwordField.setEffect(dropShadow);
     }
+    protected void displayErrorFeedbackChoiceBox(ChoiceBox choiceBox){
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setRadius(20);
+        dropShadow.setColor(Color.color(1,0,0));
+        choiceBox.setEffect(dropShadow);
+    }
+
+
 
     //Reverse vsetok feedback aby to vyzeralo tak ako pred zobrazenim feedbacku
     protected void reverseFeedback() {

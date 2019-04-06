@@ -7,7 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 import sample.Controllers.Controller;
+import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Modules.TypeOfTraining;
@@ -16,7 +19,7 @@ import sample.Users.Trainer.Trainer;
 import sample.Users.User;
 import sample.Users.UserInfo;
 
-public class RegisterInfoController extends Controller {
+public class RegisterInfoController extends LoginRegistrationController {
 
     private User user;
 
@@ -32,8 +35,6 @@ public class RegisterInfoController extends Controller {
     @FXML
     private TextField textFieldHeight;
 
-    @FXML
-    private TextField textFieldDailyCalories;
 
     @FXML
     private ChoiceBox choiceBoxGender;
@@ -49,6 +50,9 @@ public class RegisterInfoController extends Controller {
 
     @FXML
     private Label labelUsername;
+
+    @FXML
+    private Label mandatoryError;
 
 
     public void setUser(User user) {
@@ -70,6 +74,7 @@ public class RegisterInfoController extends Controller {
 
     @FXML
     private void onButtonFinishPressed() {
+        resetAllFeedback();
         boolean errorRegistering = false;
         String firstName = textFieldFirstName.getText();
         String lastName = textFieldLastName.getText();
@@ -78,25 +83,51 @@ public class RegisterInfoController extends Controller {
 
 
         //If Names are empty
-        if (firstName.equals("") || lastName.equals("")) {
-            //display feedback
+        if (firstName.equals("")) {
+            displayErrorFeedbackUsername(textFieldFirstName);
             errorRegistering = true;
-            System.out.println("Names are empty");
+            mandatoryError.setVisible(true);
+            System.out.println("Name is empty");
         }
-        if (weight.equals("") || height.equals("")) {
+        if(lastName.equals("")){
+
+            displayErrorFeedbackUsername(textFieldLastName);
             errorRegistering = true;
-            System.out.println("Empty Weight or Height");
+            mandatoryError.setVisible(true);
+            System.out.println("LastName is empty");
+
         }
-        if (choiceBoxStatus.equals("")) {
+        if (weight.equals("") || !numberOrNot(weight)) {
+
+            System.out.println("Empty Weight");
+            displayErrorFeedbackUsername(textFieldWeight);
+            mandatoryError.setVisible(true);
             errorRegistering = true;
+        }
+        if(height.equals("") || !numberOrNot(height)){
+
+            displayErrorFeedbackUsername(textFieldHeight);
+            System.out.println("Empty Height");
+            mandatoryError.setVisible(true);
+            errorRegistering = true;
+
+        }
+        if (choiceBoxStatus.getValue()== null) {
+            displayErrorFeedbackChoiceBox(choiceBoxStatus);
+            errorRegistering = true;
+            mandatoryError.setVisible(true);
             System.out.println("Empty Daily intake");
         }
         if (choiceBoxGender.getValue() == null) {
+            displayErrorFeedbackChoiceBox(choiceBoxGender);
             errorRegistering = true;
+            mandatoryError.setVisible(true);
             System.out.println("Empty box gender");
         }
         if (choiceBoxTypeOfTraining.getValue() == null) {
+            displayErrorFeedbackChoiceBox(choiceBoxTypeOfTraining);
             errorRegistering = true;
+            mandatoryError.setVisible(true);
             System.out.println("Empty box type of training");
         }
         if (!errorRegistering) {
@@ -153,5 +184,32 @@ public class RegisterInfoController extends Controller {
         );
     }
 
+    private void resetAllFeedback() {
+
+        mandatoryError.setVisible(false);
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setRadius(10);
+        dropShadow.setColor(Color.color(0, 0, 0));
+        textFieldFirstName.setEffect(dropShadow);
+        textFieldLastName.setEffect(dropShadow);
+        textFieldHeight.setEffect(dropShadow);
+        textFieldWeight.setEffect(dropShadow);
+        choiceBoxStatus.setEffect(dropShadow);
+        choiceBoxTypeOfTraining.setEffect(dropShadow);
+        choiceBoxGender.setEffect(dropShadow);
+    }
+
+   private  boolean numberOrNot(String input)
+    {
+        try
+        {
+            Integer.parseInt(input);
+        }
+        catch(NumberFormatException ex)
+        {
+            return false;
+        }
+        return true;
+    }
 
 }
