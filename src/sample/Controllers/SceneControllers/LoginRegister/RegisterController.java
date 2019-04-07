@@ -86,7 +86,7 @@ public class RegisterController extends LoginRegistrationController {
             System.out.println("Passwords do not match");
         }
         if (!errorRegistering) {
-            User user = new Trainee(username, password);
+            User user = new User(username, password);
             setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
         }
     }

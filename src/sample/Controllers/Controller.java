@@ -121,6 +121,14 @@ public class Controller extends AnchorPane {
         return fragment;
     }
 
+    public void setButtonsColor(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
+        buttonProfile.getStyleClass().remove("buttonActive");
+        buttonSettings.getStyleClass().remove("buttonActive");
+        buttonTrainerInfo.getStyleClass().remove("buttonActive");
+        buttonAboutUs.getStyleClass().remove("buttonActive");
+
+    }
+
 
 }
 

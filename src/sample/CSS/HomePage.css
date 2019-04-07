@@ -12,8 +12,16 @@
     -fx-text-fill: white;
 }
 
-.sidebarButtons:hover {
+.buttonActive{
     -fx-background-color: #0b5851;
+}
+
+.buttonNotActive{
+    -fx-background-color: #107f74;
+}
+
+.sidebarButtons:hover {
+    -fx-background-color: #236862;
 }
 
 .mainButtons {
@@ -30,8 +38,6 @@
 #buttonWorkout {
     -fx-background-image: url("../Images/workoutHomeButton.jpg");
 }
-
-
 
 .mainButtons:hover {
     -fx-effect: dropshadow(three-pass-box, #107f74, 10, 0.7, 0, 0);

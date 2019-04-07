@@ -1,6 +1,6 @@
 package sample.Users;
 
-public abstract class User {
+public class User {
 
     private int id;
     private String username;
