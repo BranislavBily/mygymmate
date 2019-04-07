@@ -82,7 +82,7 @@ public class Controller extends AnchorPane {
             if (user instanceof Trainee) {
                 TraineeHomeScreen traineeHomeScreen = loader.getController();
                 traineeHomeScreen.setTrainee((Trainee) user);
-                traineeHomeScreen.setLabelUsername(traineeHomeScreen.getLabelUsername(), user, 162, 5.7, "", "");
+                traineeHomeScreen.setLabelUsername(traineeHomeScreen.getLabelUsername(), user, 140, 5, "", "");
             } else if (user instanceof Admin) {
                 AdminHomeScreenController adminHomeScreenController = loader.getController();
                 adminHomeScreenController.setAdmin((Admin) user);
