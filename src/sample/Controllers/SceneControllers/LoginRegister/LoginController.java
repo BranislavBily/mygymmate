@@ -51,15 +51,13 @@ public class LoginController extends LoginRegistrationController {
         } else {
             displayErrorFeedbackUsername(textFieldUserName);
             displayErrorFeedbackPassword(passwordFieldPassword);
-
             loginError.setVisible(true);
-
             System.out.println("Login not successful");
         }
     }
 
     @FXML
     private void onButtonSignUpPressed() {
-        setScene(buttonLogIn.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+        setSceneToRegister(buttonLogIn.getScene());
     }
 }

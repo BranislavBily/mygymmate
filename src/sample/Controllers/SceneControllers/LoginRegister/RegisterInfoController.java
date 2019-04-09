@@ -140,9 +140,8 @@ public class RegisterInfoController extends LoginRegistrationController {
                 trainee.setUserInfo(userInfo);
                 System.out.println(trainee.toString());
                 DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-
                 if(databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
-                    setScene(textFieldFirstName.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+                    setSceneToLogin(textFieldFirstName.getScene());
                 } else {
                     System.out.println("Error while inserting Trainee");
                 }
@@ -153,9 +152,8 @@ public class RegisterInfoController extends LoginRegistrationController {
                 trainer.setUserInfo(userInfo);
                 System.out.println(trainer.toString());
                 DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-
                 if(databaseModuleUser.insertTrainerInfoToDatabase(trainer)) {
-                    setScene(textFieldFirstName.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+                    setSceneToLogin(textFieldFirstName.getScene());
                 } else {
                     System.out.println("Error while inserting Trainer");
                 }

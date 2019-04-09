@@ -105,8 +105,8 @@ public class RegisterController extends LoginRegistrationController {
     }
 
     @FXML
-    private void onHyperLinkPressed() {
-        setScene(hyperLinkAlreadyMember.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+    private void onHyperLinkAlreadySignedInPressed() {
+        setSceneToLogin(hyperLinkAlreadyMember.getScene());
     }
 
 }
