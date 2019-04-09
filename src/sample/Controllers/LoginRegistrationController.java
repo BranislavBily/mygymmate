@@ -57,7 +57,7 @@ public class LoginRegistrationController extends Controller {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(user.getUsername());
+            stage.setTitle(ModuleTitles.REGISTER_INFO + user.getUsername());
             stage.setResizable(false);
             stage.show();
             RegisterInfoController registerInfoController = loader.getController();
