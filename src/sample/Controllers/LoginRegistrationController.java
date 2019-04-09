@@ -16,6 +16,7 @@ import sample.Users.User;
 
 import java.io.IOException;
 
+//Class for methods specific for Login & Registration
 public class LoginRegistrationController extends Controller {
 
     protected void displayErrorFeedbackUsername(TextField textField){
