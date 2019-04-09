@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
-import sample.Modules.ModuleFXML;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
@@ -29,7 +28,6 @@ public class LoginController extends LoginRegistrationController {
     @FXML
     private Label loginError;
 
-
     @FXML
     private void onButtonLogInPressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
@@ -43,7 +41,7 @@ public class LoginController extends LoginRegistrationController {
             } else if (user instanceof Trainer) {
                 setSceneToTrainerHomeScene(textFieldUserName.getScene(), user);
             } else {
-                setSceneUser(textFieldUserName.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, user);
+                setSceneToAdminHomeScene(textFieldUserName.getScene(), user);
             }
         //If user was not logged in
         } else {
