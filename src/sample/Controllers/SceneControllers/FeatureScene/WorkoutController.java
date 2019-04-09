@@ -44,6 +44,8 @@ public class WorkoutController extends HomeSceneController {
     private void onGoBackImagePressed() {
         if(isTraineeWorkout) {
             setSceneToTraineeHomeScene(buttonWorkouts.getScene(), user);
+        } else {
+            setSceneToTrainerHomeScene(buttonProgress.getScene(), user);
         }
     }
 
