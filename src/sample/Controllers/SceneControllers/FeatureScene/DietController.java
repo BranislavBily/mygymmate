@@ -25,7 +25,7 @@ public class DietController extends Controller {
 
 @FXML
 private void onGoBackImagePressed(){
-    setScene(buttonDiets.getScene(), "../../FXML/traineeHomeScreen.fxml", ModuleTitles.USER_HOME_SCREEN);
+    setScene(buttonDiets.getScene(), "../../FXML/traineeHomeScene.fxml", ModuleTitles.USER_HOME_SCREEN);
 
 
 }
