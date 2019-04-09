@@ -19,6 +19,9 @@ public class Trainer extends User{
     private Measurement measurement;
     private UserInfo userInfo;
 
+    public Trainer() {
+    }
+
     public Trainer(String username, String password) {
         super(username, password);
     }
