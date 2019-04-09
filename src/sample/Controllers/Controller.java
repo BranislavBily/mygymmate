@@ -53,6 +53,29 @@ public class Controller extends AnchorPane {
         changeSceneUser(stage, fxml, user);
 
     }
+
+    protected void setSceneToTraineeHomeScene(Scene scene, User user) {
+        Stage stage = (Stage) scene.getWindow();
+        changeSceneToTraineeHomeScene(stage, user);
+    }
+
+    private void changeSceneToTraineeHomeScene(Stage stage, User user) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINEE_HOME_SCREEN));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle(ModuleTitles.USER_HOME_SCREEN);
+            stage.setResizable(false);
+            stage.show();
+            TraineeHomeScene traineeHomeScene = loader.getController();
+            traineeHomeScene.setTrainee((Trainee) user);
+            traineeHomeScene.setLabelUsername(traineeHomeScene.getLabelUsername(), user, 140, 5, "", "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //Method that changes login scene to users scene based on status
     private void changeSceneUser(Stage stage, String fxml, User user) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
