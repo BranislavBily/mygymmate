@@ -8,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
 import sample.Modules.ModuleFXML;
-import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
@@ -42,7 +41,7 @@ public class LoginController extends LoginRegistrationController {
             if(user instanceof Trainee) {
                 setSceneToTraineeHomeScene(textFieldUserName.getScene(), user);
             } else if (user instanceof Trainer) {
-                setSceneUser(textFieldUserName.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, user);
+                setSceneToTrainerHomeScene(textFieldUserName.getScene(), user);
             } else {
                 setSceneUser(textFieldUserName.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, user);
             }
