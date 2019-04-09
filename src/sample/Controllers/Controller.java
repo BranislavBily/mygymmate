@@ -24,11 +24,23 @@ import java.io.IOException;
 
 //Class that changes scenes
 public class Controller extends AnchorPane {
+
     protected void setScene(Scene scene, String fxml, String title) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, title);
     }
 
+    protected void setSceneToLogin(Scene scene) {
+        Stage stage = (Stage) scene.getWindow();
+        changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+    }
+
+    protected void setSceneToRegister(Scene scene) {
+        Stage stage = (Stage) scene.getWindow();
+        changeScene(stage, ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+    }
+
+    //This method is used when sending User is not necessary
     private void changeScene(Stage stage, String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
@@ -46,11 +58,9 @@ public class Controller extends AnchorPane {
     protected void setScene(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, fxml, user);
-
     }
 
     private void changeScene(Stage stage, String fxml, User user) {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
             Parent root = loader.load();
