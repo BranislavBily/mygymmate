@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.Admin.AdminHomeScreenController;
-import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
 import sample.Controllers.SceneControllers.Trainee.TraineeHomeScreen;
 import sample.Controllers.SceneControllers.Trainer.TrainerHomeScreenController;
 import sample.Modules.ModuleFXML;
@@ -20,7 +19,7 @@ import sample.Users.Trainer.Trainer;
 import sample.Users.User;
 import java.io.IOException;
 
-//Class that changes scenes
+//Controller for all Scenes
 public class Controller extends AnchorPane {
 
     protected void setScene(Scene scene, String fxml, String title) {
@@ -87,12 +86,12 @@ public class Controller extends AnchorPane {
         labelUsername.setText(bonus + user.getUsername() + bonus2);
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
     }
-    @FXML
+
     protected void onButtonLogOutPressed(Button buttonLogOut) {
-        setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+        setSceneToLogin(buttonLogOut.getScene());
     }
 
-    public Parent loadFragmentFromFXML(String FXML){
+    protected Parent loadFragmentFromFXML(String FXML){
         Parent fragment = null;
         try {
             fragment = FXMLLoader.load(getClass().getResource(FXML));
@@ -102,7 +101,7 @@ public class Controller extends AnchorPane {
         return fragment;
     }
 
-    public void removeButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
+    protected void removeButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
         buttonProfile.getStyleClass().remove("buttonActive");
         buttonSettings.getStyleClass().remove("buttonActive");
         buttonTrainerInfo.getStyleClass().remove("buttonActive");
