@@ -13,7 +13,7 @@ import sample.Users.Trainee.Trainee;
 import sample.Users.User;
 
 
-public class TraineeHomeScene extends HomeSceneController {
+public class TraineeHomeSceneController extends HomeSceneController {
 
     private Trainee trainee;
     @FXML
