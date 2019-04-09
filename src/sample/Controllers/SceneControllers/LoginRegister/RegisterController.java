@@ -87,7 +87,7 @@ public class RegisterController extends LoginRegistrationController {
         }
         if (!errorRegistering) {
             User user = new User(username, password);
-            setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
+            setSceneToRegisterInfo(textFieldUsername.getScene(), user);
         }
     }
     //In case user corrects himself, All feedback must be gone so when he makes mistake only the correct feedback will be shown
