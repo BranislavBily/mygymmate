@@ -1,6 +1,5 @@
 package sample.Controllers;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,9 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sample.Controllers.SceneControllers.Admin.AdminHomeScreenController;
-import sample.Controllers.SceneControllers.Trainee.TraineeHomeScreen;
-import sample.Controllers.SceneControllers.Trainer.TrainerHomeScreenController;
+import sample.Controllers.SceneControllers.Admin.AdminHomeSceneController;
+import sample.Controllers.SceneControllers.Trainee.TraineeHomeScene;
+import sample.Controllers.SceneControllers.Trainer.TrainerHomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Admin.Admin;
@@ -19,7 +18,7 @@ import sample.Users.Trainer.Trainer;
 import sample.Users.User;
 import java.io.IOException;
 
-//Controller for all Scenes
+//Controller for methods that can be used in all Controllers
 public class Controller extends AnchorPane {
 
     protected void setScene(Scene scene, String fxml, String title) {
@@ -83,17 +82,17 @@ public class Controller extends AnchorPane {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             if (user instanceof Trainee) {
-                TraineeHomeScreen traineeHomeScreen = loader.getController();
-                traineeHomeScreen.setTrainee((Trainee) user);
-                traineeHomeScreen.setLabelUsername(traineeHomeScreen.getLabelUsername(), user, 140, 5, "", "");
+                TraineeHomeScene traineeHomeScene = loader.getController();
+                traineeHomeScene.setTrainee((Trainee) user);
+                traineeHomeScene.setLabelUsername(traineeHomeScene.getLabelUsername(), user, 140, 5, "", "");
             } else if (user instanceof Admin) {
-                AdminHomeScreenController adminHomeScreenController = loader.getController();
-                adminHomeScreenController.setAdmin((Admin) user);
-                adminHomeScreenController.setLabelUsername(adminHomeScreenController.getLabelUsername(), user, 162, 5.7, "", "");
+                AdminHomeSceneController adminHomeSceneController = loader.getController();
+                adminHomeSceneController.setAdmin((Admin) user);
+                adminHomeSceneController.setLabelUsername(adminHomeSceneController.getLabelUsername(), user, 162, 5.7, "", "");
             } else {
-                TrainerHomeScreenController trainerHomeScreenController = loader.getController();
-                trainerHomeScreenController.setTrainer((Trainer) user);
-                trainerHomeScreenController.setLabelUsername(trainerHomeScreenController.getLabelUsername(), user, 162, 5.7, "", "");
+                TrainerHomeSceneController trainerHomeSceneController = loader.getController();
+                trainerHomeSceneController.setTrainer((Trainer) user);
+                trainerHomeSceneController.setLabelUsername(trainerHomeSceneController.getLabelUsername(), user, 162, 5.7, "", "");
             }
             stage.setScene(scene);
             stage.setTitle("MyGymMate ("+user.getUsername()+")");
@@ -108,10 +107,6 @@ public class Controller extends AnchorPane {
     public void setLabelUsername(Label labelUsername, User user, int x, double constant, String bonus, String bonus2) {
         labelUsername.setText(bonus + user.getUsername() + bonus2);
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
-    }
-
-    protected void onButtonLogOutPressed(Button buttonLogOut) {
-        setSceneToLogin(buttonLogOut.getScene());
     }
 
     protected Parent loadFragmentFromFXML(String FXML){
