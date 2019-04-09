@@ -9,8 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
+import sample.Users.User;
 
 import java.io.IOException;
 
@@ -38,13 +40,31 @@ public class LoginRegistrationController extends Controller {
         choiceBox.setEffect(dropShadow);
     }
 
-    protected void setSceneToLogin(Scene scene) {
-        Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
-    }
-
     protected void setSceneToRegister(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+    }
+
+    protected void setSceneToRegisterInfo(Scene scene, User user) {
+        Stage stage = (Stage) scene.getWindow();
+        changeSceneToRegisterInfo(stage, user);
+    }
+
+    private void changeSceneToRegisterInfo(Stage stage, User user) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.REGISTER_INFO));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle(user.getUsername());
+            stage.setResizable(false);
+            stage.show();
+            RegisterInfoController registerInfoController = loader.getController();
+            registerInfoController.setUser(user);
+            registerInfoController.setLabelUsername(registerInfoController.getLabelUsername(), user, 182, 5.5, "Hi ", " !");
+            registerInfoController.setChoiceBoxItems();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
