@@ -2,14 +2,14 @@
 
 .sidebarButtons {
     -fx-background-color: #107f74;
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
+
     -fx-alignment: left;
-    -fx-pref-height: 60;
-    -fx-pref-width: 272;
+    -fx-pref-height: 70;
+    -fx-pref-width: 283;
     -fx-font-family: "Arial Black";
-    -fx-font-size: 21;
+    -fx-font-size: 18;
     -fx-text-fill: white;
+
 }
 
 .buttonActive{
