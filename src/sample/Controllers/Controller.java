@@ -28,6 +28,11 @@ public class Controller extends AnchorPane {
         changeScene(stage, fxml, title);
     }
 
+    protected void setSceneToLogin(Scene scene) {
+        Stage stage = (Stage) scene.getWindow();
+        changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+    }
+
     //This method is called when sending User is not necessary
     protected void changeScene(Stage stage, String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -43,37 +48,13 @@ public class Controller extends AnchorPane {
         }
     }
 
-
-
-    protected void setScene(Scene scene, String fxml, User user) {
-        Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, fxml, user);
-    }
-
-    private void changeScene(Stage stage, String fxml, User user) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            RegisterInfoController registerInfoController = loader.getController();
-            registerInfoController.setUser(user);
-            stage.setScene(scene);
-            stage.setTitle(user.getUsername());
-            stage.setResizable(false);
-            stage.show();
-            registerInfoController.setLabelUsername(registerInfoController.getLabelUsername(), user, 182, 5.5, "Hi ", " !");
-            registerInfoController.setChoiceBoxItems();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     //Method that changes scenes based on users
     protected void setSceneUser(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeSceneUser(stage, fxml, user);
 
     }
-//Method that changes login scene to users scene based on status
+    //Method that changes login scene to users scene based on status
     private void changeSceneUser(Stage stage, String fxml, User user) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
