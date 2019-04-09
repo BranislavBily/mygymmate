@@ -10,7 +10,6 @@ import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
-import sample.Users.User;
 
 
 public class TraineeHomeSceneController extends HomeSceneController {
@@ -67,12 +66,12 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     @FXML
     private void onButtonMeasurePressed() {
-        setScene(buttonMeasure.getScene(), ModuleFXML.MEASURE_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+        setScene(buttonMeasure.getScene(), ModuleFXML.MEASURE_HOME_SCREEN, ModuleTitles.USER_HOME_SCENE);
     }
 
     @FXML
     private void onButtonDietPressed() {
-        setScene(buttonDiet.getScene(), ModuleFXML.DIET_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+        setScene(buttonDiet.getScene(), ModuleFXML.DIET_HOME_SCREEN, ModuleTitles.USER_HOME_SCENE);
     }
 
     @FXML
