@@ -57,6 +57,7 @@ public class RegisterInfoController extends LoginRegistrationController {
 
     public void setUser(User user) {
         this.user = user;
+        System.out.println(this.user.toString());
     }
 
     public Label getLabelUsername() {
@@ -89,7 +90,7 @@ public class RegisterInfoController extends LoginRegistrationController {
             mandatoryError.setVisible(true);
             System.out.println("Name is empty");
         }
-        if(lastName.equals("")){
+        if (lastName.equals("")) {
 
             displayErrorFeedbackUsername(textFieldLastName);
             errorRegistering = true;
@@ -104,7 +105,7 @@ public class RegisterInfoController extends LoginRegistrationController {
             mandatoryError.setVisible(true);
             errorRegistering = true;
         }
-        if(height.equals("") || !numberOrNot(height)){
+        if (height.equals("") || !numberOrNot(height)) {
 
             displayErrorFeedbackUsername(textFieldHeight);
             System.out.println("Empty Height");
@@ -112,7 +113,7 @@ public class RegisterInfoController extends LoginRegistrationController {
             errorRegistering = true;
 
         }
-        if (choiceBoxStatus.getValue()== null) {
+        if (choiceBoxStatus.getValue() == null) {
             displayErrorFeedbackChoiceBox(choiceBoxStatus);
             errorRegistering = true;
             mandatoryError.setVisible(true);
@@ -133,39 +134,32 @@ public class RegisterInfoController extends LoginRegistrationController {
         if (!errorRegistering) {
 
             //Creates new UserInfo, sets values from user input
-            UserInfo userInfo = new UserInfo(choiceBoxGender.getValue().toString(),firstName, lastName, Double.parseDouble(weight),
-                    Double.parseDouble(height),choiceBoxStatus.getValue().toString(), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
-            if(userInfo.getStatus().equals("Trainee")){
-                Trainee trainee=new Trainee(user.getUsername(),user.getPassword());
+            UserInfo userInfo = new UserInfo(choiceBoxGender.getValue().toString(), firstName, lastName, Double.parseDouble(weight),
+                    Double.parseDouble(height), choiceBoxStatus.getValue().toString(), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
+            if (userInfo.getStatus().equals("Trainee")) {
+                Trainee trainee = new Trainee(user.getUsername(), user.getPassword());
                 trainee.setUserInfo(userInfo);
                 System.out.println(trainee.toString());
                 DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-                if(databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
+                if (databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
                     setSceneToLogin(textFieldFirstName.getScene());
                 } else {
                     System.out.println("Error while inserting Trainee");
                 }
 
-            }
-            else if(userInfo.getStatus().equals("Trainer")){
-                Trainer trainer=new Trainer(user.getUsername(),user.getPassword());
+            } else if (userInfo.getStatus().equals("Trainer")) {
+                Trainer trainer = new Trainer(user.getUsername(), user.getPassword());
                 trainer.setUserInfo(userInfo);
                 System.out.println(trainer.toString());
                 DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-                if(databaseModuleUser.insertTrainerInfoToDatabase(trainer)) {
+                if (databaseModuleUser.insertTrainerInfoToDatabase(trainer)) {
                     setSceneToLogin(textFieldFirstName.getScene());
                 } else {
                     System.out.println("Error while inserting Trainer");
                 }
             }
-
-
-
-
         }
-
     }
-
 
     public void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(
@@ -177,13 +171,12 @@ public class RegisterInfoController extends LoginRegistrationController {
         );
 
         choiceBoxStatus.setItems(FXCollections.observableArrayList(
-               "Trainee", "Trainer" )
+                "Trainee", "Trainer")
 
         );
     }
 
     private void resetAllFeedback() {
-
         mandatoryError.setVisible(false);
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(10);
@@ -197,14 +190,10 @@ public class RegisterInfoController extends LoginRegistrationController {
         choiceBoxGender.setEffect(dropShadow);
     }
 
-   private  boolean numberOrNot(String input)
-    {
-        try
-        {
+    private boolean numberOrNot(String input) {
+        try {
             Integer.parseInt(input);
-        }
-        catch(NumberFormatException ex)
-        {
+        } catch (NumberFormatException ex) {
             return false;
         }
         return true;
