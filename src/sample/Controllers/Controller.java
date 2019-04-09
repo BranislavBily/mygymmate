@@ -100,8 +100,8 @@ public class Controller extends AnchorPane {
             e.printStackTrace();
         }
     }
-//Centering and setting Labels based on username.
 
+    //Centering and setting Labels based on username.
     public void setLabelUsername(Label labelUsername, User user, int x, double constant, String bonus, String bonus2) {
         labelUsername.setText(bonus + user.getUsername() + bonus2);
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
@@ -111,7 +111,7 @@ public class Controller extends AnchorPane {
         setScene(buttonLogOut.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
     }
 
-    public Parent Fragment(String FXML){
+    public Parent loadFragmentFromFXML(String FXML){
         Parent fragment = null;
         try {
             fragment = FXMLLoader.load(getClass().getResource(FXML));
@@ -121,15 +121,12 @@ public class Controller extends AnchorPane {
         return fragment;
     }
 
-    public void setButtonsColor(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
+    public void removeButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
         buttonProfile.getStyleClass().remove("buttonActive");
         buttonSettings.getStyleClass().remove("buttonActive");
         buttonTrainerInfo.getStyleClass().remove("buttonActive");
         buttonAboutUs.getStyleClass().remove("buttonActive");
-
     }
-
-
 }
 
 

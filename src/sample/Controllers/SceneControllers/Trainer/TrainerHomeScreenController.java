@@ -55,22 +55,22 @@ public class TrainerHomeScreenController extends Controller {
 
     @FXML
     private void onProfileButtonClicked() {
-        Parent fragment= Fragment(ModuleFXML.PROFILE_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ModuleFXML.PROFILE_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
     }
     @FXML
     private void onSettingsButtonClicked() {
-        Parent fragment= Fragment(ModuleFXML.SETTINGS_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ModuleFXML.SETTINGS_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
     }
     @FXML
     private void onTraineeInfoButtonClicked() {
-        Parent fragment= Fragment(ModuleFXML.TRAINEE_INFO_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ModuleFXML.TRAINEE_INFO_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
     }
     @FXML
     private void onAboutUsButtonClicked() {
-        Parent fragment= Fragment(ModuleFXML.ABOUT_US_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
 
     }
