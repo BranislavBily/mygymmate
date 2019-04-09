@@ -69,7 +69,7 @@ public class RegisterInfoController extends LoginRegistrationController {
 
     @FXML
     private void onButtonGoBackPressed() {
-        setScene(buttonGoBack.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+        setSceneToRegister(buttonGoBack.getScene());
     }
 
     @FXML
