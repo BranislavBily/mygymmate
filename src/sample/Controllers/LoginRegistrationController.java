@@ -47,20 +47,4 @@ public class LoginRegistrationController extends Controller {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, ModuleFXML.REGISTER, ModuleTitles.REGISTER);
     }
-
-    //This method is used when sending User is not necessary
-    private void changeScene(Stage stage, String fxml, String title) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle(title);
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

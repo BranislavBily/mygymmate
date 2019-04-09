@@ -28,7 +28,8 @@ public class Controller extends AnchorPane {
         changeScene(stage, fxml, title);
     }
 
-    private void changeScene(Stage stage, String fxml, String title) {
+    //This method is called when sending User is not necessary
+    protected void changeScene(Stage stage, String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
             Parent root = loader.load();
