@@ -12,7 +12,8 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.DietController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.FeatureScene.MeasureController">
 
 
 
@@ -37,9 +38,8 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button fx:id="buttonDiets" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Diet" />
-                  <Button fx:id="buttonWeight" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Weight" />
-                  <Button fx:id="buttonBMI" layoutX="32.0" layoutY="170.0" mnemonicParsing="false" styleClass="sidebarButtons" text="BMI" />
+                  <Button fx:id="buttonMeasures" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Measure" />
+                  <Button fx:id="buttonProgress" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Progress" />
                </children>
                 </AnchorPane>
 

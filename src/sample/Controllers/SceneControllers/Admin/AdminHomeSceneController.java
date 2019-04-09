@@ -5,11 +5,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.Controller;
+import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Users.Admin.Admin;
 
-public class AdminHomeScreenController extends Controller {
+public class AdminHomeSceneController extends HomeSceneController {
 
     @FXML
     private Label labelUsername;
@@ -18,9 +18,9 @@ public class AdminHomeScreenController extends Controller {
     @FXML
     private Button buttonAboutUs;
 
-
     @FXML
     private Button buttonLogOut;
+
     private Admin admin;
 
     public Admin getAdmin() {
@@ -41,9 +41,8 @@ public class AdminHomeScreenController extends Controller {
 
     @FXML
     public void onButtonLogOutPressed() {
-        super.onButtonLogOutPressed(buttonLogOut);
+        onButtonLogOutPressed(buttonLogOut);
     }
-
 
     @FXML
     private void onProfileButtonClicked() {
@@ -60,8 +59,6 @@ public class AdminHomeScreenController extends Controller {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
     }
-
-
 }
 
 

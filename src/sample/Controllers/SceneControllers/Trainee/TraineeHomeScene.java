@@ -5,15 +5,15 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.Controller;
 
+import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
+import sample.Users.User;
 
 
-public class TraineeHomeScreen extends Controller {
-
+public class TraineeHomeScene extends HomeSceneController {
 
     private Trainee trainee;
     @FXML
@@ -52,6 +52,7 @@ public class TraineeHomeScreen extends Controller {
 
     public void setTrainee(Trainee trainee) {
         this.trainee = trainee;
+        //this.trainee = loadTrainee(trainee.getId());
     }
 
     @FXML
@@ -61,15 +62,13 @@ public class TraineeHomeScreen extends Controller {
 
     @FXML
     private void onButtonWorkoutPressed() {
-        setScene(buttonWorkout.getScene(), ModuleFXML.WORKOUTS_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
+        setSceneToWorkout(buttonWorkout.getScene(), trainee);
     }
-
 
     @FXML
     private void onButtonMeasurePressed() {
         setScene(buttonMeasure.getScene(), ModuleFXML.MEASURE_HOME_SCREEN, ModuleTitles.USER_HOME_SCREEN);
     }
-
 
     @FXML
     private void onButtonDietPressed() {

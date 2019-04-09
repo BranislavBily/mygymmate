@@ -24,7 +24,7 @@ public class MeasureController extends Controller {
 
 @FXML
 private void onGoBackImagePressed(){
-    setScene(buttonMeasures.getScene(), "../../FXML/traineeHomeScreen.fxml", ModuleTitles.USER_HOME_SCREEN);
+    setScene(buttonMeasures.getScene(), "../../FXML/traineeHomeScene.fxml", ModuleTitles.USER_HOME_SCREEN);
 
 
 }

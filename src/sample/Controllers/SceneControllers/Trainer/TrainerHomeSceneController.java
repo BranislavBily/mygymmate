@@ -5,11 +5,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.Controller;
+import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Users.Trainer.Trainer;
 
-public class TrainerHomeScreenController extends Controller {
+public class TrainerHomeSceneController extends HomeSceneController {
 
     private Trainer trainer;
     @FXML
