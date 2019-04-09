@@ -1,4 +1,4 @@
-package sample.Controllers.SceneControllers;
+package sample.Controllers.SceneControllers.FeatureScene;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
