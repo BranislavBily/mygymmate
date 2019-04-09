@@ -18,8 +18,6 @@ import sample.Users.Admin.Admin;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
-import sun.plugin.javascript.navig.Anchor;
-
 import java.io.IOException;
 
 //Class that changes scenes
@@ -30,17 +28,6 @@ public class Controller extends AnchorPane {
         changeScene(stage, fxml, title);
     }
 
-    protected void setSceneToLogin(Scene scene) {
-        Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
-    }
-
-    protected void setSceneToRegister(Scene scene) {
-        Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, ModuleFXML.REGISTER, ModuleTitles.REGISTER);
-    }
-
-    //This method is used when sending User is not necessary
     private void changeScene(Stage stage, String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
@@ -54,6 +41,8 @@ public class Controller extends AnchorPane {
             e.printStackTrace();
         }
     }
+
+
 
     protected void setScene(Scene scene, String fxml, User user) {
         Stage stage = (Stage) scene.getWindow();
