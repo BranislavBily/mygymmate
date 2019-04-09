@@ -47,9 +47,13 @@ public class TrainerHomeSceneController extends HomeSceneController {
     }
 
 
+    @FXML
+    private void onButtonWorkoutPressed() {
+        setSceneToWorkout(buttonWorkout.getScene(), trainer);
+    }
 
     @FXML
-    public void onButtonLogOutPressed() {
+    private void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
 
@@ -72,9 +76,6 @@ public class TrainerHomeSceneController extends HomeSceneController {
     private void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
-
     }
-
-
 }
 
