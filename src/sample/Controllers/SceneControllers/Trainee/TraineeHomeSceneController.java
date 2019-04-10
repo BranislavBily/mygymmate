@@ -37,6 +37,11 @@ public class TraineeHomeSceneController extends HomeSceneController {
     @FXML
     private Label labelUsername;
 
+    @FXML
+    private Label labelQuote;
+
+
+
     public Label getLabelUsername() {
         return labelUsername;
     }

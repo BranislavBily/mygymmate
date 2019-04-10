@@ -72,7 +72,7 @@ public class Controller extends AnchorPane {
             stage.show();
             TraineeHomeSceneController traineeHomeSceneController = loader.getController();
             traineeHomeSceneController.setTrainee((Trainee) user);
-            traineeHomeSceneController.setLabelUsername(traineeHomeSceneController.getLabelUsername(), user, 140, 5, "", "");
+            traineeHomeSceneController.setLabelUsername(traineeHomeSceneController.getLabelUsername(), user, 140, 5.14, "", "");
         } catch (IOException e) {
             e.printStackTrace();
         }
