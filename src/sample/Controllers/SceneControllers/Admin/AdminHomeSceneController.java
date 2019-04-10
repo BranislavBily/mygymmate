@@ -17,7 +17,6 @@ public class AdminHomeSceneController extends HomeSceneController {
     private AnchorPane mainFragment;
     @FXML
     private Button buttonAboutUs;
-
     @FXML
     private Button buttonLogOut;
 
