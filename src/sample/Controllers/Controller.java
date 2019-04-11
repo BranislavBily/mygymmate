@@ -1,9 +1,12 @@
 package sample.Controllers;
 
+import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -16,6 +19,7 @@ import sample.Users.Admin.Admin;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
+
 import java.io.IOException;
 
 //Controller for methods that can be used in all Controllers
@@ -124,6 +128,16 @@ public class Controller extends AnchorPane {
         buttonProfile.getStyleClass().remove("buttonActive");
         buttonSettings.getStyleClass().remove("buttonActive");
         buttonAboutUs.getStyleClass().remove("buttonActive");
+    }
+
+    @FXML
+    private void onHyperLinkPaypalPressed() {
+        Application application = new Application() {
+            @Override
+            public void start(Stage primaryStage) {
+            }
+        };
+        application.getHostServices().showDocument("https://paypal.me/pools/c/8dO80GARuK");
     }
 }
 
