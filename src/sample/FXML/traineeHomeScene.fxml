@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.Trainee.TraineeHomeSceneController">
+
+
+
+
+    <stylesheets>
+        <URL value="@../CSS/HomePage.css" />
+    </stylesheets>
+
+    <children>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="256.0" prefWidth="283.0" style="-fx-background-color: #03383f;">
+            <children>
+
+                <Circle fill="WHITE" layoutX="143.0" layoutY="100.0" radius="78.0" stroke="BLACK" strokeType="INSIDE">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Circle>
+                <ImageView fitHeight="117.0" fitWidth="105.0" layoutX="90.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Images/user.png" />
+                    </image>
+                </ImageView>
+            <Label fx:id="labelUsername" layoutX="90.0" layoutY="184.0" prefHeight="38.0" prefWidth="162.0" text="Sebastian" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="20.0" />
+               </font>
+            </Label>
+                <AnchorPane layoutY="257.0" prefHeight="515.0" prefWidth="247.0" style="-fx-background-color: #107f74;;">
+               <children>
+                  <Button fx:id="buttonHome" layoutY="-5.0" mnemonicParsing="false" prefWidth="273.0" styleClass="sidebarButtons" text="    Home">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="buttonProfile" layoutY="63.0" mnemonicParsing="false" onAction="#onProfileButtonClicked" styleClass="sidebarButtons" text="    Profile">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="buttonSettings" layoutY="131.0" mnemonicParsing="false" onAction="#onSettingsButtonClicked" prefWidth="283.0" styleClass="sidebarButtons" text="    Setting">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="buttonTrainerInfo" layoutY="201.0" mnemonicParsing="false" onAction="#onTrainerInfoButtonClicked" prefWidth="270.0" styleClass="sidebarButtons" text="    Trainer Info">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="buttonAboutUs" layoutY="367.0" mnemonicParsing="false" onAction="#onAboutUsButtonClicked" prefHeight="0.0" prefWidth="0.0" styleClass="sidebarButtons" text="    About Us" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="buttonLogOut" layoutY="438.0" mnemonicParsing="false" onAction="#onButtonLogOutPressed" prefHeight="40.0" prefWidth="272.0" styleClass="sidebarButtons" text="    Log out" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Arial Black" size="21.0" />
+                     </font>
+                  </Button>
+                  <Line endX="68.20001220703125" layoutX="192.0" layoutY="360.0" startX="-175.66668701171875" stroke="WHITE" />
+               </children>
+                </AnchorPane>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+        </AnchorPane>
+        <AnchorPane fx:id="mainFragment" layoutX="281.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="745.0" style="-fx-background-color: #e1f2f1;">
+            <effect>
+                <DropShadow />
+            </effect>
+            <children>
+                <Button fx:id="buttonWorkout" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonWorkoutPressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
+                    <effect>
+                        <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button fx:id="buttonDiet" layoutX="261.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonDietPressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
+                    <effect>
+                        <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
+                    </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </Button>
+                <Button fx:id="buttonMeasure" layoutX="502.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonMeasurePressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
+                    <effect>
+                        <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.2" width="40.0" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#03383f" height="65.0" layoutY="708.0" stroke="#03383f" strokeType="INSIDE" width="745.0" />
+            <Label fx:id="labelQuote" layoutX="170.0" layoutY="727.0" prefHeight="22.0" prefWidth="539.0" text="&quot; Rather fuck your sis then your ma &quot; - Tomas Berezny" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</Pane>

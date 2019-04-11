@@ -1,4 +1,4 @@
-package sample.Controllers.SceneControllers;
+package sample.Controllers.SceneControllers.FeatureScene;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +24,7 @@ public class MeasureController extends Controller {
 
 @FXML
 private void onGoBackImagePressed(){
-    setScene(buttonMeasures.getScene(), "../../FXML/traineeHomeScreen.fxml", ModuleTitles.USER_HOME_SCREEN);
+    setScene(buttonMeasures.getScene(), "../../FXML/traineeHomeScene.fxml", ModuleTitles.USER_HOME_SCENE);
 
 
 }

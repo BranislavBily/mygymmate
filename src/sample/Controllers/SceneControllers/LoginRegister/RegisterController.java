@@ -86,8 +86,8 @@ public class RegisterController extends LoginRegistrationController {
             System.out.println("Passwords do not match");
         }
         if (!errorRegistering) {
-            User user = new Trainee(username, password);
-            setScene(textFieldUsername.getScene(), ModuleFXML.REGISTER_INFO, user);
+            User user = new User(username, password);
+            setSceneToRegisterInfo(textFieldUsername.getScene(), user);
         }
     }
     //In case user corrects himself, All feedback must be gone so when he makes mistake only the correct feedback will be shown
@@ -105,8 +105,8 @@ public class RegisterController extends LoginRegistrationController {
     }
 
     @FXML
-    private void onHyperLinkPressed() {
-        setScene(hyperLinkAlreadyMember.getScene(), ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
+    private void onHyperLinkAlreadySignedInPressed() {
+        setSceneToLogin(hyperLinkAlreadyMember.getScene());
     }
 
 }

@@ -7,9 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
-import sample.Controllers.SceneControllers.Trainee.TraineeHomeScreen;
-import sample.Modules.ModuleFXML;
-import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
@@ -31,8 +28,6 @@ public class LoginController extends LoginRegistrationController {
     @FXML
     private Label loginError;
 
-
-
     @FXML
     private void onButtonLogInPressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
@@ -42,34 +37,23 @@ public class LoginController extends LoginRegistrationController {
         User user = databaseModuleUser.isUser(username, password);
         if (user != null) {
             if(user instanceof Trainee) {
-                setSceneUser(textFieldUserName.getScene(), ModuleFXML.USER_HOME_SCREEN, user);
-
-
-
-
+                setSceneToTraineeHomeScene(textFieldUserName.getScene(), user);
             } else if (user instanceof Trainer) {
-
-                setSceneUser(textFieldUserName.getScene(), ModuleFXML.TRAINER_HOME_SCREEN, user);
+                setSceneToTrainerHomeScene(textFieldUserName.getScene(), user);
             } else {
-                setSceneUser(textFieldUserName.getScene(), ModuleFXML.ADMIN_HOME_SCREEN, user);
-
+                setSceneToAdminHomeScene(textFieldUserName.getScene(), user);
             }
         //If user was not logged in
         } else {
             displayErrorFeedbackUsername(textFieldUserName);
             displayErrorFeedbackPassword(passwordFieldPassword);
-
             loginError.setVisible(true);
-
             System.out.println("Login not successful");
         }
     }
 
     @FXML
     private void onButtonSignUpPressed() {
-        setScene(buttonLogIn.getScene(), ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+        setSceneToRegister(buttonLogIn.getScene());
     }
-
-
-
 }

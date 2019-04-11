@@ -12,27 +12,31 @@ public class UserInfo {
     private double actualCalories;
     private double actualProtein;
     private double actualHydration;
+    private String status;
+    private double dailyCalories;
     private TypeOfTraining typeOfTraining;
 
-    public UserInfo(String gender, String firstName, String lastName, double weight, double height, double actualCalories, double actualProtein, double actualHydration, TypeOfTraining typeOfTraining) {
+    public UserInfo(String gender, String firstName, String lastName, double weight, double height, double dailyCalories, double actualCalories, double actualProtein, double actualHydration, TypeOfTraining typeOfTraining, String status) {
         this.gender = gender;
         this.firstName = firstName;
         this.lastName = lastName;
         this.weight = weight;
         this.height = height;
+        this.dailyCalories=dailyCalories;
         this.actualCalories = actualCalories;
         this.actualProtein = actualProtein;
         this.actualHydration = actualHydration;
         this.typeOfTraining = typeOfTraining;
+        this.status=status;
     }
 
-    public UserInfo(String gender, String firstName, String lastName, double weight, double height, double actualCalories, TypeOfTraining typeOfTraining) {
+    public UserInfo(String gender, String firstName, String lastName, double weight, double height, String status, TypeOfTraining typeOfTraining) {
         this.gender = gender;
         this.firstName = firstName;
         this.lastName = lastName;
         this.weight = weight;
         this.height = height;
-        this.actualCalories = actualCalories;
+        this.status = status;
         this.typeOfTraining = typeOfTraining;
     }
 
@@ -72,6 +76,17 @@ public class UserInfo {
         return typeOfTraining;
     }
 
+    public void setActualCalories(double actualCalories) {
+        this.actualCalories = actualCalories;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {
