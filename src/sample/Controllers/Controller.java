@@ -67,7 +67,7 @@ public class Controller extends AnchorPane {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(ModuleTitles.USER_HOME_SCENE + user.getUsername());
+            stage.setTitle(ModuleTitles.TRAINEE_HOME_SCENE + user.getUsername());
             stage.setResizable(false);
             stage.show();
             TraineeHomeSceneController traineeHomeSceneController = loader.getController();
@@ -84,7 +84,7 @@ public class Controller extends AnchorPane {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(ModuleTitles.USER_HOME_SCENE + user.getUsername());
+            stage.setTitle(ModuleTitles.TRAINER_HOME_SCENE + user.getUsername());
             stage.setResizable(false);
             stage.show();
             TrainerHomeSceneController trainerHomeSceneController = loader.getController();
@@ -118,15 +118,6 @@ public class Controller extends AnchorPane {
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
     }
 
-    protected Parent loadFragmentFromFXML(String FXML){
-        Parent fragment = null;
-        try {
-            fragment = FXMLLoader.load(getClass().getResource(FXML));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return fragment;
-    }
 
     protected void removeButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
         buttonProfile.getStyleClass().remove("buttonActive");
