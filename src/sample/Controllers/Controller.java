@@ -21,11 +21,6 @@ import java.io.IOException;
 //Controller for methods that can be used in all Controllers
 public class Controller extends AnchorPane {
 
-    protected void setScene(Scene scene, String fxml, String title) {
-        Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, fxml, title);
-    }
-
     protected void setSceneToLogin(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
@@ -47,7 +42,7 @@ public class Controller extends AnchorPane {
     }
 
     //This method is called when sending User is not necessary
-    protected void changeScene(Stage stage, String fxml, String title) {
+    void changeScene(Stage stage, String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
             Parent root = loader.load();
