@@ -53,6 +53,11 @@ public class TrainerHomeSceneController extends HomeSceneController {
     }
 
     @FXML
+    private void onButtonDietPressed() {
+        setSceneToDiet(buttonDiet.getScene(), trainer);
+    }
+
+    @FXML
     private void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
