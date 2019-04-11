@@ -5,10 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
-import sample.Modules.ModuleTitles;
 import sample.Users.Trainee.Trainee;
 
 
@@ -33,13 +31,10 @@ public class TraineeHomeSceneController extends HomeSceneController {
     private Button buttonTrainerInfo;
     @FXML
     private Button buttonAboutUs;
-
     @FXML
     private Label labelUsername;
-
     @FXML
     private Label labelQuote;
-
 
     public Label getLabelUsername() {
         return labelUsername;
@@ -106,7 +101,6 @@ public class TraineeHomeSceneController extends HomeSceneController {
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonAboutUs.getStyleClass().add("buttonActive");
     }
-
 }
 
 
