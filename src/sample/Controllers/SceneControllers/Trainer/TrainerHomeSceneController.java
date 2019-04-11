@@ -46,7 +46,6 @@ public class TrainerHomeSceneController extends HomeSceneController {
         this.labelUsername = labelUsername;
     }
 
-
     @FXML
     private void onButtonWorkoutPressed() {
         setSceneToWorkout(buttonWorkout.getScene(), trainer);
@@ -55,6 +54,11 @@ public class TrainerHomeSceneController extends HomeSceneController {
     @FXML
     private void onButtonDietPressed() {
         setSceneToDiet(buttonDiet.getScene(), trainer);
+    }
+
+    @FXML
+    private void onButtonMeasurePressed() {
+        setSceneToMeasure(buttonDiet.getScene(), trainer);
     }
 
     @FXML
