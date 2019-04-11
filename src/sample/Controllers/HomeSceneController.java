@@ -34,6 +34,23 @@ public class HomeSceneController extends Controller {
         changeSceneToMeasureScene(stage, user);
     }
 
+    private void changeSceneToWorkout(Stage stage, User user) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.WORKOUTS_HOME_SCREEN));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle(ModuleTitles.WORKOUTS);
+            stage.setResizable(false);
+            stage.show();
+            WorkoutController workoutController = loader.getController();
+            workoutController.setUser(user);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void changeSceneToMeasureScene(Stage stage, User user) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.MEASURE_HOME_SCREEN));
         try {
@@ -61,23 +78,6 @@ public class HomeSceneController extends Controller {
             stage.show();
             DietController dietController = loader.getController();
             dietController.setUser(user);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void changeSceneToWorkout(Stage stage, User user) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.WORKOUTS_HOME_SCREEN));
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle(ModuleTitles.WORKOUTS);
-            stage.setResizable(false);
-            stage.show();
-            WorkoutController workoutController = loader.getController();
-            workoutController.setUser(user);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
