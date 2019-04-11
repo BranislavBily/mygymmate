@@ -118,7 +118,7 @@
                     </cursor>
                 </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#03383f" height="65.0" layoutY="708.0" stroke="#03383f" strokeType="INSIDE" width="745.0" />
-            <Label fx:id="labelQuote" layoutX="170.0" layoutY="727.0" prefHeight="22.0" prefWidth="539.0" text="&quot; Rather fuck your sis then your ma &quot; - Tomas Berezny" textFill="WHITE">
+            <Label fx:id="labelQuote" layoutX="170.0" layoutY="727.0" prefHeight="22.0" prefWidth="539.0" text="&quot;Dont stop working out &quot; - Tomas Berezny" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>

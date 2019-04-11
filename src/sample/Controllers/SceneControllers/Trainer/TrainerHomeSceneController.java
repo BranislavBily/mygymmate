@@ -26,6 +26,12 @@ public class TrainerHomeSceneController extends HomeSceneController {
     @FXML
     private AnchorPane mainFragment;
     @FXML
+    private Button buttonProfile;
+    @FXML
+    private Button buttonSettings;
+    @FXML
+    private Button buttonTraineeInfo;
+    @FXML
     private Button buttonAboutUs;
 
 
@@ -46,10 +52,19 @@ public class TrainerHomeSceneController extends HomeSceneController {
         this.labelUsername = labelUsername;
     }
 
-
     @FXML
     private void onButtonWorkoutPressed() {
         setSceneToWorkout(buttonWorkout.getScene(), trainer);
+    }
+
+    @FXML
+    private void onButtonDietPressed() {
+        setSceneToDiet(buttonDiet.getScene(), trainer);
+    }
+
+    @FXML
+    private void onButtonMeasurePressed() {
+        setSceneToMeasure(buttonDiet.getScene(), trainer);
     }
 
     @FXML
@@ -61,21 +76,29 @@ public class TrainerHomeSceneController extends HomeSceneController {
     private void onProfileButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.PROFILE_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+        buttonProfile.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onSettingsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.SETTINGS_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+        buttonSettings.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onTraineeInfoButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.TRAINEE_INFO_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+        buttonTraineeInfo.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+        buttonAboutUs.getStyleClass().add("buttonActive");
     }
 }
 

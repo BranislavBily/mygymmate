@@ -21,11 +21,6 @@ import java.io.IOException;
 //Controller for methods that can be used in all Controllers
 public class Controller extends AnchorPane {
 
-    protected void setScene(Scene scene, String fxml, String title) {
-        Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, fxml, title);
-    }
-
     protected void setSceneToLogin(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
         changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
@@ -47,7 +42,7 @@ public class Controller extends AnchorPane {
     }
 
     //This method is called when sending User is not necessary
-    protected void changeScene(Stage stage, String fxml, String title) {
+    void changeScene(Stage stage, String fxml, String title) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         try {
             Parent root = loader.load();
@@ -67,7 +62,7 @@ public class Controller extends AnchorPane {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(ModuleTitles.USER_HOME_SCENE + user.getUsername());
+            stage.setTitle(ModuleTitles.TRAINEE_HOME_SCENE + user.getUsername());
             stage.setResizable(false);
             stage.show();
             TraineeHomeSceneController traineeHomeSceneController = loader.getController();
@@ -84,7 +79,7 @@ public class Controller extends AnchorPane {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(ModuleTitles.USER_HOME_SCENE + user.getUsername());
+            stage.setTitle(ModuleTitles.TRAINER_HOME_SCENE + user.getUsername());
             stage.setResizable(false);
             stage.show();
             TrainerHomeSceneController trainerHomeSceneController = loader.getController();
@@ -118,20 +113,16 @@ public class Controller extends AnchorPane {
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
     }
 
-    protected Parent loadFragmentFromFXML(String FXML){
-        Parent fragment = null;
-        try {
-            fragment = FXMLLoader.load(getClass().getResource(FXML));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return fragment;
-    }
 
     protected void removeButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
         buttonProfile.getStyleClass().remove("buttonActive");
         buttonSettings.getStyleClass().remove("buttonActive");
         buttonTrainerInfo.getStyleClass().remove("buttonActive");
+        buttonAboutUs.getStyleClass().remove("buttonActive");
+    }
+    protected void removeAdminButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonAboutUs){
+        buttonProfile.getStyleClass().remove("buttonActive");
+        buttonSettings.getStyleClass().remove("buttonActive");
         buttonAboutUs.getStyleClass().remove("buttonActive");
     }
 }

@@ -16,6 +16,10 @@ public class AdminHomeSceneController extends HomeSceneController {
     @FXML
     private AnchorPane mainFragment;
     @FXML
+    private Button buttonProfile;
+    @FXML
+    private Button buttonSettings;
+    @FXML
     private Button buttonAboutUs;
     @FXML
     private Button buttonLogOut;
@@ -47,16 +51,22 @@ public class AdminHomeSceneController extends HomeSceneController {
     private void onProfileButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.PROFILE_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
+        buttonProfile.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onSettingsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.SETTINGS_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
+        buttonSettings.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ModuleFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
+        removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
+        buttonAboutUs.getStyleClass().add("buttonActive");
     }
 }
 

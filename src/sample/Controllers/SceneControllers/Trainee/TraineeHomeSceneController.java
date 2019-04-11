@@ -41,7 +41,6 @@ public class TraineeHomeSceneController extends HomeSceneController {
     private Label labelQuote;
 
 
-
     public Label getLabelUsername() {
         return labelUsername;
     }
@@ -71,12 +70,12 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     @FXML
     private void onButtonMeasurePressed() {
-        setScene(buttonMeasure.getScene(), ModuleFXML.MEASURE_HOME_SCREEN, ModuleTitles.USER_HOME_SCENE);
+        setSceneToMeasure(buttonMeasure.getScene(),  trainee);
     }
 
     @FXML
     private void onButtonDietPressed() {
-        setScene(buttonDiet.getScene(), ModuleFXML.DIET_HOME_SCREEN, ModuleTitles.USER_HOME_SCENE);
+        setSceneToDiet(buttonDiet.getScene(), trainee);
     }
 
     @FXML
