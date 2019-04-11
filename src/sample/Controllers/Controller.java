@@ -120,6 +120,11 @@ public class Controller extends AnchorPane {
         buttonTrainerInfo.getStyleClass().remove("buttonActive");
         buttonAboutUs.getStyleClass().remove("buttonActive");
     }
+    protected void removeAdminButtonActiveEffect(Button buttonProfile, Button buttonSettings, Button buttonAboutUs){
+        buttonProfile.getStyleClass().remove("buttonActive");
+        buttonSettings.getStyleClass().remove("buttonActive");
+        buttonAboutUs.getStyleClass().remove("buttonActive");
+    }
 }
 
 
