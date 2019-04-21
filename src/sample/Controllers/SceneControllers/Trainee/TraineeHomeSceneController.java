@@ -20,7 +20,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
     @FXML
     private Button buttonDiet;
     @FXML
-    private Button buttonMeasure;
+    private Button buttonWithMeasure;
     @FXML
     private AnchorPane mainFragment;
     @FXML
@@ -65,7 +65,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     @FXML
     private void onButtonMeasurePressed() {
-        setSceneToMeasure(buttonMeasure.getScene(),  trainee);
+        setSceneToMeasure(buttonWithMeasure.getScene(),  trainee);
     }
 
     @FXML

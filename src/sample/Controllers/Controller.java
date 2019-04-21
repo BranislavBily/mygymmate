@@ -88,7 +88,7 @@ public class Controller extends AnchorPane {
             stage.show();
             TrainerHomeSceneController trainerHomeSceneController = loader.getController();
             trainerHomeSceneController.setTrainer((Trainer) user);
-            trainerHomeSceneController.setLabelUsername(trainerHomeSceneController.getLabelUsername(), user, 140, 5, "", "");
+            trainerHomeSceneController.setLabelUsername(trainerHomeSceneController.getLabelUsername(), user, 140, 5.14, "", "");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,7 +105,7 @@ public class Controller extends AnchorPane {
             stage.show();
             AdminHomeSceneController adminHomeSceneController = loader.getController();
             adminHomeSceneController.setAdmin((Admin) user);
-            adminHomeSceneController.setLabelUsername(adminHomeSceneController.getLabelUsername(), user, 140, 5, "", "");
+            adminHomeSceneController.setLabelUsername(adminHomeSceneController.getLabelUsername(), user, 140, 5.14, "", "");
         } catch (IOException e) {
             e.printStackTrace();
         }
