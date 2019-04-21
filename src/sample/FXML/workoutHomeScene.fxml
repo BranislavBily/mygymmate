@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.FeatureScene.WorkoutController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.FeatureScene.WorkoutController">
 
 
     <stylesheets>
@@ -20,15 +20,15 @@
     </stylesheets>
 
     <children>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="763.0" prefWidth="336.0" style="-fx-background-color: #03383f;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="256.0" prefWidth="283.0" style="-fx-background-color: #03383f;">
             <children>
-                <AnchorPane layoutY="285.0" prefHeight="481.0" prefWidth="336.0" style="-fx-background-color: #107f74;;">
+                <AnchorPane layoutY="257.0" prefHeight="515.0" prefWidth="247.0" style="-fx-background-color: #107f74;;">
                     <effect>
                         <DropShadow />
 
                     </effect>
                <children>
-                  <ImageView fx:id="go" fitHeight="74.0" fitWidth="77.0" layoutX="14.0" layoutY="398.0" onMouseClicked="#onGoBackImagePressed" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="buttonGoBack" fx:id="go" fitHeight="70.0" fitWidth="72.0" layoutX="8.0" layoutY="431.0" onMouseClicked="#onGoBackImagePressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/goBackButton.png" />
                      </image>
@@ -36,23 +36,23 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button fx:id="buttonWorkouts" layoutX="32.0" layoutY="40.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Measure">
+                  <Button fx:id="buttonWorkouts" mnemonicParsing="false" styleClass="sidebarButtons" text="     Measure">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="buttonProgress" layoutX="32.0" layoutY="105.0" mnemonicParsing="false" styleClass="sidebarButtons" text="Progress">
+                  <Button fx:id="buttonProgress" layoutY="68.0" mnemonicParsing="false" styleClass="sidebarButtons" text="     Progress">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
                </children>
                 </AnchorPane>
 
-                <Circle fill="WHITE" layoutX="168.0" layoutY="125.0" radius="100.0" stroke="BLACK" strokeType="INSIDE">
+                <Circle fill="WHITE" layoutX="143.0" layoutY="100.0" radius="78.0" stroke="BLACK" strokeType="INSIDE">
                     <effect>
                         <DropShadow />
                     </effect>
                 </Circle>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="93.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="117.0" fitWidth="105.0" layoutX="90.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Images/user.png" />
                     </image>
@@ -67,7 +67,7 @@
                 <DropShadow />
             </effect>
         </AnchorPane>
-        <AnchorPane layoutX="338.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="688.0" style="-fx-background-color: #e1f2f1;">
+        <AnchorPane layoutX="281.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="745.0" style="-fx-background-color: #e1f2f1;">
             <effect>
                 <DropShadow />
             </effect>

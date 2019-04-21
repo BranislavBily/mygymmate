@@ -53,6 +53,10 @@
 
 }
 
+#buttonGoBack:hover{
+    -fx-effect: dropshadow(three-pass-box, #e1f2f1, 5, 0.7, 0, 0);
+}
+
 .anchorBackground{
 
     -fx-background-image: url("../Images/vtsplreu.png");
