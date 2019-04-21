@@ -62,6 +62,10 @@
     -fx-background-image: url("../Images/vtsplreu.png");
 
 }
+#buttonPayPal:hover{
+    -fx-effect: dropshadow(three-pass-box, #e1f2f1, 10, 0.7, 0, 0);
+
+}
 
 /*#buttonDiet {
    -fx-background-image: url("../Images/dietHomeButton.jpg");

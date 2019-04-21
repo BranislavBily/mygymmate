@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
    <children>
       <Label layoutX="31.0" layoutY="34.0" text="Who are The Burning Systems?">
          <font>
@@ -17,11 +19,23 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="261.0" prefHeight="75.0" prefWidth="647.0" text="But of cource, writing good software is not cheap. Since we decided to make this app free, we fully run on donations. If you want to support us and show your appreciating, feel free to buy us cup of coffee with link down below" wrapText="true">
+      <Label layoutX="31.0" layoutY="261.0" prefHeight="75.0" prefWidth="647.0" text="But of cource, writing good software is not cheap. Since we decided to make this app free, we fully run on donations. If you want to support us and show your appreciating, feel free to buy us cup of coffee with PayPal button down below." wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="hyperLinkPaypal" layoutX="31.0" layoutY="361.0" onAction="#onHyperLinkPaypalPressed" prefHeight="23.0" prefWidth="286.0" text="https://paypal.me/pools/c/8dO80GARuK" />
+      <ImageView id="buttonPayPal" fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="356.0" onMouseClicked="#onHyperLinkPaypalPressed" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/paypal.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="134.0" layoutX="597.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
