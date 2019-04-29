@@ -24,7 +24,7 @@ public class DietController extends HomeSceneController {
     @FXML
     private Button buttonBMI;
     @FXML
-    private Label usernameLabel;
+    private Label labelUsername;
 
 
     @FXML

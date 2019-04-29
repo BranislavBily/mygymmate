@@ -26,7 +26,7 @@ public class WorkoutController extends HomeSceneController {
     @FXML
     private Button buttonProgress;
     @FXML
-    private Label usernameLabel;
+    private Label labelUsername;
 
     public void setUser(User user) {
         this.user = user;
