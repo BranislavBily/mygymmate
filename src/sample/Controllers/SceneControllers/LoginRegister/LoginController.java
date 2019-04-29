@@ -34,14 +34,13 @@ public class LoginController extends LoginRegistrationController {
         String username = textFieldUserName.getText();
         String password = passwordFieldPassword.getText();
         //Creates user based on login credentials
-        User user = databaseModuleUser.isUser(username, password);
-        if (user != null) {
-            if(user instanceof Trainee) {
-                setSceneToTraineeHomeScene(textFieldUserName.getScene(), user);
-            } else if (user instanceof Trainer) {
-                setSceneToTrainerHomeScene(textFieldUserName.getScene(), user);
-            } else {
-                setSceneToAdminHomeScene(textFieldUserName.getScene(), user);
+        Integer userID = databaseModuleUser.isUser(username, password);
+        if (userID != null) {
+            String status = databaseModuleUser.getUserStatus(userID);
+            switch (status) {
+                case "trainee" : setSceneToTraineeHomeScene(buttonLogIn.getScene(), userID);break;
+                case "trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene(), userID);break;
+                case "admin" : setSceneToAdminHomeScene(buttonLogIn.getScene(), userID);break;
             }
         //If user was not logged in
         } else {
