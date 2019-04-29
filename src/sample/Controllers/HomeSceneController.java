@@ -62,6 +62,7 @@ public class HomeSceneController extends Controller {
             stage.show();
             MeasureController measureController = loader.getController();
             measureController.setUserID(userID);
+            measureController.setLabel();
         } catch (IOException e) {
             e.printStackTrace();
         }
