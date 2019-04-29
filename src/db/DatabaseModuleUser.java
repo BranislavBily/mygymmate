@@ -50,6 +50,7 @@ public class DatabaseModuleUser extends DatabaseModule {
 //        }
 //    }
 
+    //TODO Javadoc
     public Integer isUser(String username, String password) {
         ResultSet resultSet;
         String query = "select ID from "+ ModuleTables.USERS+" where Username = ? and Password = ?";

@@ -32,7 +32,6 @@
     -fx-background-color: #03383f;
     -fx-effect: dropshadow(three-pass-box, #107f74, 15, 0.2, 0, 0);
 
-
 }
 #buttonWithWorkout {
     -fx-background-image: url("../Images/workout.png");

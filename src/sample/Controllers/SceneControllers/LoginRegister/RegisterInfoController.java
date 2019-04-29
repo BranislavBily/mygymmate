@@ -123,7 +123,7 @@ public class RegisterInfoController extends LoginRegistrationController {
             System.out.println("Empty box type of training");
         }
         if (!errorRegistering) {
-            //Creates new UserInfo, sets values from user input
+            //Creates new UserInfo, sets values from user input, TODO for the love of god rework this please
             UserInfo userInfo = new UserInfo(choiceBoxGender.getValue().toString(), firstName, lastName, Double.parseDouble(weight),
                     Double.parseDouble(height), choiceBoxStatus.getValue().toString(), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
             if (userInfo.getStatus().equals("Trainee")) {
