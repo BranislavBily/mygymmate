@@ -32,7 +32,6 @@ public class RegisterInfoController extends LoginRegistrationController {
     @FXML
     private TextField textFieldHeight;
 
-
     @FXML
     private ChoiceBox choiceBoxGender;
 
@@ -88,33 +87,28 @@ public class RegisterInfoController extends LoginRegistrationController {
             System.out.println("Name is empty");
         }
         if (lastName.equals("")) {
-
             displayErrorFeedbackUsername(textFieldLastName);
             errorRegistering = true;
             mandatoryError.setVisible(true);
             System.out.println("LastName is empty");
-
         }
-        if (weight.equals("") || !numberOrNot(weight)) {
-
-            System.out.println("Empty Weight");
+        if (weight.equals("") || !numberOrNot(weight) || !possibleWeight(weight)) {
             displayErrorFeedbackUsername(textFieldWeight);
+            System.out.println("Empty Weight");
             mandatoryError.setVisible(true);
             errorRegistering = true;
         }
-        if (height.equals("") || !numberOrNot(height)) {
-
+        if (height.equals("") || !numberOrNot(height) || !possibleHeight(height)) {
             displayErrorFeedbackUsername(textFieldHeight);
             System.out.println("Empty Height");
             mandatoryError.setVisible(true);
             errorRegistering = true;
-
         }
         if (choiceBoxStatus.getValue() == null) {
             displayErrorFeedbackChoiceBox(choiceBoxStatus);
             errorRegistering = true;
             mandatoryError.setVisible(true);
-            System.out.println("Empty Daily intake");
+            System.out.println("Empty box status");
         }
         if (choiceBoxGender.getValue() == null) {
             displayErrorFeedbackChoiceBox(choiceBoxGender);
@@ -129,7 +123,6 @@ public class RegisterInfoController extends LoginRegistrationController {
             System.out.println("Empty box type of training");
         }
         if (!errorRegistering) {
-
             //Creates new UserInfo, sets values from user input
             UserInfo userInfo = new UserInfo(choiceBoxGender.getValue().toString(), firstName, lastName, Double.parseDouble(weight),
                     Double.parseDouble(height), choiceBoxStatus.getValue().toString(), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
@@ -169,7 +162,6 @@ public class RegisterInfoController extends LoginRegistrationController {
 
         choiceBoxStatus.setItems(FXCollections.observableArrayList(
                 "Trainee", "Trainer")
-
         );
     }
 
@@ -194,6 +186,22 @@ public class RegisterInfoController extends LoginRegistrationController {
             return false;
         }
         return true;
+    }
+
+    private boolean possibleWeight(String sWeight) {
+        double weight = Double.parseDouble(sWeight);
+        return weight < 40 || weight > 250;
+    }
+
+    private boolean possibleHeight(String sHeight) {
+        double height = Double.parseDouble(sHeight);
+        return height < 100 || height > 250;
+    }
+
+    //Centering and setting Labels based on username.
+    public void setLabelUsernameInRegisterInfo(Label labelUsername, String username) {
+        labelUsername.setText("Hi " + username + "!");
+        labelUsername.setLayoutX(182 - ((username.length() + 1) * 5.5));
     }
 
 }

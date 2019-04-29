@@ -62,7 +62,7 @@ public class LoginRegistrationController extends Controller {
             stage.show();
             RegisterInfoController registerInfoController = loader.getController();
             registerInfoController.setUser(user);
-            registerInfoController.setLabelUsername(registerInfoController.getLabelUsername(), user, 182, 5.5, "Hi ", " !");
+            registerInfoController.setLabelUsernameInRegisterInfo(registerInfoController.getLabelUsername(), user.getUsername());
             registerInfoController.setChoiceBoxItems();
         } catch (IOException e) {
             e.printStackTrace();
