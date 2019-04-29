@@ -112,12 +112,6 @@ public class Controller extends AnchorPane {
         }
     }
 
-    //Centering and setting Labels based on username.
-    public void setLabelUsername(Label labelUsername, User user, int x, double constant, String bonus, String bonus2) {
-        labelUsername.setText(bonus + user.getUsername() + bonus2);
-        labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
-    }
-
     public void setLabelUsername(Label labelUsername, String username) {
         labelUsername.setText(username);
         labelUsername.setLayoutX(140 - ((username.length() + 1) * 5.14));
