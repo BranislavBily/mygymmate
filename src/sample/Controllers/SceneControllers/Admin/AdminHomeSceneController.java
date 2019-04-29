@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.Admin;
 
+import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -26,6 +27,18 @@ public class AdminHomeSceneController extends HomeSceneController {
 
     private Admin admin;
 
+    private int userID;
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setLabel() {
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        String username = databaseModuleUser.getUsername(userID);
+        setLabelUsername(labelUsername, username);
+    }
+
     public Admin getAdmin() {
         return admin;
     }
@@ -36,10 +49,6 @@ public class AdminHomeSceneController extends HomeSceneController {
 
     public Label getLabelUsername() {
         return labelUsername;
-    }
-
-    public void setLabelUsername(Label labelUsername) {
-        this.labelUsername = labelUsername;
     }
 
     @FXML
