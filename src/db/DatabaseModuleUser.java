@@ -33,15 +33,64 @@ public class DatabaseModuleUser extends DatabaseModule {
         super.setConnection(connection);
     }
 
-    public User isUser(String username, String password) {
+//    public User isUser(String username, String password) {
+//        ResultSet resultSet;
+//        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
+//        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+//            preparedStatement.setString(1, username);
+//            preparedStatement.setString(2, password);
+//            resultSet = preparedStatement.executeQuery();
+//            if(resultSet.next()) {
+//                return createUser(resultSet, username, password);
+//            }
+//            return null;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+
+    public Integer isUser(String username, String password) {
         ResultSet resultSet;
-        String query = "select * from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
+        String query = "select ID from "+ ModuleTables.USERS+" where Username = ? and Password = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                return createUser(resultSet, username, password);
+                return resultSet.getInt("ID");
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getUserStatus(int userID) {
+        ResultSet resultSet;
+        String query = "select status from " + ModuleTables.USERS + " where ID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getString("status");
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getUsername(int userID) {
+        ResultSet resultSet;
+        String query = "select username from " + ModuleTables.USERS + " where ID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getString("username");
             }
             return null;
         } catch (Exception e) {
