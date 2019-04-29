@@ -65,17 +65,17 @@ public class TrainerHomeSceneController extends HomeSceneController {
 
     @FXML
     private void onButtonWorkoutPressed() {
-        setSceneToWorkout(buttonWorkout.getScene(), trainer);
+        setSceneToWorkout(buttonWorkout.getScene(), userID);
     }
 
     @FXML
     private void onButtonDietPressed() {
-        setSceneToDiet(buttonDiet.getScene(), trainer);
+        setSceneToDiet(buttonDiet.getScene(), userID);
     }
 
     @FXML
     private void onButtonMeasurePressed() {
-        setSceneToMeasure(buttonDiet.getScene(), trainer);
+        setSceneToMeasure(buttonDiet.getScene(), userID);
     }
 
     @FXML

@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.FeatureScene;
 
+import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,10 +13,7 @@ import sample.Users.User;
 
 public class DietController extends HomeSceneController {
 
-    private User user;
-    private Trainee trainee;
-    private Trainer trainer;
-    private boolean isTraineeDiet;
+    private int userID;
 
     @FXML
     private Button buttonDiets;
@@ -26,26 +24,24 @@ public class DietController extends HomeSceneController {
     @FXML
     private Label labelUsername;
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setLabel() {
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        String username = databaseModuleUser.getUsername(userID);
+        setLabelUsername(labelUsername, username);
+    }
 
     @FXML
     private void onGoBackImagePressed() {
-        if(isTraineeDiet) {
-            setSceneToTraineeHomeScene(buttonBMI.getScene(), user);
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        String status = databaseModuleUser.getUserStatus(userID);
+        if(status.equals("trainee")) {
+            setSceneToTraineeHomeScene(buttonDiets.getScene(), userID);
         } else {
-            setSceneToTrainerHomeScene(buttonBMI.getScene(), user);
-        }
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-        if(user instanceof Trainee) {
-            isTraineeDiet = true;
-            // while loadTrainee does not load from db
-            //trainee = loadTrainee(user.getId());
-        } else {
-            isTraineeDiet = false;
-            //while loadTrainer does not load from db
-            //trainer = loadTrainer(user.getId());
+            setSceneToTrainerHomeScene(buttonDiets.getScene(), userID);
         }
     }
 
