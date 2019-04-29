@@ -35,14 +35,30 @@ public class Controller extends AnchorPane {
         changeSceneToTraineeHomeScene(stage, user);
     }
 
+    protected void setSceneToTraineeHomeScene(Scene scene, int userId) {
+        Stage stage = (Stage) scene.getWindow();
+        changeSceneToTraineeHomeScene(stage, userId);
+    }
+
+
     protected void setSceneToTrainerHomeScene(Scene scene, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeSceneToTrainerHomeScene(stage, user);
     }
 
+    protected void setSceneToTrainerHomeScene(Scene scene, int userID) {
+        Stage stage = (Stage) scene.getWindow();
+        changeSceneToTrainerHomeScene(stage, userID);
+    }
+
     protected void setSceneToAdminHomeScene(Scene scene, User user) {
         Stage stage = (Stage) scene.getWindow();
         changeSceneToAdminHomeScene(stage, user);
+    }
+
+    protected void setSceneToAdminHomeScene(Scene scene, int userID) {
+        Stage stage = (Stage) scene.getWindow();
+        changeSceneToAdminHomeScene(stage, userID);
     }
 
     //This method is called when sending User is not necessary
@@ -72,6 +88,39 @@ public class Controller extends AnchorPane {
             TraineeHomeSceneController traineeHomeSceneController = loader.getController();
             traineeHomeSceneController.setTrainee((Trainee) user);
             traineeHomeSceneController.setLabelUsername(traineeHomeSceneController.getLabelUsername(), user, 140, 5.14, "", "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeSceneToTraineeHomeScene(Stage stage, int userID) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINEE_HOME_SCREEN));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+            TraineeHomeSceneController traineeHomeSceneController = loader.getController();
+            traineeHomeSceneController.setUserID( userID);
+            traineeHomeSceneController.setLabel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void changeSceneToTrainerHomeScene(Stage stage, int userID) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINER_HOME_SCREEN));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle(ModuleTitles.TRAINER_HOME_SCENE);
+            stage.setResizable(false);
+            stage.show();
+            TrainerHomeSceneController trainerHomeSceneController = loader.getController();
+            trainerHomeSceneController.setUserID(userID);
+            trainerHomeSceneController.setLabel();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,10 +160,32 @@ public class Controller extends AnchorPane {
         }
     }
 
+    private void changeSceneToAdminHomeScene(Stage stage, int userID) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.ADMIN_HOME_SCREEN));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle(ModuleTitles.ADMIN_HOME_SCENE);
+            stage.setResizable(false);
+            stage.show();
+            AdminHomeSceneController adminHomeSceneController = loader.getController();
+            adminHomeSceneController.setUserID(userID);
+            adminHomeSceneController.setLabel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //Centering and setting Labels based on username.
     public void setLabelUsername(Label labelUsername, User user, int x, double constant, String bonus, String bonus2) {
         labelUsername.setText(bonus + user.getUsername() + bonus2);
         labelUsername.setLayoutX(x - ((user.getUsername().length() + 1) * constant));
+    }
+
+    public void setLabelUsername(Label labelUsername, String username) {
+        labelUsername.setText(username);
+        labelUsername.setLayoutX(140 - ((username.length() + 1) * 5.14));
     }
 
 
