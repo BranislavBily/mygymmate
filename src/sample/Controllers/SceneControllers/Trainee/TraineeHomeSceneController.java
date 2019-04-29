@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.Trainee;
 
+import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -36,6 +37,8 @@ public class TraineeHomeSceneController extends HomeSceneController {
     @FXML
     private Label labelQuote;
 
+    private int userID;
+
     public Label getLabelUsername() {
         return labelUsername;
     }
@@ -51,6 +54,16 @@ public class TraineeHomeSceneController extends HomeSceneController {
     public void setTrainee(Trainee trainee) {
         this.trainee = trainee;
         //this.trainee = loadTrainee(trainee.getId());
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setLabel() {
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        String username = databaseModuleUser.getUsername(userID);
+        setLabelUsername(labelUsername, username);
     }
 
     @FXML

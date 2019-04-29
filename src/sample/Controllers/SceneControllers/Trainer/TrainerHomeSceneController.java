@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.Trainer;
 
+import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -34,7 +35,17 @@ public class TrainerHomeSceneController extends HomeSceneController {
     @FXML
     private Button buttonAboutUs;
 
+    private int userID;
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setLabel() {
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        String username = databaseModuleUser.getUsername(userID);
+        setLabelUsername(labelUsername, username);
+    }
 
     public Trainer getTrainer() {
         return trainer;
