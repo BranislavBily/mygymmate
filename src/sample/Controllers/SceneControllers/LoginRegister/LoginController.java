@@ -28,15 +28,16 @@ public class LoginController extends LoginRegistrationController {
     @FXML
     private Label loginError;
 
+    //TODO Logging not working right now after new register
     @FXML
     private void onButtonLogInPressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = textFieldUserName.getText();
         String password = passwordFieldPassword.getText();
-        //Creates user based on login credentials
         Integer userID = databaseModuleUser.isUser(username, password);
         if (userID != null) {
             String status = databaseModuleUser.getUserStatus(userID);
+            System.out.println(status);
             switch (status) {
                 case "trainee" : setSceneToTraineeHomeScene(buttonLogIn.getScene(), userID);break;
                 case "trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene(), userID);break;

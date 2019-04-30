@@ -124,6 +124,16 @@ public class RegisterInfoController extends LoginRegistrationController {
             System.out.println("Empty box type of training");
         }
         if (!errorRegistering) {
+            RegisteredUser registeredUser = new RegisteredUser(user.getUsername(), user.getPassword(), choiceBoxStatus.getValue().toString(),
+                    textFieldFirstName.getText(), textFieldLastName.getText(), Double.parseDouble(textFieldWeight.getText()),
+                    Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString());
+            DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+            if(databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
+                setSceneToLogin(buttonGoBack.getScene());
+            } else {
+                System.out.println("Error while inserting");
+            }
+        }
 
     }
 
