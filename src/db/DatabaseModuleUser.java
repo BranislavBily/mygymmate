@@ -3,6 +3,7 @@ package db;
 
 import sample.Modules.ModuleTables;
 import sample.Users.Admin.Admin;
+import sample.Users.RegisteredUser;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
@@ -107,6 +108,27 @@ public class DatabaseModuleUser extends DatabaseModule {
             resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean insertUserIntoDatabase(RegisteredUser registerUser) {
+        ResultSet resultSet;
+        String query = "insert into " + ModuleTables.USERS + " (username, password, status, firstName, lastName, weight, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, registerUser.getUsername());
+            preparedStatement.setString(2, registerUser.getPassword());
+            preparedStatement.setString(3, registerUser.getStatus());
+            preparedStatement.setString(4, registerUser.getFirstName());
+            preparedStatement.setString(5, registerUser.getLastName());
+            preparedStatement.setDouble(6, registerUser.getWeight());
+            preparedStatement.setDouble(7, registerUser.getHeight());
+            preparedStatement.setString(8, registerUser.getGender());
+            preparedStatement.setString(9, registerUser.getTypeOfTraining());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
