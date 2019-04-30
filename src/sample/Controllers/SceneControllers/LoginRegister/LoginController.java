@@ -7,9 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
-import sample.Users.Trainee.Trainee;
-import sample.Users.Trainer.Trainer;
-import sample.Users.User;
 
 public class LoginController extends LoginRegistrationController {
 
@@ -28,7 +25,6 @@ public class LoginController extends LoginRegistrationController {
     @FXML
     private Label loginError;
 
-    //TODO Logging not working right now after new register
     @FXML
     private void onButtonLogInPressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
@@ -39,9 +35,9 @@ public class LoginController extends LoginRegistrationController {
             String status = databaseModuleUser.getUserStatus(userID);
             System.out.println(status);
             switch (status) {
-                case "trainee" : setSceneToTraineeHomeScene(buttonLogIn.getScene(), userID);break;
-                case "trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene(), userID);break;
-                case "admin" : setSceneToAdminHomeScene(buttonLogIn.getScene(), userID);break;
+                case "Trainee" : setSceneToTraineeHomeScene(buttonLogIn.getScene(), userID);break;
+                case "Trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene(), userID);break;
+                case "Admin" : setSceneToAdminHomeScene(buttonLogIn.getScene(), userID);break;
             }
         //If user was not logged in
         } else {
