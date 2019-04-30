@@ -2,7 +2,7 @@ package db;
 
 
 import sample.Modules.ModuleTables;
-import sample.Users.RegisteredUser;
+import db.DTO.RegisteredUser;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

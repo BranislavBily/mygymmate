@@ -1,4 +1,4 @@
-package sample.Users;
+package db.DTO;
 
 public class User {
 

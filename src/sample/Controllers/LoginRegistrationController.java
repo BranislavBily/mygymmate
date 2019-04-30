@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.Users.User;
+import db.DTO.User;
 
 import java.io.IOException;
 

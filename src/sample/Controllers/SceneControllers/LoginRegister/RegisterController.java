@@ -10,7 +10,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
-import sample.Users.User;
+import db.DTO.User;
 
 public class RegisterController extends LoginRegistrationController {
 
