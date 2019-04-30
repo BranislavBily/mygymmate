@@ -1,15 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
+<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentsController">
    <children>
-      <Label layoutX="83.0" layoutY="152.0" text="Branci smrdi profile">
-         <font>
-            <Font size="58.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="58.0" layoutY="58.0" prefHeight="266.0" prefWidth="573.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+         <children>
+            <Label layoutX="27.0" layoutY="26.0" prefHeight="29.0" prefWidth="76.0" text="Profile" textFill="#03383f">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="424.0" layoutX="128.0" layoutY="65.0" startX="-100.0" stroke="#03383f" />
+            <Label layoutX="29.0" layoutY="89.0" text="Name:" textFill="#107f74" />
+            <Label layoutX="29.0" layoutY="160.0" text="Gender:" textFill="#107f74" />
+            <Label layoutX="333.0" layoutY="89.0" text="Status:" textFill="#107f74" />
+            <Label layoutX="333.0" layoutY="160.0" text="Type Of Training:" textFill="#107f74" />
+            <Label fx:id="labelName" layoutX="29.0" layoutY="116.0" prefHeight="20.0" prefWidth="260.0" text="NameFromDatabase" textFill="#03383f">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelGender" layoutX="29.0" layoutY="193.0" prefHeight="20.0" prefWidth="274.0" text="GenderFromDatabase" textFill="#03383f">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelStatus" layoutX="333.0" layoutY="117.0" prefHeight="20.0" prefWidth="228.0" text="StatusFromDatabase" textFill="#03383f">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelTypeOfTraining" layoutX="333.0" layoutY="193.0" prefHeight="20.0" prefWidth="235.0" text="TypeOfTrainingFromDatabase" textFill="#03383f">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonEditProfile" layoutX="479.0" layoutY="225.0" mnemonicParsing="false" onAction="#onButtonEditProfilePressed" style="-fx-background-color: #03383f#03383f;" text="Edit Profile" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="58.0" layoutY="360.0" prefHeight="357.0" prefWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+         <children>
+            <Label layoutX="24.0" layoutY="28.0" prefHeight="29.0" prefWidth="113.0" text="Security" textFill="#03383f">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="99.0" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
+            <Button fx:id="buttonChangePassword" layoutX="55.0" layoutY="116.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Change Password" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="buttonCheckPassword" layoutX="55.0" layoutY="214.0" mnemonicParsing="false" onAction="#onButtonCheckPasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Check Password &#10;Strenght" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Button fx:id="buttonLoad" layoutX="477.0" layoutY="539.0" mnemonicParsing="false" onAction="#onButtonLoadPressed" text="Load" />
    </children>
 </AnchorPane>
