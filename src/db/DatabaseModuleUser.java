@@ -1,6 +1,7 @@
 package db;
 
 
+import db.DTO.ProfileData;
 import sample.Modules.ModuleTables;
 import db.DTO.RegisteredUser;
 
@@ -64,6 +65,11 @@ public class DatabaseModuleUser {
         }
     }
 
+    /**
+     * Method used for loading username into Labels
+     * @param userID ID of user in database
+     * @return String with username of user, <code>null</code> if no user is found
+     */
     public String getUsername(int userID) {
         ResultSet resultSet;
         String query = "select username from " + ModuleTables.USERS + " where ID = ?";
@@ -112,32 +118,28 @@ public class DatabaseModuleUser {
             return false;
         }
     }
-//
-//    public boolean registerUser(String name, String pass) throws SQLException {
-//        String sql = "insert into users(username, password, status) values(?, ?, ?)";
-//        return super.queryUpdateThreeValues(sql, name, pass, "user");
-//    }
 
-//    public User getUserFromName(String name) throws SQLException {
-//        String sql = "select * from users where username =?";
-//        PreparedStatement preparedStatement = null;
-//        ResultSet resultSet;
-//        try {
-//            preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setString(1, name);
-//            resultSet = preparedStatement.executeQuery();
-//            if(resultSet.next()) {
-//                return new User(resultSet.getInt("id"), resultSet.getString("username"), resultSet.getString("status"));
-//            }
-//            return null;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return null;
-//        } finally {
-//            assert preparedStatement != null;
-//            preparedStatement.close();
-//        }
-//    }
+    public ProfileData loadUserProfileData(int userID) {
+        ResultSet resultSet;
+        ProfileData profileData = new ProfileData();
+        String query = "select * from " + ModuleTables.USERS + " where ID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                profileData.setName(resultSet.getString("FirstName") + " " + resultSet.getString("LastName"));
+                profileData.setGender(resultSet.getString("gender"));
+                profileData.setStatus(resultSet.getString("status"));
+                profileData.setTypeOfTraining(resultSet.getString("typeOfTraining"));
+                return profileData;
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 //
 //    public boolean deleteUser(String name) throws SQLException {
 //        String sql = "delete from users where username = ?";
