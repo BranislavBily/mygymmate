@@ -11,6 +11,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
 import sample.Modules.TypeOfTraining;
+import sample.Users.RegisteredUser;
 import sample.Users.Trainee.Trainee;
 import sample.Users.Trainer.Trainer;
 import sample.Users.User;
@@ -92,13 +93,13 @@ public class RegisterInfoController extends LoginRegistrationController {
             mandatoryError.setVisible(true);
             System.out.println("LastName is empty");
         }
-        if (weight.equals("") || !numberOrNot(weight) || !possibleWeight(weight)) {
+        if (weight.equals("") || !numberOrNot(weight) || possibleWeight(weight)) {
             displayErrorFeedbackUsername(textFieldWeight);
             System.out.println("Empty Weight");
             mandatoryError.setVisible(true);
             errorRegistering = true;
         }
-        if (height.equals("") || !numberOrNot(height) || !possibleHeight(height)) {
+        if (height.equals("") || !numberOrNot(height) || possibleHeight(height)) {
             displayErrorFeedbackUsername(textFieldHeight);
             System.out.println("Empty Height");
             mandatoryError.setVisible(true);
@@ -124,29 +125,14 @@ public class RegisterInfoController extends LoginRegistrationController {
         }
         if (!errorRegistering) {
             //Creates new UserInfo, sets values from user input
-            UserInfo userInfo = new UserInfo(choiceBoxGender.getValue().toString(), firstName, lastName, Double.parseDouble(weight),
-                    Double.parseDouble(height), choiceBoxStatus.getValue().toString(), TypeOfTraining.valueOf(choiceBoxTypeOfTraining.getValue().toString()));
-            if (userInfo.getStatus().equals("Trainee")) {
-                Trainee trainee = new Trainee(user.getUsername(), user.getPassword());
-                trainee.setUserInfo(userInfo);
-                System.out.println(trainee.toString());
-                DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-                if (databaseModuleUser.insertTraineeInfoToDatabase(trainee)) {
-                    setSceneToLogin(textFieldFirstName.getScene());
-                } else {
-                    System.out.println("Error while inserting Trainee");
-                }
-
-            } else if (userInfo.getStatus().equals("Trainer")) {
-                Trainer trainer = new Trainer(user.getUsername(), user.getPassword());
-                trainer.setUserInfo(userInfo);
-                System.out.println(trainer.toString());
-                DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-                if (databaseModuleUser.insertTrainerInfoToDatabase(trainer)) {
-                    setSceneToLogin(textFieldFirstName.getScene());
-                } else {
-                    System.out.println("Error while inserting Trainer");
-                }
+            RegisteredUser registeredUser = new RegisteredUser(user.getUsername(), user.getPassword(), choiceBoxStatus.getValue().toString(),
+                    textFieldFirstName.getText(), textFieldLastName.getText(), Double.parseDouble(textFieldWeight.getText()), Double.parseDouble(textFieldHeight.getText()),
+                    choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString());
+            DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+            if(databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
+                setSceneToLogin(buttonGoBack.getScene());
+            } else {
+                System.out.println("Error while registering");
             }
         }
     }
