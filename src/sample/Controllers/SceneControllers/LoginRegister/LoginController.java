@@ -1,12 +1,16 @@
 package sample.Controllers.SceneControllers.LoginRegister;
 
+import db.DTO.Workout;
 import db.DatabaseModuleUser;
+import db.DatabaseModuleWorkout;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
+
+import java.util.ArrayList;
 
 public class LoginController extends LoginRegistrationController {
 
