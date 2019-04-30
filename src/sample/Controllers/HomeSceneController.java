@@ -45,6 +45,7 @@ public class HomeSceneController extends Controller {
             WorkoutController workoutController = loader.getController();
             workoutController.setUserID(userID);
             workoutController.setLabel();
+            workoutController.loadWorkoutsIntoTable();
         } catch (IOException e) {
             e.printStackTrace();
         }
