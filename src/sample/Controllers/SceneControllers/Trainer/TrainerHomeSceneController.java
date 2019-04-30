@@ -8,11 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
-import sample.Users.Trainer.Trainer;
 
 public class TrainerHomeSceneController extends HomeSceneController {
 
-    private Trainer trainer;
     @FXML
     private Label labelUsername;
 
@@ -45,14 +43,6 @@ public class TrainerHomeSceneController extends HomeSceneController {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
-    }
-
-    public Trainer getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
     }
 
     public Label getLabelUsername() {

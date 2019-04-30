@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -15,10 +14,6 @@ import sample.Controllers.SceneControllers.Trainee.TraineeHomeSceneController;
 import sample.Controllers.SceneControllers.Trainer.TrainerHomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.Users.Admin.Admin;
-import sample.Users.Trainee.Trainee;
-import sample.Users.Trainer.Trainer;
-import sample.Users.User;
 
 import java.io.IOException;
 

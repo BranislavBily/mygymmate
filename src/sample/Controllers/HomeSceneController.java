@@ -10,9 +10,6 @@ import sample.Controllers.SceneControllers.FeatureScene.MeasureController;
 import sample.Controllers.SceneControllers.FeatureScene.WorkoutController;
 import sample.Modules.ModuleFXML;
 import sample.Modules.ModuleTitles;
-import sample.Users.Trainee.Trainee;
-import sample.Users.Trainer.Trainer;
-import sample.Users.User;
 
 import java.io.IOException;
 

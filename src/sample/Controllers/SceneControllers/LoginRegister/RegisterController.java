@@ -10,10 +10,6 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
-import sample.Modules.ModuleFXML;
-import sample.Modules.ModuleTitles;
-import sample.Security.PasswordChecker;
-import sample.Users.Trainee.Trainee;
 import sample.Users.User;
 
 public class RegisterController extends LoginRegistrationController {

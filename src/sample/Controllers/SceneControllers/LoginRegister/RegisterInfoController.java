@@ -10,12 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import sample.Controllers.LoginRegistrationController;
-import sample.Modules.TypeOfTraining;
 import sample.Users.RegisteredUser;
-import sample.Users.Trainee.Trainee;
-import sample.Users.Trainer.Trainer;
 import sample.Users.User;
-import sample.Users.UserInfo;
 
 public class RegisterInfoController extends LoginRegistrationController {
 

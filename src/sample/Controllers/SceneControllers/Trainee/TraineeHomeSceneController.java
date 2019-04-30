@@ -8,12 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
-import sample.Users.Trainee.Trainee;
-
 
 public class TraineeHomeSceneController extends HomeSceneController {
 
-    private Trainee trainee;
     @FXML
     private Button buttonLogOut;
     @FXML
@@ -45,15 +42,6 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     public void setLabelUsername(Label labelUsername) {
         this.labelUsername = labelUsername;
-    }
-
-    public Trainee getTrainee() {
-        return trainee;
-    }
-
-    public void setTrainee(Trainee trainee) {
-        this.trainee = trainee;
-        //this.trainee = loadTrainee(trainee.getId());
     }
 
     public void setUserID(int userID) {

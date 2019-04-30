@@ -4,12 +4,7 @@ import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import sample.Controllers.Controller;
 import sample.Controllers.HomeSceneController;
-import sample.Modules.ModuleTitles;
-import sample.Users.Trainee.Trainee;
-import sample.Users.Trainer.Trainer;
-import sample.Users.User;
 
 
 public class MeasureController extends HomeSceneController {

@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
-import sample.Users.Admin.Admin;
 
 public class AdminHomeSceneController extends HomeSceneController {
 
@@ -25,7 +24,6 @@ public class AdminHomeSceneController extends HomeSceneController {
     @FXML
     private Button buttonLogOut;
 
-    private Admin admin;
 
     private int userID;
 
@@ -37,14 +35,6 @@ public class AdminHomeSceneController extends HomeSceneController {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
-    }
-
-    public Admin getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
     }
 
     public Label getLabelUsername() {
