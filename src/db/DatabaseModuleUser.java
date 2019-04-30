@@ -10,15 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * and will be punished
- * This code is proprietary and confidential of the person stated bellow
- * Created by branislavbily on 11.01.2019
- * If you are confused, feel free to ask me <branislav.bily@gmail.com>
+ * Module for handling data from Users table
  */
 public class DatabaseModuleUser {
-
-    //Module for querying User related data from the database
 
     private Connection connection;
 

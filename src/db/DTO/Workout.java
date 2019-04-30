@@ -1,5 +1,8 @@
 package db.DTO;
 
+/**
+ * Data transfer object for Workout
+ */
 public class Workout {
 
     private String exercise;

@@ -16,7 +16,9 @@ import db.DTO.User;
 
 import java.io.IOException;
 
-//Class for methods specific for Login & Registration
+/**
+ * Controller for methods used in Login and Registration Scenes
+ */
 public class LoginRegistrationController extends Controller {
 
     protected void displayErrorFeedbackUsername(TextField textField){

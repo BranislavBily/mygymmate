@@ -13,7 +13,9 @@ import sample.Modules.ModuleTitles;
 
 import java.io.IOException;
 
-//Class for methods specific for Home Scenes, including Workout Measure and Diet
+/**
+ * Controller for methods used in Diet, Workout and Measure scenes => HomeScenes
+ */
 public class HomeSceneController extends Controller {
 
     protected void setSceneToWorkout(Scene scene, int userID) {

@@ -17,7 +17,9 @@ import sample.Modules.ModuleTitles;
 
 import java.io.IOException;
 
-//Controller for methods that can be used in all Controllers
+/**
+ * Controller for methods used in all scenes
+ */
 public class Controller extends AnchorPane {
 
     protected void setSceneToLogin(Scene scene) {
@@ -54,7 +56,6 @@ public class Controller extends AnchorPane {
             e.printStackTrace();
         }
     }
-
 
     private void changeSceneToTraineeHomeScene(Stage stage, int userID) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINEE_HOME_SCREEN));
@@ -107,7 +108,7 @@ public class Controller extends AnchorPane {
         }
     }
 
-    public void setLabelUsername(Label labelUsername, String username) {
+    protected void setLabelUsername(Label labelUsername, String username) {
         labelUsername.setText(username);
         labelUsername.setLayoutX(140 - ((username.length() + 1) * 5.14));
     }

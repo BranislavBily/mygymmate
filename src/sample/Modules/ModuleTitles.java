@@ -1,5 +1,8 @@
 package sample.Modules;
 
+/**
+ * Resources for Titles
+ */
 public interface ModuleTitles {
     String LOG_IN = "Log in";
     String REGISTER = "Sign Up";
