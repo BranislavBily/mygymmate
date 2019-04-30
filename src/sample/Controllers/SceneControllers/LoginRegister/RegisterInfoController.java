@@ -75,8 +75,6 @@ public class RegisterInfoController extends LoginRegistrationController {
         String weight = textFieldWeight.getText();
         String height = textFieldHeight.getText();
 
-
-        //If Names are empty
         if (firstName.equals("")) {
             displayErrorFeedbackUsername(textFieldFirstName);
             errorRegistering = true;
@@ -89,13 +87,13 @@ public class RegisterInfoController extends LoginRegistrationController {
             mandatoryError.setVisible(true);
             System.out.println("LastName is empty");
         }
-        if (weight.equals("") || !numberOrNot(weight) || possibleWeight(weight)) {
+        if (weight.equals("") || !numberOrNot(weight) || impossibleWeight(weight)) {
             displayErrorFeedbackUsername(textFieldWeight);
             System.out.println("Empty Weight");
             mandatoryError.setVisible(true);
             errorRegistering = true;
         }
-        if (height.equals("") || !numberOrNot(height) || possibleHeight(height)) {
+        if (height.equals("") || !numberOrNot(height) || impossibleHeight(height)) {
             displayErrorFeedbackUsername(textFieldHeight);
             System.out.println("Empty Height");
             mandatoryError.setVisible(true);
@@ -170,12 +168,12 @@ public class RegisterInfoController extends LoginRegistrationController {
         return true;
     }
 
-    private boolean possibleWeight(String sWeight) {
+    private boolean impossibleWeight(String sWeight) {
         double weight = Double.parseDouble(sWeight);
         return weight < 40 || weight > 250;
     }
 
-    private boolean possibleHeight(String sHeight) {
+    private boolean impossibleHeight(String sHeight) {
         double height = Double.parseDouble(sHeight);
         return height < 100 || height > 250;
     }
