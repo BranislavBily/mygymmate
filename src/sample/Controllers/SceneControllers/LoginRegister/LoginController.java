@@ -1,16 +1,13 @@
 package sample.Controllers.SceneControllers.LoginRegister;
 
-import db.DTO.Workout;
 import db.DatabaseModuleUser;
-import db.DatabaseModuleWorkout;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sample.Controllers.LoginRegistrationController;
-
-import java.util.ArrayList;
+import sample.Session;
 
 public class LoginController extends LoginRegistrationController {
 
@@ -36,6 +33,7 @@ public class LoginController extends LoginRegistrationController {
         String password = passwordFieldPassword.getText();
         Integer userID = databaseModuleUser.isUser(username, password);
         if (userID != null) {
+            Session.setUserID(userID);
             String status = databaseModuleUser.getUserStatus(userID);
             System.out.println(status);
             switch (status) {

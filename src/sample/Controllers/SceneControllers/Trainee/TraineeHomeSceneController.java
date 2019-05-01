@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
+import sample.Session;
 
 public class TraineeHomeSceneController extends HomeSceneController {
 
@@ -45,7 +46,8 @@ public class TraineeHomeSceneController extends HomeSceneController {
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userID = Session.getUserID();
+        System.out.println(this.userID);
     }
 
     public void setLabel() {
