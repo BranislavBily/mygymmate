@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Controllers.HomeSceneController;
+import sample.Session;
 
 import java.util.ArrayList;
 
@@ -57,7 +58,7 @@ public class WorkoutController extends HomeSceneController {
 
     public void loadWorkoutsIntoTable() {
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
-        ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts(userID);
+        ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts(Session.getUserID());
         tableColumnExercise.setCellValueFactory(new PropertyValueFactory("Exercise"));
         tableColumnRepetitions.setCellValueFactory(new PropertyValueFactory("Repetitions"));
         tableColumnWeight.setCellValueFactory(new PropertyValueFactory("Weight"));

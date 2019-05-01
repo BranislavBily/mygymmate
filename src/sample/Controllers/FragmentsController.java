@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import sample.Session;
 
 public class FragmentsController extends AnchorPane {
 
@@ -29,7 +30,7 @@ public class FragmentsController extends AnchorPane {
     @FXML
     private void onButtonLoadPressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        ProfileData profileData = databaseModuleUser.loadUserProfileData(4);
+        ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
         labelName.setText(profileData.getName());
         labelGender.setText(profileData.getGender());
         labelStatus.setText(profileData.getStatus());
