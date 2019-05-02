@@ -27,19 +27,19 @@ public class Controller extends AnchorPane {
         changeScene(stage, ModuleFXML.LOGIN, ModuleTitles.LOG_IN);
     }
 
-    protected void setSceneToTraineeHomeScene(Scene scene, int userId) {
+    protected void setSceneToTraineeHomeScene(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
-        changeSceneToTraineeHomeScene(stage, userId);
+        changeSceneToTraineeHomeScene(stage);
     }
 
-    protected void setSceneToTrainerHomeScene(Scene scene, int userID) {
+    protected void setSceneToTrainerHomeScene(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
-        changeSceneToTrainerHomeScene(stage, userID);
+        changeSceneToTrainerHomeScene(stage);
     }
 
-    protected void setSceneToAdminHomeScene(Scene scene, int userID) {
+    protected void setSceneToAdminHomeScene(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
-        changeSceneToAdminHomeScene(stage, userID);
+        changeSceneToAdminHomeScene(stage);
     }
 
     //This method is called when sending User is not necessary
@@ -57,7 +57,7 @@ public class Controller extends AnchorPane {
         }
     }
 
-    private void changeSceneToTraineeHomeScene(Stage stage, int userID) {
+    private void changeSceneToTraineeHomeScene(Stage stage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINEE_HOME_SCREEN));
         try {
             Parent root = loader.load();
@@ -67,14 +67,13 @@ public class Controller extends AnchorPane {
             stage.setTitle(ModuleTitles.TRAINEE_HOME_SCENE);
             stage.show();
             TraineeHomeSceneController traineeHomeSceneController = loader.getController();
-            traineeHomeSceneController.setUserID( userID);
-            traineeHomeSceneController.setLabel();
+            traineeHomeSceneController.onCreate();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void changeSceneToTrainerHomeScene(Stage stage, int userID) {
+    private void changeSceneToTrainerHomeScene(Stage stage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINER_HOME_SCREEN));
         try {
             Parent root = loader.load();
@@ -84,14 +83,13 @@ public class Controller extends AnchorPane {
             stage.setResizable(false);
             stage.show();
             TrainerHomeSceneController trainerHomeSceneController = loader.getController();
-            trainerHomeSceneController.setUserID(userID);
-            trainerHomeSceneController.setLabel();
+            trainerHomeSceneController.onCreate();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void changeSceneToAdminHomeScene(Stage stage, int userID) {
+    private void changeSceneToAdminHomeScene(Stage stage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.ADMIN_HOME_SCREEN));
         try {
             Parent root = loader.load();
@@ -101,8 +99,7 @@ public class Controller extends AnchorPane {
             stage.setResizable(false);
             stage.show();
             AdminHomeSceneController adminHomeSceneController = loader.getController();
-            adminHomeSceneController.setUserID(userID);
-            adminHomeSceneController.setLabel();
+            adminHomeSceneController.onCreate();
         } catch (IOException e) {
             e.printStackTrace();
         }
