@@ -1,4 +1,4 @@
-package sample.Controllers.FragmentControllers;
+package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
@@ -55,16 +55,24 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private void onButtonSavePressed() {
         //Check for user input
+        ProfileData profileData = loadProfileDataFromScene();
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        if (databaseModuleUser.updateUser(profileData)) {
+            System.out.println("Settings saved");
+            onCreate();
+        } else {
+            System.out.println("Error while updating User data");
+        }
+    }
+
+    private ProfileData loadProfileDataFromScene() {
         ProfileData profileData = new ProfileData();
         profileData.setRealName(textFieldRealName.getText());
         profileData.setUsername(textFieldUsername.getText());
         profileData.setStatus(choiceBoxStatus.getValue().toString());
         profileData.setGender(choiceBoxGender.getValue().toString());
         profileData.setTypeOfTraining(choiceBoxTypeOfTraining.getValue().toString());
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        databaseModuleUser.updateUser(profileData);
-        System.out.println("Settings saved");
-        onCreate();
+        return profileData;
     }
 
     @FXML
@@ -73,8 +81,11 @@ public class SettingsFragmentController extends Controller {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         if(databaseModuleUser.isUser(username, passwordFromDialog) != null) {
-            databaseModuleUser.deleteLoggedInUser();
-            setSceneToLogin(buttonDelete.getScene());
+            if(!databaseModuleUser.deleteLoggedInUser()) {
+                System.out.println("Error while deleting user");
+            } else {
+                setSceneToLogin(buttonDelete.getScene());
+            }
         } else {
             new WrongPasswordDialog(Alert.AlertType.ERROR);
             System.out.println("Wrong password");
