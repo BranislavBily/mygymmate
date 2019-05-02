@@ -4,12 +4,18 @@ import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import sample.Controllers.SceneControllers.Controller;
+import sample.Dialogs.PasswordConfirmation;
+import sample.Dialogs.WrongPasswordDialog;
 import sample.Session;
 
-public class SettingsFragmentController {
+import java.util.Optional;
+
+public class SettingsFragmentController extends Controller {
 
     private int userID;
 
@@ -63,8 +69,16 @@ public class SettingsFragmentController {
 
     @FXML
     private void onButtonDeletePressed() {
-        //Otvori sa dialogove okno s heslom
-        System.out.println("Profile deleted");
+        String passwordFromDialog = getPasswordFromPasswordDialog();
+        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
+        String username = databaseModuleUser.getUsername(userID);
+        if(databaseModuleUser.isUser(username, passwordFromDialog) != null) {
+            databaseModuleUser.deleteLoggedInUser();
+            setSceneToLogin(buttonDelete.getScene());
+        } else {
+            new WrongPasswordDialog(Alert.AlertType.ERROR);
+            System.out.println("Wrong password");
+        }
     }
 
     private void setChoiceBoxItems() {
@@ -79,6 +93,13 @@ public class SettingsFragmentController {
         choiceBoxStatus.setItems(FXCollections.observableArrayList(
                 "Trainee", "Trainer")
         );
+    }
+
+    private String getPasswordFromPasswordDialog() {
+        PasswordConfirmation passwordConfirmation = new PasswordConfirmation("Enter password",
+                "Confirm this action by entering your password", "");
+        Optional<String> result = passwordConfirmation.showAndWait();
+        return result.orElse("");
     }
 
 }
