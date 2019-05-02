@@ -64,7 +64,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="buttonDelete" layoutX="425.0" layoutY="89.0" mnemonicParsing="false" onAction="#onButtonDeletePressed" prefHeight="43.0" prefWidth="120.0" style="-fx-background-color: #ff0000;" text="Delete" textFill="WHITE">
+      <Button fx:id="buttonDelete" layoutX="425.0" layoutY="89.0" mnemonicParsing="false" onAction="#onButtonDeletePressed" prefHeight="43.0" prefWidth="120.0" style="-fx-background-color: #f13434;" text="Delete" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
