@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
-import sample.Controllers.LoginRegistrationController;
+import sample.Controllers.SceneControllers.LoginRegistrationController;
 import db.DTO.RegisteredUser;
 import db.DTO.User;
 
@@ -120,7 +120,7 @@ public class RegisterInfoController extends LoginRegistrationController {
         if (!errorRegistering) {
             RegisteredUser registeredUser = new RegisteredUser(user.getUsername(), user.getPassword(), choiceBoxStatus.getValue().toString(),
                     textFieldFirstName.getText(), textFieldLastName.getText(), Double.parseDouble(textFieldWeight.getText()),
-                    Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString());
+                    Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "));
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
             if(databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
                 setSceneToLogin(buttonGoBack.getScene());
@@ -128,7 +128,6 @@ public class RegisterInfoController extends LoginRegistrationController {
                 System.out.println("Error while inserting");
             }
         }
-
     }
 
     public void setChoiceBoxItems() {
@@ -137,7 +136,7 @@ public class RegisterInfoController extends LoginRegistrationController {
         );
 
         choiceBoxTypeOfTraining.setItems(FXCollections.observableArrayList(
-                "Lose_Weight", "Gain_Muscle")
+                "Lose Weight", "Gain Muscle")
         );
 
         choiceBoxStatus.setItems(FXCollections.observableArrayList(
