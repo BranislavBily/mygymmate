@@ -2,7 +2,6 @@ package db.DTO;
 
 public class User {
 
-    private int id;
     private String username;
 
     private String password;
@@ -29,19 +28,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{Username: ").append(getUsername()).append(", Password: ").append(getPassword()).append("}");
-        return sb.toString();
+        return "{Username: " + getUsername() + ", Password: " + getPassword() + "}";
     }
 }
