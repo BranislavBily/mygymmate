@@ -4,7 +4,7 @@ import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import sample.Controllers.HomeSceneController;
+import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Session;
 
 public class DietController extends HomeSceneController {

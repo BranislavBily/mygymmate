@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.HomeSceneController;
+import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Session;
 

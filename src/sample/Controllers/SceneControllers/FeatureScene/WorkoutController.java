@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.Controllers.HomeSceneController;
+import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Session;
 
 import java.util.ArrayList;

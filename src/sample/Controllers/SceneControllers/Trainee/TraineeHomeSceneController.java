@@ -7,10 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.Fragments.ProfileFragmentController;
-import sample.Controllers.Fragments.SettingsFragmentController;
-import sample.Controllers.Fragments.TrainerInfoFragmentController;
-import sample.Controllers.HomeSceneController;
+import sample.Controllers.FragmentControllers.ProfileFragmentController;
+import sample.Controllers.FragmentControllers.SettingsFragmentController;
+import sample.Controllers.FragmentControllers.TrainerInfoFragmentController;
+import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Session;
 
@@ -100,7 +100,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
             e.printStackTrace();
         }
         SettingsFragmentController settingsFragment = fxmlLoader.getController();
-
+        settingsFragment.onCreate();
         mainFragment.getChildren().setAll(root);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonSettings.getStyleClass().add("buttonActive");

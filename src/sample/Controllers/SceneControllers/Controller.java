@@ -1,4 +1,4 @@
-package sample.Controllers;
+package sample.Controllers.SceneControllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;

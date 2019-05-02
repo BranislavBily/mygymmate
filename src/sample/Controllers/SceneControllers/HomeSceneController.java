@@ -1,10 +1,9 @@
-package sample.Controllers;
+package sample.Controllers.SceneControllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.FeatureScene.DietController;
 import sample.Controllers.SceneControllers.FeatureScene.MeasureController;
