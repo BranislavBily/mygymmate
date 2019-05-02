@@ -1,9 +1,9 @@
 package sample.Resources;
 
 /**
- * Resources for all FXML with correct paths
+ * Resources for all ResourceFXML with correct paths
  */
-public interface FXML {
+public interface ResourceFXML {
         String LOGIN = "../../../FXML/LOGIN.fxml";
         String REGISTER = "../../../FXML/registration.fxml";
         String REGISTER_INFO = "../../../FXML/registrationInfo.fxml";
