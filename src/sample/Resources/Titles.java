@@ -1,9 +1,9 @@
-package sample.Modules;
+package sample.Resources;
 
 /**
  * Resources for Titles
  */
-public interface ModuleTitles {
+public interface Titles {
     String LOG_IN = "Log in";
     String REGISTER = "Sign Up";
     String REGISTER_INFO = "Register Info: ";
