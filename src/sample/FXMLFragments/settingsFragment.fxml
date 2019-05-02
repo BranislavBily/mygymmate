@@ -1,15 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Fragments.SettingsFragmentController">
-   <children>
-      <Label layoutX="83.0" layoutY="152.0" text="Branci smrdi settings">
+<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.SettingsFragmentController">
+   <AnchorPane layoutX="33.0" layoutY="35.0" prefHeight="478.0" prefWidth="633.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+      <Label layoutX="25.0" layoutY="23.0" prefHeight="29.0" prefWidth="135.0" text="Edit Profile" textFill="#03383f">
          <font>
-            <Font size="49.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-   </children>
+      <Line endX="481.0" layoutX="126.0" layoutY="59.0" startX="-100.0" stroke="#03383f" />
+      <Label layoutX="35.0" layoutY="77.0" prefHeight="19.0" prefWidth="79.0" text="Username:" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldUsername" layoutX="35.0" layoutY="106.0" prefHeight="27.0" prefWidth="582.0" />
+      <Label layoutX="38.0" layoutY="144.0" prefHeight="19.0" prefWidth="79.0" text="Real name:" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldRealName" layoutX="35.0" layoutY="169.0" prefHeight="27.0" prefWidth="582.0" />
+      <Label layoutX="35.0" layoutY="230.0" prefHeight="19.0" prefWidth="79.0" text="Gender:" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBoxGender" layoutX="35.0" layoutY="264.0" prefWidth="150.0" />
+      <Label layoutX="35.0" layoutY="332.0" prefHeight="19.0" prefWidth="79.0" text="Status:" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBoxStatus" layoutX="35.0" layoutY="366.0" prefWidth="150.0" />
+      <Label layoutX="326.0" layoutY="230.0" prefHeight="19.0" prefWidth="120.0" text="Type of training:" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="326.0" layoutY="264.0" prefWidth="150.0" />
+      <Button fx:id="buttonSave" layoutX="326.0" layoutY="366.0" mnemonicParsing="false" onAction="#onButtonSavePressed" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </AnchorPane>
+   <AnchorPane layoutX="33.0" layoutY="543.0" prefHeight="187.0" prefWidth="633.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+      <Label layoutX="23.0" layoutY="25.0" prefHeight="43.0" prefWidth="264.0" text="Delete profile" textFill="RED">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="85.0" prefHeight="50.0" prefWidth="271.0" text="This action can not be undone!">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonDelete" layoutX="425.0" layoutY="89.0" mnemonicParsing="false" onAction="#onButtonDeletePressed" prefHeight="43.0" prefWidth="120.0" style="-fx-background-color: #ff0000;" text="Delete" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </AnchorPane>
 </AnchorPane>
