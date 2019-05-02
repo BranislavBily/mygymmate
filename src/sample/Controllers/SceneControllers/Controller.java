@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.Admin.AdminHomeSceneController;
 import sample.Controllers.SceneControllers.Trainee.TraineeHomeSceneController;
 import sample.Controllers.SceneControllers.Trainer.TrainerHomeSceneController;
-import sample.Resources.FXML;
-import sample.Resources.Titles;
+import sample.Resources.ResourceFXML;
+import sample.Resources.ResourceTitles;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class Controller extends AnchorPane {
 
     protected void setSceneToLogin(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, FXML.LOGIN, Titles.LOG_IN);
+        changeScene(stage, ResourceFXML.LOGIN, ResourceTitles.LOG_IN);
     }
 
     protected void setSceneToTraineeHomeScene(Scene scene) {
@@ -57,13 +57,13 @@ public class Controller extends AnchorPane {
     }
 
     private void changeSceneToTraineeHomeScene(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.TRAINEE_HOME_SCREEN));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.TRAINEE_HOME_SCREEN));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.setTitle(Titles.TRAINEE_HOME_SCENE);
+            stage.setTitle(ResourceTitles.TRAINEE_HOME_SCENE);
             stage.show();
             TraineeHomeSceneController traineeHomeSceneController = loader.getController();
             traineeHomeSceneController.onCreate();
@@ -73,12 +73,12 @@ public class Controller extends AnchorPane {
     }
 
     private void changeSceneToTrainerHomeScene(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.TRAINER_HOME_SCREEN));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.TRAINER_HOME_SCREEN));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(Titles.TRAINER_HOME_SCENE);
+            stage.setTitle(ResourceTitles.TRAINER_HOME_SCENE);
             stage.setResizable(false);
             stage.show();
             TrainerHomeSceneController trainerHomeSceneController = loader.getController();
@@ -89,12 +89,12 @@ public class Controller extends AnchorPane {
     }
 
     private void changeSceneToAdminHomeScene(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.ADMIN_HOME_SCREEN));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.ADMIN_HOME_SCREEN));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(Titles.ADMIN_HOME_SCENE);
+            stage.setTitle(ResourceTitles.ADMIN_HOME_SCENE);
             stage.setResizable(false);
             stage.show();
             AdminHomeSceneController adminHomeSceneController = loader.getController();

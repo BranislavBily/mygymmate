@@ -3,7 +3,7 @@ package db;
 
 import db.DTO.ProfileData;
 import db.DTO.RegisteredUser;
-import sample.Resources.Tables;
+import sample.Resources.ResourceTables;
 import sample.Session;
 
 import java.sql.Connection;
@@ -35,7 +35,7 @@ public class DatabaseModuleUser {
     //TODO Javadoc
     public Integer isUser(String username, String password) {
         ResultSet resultSet;
-        String query = "select ID from "+ Tables.USERS+" where Username = ? and Password = ?";
+        String query = "select ID from "+ ResourceTables.USERS+" where Username = ? and Password = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
@@ -52,7 +52,7 @@ public class DatabaseModuleUser {
 
     public String getUserStatus(int userID) {
         ResultSet resultSet;
-        String query = "select status from " + Tables.USERS + " where ID = ?";
+        String query = "select status from " + ResourceTables.USERS + " where ID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
@@ -73,7 +73,7 @@ public class DatabaseModuleUser {
      */
     public String getUsername(int userID) {
         ResultSet resultSet;
-        String query = "select username from " + Tables.USERS + " where ID = ?";
+        String query = "select username from " + ResourceTables.USERS + " where ID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
@@ -89,7 +89,7 @@ public class DatabaseModuleUser {
 
     public boolean isUsernameTaken(String username) {
         ResultSet resultSet;
-        String query = "select * from "+ Tables.USERS+" where Username = ?";
+        String query = "select * from "+ ResourceTables.USERS+" where Username = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -101,7 +101,7 @@ public class DatabaseModuleUser {
     }
 
     public boolean insertUserIntoDatabase(RegisteredUser registerUser) {
-        String query = "insert into " + Tables.USERS + " (username, password, status, firstName, lastName, weight, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into " + ResourceTables.USERS + " (username, password, status, firstName, lastName, weight, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, registerUser.getUsername());
             preparedStatement.setString(2, registerUser.getPassword());
@@ -123,7 +123,7 @@ public class DatabaseModuleUser {
     public ProfileData loadUserProfileData(int userID) {
         ResultSet resultSet;
         ProfileData profileData = new ProfileData();
-        String query = "select * from " + Tables.USERS + " where ID = ?";
+        String query = "select * from " + ResourceTables.USERS + " where ID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
@@ -145,7 +145,7 @@ public class DatabaseModuleUser {
     public boolean updateUser(ProfileData profileData) {
         int userID = Session.getUserID();
         String [] name = profileData.getRealName().split(" ");
-        String query = "update " + Tables.USERS + " set username = ?, status = ?, firstName = ?, lastName = ?, " +
+        String query = "update " + ResourceTables.USERS + " set username = ?, status = ?, firstName = ?, lastName = ?, " +
                 "gender = ?, typeOfTraining = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, profileData.getUsername());
@@ -164,7 +164,7 @@ public class DatabaseModuleUser {
 
     public boolean deleteLoggedInUser() {
         int userID = Session.getUserID();
-        String query = "delete from " + Tables.USERS + " where id = ?";
+        String query = "delete from " + ResourceTables.USERS + " where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             return preparedStatement.executeUpdate() > 0;

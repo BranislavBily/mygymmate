@@ -1,6 +1,7 @@
 package sample.Controllers.SceneControllers.Trainer;
 
 import db.DatabaseModuleUser;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -9,33 +10,33 @@ import javafx.scene.layout.AnchorPane;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragmentController;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
-import sample.Resources.FXML;
+import sample.Resources.ResourceFXML;
 import sample.Session;
 
 import java.io.IOException;
 
 public class TrainerHomeSceneController extends HomeSceneController {
 
-    @javafx.fxml.FXML
+    @FXML
     private Label labelUsername;
 
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonLogOut;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonWorkout;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonDiet;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonMeasure;
-    @javafx.fxml.FXML
+    @FXML
     private AnchorPane mainFragment;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonProfile;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonSettings;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonTraineeInfo;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonAboutUs;
 
     private int userID;
@@ -51,29 +52,29 @@ public class TrainerHomeSceneController extends HomeSceneController {
         setLabelUsername(labelUsername, username);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onButtonWorkoutPressed() {
         setSceneToWorkout(buttonWorkout.getScene());
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onButtonDietPressed() {
         setSceneToDiet(buttonDiet.getScene());
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onButtonMeasurePressed() {
         setSceneToMeasure(buttonDiet.getScene());
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onProfileButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML.PROFILE_FRAGMENT));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.PROFILE_FRAGMENT));
         Parent fragment = null;
         try {
             fragment = fxmlLoader.load();
@@ -87,9 +88,9 @@ public class TrainerHomeSceneController extends HomeSceneController {
         buttonProfile.getStyleClass().add("buttonActive");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onSettingsButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML.SETTINGS_FRAGMENT));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.SETTINGS_FRAGMENT));
         Parent root = null;
         try {
             root = fxmlLoader.load();
@@ -103,16 +104,16 @@ public class TrainerHomeSceneController extends HomeSceneController {
         buttonSettings.getStyleClass().add("buttonActive");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onTraineeInfoButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(FXML.TRAINEE_INFO_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ResourceFXML.TRAINEE_INFO_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
         buttonTraineeInfo.getStyleClass().add("buttonActive");
     }
-    @javafx.fxml.FXML
+    @FXML
     private void onAboutUsButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(FXML.ABOUT_US_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
         buttonAboutUs.getStyleClass().add("buttonActive");

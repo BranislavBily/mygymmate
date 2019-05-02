@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.FeatureScene.DietController;
 import sample.Controllers.SceneControllers.FeatureScene.MeasureController;
 import sample.Controllers.SceneControllers.FeatureScene.WorkoutController;
-import sample.Resources.FXML;
-import sample.Resources.Titles;
+import sample.Resources.ResourceFXML;
+import sample.Resources.ResourceTitles;
 
 import java.io.IOException;
 
@@ -34,12 +34,12 @@ public class HomeSceneController extends Controller {
     }
 
     private void changeSceneToWorkout(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.WORKOUTS_HOME_SCREEN));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.WORKOUTS_HOME_SCREEN));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(Titles.WORKOUTS);
+            stage.setTitle(ResourceTitles.WORKOUTS);
             stage.setResizable(false);
             stage.show();
             WorkoutController workoutController = loader.getController();
@@ -50,12 +50,12 @@ public class HomeSceneController extends Controller {
     }
 
     private void changeSceneToMeasureScene(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.MEASURE_HOME_SCREEN));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.MEASURE_HOME_SCREEN));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(Titles.MEASURE);
+            stage.setTitle(ResourceTitles.MEASURE);
             stage.setResizable(false);
             stage.show();
             MeasureController measureController = loader.getController();
@@ -66,12 +66,12 @@ public class HomeSceneController extends Controller {
     }
 
     private void changeSceneToDiet(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.DIET_HOME_SCREEN));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.DIET_HOME_SCREEN));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(Titles.DIET);
+            stage.setTitle(ResourceTitles.DIET);
             stage.setResizable(false);
             stage.show();
             DietController dietController = loader.getController();

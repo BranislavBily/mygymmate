@@ -1,27 +1,28 @@
 package sample.Controllers.SceneControllers.Admin;
 
 import db.DatabaseModuleUser;
+import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.SceneControllers.HomeSceneController;
-import sample.Resources.FXML;
+import sample.Resources.ResourceFXML;
 import sample.Session;
 
 public class AdminHomeSceneController extends HomeSceneController {
 
-    @javafx.fxml.FXML
+    @FXML
     private Label labelUsername;
-    @javafx.fxml.FXML
+    @FXML
     private AnchorPane mainFragment;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonProfile;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonSettings;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonAboutUs;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonLogOut;
 
 
@@ -42,29 +43,29 @@ public class AdminHomeSceneController extends HomeSceneController {
         return labelUsername;
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void onButtonLogOutPressed() {
         onButtonLogOutPressed(buttonLogOut);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onProfileButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(FXML.PROFILE_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ResourceFXML.PROFILE_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
         buttonProfile.getStyleClass().add("buttonActive");
 
     }
-    @javafx.fxml.FXML
+    @FXML
     private void onSettingsButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(FXML.SETTINGS_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ResourceFXML.SETTINGS_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
         buttonSettings.getStyleClass().add("buttonActive");
     }
-    @javafx.fxml.FXML
+    @FXML
     private void onAboutUsButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(FXML.ABOUT_US_FRAGMENT);
+        Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
         buttonAboutUs.getStyleClass().add("buttonActive");

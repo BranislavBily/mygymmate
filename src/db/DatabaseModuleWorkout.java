@@ -1,7 +1,7 @@
 package db;
 
 import db.DTO.Workout;
-import sample.Resources.Tables;
+import sample.Resources.ResourceTables;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +21,7 @@ public class DatabaseModuleWorkout {
     public ArrayList<Workout> loadWorkouts(int userID) {
         ArrayList<Workout> workouts = new ArrayList<>();
         ResultSet resultSet;
-        String query = "select * from " + Tables.WORKOUTS + " where userID = ?";
+        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();

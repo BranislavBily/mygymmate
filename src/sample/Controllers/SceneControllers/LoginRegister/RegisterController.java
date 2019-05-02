@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.LoginRegister;
 
+import db.DTO.User;
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -7,15 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.LoginRegistrationController;
-import db.DTO.User;
 
 public class RegisterController extends LoginRegistrationController {
-
-    @FXML
-    private Pane pane;
 
     @FXML
     private Hyperlink hyperLinkAlreadyMember;
