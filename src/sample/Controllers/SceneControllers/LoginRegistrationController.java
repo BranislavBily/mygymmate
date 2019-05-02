@@ -10,8 +10,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
-import sample.Modules.ModuleFXML;
-import sample.Modules.ModuleTitles;
+import sample.Resources.FXML;
+import sample.Resources.Titles;
 import db.DTO.User;
 
 import java.io.IOException;
@@ -45,7 +45,7 @@ public class LoginRegistrationController extends Controller {
 
     protected void setSceneToRegister(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
-        changeScene(stage, ModuleFXML.REGISTER, ModuleTitles.REGISTER);
+        changeScene(stage, FXML.REGISTER, Titles.REGISTER);
     }
 
     protected void setSceneToRegisterInfo(Scene scene, User user) {
@@ -54,12 +54,12 @@ public class LoginRegistrationController extends Controller {
     }
 
     private void changeSceneToRegisterInfo(Stage stage, User user) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ModuleFXML.REGISTER_INFO));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML.REGISTER_INFO));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle(ModuleTitles.REGISTER_INFO + user.getUsername());
+            stage.setTitle(Titles.REGISTER_INFO + user.getUsername());
             stage.setResizable(false);
             stage.show();
             RegisterInfoController registerInfoController = loader.getController();

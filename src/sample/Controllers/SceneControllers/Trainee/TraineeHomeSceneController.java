@@ -1,44 +1,43 @@
 package sample.Controllers.SceneControllers.Trainee;
 
 import db.DatabaseModuleUser;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.FragmentControllers.ProfileFragmentController;
-import sample.Controllers.FragmentControllers.SettingsFragmentController;
-import sample.Controllers.FragmentControllers.TrainerInfoFragmentController;
+import sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragmentController;
+import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController;
+import sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
-import sample.Modules.ModuleFXML;
+import sample.Resources.FXML;
 import sample.Session;
 
 import java.io.IOException;
 
 public class TraineeHomeSceneController extends HomeSceneController {
 
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonLogOut;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonWorkout;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonDiet;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonWithMeasure;
-    @FXML
+    @javafx.fxml.FXML
     private AnchorPane mainFragment;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonProfile;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonSettings;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonTrainerInfo;
-    @FXML
+    @javafx.fxml.FXML
     private Button buttonAboutUs;
-    @FXML
+    @javafx.fxml.FXML
     private Label labelUsername;
-    @FXML
+    @javafx.fxml.FXML
     private Label labelQuote;
 
     private int userID;
@@ -55,29 +54,29 @@ public class TraineeHomeSceneController extends HomeSceneController {
         setLabelUsername(labelUsername, username);
     }
 
-    @FXML
+    @javafx.fxml.FXML
     public void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void onButtonWorkoutPressed() {
         setSceneToWorkout(buttonWorkout.getScene());
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void onButtonMeasurePressed() {
         setSceneToMeasure(buttonWithMeasure.getScene());
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void onButtonDietPressed() {
         setSceneToDiet(buttonDiet.getScene());
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void onProfileButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.PROFILE_FRAGMENT));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML.PROFILE_FRAGMENT));
         Parent fragment = null;
         try {
             fragment = fxmlLoader.load();
@@ -90,9 +89,9 @@ public class TraineeHomeSceneController extends HomeSceneController {
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonProfile.getStyleClass().add("buttonActive");
     }
-    @FXML
+    @javafx.fxml.FXML
     private void onSettingsButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.SETTINGS_FRAGMENT));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML.SETTINGS_FRAGMENT));
         Parent root = null;
         try {
             root = fxmlLoader.load();
@@ -105,9 +104,9 @@ public class TraineeHomeSceneController extends HomeSceneController {
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonSettings.getStyleClass().add("buttonActive");
     }
-    @FXML
+    @javafx.fxml.FXML
     private void onTrainerInfoButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINER_INFO_FRAGMENT));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML.TRAINER_INFO_FRAGMENT));
         Parent root = null;
         try {
             root = fxmlLoader.load();
@@ -121,9 +120,9 @@ public class TraineeHomeSceneController extends HomeSceneController {
         buttonTrainerInfo.getStyleClass().add("buttonActive");
     }
 
-    @FXML
+    @javafx.fxml.FXML
     private void onAboutUsButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.ABOUT_US_FRAGMENT));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML.ABOUT_US_FRAGMENT));
         Parent root = null;
         try {
             root = fxmlLoader.load();

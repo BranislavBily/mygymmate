@@ -1,4 +1,4 @@
-package sample.Controllers.FragmentControllers;
+package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 public class TrainerInfoFragmentController {
 }

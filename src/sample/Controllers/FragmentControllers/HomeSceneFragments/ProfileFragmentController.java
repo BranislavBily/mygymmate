@@ -1,4 +1,4 @@
-package sample.Controllers.FragmentControllers;
+package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
