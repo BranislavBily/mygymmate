@@ -4,10 +4,7 @@ import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.Controllers.SceneControllers.Controller;
 import sample.Dialogs.PasswordConfirmation;
 import sample.Dialogs.WrongPasswordDialog;
@@ -18,6 +15,9 @@ import java.util.Optional;
 public class SettingsFragmentController extends Controller {
 
     private int userID;
+
+    @FXML
+    private Label labelFeedback;
 
     @FXML
     private TextField textFieldUsername;
@@ -44,6 +44,10 @@ public class SettingsFragmentController extends Controller {
         userID = Session.getUserID();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         ProfileData profileData = databaseModuleUser.loadUserProfileData(userID);
+        fillControlsWithData(profileData);
+    }
+
+    private void fillControlsWithData(ProfileData profileData) {
         textFieldRealName.setText(profileData.getRealName());
         textFieldUsername.setText(profileData.getUsername());
         setChoiceBoxItems();
@@ -59,6 +63,7 @@ public class SettingsFragmentController extends Controller {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         if (databaseModuleUser.updateUser(profileData)) {
             System.out.println("Settings saved");
+            labelFeedback.setVisible(true);
         } else {
             System.out.println("Error while updating User data");
         }

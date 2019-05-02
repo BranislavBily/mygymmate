@@ -52,6 +52,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label fx:id="labelFeedback" layoutX="401.0" layoutY="366.0" prefHeight="27.0" prefWidth="214.0" text="Changes saved successfully!" textFill="#59c325" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </AnchorPane>
    <AnchorPane layoutX="33.0" layoutY="543.0" prefHeight="187.0" prefWidth="633.0" style="-fx-background-radius: 5; -fx-background-color: white;">
       <Label layoutX="23.0" layoutY="25.0" prefHeight="43.0" prefWidth="264.0" text="Delete profile" textFill="RED">
