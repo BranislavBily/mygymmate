@@ -4,6 +4,7 @@ package db;
 import db.DTO.ProfileData;
 import sample.Modules.ModuleTables;
 import db.DTO.RegisteredUser;
+import sample.Session;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -127,10 +128,11 @@ public class DatabaseModuleUser {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                profileData.setName(resultSet.getString("FirstName") + " " + resultSet.getString("LastName"));
+                profileData.setRealName(resultSet.getString("FirstName") + " " + resultSet.getString("LastName"));
                 profileData.setGender(resultSet.getString("gender"));
                 profileData.setStatus(resultSet.getString("status"));
                 profileData.setTypeOfTraining(resultSet.getString("typeOfTraining"));
+                profileData.setUsername(resultSet.getString("username"));
                 return profileData;
             }
             return null;
@@ -138,6 +140,26 @@ public class DatabaseModuleUser {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public boolean updateUser(ProfileData profileData) {
+        int userID = Session.getUserID();
+        String [] name = profileData.getRealName().split(" ");
+        String query = "update users set username = ?, status = ?, firstName = ?, lastName = ?, " +
+                "gender = ?, typeOfTraining = ? where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, profileData.getUsername());
+            preparedStatement.setString(2,profileData.getStatus());
+            preparedStatement.setString(3, name[0]);
+            preparedStatement.setString(4,name[1]);
+            preparedStatement.setString(5,profileData.getGender());
+            preparedStatement.setString(6,profileData.getTypeOfTraining());
+            preparedStatement.setInt(7, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 //

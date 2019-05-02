@@ -1,4 +1,4 @@
-package sample.Controllers.Fragments;
+package sample.Controllers.FragmentControllers;
 
 import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
@@ -34,7 +34,7 @@ public class ProfileFragmentController {
     public void loadProfileInfo() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
-        labelName.setText(profileData.getName());
+        labelName.setText(profileData.getRealName());
         labelGender.setText(profileData.getGender());
         labelStatus.setText(profileData.getStatus());
         labelTypeOfTraining.setText(profileData.getTypeOfTraining());

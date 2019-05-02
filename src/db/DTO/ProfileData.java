@@ -1,17 +1,26 @@
 package db.DTO;
 
 public class ProfileData {
-    private String name;
+    private String username;
+    private String realName;
     private String gender;
     private String status;
     private String typeOfTraining;
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String name) {
+        this.realName = name;
     }
 
     public String getGender() {
