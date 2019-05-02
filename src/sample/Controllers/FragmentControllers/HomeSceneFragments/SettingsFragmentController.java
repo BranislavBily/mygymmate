@@ -40,6 +40,9 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private Button buttonDelete;
 
+    /**
+     * Method prepares scene for use, sets up choice boxed and fills data
+     */
     public void onCreate() {
         userID = Session.getUserID();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
@@ -58,7 +61,6 @@ public class SettingsFragmentController extends Controller {
 
     @FXML
     private void onButtonSavePressed() {
-        //Check for user input
         ProfileData profileData = loadProfileDataFromScene();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         if (databaseModuleUser.updateUser(profileData)) {
@@ -84,8 +86,8 @@ public class SettingsFragmentController extends Controller {
         String passwordFromDialog = getPasswordFromPasswordDialog();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
-        if(databaseModuleUser.isUser(username, passwordFromDialog) != null) {
-            if(!databaseModuleUser.deleteLoggedInUser()) {
+        if (databaseModuleUser.isUser(username, passwordFromDialog) != null) {
+            if (!databaseModuleUser.deleteLoggedInUser()) {
                 System.out.println("Error while deleting user");
             } else {
                 setSceneToLogin(buttonDelete.getScene());
@@ -110,11 +112,14 @@ public class SettingsFragmentController extends Controller {
         );
     }
 
+    /**
+     * Creates new PasswordConfirmation dialog and returns user input or empty {@code String}
+     * @return User input {@code String} or empty {@code String} if user cancelled dialog
+     */
     private String getPasswordFromPasswordDialog() {
         PasswordConfirmation passwordConfirmation = new PasswordConfirmation("Enter password",
                 "Confirm this action by entering your password", "");
         Optional<String> result = passwordConfirmation.showAndWait();
         return result.orElse("");
     }
-
 }
