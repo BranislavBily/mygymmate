@@ -18,18 +18,9 @@ public class ProfileFragmentController {
     @FXML
     private Label labelTypeOfTraining;
     @FXML
-    private Button buttonEditProfile;
-    @FXML
     private Button buttonChangePassword;
     @FXML
     private Button buttonCheckPassword;
-    @FXML
-    private Button buttonLoad;
-
-    @FXML
-    public void onButtonLoadPressed() {
-
-    }
 
     public void loadProfileInfo() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
@@ -38,11 +29,6 @@ public class ProfileFragmentController {
         labelGender.setText(profileData.getGender());
         labelStatus.setText(profileData.getStatus());
         labelTypeOfTraining.setText(profileData.getTypeOfTraining());
-    }
-
-    @FXML
-    private void onButtonEditProfilePressed() {
-        System.out.println("Edit profile");
     }
 
     @FXML

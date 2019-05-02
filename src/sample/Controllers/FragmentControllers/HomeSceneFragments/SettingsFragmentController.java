@@ -59,7 +59,6 @@ public class SettingsFragmentController extends Controller {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         if (databaseModuleUser.updateUser(profileData)) {
             System.out.println("Settings saved");
-            onCreate();
         } else {
             System.out.println("Error while updating User data");
         }

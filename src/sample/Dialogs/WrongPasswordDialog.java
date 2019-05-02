@@ -10,5 +10,4 @@ public class WrongPasswordDialog extends Alert {
         super.setHeaderText("No action will be done!");
         super.showAndWait();
     }
-
 }
