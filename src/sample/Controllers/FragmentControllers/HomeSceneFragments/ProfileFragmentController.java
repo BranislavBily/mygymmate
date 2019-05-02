@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import sample.Session;
 
 public class ProfileFragmentController {
-
     @FXML
     private Label labelName;
     @FXML
@@ -29,6 +28,9 @@ public class ProfileFragmentController {
         loadProfileInfo();
     }
 
+    /**
+     * Loads profile info from the database and sets the data into controls
+     */
     private void loadProfileInfo() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());

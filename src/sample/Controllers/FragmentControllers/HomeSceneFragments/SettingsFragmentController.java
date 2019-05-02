@@ -41,7 +41,7 @@ public class SettingsFragmentController extends Controller {
     private Button buttonDelete;
 
     /**
-     * Method prepares scene for use, sets up choice boxed and fills data
+     * Prepares scene for use
      */
     public void onCreate() {
         userID = Session.getUserID();
@@ -50,6 +50,10 @@ public class SettingsFragmentController extends Controller {
         fillControlsWithData(profileData);
     }
 
+    /**
+     * Fills controls with data from {@link ProfileData}
+     * @param profileData data source
+     */
     private void fillControlsWithData(ProfileData profileData) {
         textFieldRealName.setText(profileData.getRealName());
         textFieldUsername.setText(profileData.getUsername());
@@ -71,6 +75,10 @@ public class SettingsFragmentController extends Controller {
         }
     }
 
+    /**
+     * Loads data from controls and saves it in the {@code ProfileInfo}
+     * @return {@code ProfileInfo} filled with data from controls
+     */
     private ProfileData loadProfileDataFromScene() {
         ProfileData profileData = new ProfileData();
         profileData.setRealName(textFieldRealName.getText());
@@ -81,6 +89,9 @@ public class SettingsFragmentController extends Controller {
         return profileData;
     }
 
+    /**
+     * Gets password from {@code PasswordConfirmation} dialog
+     */
     @FXML
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
