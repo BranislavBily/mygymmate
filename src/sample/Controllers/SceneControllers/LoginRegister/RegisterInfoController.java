@@ -130,7 +130,13 @@ public class RegisterInfoController extends LoginRegistrationController {
         }
     }
 
-    public void setChoiceBoxItems() {
+    public void onCreate(User user) {
+        this.user = user;
+        setChoiceBoxItems();
+        setLabelUsernameInRegisterInfo(user.getUsername());
+    }
+
+    private void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(
                 "Male", "Female")
         );
@@ -178,7 +184,7 @@ public class RegisterInfoController extends LoginRegistrationController {
     }
 
     //Centering and setting Labels based on username.
-    public void setLabelUsernameInRegisterInfo(Label labelUsername, String username) {
+    private void setLabelUsernameInRegisterInfo(String username) {
         labelUsername.setText("Hi " + username + "!");
         labelUsername.setLayoutX(182 - ((username.length() + 1) * 5.5));
     }

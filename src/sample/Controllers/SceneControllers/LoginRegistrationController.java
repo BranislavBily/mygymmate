@@ -24,8 +24,8 @@ public class LoginRegistrationController extends Controller {
     protected void displayErrorFeedbackUsername(TextField textField){
         textField.setText("");
         DropShadow dropShadowUsername = new DropShadow();
-       dropShadowUsername.setRadius(20);
-       dropShadowUsername.setColor(Color.color(1,0,0));
+        dropShadowUsername.setRadius(20);
+        dropShadowUsername.setColor(Color.color(1,0,0));
         textField.setEffect(dropShadowUsername);
     }
 
@@ -63,9 +63,7 @@ public class LoginRegistrationController extends Controller {
             stage.setResizable(false);
             stage.show();
             RegisterInfoController registerInfoController = loader.getController();
-            registerInfoController.setUser(user);
-            registerInfoController.setLabelUsernameInRegisterInfo(registerInfoController.getLabelUsername(), user.getUsername());
-            registerInfoController.setChoiceBoxItems();
+            registerInfoController.onCreate(user);
         } catch (IOException e) {
             e.printStackTrace();
         }
