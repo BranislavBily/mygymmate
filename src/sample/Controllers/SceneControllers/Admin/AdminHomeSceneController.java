@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
+import sample.Session;
 
 public class AdminHomeSceneController extends HomeSceneController {
 
@@ -27,11 +28,12 @@ public class AdminHomeSceneController extends HomeSceneController {
 
     private int userID;
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void onCreate() {
+        userID = Session.getUserID();
+        setLabel();
     }
 
-    public void setLabel() {
+    private void setLabel() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
@@ -52,6 +54,7 @@ public class AdminHomeSceneController extends HomeSceneController {
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonProfile, buttonSettings, buttonAboutUs);
         buttonProfile.getStyleClass().add("buttonActive");
+
     }
     @FXML
     private void onSettingsButtonClicked() {
@@ -68,5 +71,4 @@ public class AdminHomeSceneController extends HomeSceneController {
         buttonAboutUs.getStyleClass().add("buttonActive");
     }
 }
-
 

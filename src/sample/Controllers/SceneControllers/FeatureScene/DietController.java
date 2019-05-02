@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import sample.Controllers.HomeSceneController;
+import sample.Session;
 
 public class DietController extends HomeSceneController {
 
@@ -19,11 +20,12 @@ public class DietController extends HomeSceneController {
     @FXML
     private Label labelUsername;
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void onCreate() {
+        userID = Session.getUserID();
+        setLabel();
     }
 
-    public void setLabel() {
+    private void setLabel() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
@@ -34,9 +36,9 @@ public class DietController extends HomeSceneController {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String status = databaseModuleUser.getUserStatus(userID);
         if(status.equals("trainee")) {
-            setSceneToTraineeHomeScene(buttonDiets.getScene(), userID);
+            setSceneToTraineeHomeScene(buttonDiets.getScene());
         } else {
-            setSceneToTrainerHomeScene(buttonDiets.getScene(), userID);
+            setSceneToTrainerHomeScene(buttonDiets.getScene());
         }
     }
 

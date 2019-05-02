@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import sample.Controllers.HomeSceneController;
+import sample.Session;
 
 
 public class MeasureController extends HomeSceneController {
@@ -18,24 +19,24 @@ public class MeasureController extends HomeSceneController {
     @FXML
     private Label labelUsername;
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void onCreate() {
+        userID = Session.getUserID();
+        setLabel();
     }
 
-    public void setLabel() {
+    private void setLabel() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
     }
-
     @FXML
     private void onGoBackImagePressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String status = databaseModuleUser.getUserStatus(userID);
         if(status.equals("trainee")) {
-            setSceneToTraineeHomeScene(buttonMeasures.getScene(), userID);
+            setSceneToTraineeHomeScene(buttonMeasures.getScene());
         } else {
-            setSceneToTrainerHomeScene(buttonMeasures.getScene(), userID);
+            setSceneToTrainerHomeScene(buttonMeasures.getScene());
         }
     }
 }

@@ -2,13 +2,19 @@ package sample.Controllers.SceneControllers.Trainee;
 
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import sample.Controllers.Fragments.ProfileFragmentController;
+import sample.Controllers.Fragments.SettingsFragmentController;
+import sample.Controllers.Fragments.TrainerInfoFragmentController;
 import sample.Controllers.HomeSceneController;
 import sample.Modules.ModuleFXML;
 import sample.Session;
+
+import java.io.IOException;
 
 public class TraineeHomeSceneController extends HomeSceneController {
 
@@ -37,20 +43,13 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     private int userID;
 
-    public Label getLabelUsername() {
-        return labelUsername;
+
+    public void onCreate() {
+        userID = Session.getUserID();
+        setLabel();
     }
 
-    public void setLabelUsername(Label labelUsername) {
-        this.labelUsername = labelUsername;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = Session.getUserID();
-        System.out.println(this.userID);
-    }
-
-    public void setLabel() {
+    private void setLabel() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
@@ -63,44 +62,75 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     @FXML
     private void onButtonWorkoutPressed() {
-        setSceneToWorkout(buttonWorkout.getScene(), userID);
+        setSceneToWorkout(buttonWorkout.getScene());
     }
 
     @FXML
     private void onButtonMeasurePressed() {
-        setSceneToMeasure(buttonWithMeasure.getScene(),  userID);
+        setSceneToMeasure(buttonWithMeasure.getScene());
     }
 
     @FXML
     private void onButtonDietPressed() {
-        setSceneToDiet(buttonDiet.getScene(), userID);
+        setSceneToDiet(buttonDiet.getScene());
     }
 
     @FXML
     private void onProfileButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(ModuleFXML.PROFILE_FRAGMENT);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.PROFILE_FRAGMENT));
+        Parent fragment = null;
+        try {
+            fragment = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ProfileFragmentController profileFragment = fxmlLoader.getController();
+        profileFragment.loadProfileInfo();
         mainFragment.getChildren().setAll(fragment);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonProfile.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onSettingsButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(ModuleFXML.SETTINGS_FRAGMENT);
-        mainFragment.getChildren().setAll(fragment);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.SETTINGS_FRAGMENT));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SettingsFragmentController settingsFragment = fxmlLoader.getController();
+
+        mainFragment.getChildren().setAll(root);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonSettings.getStyleClass().add("buttonActive");
     }
     @FXML
     private void onTrainerInfoButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(ModuleFXML.TRAINER_INFO_FRAGMENT);
-        mainFragment.getChildren().setAll(fragment);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.TRAINER_INFO_FRAGMENT));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        TrainerInfoFragmentController trainerInfoFragmentController = fxmlLoader.getController();
+
+        mainFragment.getChildren().setAll(root);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonTrainerInfo.getStyleClass().add("buttonActive");
     }
+
     @FXML
     private void onAboutUsButtonClicked() {
-        Parent fragment= loadFragmentFromFXML(ModuleFXML.ABOUT_US_FRAGMENT);
-        mainFragment.getChildren().setAll(fragment);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ModuleFXML.ABOUT_US_FRAGMENT));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mainFragment.getChildren().setAll(root);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonAboutUs.getStyleClass().add("buttonActive");
     }

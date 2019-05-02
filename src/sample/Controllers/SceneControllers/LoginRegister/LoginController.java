@@ -35,11 +35,10 @@ public class LoginController extends LoginRegistrationController {
         if (userID != null) {
             Session.setUserID(userID);
             String status = databaseModuleUser.getUserStatus(userID);
-            System.out.println(status);
             switch (status) {
-                case "Trainee" : setSceneToTraineeHomeScene(buttonLogIn.getScene(), userID);break;
-                case "Trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene(), userID);break;
-                case "Admin" : setSceneToAdminHomeScene(buttonLogIn.getScene(), userID);break;
+                case "Trainee" : setSceneToTraineeHomeScene(buttonLogIn.getScene());break;
+                case "Trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene());break;
+                case "Admin" : setSceneToAdminHomeScene(buttonLogIn.getScene());break;
             }
         //If user was not logged in
         } else {
