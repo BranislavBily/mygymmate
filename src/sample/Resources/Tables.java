@@ -1,9 +1,9 @@
-package sample.Modules;
+package sample.Resources;
 
 /**
  * Resources for names of tables in database
  */
-public interface ModuleTables {
+public interface Tables {
     String USERS = "Users";
     String WORKOUTS = "Workouts";
 }
