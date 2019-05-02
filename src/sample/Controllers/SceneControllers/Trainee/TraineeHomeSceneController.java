@@ -85,7 +85,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
             e.printStackTrace();
         }
         ProfileFragmentController profileFragment = fxmlLoader.getController();
-        profileFragment.loadProfileInfo();
+        profileFragment.onCreate();
         mainFragment.getChildren().setAll(fragment);
         removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonProfile.getStyleClass().add("buttonActive");

@@ -22,7 +22,14 @@ public class ProfileFragmentController {
     @FXML
     private Button buttonCheckPassword;
 
-    public void loadProfileInfo() {
+    /**
+     * Method prepares scene for use, fills it with profile data
+     */
+    public void onCreate() {
+        loadProfileInfo();
+    }
+
+    private void loadProfileInfo() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
         labelName.setText(profileData.getRealName());
