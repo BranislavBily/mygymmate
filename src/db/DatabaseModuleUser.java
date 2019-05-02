@@ -174,4 +174,10 @@ public class DatabaseModuleUser {
         return false;
     }
 
+    public boolean correctPassword(String password) {
+        int userID = Session.getUserID();
+        String username = getUsername(userID);
+        return isUser(username, password) ==  null;
+    }
+
 }

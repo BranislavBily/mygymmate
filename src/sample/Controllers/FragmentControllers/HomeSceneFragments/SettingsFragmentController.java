@@ -40,6 +40,9 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private Button buttonDelete;
 
+    /**
+     * Prepares scene for use
+     */
     public void onCreate() {
         userID = Session.getUserID();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
@@ -47,6 +50,10 @@ public class SettingsFragmentController extends Controller {
         fillControlsWithData(profileData);
     }
 
+    /**
+     * Fills controls with data from {@link ProfileData}
+     * @param profileData data source
+     */
     private void fillControlsWithData(ProfileData profileData) {
         textFieldRealName.setText(profileData.getRealName());
         textFieldUsername.setText(profileData.getUsername());
@@ -58,7 +65,6 @@ public class SettingsFragmentController extends Controller {
 
     @FXML
     private void onButtonSavePressed() {
-        //Check for user input
         ProfileData profileData = loadProfileDataFromScene();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         if (databaseModuleUser.updateUser(profileData)) {
@@ -69,6 +75,10 @@ public class SettingsFragmentController extends Controller {
         }
     }
 
+    /**
+     * Loads data from controls and saves it in the {@code ProfileInfo}
+     * @return {@code ProfileInfo} filled with data from controls
+     */
     private ProfileData loadProfileDataFromScene() {
         ProfileData profileData = new ProfileData();
         profileData.setRealName(textFieldRealName.getText());
@@ -79,6 +89,9 @@ public class SettingsFragmentController extends Controller {
         return profileData;
     }
 
+    /**
+     * Gets password from {@code PasswordConfirmation} dialog
+     */
     @FXML
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
@@ -111,11 +124,14 @@ public class SettingsFragmentController extends Controller {
         );
     }
 
+    /**
+     * Creates new PasswordConfirmation dialog and returns user input or empty {@code String}
+     * @return User input {@code String} or empty {@code String} if user cancelled dialog
+     */
     private String getPasswordFromPasswordDialog() {
         PasswordConfirmation passwordConfirmation = new PasswordConfirmation("Enter password",
                 "Confirm this action by entering your password", "");
         Optional<String> result = passwordConfirmation.showAndWait();
         return result.orElse("");
     }
-
 }

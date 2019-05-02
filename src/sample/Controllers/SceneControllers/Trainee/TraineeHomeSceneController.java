@@ -43,12 +43,17 @@ public class TraineeHomeSceneController extends HomeSceneController {
 
     private int userID;
 
-
+    /**
+     * Prepares scene for use
+     */
     public void onCreate() {
         userID = Session.getUserID();
         setLabel();
     }
 
+    /**
+     * Sets username of logged in user into {@code Label}
+     */
     private void setLabel() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
@@ -75,64 +80,77 @@ public class TraineeHomeSceneController extends HomeSceneController {
         setSceneToDiet(buttonDiet.getScene());
     }
 
+    /**
+     * Sets {@code mainFragment} container into {@code ProfileFragment}
+     */
     @FXML
     private void onProfileButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.PROFILE_FRAGMENT));
-        Parent fragment = null;
         try {
-            fragment = fxmlLoader.load();
+            Parent fragment = fxmlLoader.load();
+            ProfileFragmentController profileFragment = fxmlLoader.getController();
+            profileFragment.onCreate();
+            mainFragment.getChildren().setAll(fragment);
+            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+            buttonProfile.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ProfileFragmentController profileFragment = fxmlLoader.getController();
-        profileFragment.loadProfileInfo();
-        mainFragment.getChildren().setAll(fragment);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
-        buttonProfile.getStyleClass().add("buttonActive");
     }
+
+    /**
+     * Sets {@code mainFragment} container info {@code SettingsFragment}
+     */
     @FXML
     private void onSettingsButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.SETTINGS_FRAGMENT));
-        Parent root = null;
         try {
-            root = fxmlLoader.load();
+            Parent fragment = fxmlLoader.load();
+            SettingsFragmentController settingsFragment = fxmlLoader.getController();
+            settingsFragment.onCreate();
+
+            mainFragment.getChildren().setAll(fragment);
+            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+            buttonSettings.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SettingsFragmentController settingsFragment = fxmlLoader.getController();
-        settingsFragment.onCreate();
-        mainFragment.getChildren().setAll(root);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
-        buttonSettings.getStyleClass().add("buttonActive");
+
     }
+
+    /**
+     * Sets {@code mainFragment} container into {@code TrainerInfoFragment}
+     */
     @FXML
     private void onTrainerInfoButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.TRAINER_INFO_FRAGMENT));
-        Parent root = null;
         try {
-            root = fxmlLoader.load();
+            Parent fragment = fxmlLoader.load();
+            TrainerInfoFragmentController trainerInfoFragmentController = fxmlLoader.getController();
+
+            mainFragment.getChildren().setAll(fragment);
+            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+            buttonTrainerInfo.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        TrainerInfoFragmentController trainerInfoFragmentController = fxmlLoader.getController();
-
-        mainFragment.getChildren().setAll(root);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
-        buttonTrainerInfo.getStyleClass().add("buttonActive");
     }
 
+    /**
+     * Sets {@code mainFragment} container into {@code AboutUsFragment }
+     */
     @FXML
     private void onAboutUsButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.ABOUT_US_FRAGMENT));
-        Parent root = null;
         try {
-            root = fxmlLoader.load();
+            Parent fragment = fxmlLoader.load();
+            mainFragment.getChildren().setAll(fragment);
+            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+            buttonAboutUs.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mainFragment.getChildren().setAll(root);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
-        buttonAboutUs.getStyleClass().add("buttonActive");
+
     }
 }
 
