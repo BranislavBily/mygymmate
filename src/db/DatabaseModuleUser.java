@@ -2,8 +2,8 @@ package db;
 
 
 import db.DTO.ProfileData;
-import sample.Modules.ModuleTables;
 import db.DTO.RegisteredUser;
+import sample.Modules.ModuleTables;
 import sample.Session;
 
 import java.sql.Connection;
@@ -145,7 +145,7 @@ public class DatabaseModuleUser {
     public boolean updateUser(ProfileData profileData) {
         int userID = Session.getUserID();
         String [] name = profileData.getRealName().split(" ");
-        String query = "update users set username = ?, status = ?, firstName = ?, lastName = ?, " +
+        String query = "update " + ModuleTables.USERS + " set username = ?, status = ?, firstName = ?, lastName = ?, " +
                 "gender = ?, typeOfTraining = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, profileData.getUsername());
@@ -162,19 +162,16 @@ public class DatabaseModuleUser {
         return false;
     }
 
-//
-//    public boolean deleteUser(String name) throws SQLException {
-//        String sql = "delete from users where username = ?";
-//        return queryUpdateOneValue(sql, name);
-//    }
-//
-//    public boolean updateUsername(String previousNameString, String name) throws SQLException {
-//        String sql = "update users set username = ? where username = ?";
-//        return queryUpdateTwoValues(sql, previousNameString, name);
-//    }
-//
-//    public boolean updateUserPassword(String name, String password) throws SQLException {
-//        String sql = "update users set password = ? where username = ?";
-//        return queryUpdateTwoValues(sql, name, password);
-//    }
+    public boolean deleteLoggedInUser() {
+        int userID = Session.getUserID();
+        String query = "delete from " + ModuleTables.USERS + " where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
