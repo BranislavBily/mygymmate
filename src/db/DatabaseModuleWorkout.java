@@ -41,7 +41,11 @@ public class DatabaseModuleWorkout {
         try {
             workout.setExercise(resultSet.getString("exercise"));
             workout.setRepetitions(resultSet.getInt("repetitions"));
-            workout.setWeight(resultSet.getDouble("weight"));
+            String weight = Double.toString(resultSet.getDouble("weight"));
+            if(weight.equals("0.0")) {
+                weight = "Bodyweight";
+            }
+            workout.setWeight(weight);
             workout.setDate(resultSet.getString("date"));
             return workout;
         } catch (SQLException e) {

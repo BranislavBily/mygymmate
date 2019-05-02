@@ -31,15 +31,17 @@ public class WorkoutController extends HomeSceneController {
     @FXML
     private TableColumn<Workout, String> tableColumnRepetitions;
     @FXML
-    private TableColumn<Workout, Double> tableColumnWeight;
+    private TableColumn<Workout, String> tableColumnWeight;
     @FXML
     private TableColumn<Workout, String> tableColumnDate;
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void onCreate() {
+        userID = Session.getUserID();
+        setLabel();
+        loadWorkoutsIntoTable();
     }
 
-    public void setLabel() {
+    private void setLabel() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername(userID);
         setLabelUsername(labelUsername, username);
@@ -50,13 +52,13 @@ public class WorkoutController extends HomeSceneController {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String status = databaseModuleUser.getUserStatus(userID);
         if(status.equals("Trainee")) {
-            setSceneToTraineeHomeScene(buttonWorkouts.getScene(), userID);
+            setSceneToTraineeHomeScene(buttonWorkouts.getScene());
         } else {
-            setSceneToTrainerHomeScene(buttonWorkouts.getScene(), userID);
+            setSceneToTrainerHomeScene(buttonWorkouts.getScene());
         }
     }
 
-    public void loadWorkoutsIntoTable() {
+    private void loadWorkoutsIntoTable() {
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
         ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts(Session.getUserID());
         tableColumnExercise.setCellValueFactory(new PropertyValueFactory("Exercise"));

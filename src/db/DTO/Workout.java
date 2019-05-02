@@ -7,7 +7,7 @@ public class Workout {
 
     private String exercise;
     private int repetitions;
-    private double weight;
+    private String weight;
     private String date;
 
     public String getExercise() {
@@ -26,11 +26,11 @@ public class Workout {
         this.repetitions = repetitions;
     }
 
-    public double getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
