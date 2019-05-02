@@ -1,5 +1,5 @@
 package sample.Controllers.Fragments;
 
-public class SettingsFragment {
+public class SettingsFragmentController {
 
 }

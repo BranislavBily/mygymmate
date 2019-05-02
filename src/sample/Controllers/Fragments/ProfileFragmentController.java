@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import sample.Session;
 
-public class ProfileFragment {
+public class ProfileFragmentController {
 
     @FXML
     private Label labelName;
