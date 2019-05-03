@@ -2,20 +2,12 @@ package db.DTO;
 
 public class ProfileData {
     private String username;
-    private String realName;
+    private String firstName;
+    private String lastName;
     private String gender;
     private String status;
     private String typeOfTraining;
 
-
-
-    public boolean chceckEmpty(){
-        if (this.username.equals("")||this.realName.equals("")||this.gender.equals("")||this.status.equals("")|| this.typeOfTraining.equals("")){
-
-            return false;
-        }
-        else return true;
-    }
     public String getUsername() {
         return username;
     }
@@ -24,12 +16,20 @@ public class ProfileData {
         this.username = username;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setRealName(String name) {
-        this.realName = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getGender() {
@@ -54,5 +54,9 @@ public class ProfileData {
 
     public void setTypeOfTraining(String typeOfTraining) {
         this.typeOfTraining = typeOfTraining;
+    }
+
+    public String getRealName() {
+        return firstName + " " + lastName;
     }
 }
