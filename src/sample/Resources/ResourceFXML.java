@@ -24,4 +24,7 @@ public interface ResourceFXML {
         String DIET_FRAGMENT = "../../../FXMLFragments/dietFragment.fxml";
         String BMI_FRAGMENT = "../../../FXMLFragments/BMIFragment.fxml";
         String WEIGHT_FRAGMENT = "../../../FXMLFragments/weightFragment.fxml";
+        String ADD_WORKOUT_FRAGMENT = "../../../FXMLFragments/addWorkoutFragment.fxml";
+        String WORKOUTS_FRAGMENT = "../../../FXMLFragments/workoutsFragment.fxml";
+        String PROGRESS_WORKOUT_FRAGMENT = "../../../FXMLFragments/progressWorkoutFragment.fxml";
     }
