@@ -38,11 +38,16 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button fx:id="buttonWorkouts" mnemonicParsing="false" styleClass="sidebarButtons" text="     Measure">
+                  <Button fx:id="buttonWorkouts" mnemonicParsing="false" onAction="#onButtonWorkoutsPressed" styleClass="sidebarButtons" text="     Workouts ">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="buttonProgress" layoutY="68.0" mnemonicParsing="false" styleClass="sidebarButtons" text="     Progress">
+                  <Button fx:id="buttonAddWorkout" layoutY="70.0" mnemonicParsing="false" onAction="#onButtonAddWorkoutPressed" styleClass="sidebarButtons" text="     Add workout">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="buttonProgress" layoutY="141.0" mnemonicParsing="false" onAction="#onButtonProgressPressed" styleClass="sidebarButtons" text="     Progress">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
@@ -69,7 +74,7 @@
                 <DropShadow />
             </effect>
         </AnchorPane>
-        <AnchorPane layoutX="281.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="745.0" style="-fx-background-color: #e1f2f1;">
+        <AnchorPane fx:id="mainFragment" layoutX="281.0" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="745.0" style="-fx-background-color: #e1f2f1;">
             <effect>
                 <DropShadow />
             </effect>
