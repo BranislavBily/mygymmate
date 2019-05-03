@@ -87,6 +87,23 @@ public class DatabaseModuleUser {
         }
     }
 
+    public String getUsername() {
+        int userID = Session.getUserID();
+        ResultSet resultSet;
+        String query = "select username from " + ResourceTables.USERS + " where ID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getString("username");
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public boolean isUsernameTaken(String username) {
         ResultSet resultSet;
         String query = "select * from "+ ResourceTables.USERS+" where Username = ?";
@@ -128,7 +145,8 @@ public class DatabaseModuleUser {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                profileData.setRealName(resultSet.getString("FirstName") + " " + resultSet.getString("LastName"));
+                profileData.setFirstName(resultSet.getString("FirstName"));
+                profileData.setLastName(resultSet.getString("LastName"));
                 profileData.setGender(resultSet.getString("gender"));
                 profileData.setStatus(resultSet.getString("status"));
                 profileData.setTypeOfTraining(resultSet.getString("typeOfTraining"));
@@ -144,17 +162,15 @@ public class DatabaseModuleUser {
 
     public boolean updateUser(ProfileData profileData) {
         int userID = Session.getUserID();
-        String [] name = profileData.getRealName().split(" ");
-        String query = "update " + ResourceTables.USERS + " set username = ?, status = ?, firstName = ?, lastName = ?, " +
+        String query = "update " + ResourceTables.USERS + " set username = ?, firstName = ?, lastName = ?, " +
                 "gender = ?, typeOfTraining = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, profileData.getUsername());
-            preparedStatement.setString(2,profileData.getStatus());
-            preparedStatement.setString(3, name[0]);
-            preparedStatement.setString(4,name[1]);
-            preparedStatement.setString(5,profileData.getGender());
-            preparedStatement.setString(6,profileData.getTypeOfTraining());
-            preparedStatement.setInt(7, userID);
+            preparedStatement.setString(2, profileData.getFirstName());
+            preparedStatement.setString(3, profileData.getLastName());
+            preparedStatement.setString(4,profileData.getGender());
+            preparedStatement.setString(5,profileData.getTypeOfTraining());
+            preparedStatement.setInt(6, userID);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
