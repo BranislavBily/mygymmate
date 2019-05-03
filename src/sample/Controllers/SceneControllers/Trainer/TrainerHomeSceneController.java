@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import sample.Controllers.FragmentControllers.HomeSceneFragments.HomeFragmentController;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragmentController;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
@@ -72,6 +73,21 @@ public class TrainerHomeSceneController extends HomeSceneController {
     @FXML
     private void onButtonLogOutPressed() {
         super.onButtonLogOutPressed(buttonLogOut);
+    }
+
+    @FXML
+    private void onHomeButtonClicked() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.HOME_FRAGMENT));
+        try {
+            Parent fragment = fxmlLoader.load();
+            HomeFragmentController homeFragment = fxmlLoader.getController();
+            homeFragment.onCreate();
+            mainFragment.getChildren().setAll(fragment);
+            removeButtonActiveEffect(buttonHome ,buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+            buttonHome.getStyleClass().add("buttonActive");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

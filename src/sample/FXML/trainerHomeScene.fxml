@@ -28,7 +28,7 @@
 
                     </effect>
                <children>
-                  <Button fx:id="buttonHome" mnemonicParsing="false" styleClass="sidebarButtons" text="     Home">
+                  <Button fx:id="buttonHome" mnemonicParsing="false" onAction="#onHomeButtonClicked" styleClass="sidebarButtons" text="     Home">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
