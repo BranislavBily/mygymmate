@@ -108,5 +108,5 @@
          <DropShadow />
       </effect>
    </AnchorPane>
-   <Label layoutX="30.0" layoutY="737.0" text="For username changes you need to login for changes to take effect" />
+   <Label layoutX="33.0" layoutY="737.0" text="For username changes to take effect you need to log out" />
 </AnchorPane>
