@@ -52,6 +52,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
     public void onCreate() {
         userID = Session.getUserID();
         setLabel();
+        onHomeButtonClicked();
     }
 
     /**
@@ -161,7 +162,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
     private void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+        removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
         buttonAboutUs.getStyleClass().add("buttonActive");
     }
 }

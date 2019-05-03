@@ -10,8 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.HomeFragmentController;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragmentController;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController;
-import sample.Controllers.FragmentControllers.HomeSceneFragments.TraineeInfoFragmentController;
-import sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Session;
@@ -49,6 +47,7 @@ public class TrainerHomeSceneController extends HomeSceneController {
     public void onCreate() {
         userID = Session.getUserID();
         setLabel();
+        onHomeButtonClicked();
     }
 
     private void setLabel() {
@@ -103,16 +102,11 @@ public class TrainerHomeSceneController extends HomeSceneController {
             ProfileFragmentController profileFragment = fxmlLoader.getController();
             profileFragment.onCreate();
             mainFragment.getChildren().setAll(fragment);
-            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+            removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
             buttonProfile.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ProfileFragmentController profileFragment = fxmlLoader.getController();
-        profileFragment.onCreate();
-        mainFragment.getChildren().setAll(fragment);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
-        buttonProfile.getStyleClass().add("buttonActive");
     }
 
     /**
@@ -127,16 +121,11 @@ public class TrainerHomeSceneController extends HomeSceneController {
             settingsFragment.onCreate();
 
             mainFragment.getChildren().setAll(fragment);
-            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+            removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
             buttonSettings.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SettingsFragmentController settingsFragment = fxmlLoader.getController();
-        settingsFragment.onCreate();
-        mainFragment.getChildren().setAll(root);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
-        buttonSettings.getStyleClass().add("buttonActive");
     }
 
     /**
@@ -146,7 +135,7 @@ public class TrainerHomeSceneController extends HomeSceneController {
     private void onTraineeInfoButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.TRAINEE_INFO_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
-        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
+        removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
         buttonTraineeInfo.getStyleClass().add("buttonActive");
     }
     @FXML
