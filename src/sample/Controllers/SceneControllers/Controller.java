@@ -1,6 +1,7 @@
 package sample.Controllers.SceneControllers;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -135,12 +136,8 @@ public class Controller extends AnchorPane {
 
     }
 
-    protected void removeButtonActiveEffect(Button button1 ,Button button2){
-        button1.getStyleClass().remove("buttonActive");
-        button2.getStyleClass().remove("buttonActive");
-    }
 
-    @javafx.fxml.FXML
+    @FXML
     private void onHyperLinkPaypalPressed() {
         Application application = new Application() {
             @Override
