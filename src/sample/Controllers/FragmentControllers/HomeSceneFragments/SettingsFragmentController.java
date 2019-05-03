@@ -96,15 +96,14 @@ public class SettingsFragmentController extends Controller {
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
 
-        if(databaseModuleUser.isUser(username, passwordFromDialog) != null) {
+        if(databaseModuleUser.correctUserPassword(passwordFromDialog)) {
             if(!databaseModuleUser.deleteLoggedInUser()) {
                 System.out.println("Error while deleting user");
             } else {
                 setSceneToLogin(buttonDelete.getScene());
             }
-        } else if(passwordFromDialog!=""){
+        } else if(!passwordFromDialog.isEmpty()){
             new WrongPasswordDialog(Alert.AlertType.ERROR);
             System.out.println("Wrong password");
         }
