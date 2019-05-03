@@ -20,6 +20,8 @@ public class SettingsFragmentController extends Controller {
     private Label labelFeedback;
 
     @FXML
+    private Label labelEmpty;
+    @FXML
     private TextField textFieldUsername;
 
     @FXML
@@ -52,6 +54,7 @@ public class SettingsFragmentController extends Controller {
 
     /**
      * Fills controls with data from {@link ProfileData}
+     *
      * @param profileData data source
      */
     private void fillControlsWithData(ProfileData profileData) {
@@ -67,16 +70,26 @@ public class SettingsFragmentController extends Controller {
     private void onButtonSavePressed() {
         ProfileData profileData = loadProfileDataFromScene();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        if (databaseModuleUser.updateUser(profileData)) {
+
+
+
+         if (profileData.chceckEmpty()&& databaseModuleUser.updateUser(profileData)) {
+
             System.out.println("Settings saved");
-            labelFeedback.setVisible(true);
-        } else {
-            System.out.println("Error while updating User data");
-        }
+                labelFeedback.setVisible(true);
+                labelEmpty.setVisible(false);
+            } else {
+                System.out.println("Error while updating User data");
+                labelEmpty.setVisible(true);
+                labelFeedback.setVisible(false);
+            }
+
+
     }
 
     /**
      * Loads data from controls and saves it in the {@code ProfileInfo}
+     *
      * @return {@code ProfileInfo} filled with data from controls
      */
     private ProfileData loadProfileDataFromScene() {
@@ -125,6 +138,7 @@ public class SettingsFragmentController extends Controller {
 
     /**
      * Creates new PasswordConfirmation dialog and returns user input or empty {@code String}
+     *
      * @return User input {@code String} or empty {@code String} if user cancelled dialog
      */
     private String getPasswordFromPasswordDialog() {

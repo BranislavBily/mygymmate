@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Controllers.SceneControllers.HomeSceneController;
+import sample.Resources.ResourceUserType;
 import sample.Session;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class WorkoutController extends HomeSceneController {
     private void onGoBackImagePressed() {
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         String status = databaseModuleUser.getUserStatus(userID);
-        if(status.equals("Trainee")) {
+        if(status.equals(ResourceUserType.TRAINEE)) {
             setSceneToTraineeHomeScene(buttonWorkouts.getScene());
         } else {
             setSceneToTrainerHomeScene(buttonWorkouts.getScene());
