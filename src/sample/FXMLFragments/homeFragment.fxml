@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.HomeFragmentController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.HomeFragmentController">
 
     <effect>
         <DropShadow />
     </effect>
     <children>
-        <TextArea layoutX="31.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Info o Workout&#10;&#10;-wokrout&#10;&#10;" />
+        <TextArea layoutX="31.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Workout&#10;&#10;-Look at all your workouts&#10;&#10;-Add new workouts&#10;&#10;-Track your progress&#10;&#10;-Track your ORM&#10;&#10;&#10;">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
         <Button id="buttonWithWorkout" fx:id="buttonWorkout" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonWorkoutPressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
             <effect>
                 <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
@@ -35,7 +27,10 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <TextArea layoutX="273.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Info o diet&#10;&#10;&#10;-diet&#10;" />
+        <TextArea layoutX="273.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Diet&#10;&#10;-Keep track of calories&#10;&#10;-Intake enough of protein&#10;&#10;- Track your water intake&#10;&#10;-Calculate BMI&#10;&#10;-Track weight&#10;&#10;">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
         <Button id="buttonWithDiet" fx:id="buttonDiet" layoutX="261.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonDietPressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
             <effect>
                 <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
@@ -44,7 +39,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <TextArea layoutX="512.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Info o measure&#10;&#10;-measure" />
+        <TextArea layoutX="512.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Measure&#10;&#10;-Track all your muscles&#10;&#10;-Watch your progress&#10;&#10;" />
         <Button fx:id="buttonWithMeasure" layoutX="502.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonMeasurePressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
             <effect>
                 <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.2" width="40.0" />

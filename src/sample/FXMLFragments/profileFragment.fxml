@@ -67,7 +67,7 @@
                </font>
             </Label>
             <Line endX="99.0" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
-            <Button fx:id="buttonChangePassword" layoutX="55.0" layoutY="116.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #f13434;" text="Change Password" textFill="WHITE">
+            <Button fx:id="buttonChangePassword" layoutX="55.0" layoutY="116.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f #03383f;" text="Change Password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
