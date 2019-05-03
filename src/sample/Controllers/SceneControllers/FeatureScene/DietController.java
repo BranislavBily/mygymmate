@@ -7,9 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.FragmentControllers.Diet.BMIFragmentController;
-import sample.Controllers.FragmentControllers.Diet.DietFragmentController;
-import sample.Controllers.FragmentControllers.Diet.WeightFragmentController;
+import sample.Controllers.FragmentControllers.DietSceneFragments.BMIFragmentController;
+import sample.Controllers.FragmentControllers.DietSceneFragments.DietFragmentController;
+import sample.Controllers.FragmentControllers.DietSceneFragments.WeightFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceUserType;
@@ -20,7 +20,6 @@ import java.io.IOException;
 public class DietController extends HomeSceneController {
 
     private int userID;
-
     @FXML
     private AnchorPane mainFragment;
     @FXML
@@ -68,7 +67,6 @@ public class DietController extends HomeSceneController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Diet");
     }
 
     @FXML

@@ -1,4 +1,4 @@
-package sample.Controllers.FragmentControllers.Diet;
+package sample.Controllers.FragmentControllers.DietSceneFragments;
 
 public class WeightFragmentController {
 
