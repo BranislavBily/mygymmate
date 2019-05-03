@@ -2,13 +2,18 @@ package sample.Controllers.SceneControllers.Admin;
 
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import sample.Controllers.FragmentControllers.HomeSceneFragments.HomeAdminFragmentController;
+import sample.Controllers.FragmentControllers.HomeSceneFragments.HomeFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Session;
+
+import java.io.IOException;
 
 public class AdminHomeSceneController extends HomeSceneController {
 
@@ -50,6 +55,20 @@ public class AdminHomeSceneController extends HomeSceneController {
         onButtonLogOutPressed(buttonLogOut);
     }
 
+    @FXML
+    private void onHomeButtonClicked() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.HOME_ADMIN_FRAGMENT));
+        try {
+            Parent fragment = fxmlLoader.load();
+            HomeAdminFragmentController homeAdminFragment = fxmlLoader.getController();
+            homeAdminFragment.onCreate();
+            mainFragment.getChildren().setAll(fragment);
+            removeAdminButtonActiveEffect(buttonHome , buttonProfile, buttonSettings, buttonAboutUs);
+            buttonHome.getStyleClass().add("buttonActive");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void onProfileButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.PROFILE_FRAGMENT);
