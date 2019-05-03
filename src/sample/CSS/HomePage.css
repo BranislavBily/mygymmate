@@ -7,8 +7,28 @@
     -fx-pref-height: 70;
     -fx-pref-width: 283;
     -fx-font-family: "Arial Black";
-    -fx-font-size: 18;
+    -fx-font-size: 16;
     -fx-text-fill: white;
+
+
+}
+
+.textAreas .scroll-pane {
+    -fx-background-color: transparent;
+}
+.textAreas .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.textAreas .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.textAreas{
+-fx-border-color:#0b5851 ;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius:10px;
+    -fx-background-color: #FFFF;
 
 
 }

@@ -94,7 +94,7 @@
                 <DropShadow />
             </effect>
             <children>
-            <TextArea layoutX="31.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Info o Workout&#10;&#10;-wokrout&#10;&#10;" />
+            <TextArea editable="false" layoutX="31.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;Info o Workout&#10;&#10;-wokrout&#10;&#10;" />
                 <Button id="buttonWithWorkout" fx:id="buttonWorkout" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonWorkoutPressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
@@ -103,7 +103,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-            <TextArea layoutX="273.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Info o diet&#10;&#10;&#10;-diet&#10;" />
+            <TextArea editable="false" layoutX="271.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;Info o diet&#10;&#10;&#10;-diet&#10;" />
                 <Button id="buttonWithDiet" fx:id="buttonDiet" layoutX="261.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonDietPressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.3" width="40.0" />
@@ -112,7 +112,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-            <TextArea layoutX="512.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" text="&#10;&#10;Info o measure&#10;&#10;-measure" />
+            <TextArea editable="false" layoutX="512.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;Info o measure&#10;&#10;-measure" />
                 <Button fx:id="buttonWithMeasure" layoutX="502.0" layoutY="20.0" mnemonicParsing="false" onAction="#onButtonMeasurePressed" prefHeight="220.0" prefWidth="220.0" styleClass="mainButtons" textAlignment="CENTER">
                     <effect>
                         <DropShadow color="#03383f" height="40.0" radius="19.5" spread="0.2" width="40.0" />

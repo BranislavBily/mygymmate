@@ -7,6 +7,15 @@ public class ProfileData {
     private String status;
     private String typeOfTraining;
 
+
+
+    public boolean chceckEmpty(){
+        if (this.username.equals("")||this.realName.equals("")||this.gender.equals("")||this.status.equals("")|| this.typeOfTraining.equals("")){
+
+            return false;
+        }
+        else return true;
+    }
     public String getUsername() {
         return username;
     }
