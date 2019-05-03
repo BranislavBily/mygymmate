@@ -18,4 +18,5 @@ public interface ResourceFXML {
         String SETTINGS_FRAGMENT="../../../FXMLFragments/settingsFragment.fxml";
         String TRAINER_INFO_FRAGMENT="../../../FXMLFragments/trainerInfoFragment.fxml";
         String TRAINEE_INFO_FRAGMENT="../../../FXMLFragments/traineeInfoFragment.fxml";
+        String CHANGE_PASSWORD="../../../PopUpWindowsFXML/changePassword.fxml";
     }
