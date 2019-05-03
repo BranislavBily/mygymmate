@@ -174,10 +174,23 @@ public class DatabaseModuleUser {
         return false;
     }
 
-    public boolean correctPassword(String password) {
+    public boolean correctUserPassword(String password) {
         int userID = Session.getUserID();
         String username = getUsername(userID);
-        return isUser(username, password) ==  null;
+        return isUser(username, password) !=  null;
+    }
+
+    public boolean updateUserPassword(String newPassword) {
+        int userID = Session.getUserID();
+        String query = "update " + ResourceTables.USERS + " set password = ? where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
