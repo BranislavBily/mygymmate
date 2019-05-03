@@ -45,7 +45,7 @@
             </Label>
                 <AnchorPane layoutY="257.0" prefHeight="515.0" prefWidth="247.0" style="-fx-background-color: #107f74;;">
                <children>
-                  <Button fx:id="buttonHome" mnemonicParsing="false" prefWidth="273.0" styleClass="sidebarButtons" text="    Home">
+                  <Button fx:id="buttonHome" mnemonicParsing="false" onAction="#onHomeButtonClicked" prefWidth="273.0" styleClass="sidebarButtons" text="    Home">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
