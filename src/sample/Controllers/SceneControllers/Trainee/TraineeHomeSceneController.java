@@ -115,7 +115,6 @@ public class TraineeHomeSceneController extends HomeSceneController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -141,16 +140,10 @@ public class TraineeHomeSceneController extends HomeSceneController {
      */
     @FXML
     private void onAboutUsButtonClicked() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.ABOUT_US_FRAGMENT));
-        try {
-            Parent fragment = fxmlLoader.load();
-            mainFragment.getChildren().setAll(fragment);
-            removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
-            buttonAboutUs.getStyleClass().add("buttonActive");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
+        mainFragment.getChildren().setAll(fragment);
+        removeButtonActiveEffect(buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
+        buttonAboutUs.getStyleClass().add("buttonActive");
     }
 }
 
