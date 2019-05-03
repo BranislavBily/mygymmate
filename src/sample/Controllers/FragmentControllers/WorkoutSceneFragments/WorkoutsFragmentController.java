@@ -5,11 +5,19 @@ import db.DatabaseModuleWorkout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Resources.ResourceFXML;
 import sample.Session;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class WorkoutsFragmentController {
@@ -24,12 +32,29 @@ public class WorkoutsFragmentController {
     private TableColumn<Workout, String> tableColumnWeight;
     @FXML
     private TableColumn<Workout, String> tableColumnDate;
+    @FXML
+    private Button buttonAddWorkout;
 
     public void onCreate() {
         loadWorkoutsIntoTable();
     }
 
-
+    @FXML
+    private void onButtonAddWorkout() {
+        Stage stage =  new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.ADD_WORKOUT));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Add Workout");
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void loadWorkoutsIntoTable() {
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
         ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts(Session.getUserID());

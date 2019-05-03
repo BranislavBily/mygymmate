@@ -8,16 +8,16 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragmentController">
    <children>
-      <AnchorPane layoutX="58.0" layoutY="58.0" prefHeight="266.0" prefWidth="573.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+      <AnchorPane layoutX="57.0" layoutY="38.0" prefHeight="288.0" prefWidth="628.0" style="-fx-background-radius: 5; -fx-background-color: white;">
          <children>
             <Label layoutX="27.0" layoutY="26.0" prefHeight="29.0" prefWidth="76.0" text="Profile" textFill="#03383f">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Line endX="424.0" layoutX="128.0" layoutY="65.0" startX="-100.0" stroke="#03383f" />
+            <Line endX="475.5333251953125" endY="1.52587890625E-5" layoutX="128.0" layoutY="65.0" startX="-100.0" stroke="#03383f" />
             <Label layoutX="29.0" layoutY="89.0" text="Name:" textFill="#107f74">
                <font>
                   <Font size="15.0" />
@@ -59,15 +59,15 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="58.0" layoutY="359.0" prefHeight="346.0" prefWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+      <AnchorPane layoutX="57.0" layoutY="368.0" prefHeight="370.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 5;">
          <children>
             <Label layoutX="24.0" layoutY="28.0" prefHeight="29.0" prefWidth="113.0" text="Security" textFill="#03383f">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Line endX="99.0" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
-            <Button fx:id="buttonChangePassword" layoutX="55.0" layoutY="116.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f #03383f;" text="Change Password" textFill="WHITE">
+            <Line endX="124.06671142578125" endY="3.0517578125E-5" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
+            <Button fx:id="buttonChangePassword" layoutX="71.0" layoutY="116.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f #03383f;" text="Change Password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -75,7 +75,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonCheckPassword" layoutX="55.0" layoutY="241.0" mnemonicParsing="false" onAction="#onButtonCheckPasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Check Password &#10;Strenght" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonCheckPassword" layoutX="73.0" layoutY="241.0" mnemonicParsing="false" onAction="#onButtonCheckPasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Check Password &#10;Strenght" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -88,15 +88,15 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="372.0" layoutY="359.0" prefHeight="238.0" prefWidth="260.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+      <AnchorPane layoutX="395.0" layoutY="368.0" prefHeight="264.0" prefWidth="290.0" style="-fx-background-color: white; -fx-background-radius: 5;">
          <children>
             <Label layoutX="24.0" layoutY="28.0" prefHeight="35.0" prefWidth="184.0" text="Profile picture" textFill="#03383f">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Line endX="99.0" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
-            <Button fx:id="buttonChangeProfilePicture" layoutX="55.0" layoutY="130.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Change profile&#10; picture&#10;" textAlignment="CENTER" textFill="WHITE">
+            <Line endX="126.33331298828125" endY="3.0517578125E-5" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
+            <Button fx:id="buttonChangeProfilePicture" layoutX="69.0" layoutY="131.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Change profile&#10; picture&#10;" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

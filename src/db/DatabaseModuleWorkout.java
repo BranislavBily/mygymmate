@@ -2,6 +2,7 @@ package db;
 
 import db.DTO.Workout;
 import sample.Resources.ResourceTables;
+import sample.Session;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,6 +53,22 @@ public class DatabaseModuleWorkout {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public boolean insertWorkout(String exersise, int repetitions , int weight, String date) {
+        int userID = Session.getUserID();
+        String query = "insert into  " + ResourceTables.WORKOUTS + "(exercise, repetitions, weight , date, userId) values (?,?,?,?,?)";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, exersise);
+            preparedStatement.setInt(2, repetitions);
+            preparedStatement.setInt(3, weight);
+            preparedStatement.setString(4, date);
+            preparedStatement.setInt(5,userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

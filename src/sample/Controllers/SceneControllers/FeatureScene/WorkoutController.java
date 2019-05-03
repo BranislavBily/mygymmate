@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import sample.Controllers.FragmentControllers.WorkoutSceneFragments.AddWorkoutFragmentController;
 import sample.Controllers.FragmentControllers.WorkoutSceneFragments.ProgressWorkoutController;
 import sample.Controllers.FragmentControllers.WorkoutSceneFragments.WorkoutsFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
@@ -51,27 +50,14 @@ public class WorkoutController extends HomeSceneController {
             WorkoutsFragmentController workoutsFragmentController = fxmlLoader.getController();
             workoutsFragmentController.onCreate();
             mainFragment.getChildren().setAll(fragment);
-            removeButtonActiveEffect(buttonAddWorkout ,buttonProgress, buttonWorkouts);
+            removeButtonActiveEffect(buttonProgress, buttonWorkouts);
             buttonWorkouts.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    private void onButtonAddWorkoutPressed() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.ADD_WORKOUT_FRAGMENT));
-        try {
-            Parent fragment = fxmlLoader.load();
-            AddWorkoutFragmentController addWorkoutFragmentController = fxmlLoader.getController();
-            addWorkoutFragmentController.onCreate();
-            mainFragment.getChildren().setAll(fragment);
-            removeButtonActiveEffect(buttonAddWorkout ,buttonProgress, buttonWorkouts);
-            buttonAddWorkout.getStyleClass().add("buttonActive");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     @FXML
     private void onButtonProgressPressed() {
@@ -81,7 +67,7 @@ public class WorkoutController extends HomeSceneController {
             ProgressWorkoutController addWorkoutFragmentController = fxmlLoader.getController();
             addWorkoutFragmentController.onCreate();
             mainFragment.getChildren().setAll(fragment);
-            removeButtonActiveEffect(buttonAddWorkout ,buttonProgress, buttonWorkouts);
+            removeButtonActiveEffect(buttonProgress, buttonWorkouts);
             buttonProgress.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();

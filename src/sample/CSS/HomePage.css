@@ -24,8 +24,7 @@
 }
 
 .textAreas{
--fx-border-color:#0b5851 ;
-    -fx-border-width: 2px;
+
     -fx-border-radius: 10px;
     -fx-background-radius:10px;
     -fx-background-color: #FFFF;
