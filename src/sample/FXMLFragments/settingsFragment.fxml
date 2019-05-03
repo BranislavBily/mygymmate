@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController">
    <AnchorPane layoutX="33.0" layoutY="35.0" prefHeight="478.0" prefWidth="633.0" style="-fx-background-radius: 5; -fx-background-color: white;">
       <Label layoutX="25.0" layoutY="23.0" prefHeight="29.0" prefWidth="135.0" text="Edit Profile" textFill="#03383f">
          <font>
@@ -18,36 +18,30 @@
          </font>
       </Label>
       <Line endX="481.0" layoutX="126.0" layoutY="59.0" startX="-100.0" stroke="#03383f" />
-      <Label layoutX="35.0" layoutY="77.0" prefHeight="19.0" prefWidth="79.0" text="Username:" textFill="#107f74">
+      <Label layoutX="35.0" layoutY="90.0" prefHeight="19.0" prefWidth="79.0" text="Username:" textFill="#107f74">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldUsername" layoutX="35.0" layoutY="106.0" prefHeight="27.0" prefWidth="582.0" />
-      <Label layoutX="35.0" layoutY="144.0" prefHeight="19.0" prefWidth="79.0" text="Real name:" textFill="#107f74">
+      <TextField fx:id="textFieldUsername" layoutX="34.0" layoutY="122.0" prefHeight="27.0" prefWidth="582.0" />
+      <Label layoutX="35.0" layoutY="158.0" prefHeight="19.0" prefWidth="79.0" text="Real name:" textFill="#107f74">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldRealName" layoutX="35.0" layoutY="169.0" prefHeight="27.0" prefWidth="582.0" />
-      <Label layoutX="35.0" layoutY="230.0" prefHeight="19.0" prefWidth="79.0" text="Gender:" textFill="#107f74">
+      <TextField fx:id="textFieldRealName" layoutX="34.0" layoutY="188.0" prefHeight="27.0" prefWidth="582.0" />
+      <Label layoutX="39.0" layoutY="247.0" prefHeight="19.0" prefWidth="79.0" text="Gender:" textFill="#107f74">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiceBoxGender" layoutX="35.0" layoutY="264.0" prefWidth="150.0" />
-      <Label layoutX="35.0" layoutY="332.0" prefHeight="19.0" prefWidth="79.0" text="Status:" textFill="#107f74">
+      <ChoiceBox fx:id="choiceBoxGender" layoutX="39.0" layoutY="281.0" prefWidth="150.0" />
+      <Label layoutX="325.0" layoutY="247.0" prefHeight="19.0" prefWidth="120.0" text="Type of training:" textFill="#107f74">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiceBoxStatus" layoutX="35.0" layoutY="366.0" prefWidth="150.0" />
-      <Label layoutX="326.0" layoutY="230.0" prefHeight="19.0" prefWidth="120.0" text="Type of training:" textFill="#107f74">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="326.0" layoutY="264.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBoxTypeOfTraining" layoutX="325.0" layoutY="281.0" prefWidth="150.0" />
       <Button fx:id="buttonSave" layoutX="271.0" layoutY="419.0" mnemonicParsing="false" onAction="#onButtonSavePressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />

@@ -31,9 +31,6 @@ public class SettingsFragmentController extends Controller {
     private ChoiceBox choiceBoxGender;
 
     @FXML
-    private ChoiceBox choiceBoxStatus;
-
-    @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
 
     @FXML
@@ -63,28 +60,22 @@ public class SettingsFragmentController extends Controller {
         setChoiceBoxItems();
         choiceBoxGender.setValue(profileData.getGender());
         choiceBoxTypeOfTraining.setValue(profileData.getTypeOfTraining());
-        choiceBoxStatus.setValue(profileData.getStatus());
     }
 
     @FXML
     private void onButtonSavePressed() {
         ProfileData profileData = loadProfileDataFromScene();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-
-
-
-         if (profileData.chceckEmpty()&& databaseModuleUser.updateUser(profileData)) {
+        if (profileData.chceckEmpty() && databaseModuleUser.updateUser(profileData)) {
 
             System.out.println("Settings saved");
-                labelFeedback.setVisible(true);
-                labelEmpty.setVisible(false);
-            } else {
-                System.out.println("Error while updating User data");
-                labelEmpty.setVisible(true);
-                labelFeedback.setVisible(false);
-            }
-
-
+            labelFeedback.setVisible(true);
+            labelEmpty.setVisible(false);
+        } else {
+            System.out.println("Error while updating User data");
+            labelEmpty.setVisible(true);
+            labelFeedback.setVisible(false);
+        }
     }
 
     /**
@@ -96,7 +87,6 @@ public class SettingsFragmentController extends Controller {
         ProfileData profileData = new ProfileData();
         profileData.setRealName(textFieldRealName.getText());
         profileData.setUsername(textFieldUsername.getText());
-        profileData.setStatus(choiceBoxStatus.getValue().toString());
         profileData.setGender(choiceBoxGender.getValue().toString());
         profileData.setTypeOfTraining(choiceBoxTypeOfTraining.getValue().toString());
         return profileData;
@@ -109,14 +99,13 @@ public class SettingsFragmentController extends Controller {
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-
-        if(databaseModuleUser.correctUserPassword(passwordFromDialog)) {
-            if(!databaseModuleUser.deleteLoggedInUser()) {
+        if (databaseModuleUser.correctUserPassword(passwordFromDialog)) {
+            if (!databaseModuleUser.deleteLoggedInUser()) {
                 System.out.println("Error while deleting user");
             } else {
                 setSceneToLogin(buttonDelete.getScene());
             }
-        } else if(!passwordFromDialog.isEmpty()){
+        } else if (!passwordFromDialog.isEmpty()) {
             new WrongPasswordDialog(Alert.AlertType.ERROR);
             System.out.println("Wrong password");
         }
@@ -129,10 +118,6 @@ public class SettingsFragmentController extends Controller {
 
         choiceBoxTypeOfTraining.setItems(FXCollections.observableArrayList(
                 "Lose Weight", "Gain Muscle")
-        );
-
-        choiceBoxStatus.setItems(FXCollections.observableArrayList(
-                "Trainee", "Trainer")
         );
     }
 
