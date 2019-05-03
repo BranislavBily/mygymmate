@@ -3,9 +3,17 @@ package sample.Controllers.FragmentControllers.HomeSceneFragments;
 import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Resources.ResourceFXML;
 import sample.Session;
+
+import java.io.IOException;
 
 public class ProfileFragmentController {
     @FXML
@@ -42,7 +50,19 @@ public class ProfileFragmentController {
 
     @FXML
     private void onButtonChangePasswordPressed() {
-        System.out.println("Change password");
+        Stage stage =  new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.CHANGE_PASSWORD));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Password change");
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
