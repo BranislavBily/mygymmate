@@ -124,6 +124,12 @@ public class Controller extends AnchorPane {
         buttonAboutUs.getStyleClass().remove("buttonActive");
     }
 
+    protected void removeButtonActiveEffect(Button button1 ,Button button2, Button button3){
+        button1.getStyleClass().remove("buttonActive");
+        button2.getStyleClass().remove("buttonActive");
+        button3.getStyleClass().remove("buttonActive");
+    }
+
     @javafx.fxml.FXML
     private void onHyperLinkPaypalPressed() {
         Application application = new Application() {
