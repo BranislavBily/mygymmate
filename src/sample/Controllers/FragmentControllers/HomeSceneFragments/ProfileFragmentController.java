@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,10 +23,6 @@ public class ProfileFragmentController {
     private Label labelStatus;
     @FXML
     private Label labelTypeOfTraining;
-    @FXML
-    private Button buttonChangePassword;
-    @FXML
-    private Button buttonCheckPassword;
 
     /**
      * Method prepares scene for use, fills it with profile data
