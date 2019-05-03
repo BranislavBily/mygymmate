@@ -55,7 +55,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonSettings" layoutY="136.0" mnemonicParsing="false" onAction="#onSettingsButtonClicked" prefWidth="283.0" styleClass="sidebarButtons" text="    Setting">
+                  <Button fx:id="buttonSettings" layoutY="136.0" mnemonicParsing="false" onAction="#onSettingsButtonClicked" prefWidth="283.0" styleClass="sidebarButtons" text="    Settings">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
