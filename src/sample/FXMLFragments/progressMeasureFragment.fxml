@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.MeasureSceneFragments.ProgressMeasureFragmentController">
+   <children>
+      <Label layoutX="216.0" layoutY="339.0" prefHeight="17.0" prefWidth="303.0" text="This is progress" />
+   </children>
+</AnchorPane>

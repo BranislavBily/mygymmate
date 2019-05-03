@@ -27,4 +27,6 @@ public interface ResourceFXML {
         String ADD_WORKOUT_FRAGMENT = "../../../FXMLFragments/addWorkoutFragment.fxml";
         String WORKOUTS_FRAGMENT = "../../../FXMLFragments/workoutsFragment.fxml";
         String PROGRESS_WORKOUT_FRAGMENT = "../../../FXMLFragments/progressWorkoutFragment.fxml";
+        String PROGRESS_MEASURE_FRAGMENT = "../../../FXMLFragments/progressMeasureFragment.fxml";
+        String MEASUREMENTS_FRAGMENT = "../../../FXMLFragments/measurementsFragment.fxml";
     }
