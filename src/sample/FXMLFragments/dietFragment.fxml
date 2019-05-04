@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.DietSceneFragments.DietFragmentController">
    <children>
-      <Label layoutX="216.0" layoutY="339.0" prefHeight="17.0" prefWidth="303.0" text="This is diet" />
+      <ProgressBar layoutX="88.0" layoutY="134.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+      <ProgressBar layoutX="88.0" layoutY="358.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+      <ProgressBar layoutX="88.0" layoutY="567.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+      <Label layoutX="190.0" layoutY="195.0" prefHeight="35.0" prefWidth="310.0" text="Put yout calories intake (kcal) :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="190.0" layoutY="415.0" prefHeight="35.0" prefWidth="310.0" text="Put yout protein intake (g) :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="190.0" layoutY="625.0" prefHeight="35.0" prefWidth="310.0" text="Put yout water intake (dcl) :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="486.0" layoutY="192.0" prefHeight="45.0" prefWidth="118.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="458.0" layoutY="412.0" prefHeight="45.0" prefWidth="118.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="459.0" layoutY="622.0" prefHeight="45.0" prefWidth="118.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
