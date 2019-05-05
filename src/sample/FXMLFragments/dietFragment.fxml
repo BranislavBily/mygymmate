@@ -1,45 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.DietSceneFragments.DietFragmentController">
    <children>
-      <ProgressBar layoutX="88.0" layoutY="134.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
-      <ProgressBar layoutX="88.0" layoutY="358.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
-      <ProgressBar layoutX="88.0" layoutY="567.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
-      <Label layoutX="190.0" layoutY="195.0" prefHeight="35.0" prefWidth="310.0" text="Put yout calories intake (kcal) :">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="190.0" layoutY="415.0" prefHeight="35.0" prefWidth="310.0" text="Put yout protein intake (g) :">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="190.0" layoutY="625.0" prefHeight="35.0" prefWidth="310.0" text="Put yout water intake (dcl) :">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <TextField layoutX="486.0" layoutY="192.0" prefHeight="45.0" prefWidth="118.0">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="458.0" layoutY="412.0" prefHeight="45.0" prefWidth="118.0">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="459.0" layoutY="622.0" prefHeight="45.0" prefWidth="118.0">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </TextField>
+      <AnchorPane layoutX="44.0" layoutY="48.0" prefHeight="662.0" prefWidth="660.0" style="-fx-background-color: #FFFF; -fx-background-radius: 5;">
+         <children>
+            <ProgressBar fx:id="waterProgressBar" layoutX="44.0" layoutY="493.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+            <ProgressBar fx:id="proteinProgressBar" layoutX="44.0" layoutY="322.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+            <ProgressBar fx:id="caloriesProgressBar" layoutX="44.0" layoutY="158.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+            <Label layoutX="61.0" layoutY="237.0" prefHeight="35.0" prefWidth="310.0" text="Put yout calories intake (kcal) :">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="84.0" layoutY="405.0" prefHeight="35.0" prefWidth="310.0" text="Put yout protein intake (g) :">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="84.0" layoutY="567.0" prefHeight="35.0" prefWidth="310.0" text="Put yout water intake (dcl) :">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="waterTextField" layoutX="354.0" layoutY="562.0" prefHeight="45.0" prefWidth="118.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="proteinTextField" layoutX="354.0" layoutY="400.0" prefHeight="45.0" prefWidth="118.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="caloriesTextField" layoutX="355.0" layoutY="232.0" prefHeight="45.0" prefWidth="118.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="38.0" layoutY="45.0" prefHeight="46.0" prefWidth="256.0" text="Diet &amp; Hydration" textFill="#03383f">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Line endX="493.7999267578125" layoutX="139.0" layoutY="103.0" startX="-111.79999542236328" stroke="#03383f" />
+            <Button fx:id="buttonSaveCalories" layoutX="507.0" layoutY="237.0" mnemonicParsing="false" onAction="#onButtonSaveCaloriesPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonSaveProtein" layoutX="507.0" layoutY="405.0" mnemonicParsing="false" onAction="#onButtonSaveProteinPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonSaveWater" layoutX="507.0" layoutY="567.0" mnemonicParsing="false" onAction="#onButtonSaveWaterPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>
