@@ -28,10 +28,12 @@ public class ProgressWorkoutController {
 
     private void loadChoiceBox() {
         LinkedHashSet<String> exercises = databaseModuleWorkout.getAllUsersExercises();
-        choiceBoxExercise.setItems(FXCollections.observableArrayList(exercises));
-        choiceBoxExercise.setValue(exercises.iterator().next());
-        setLabelWorkoutsByExercise(exercises.iterator().next());
-        choiceBoxExercise.getSelectionModel().selectedItemProperty().addListener(new MyChangeListener(choiceBoxExercise));
+        if(exercises.size() > 0) {
+            choiceBoxExercise.setItems(FXCollections.observableArrayList(exercises));
+            choiceBoxExercise.setValue(exercises.iterator().next());
+            setLabelWorkoutsByExercise(exercises.iterator().next());
+            choiceBoxExercise.getSelectionModel().selectedItemProperty().addListener(new MyChangeListener(choiceBoxExercise));
+        }
     }
 
     private class MyChangeListener implements ChangeListener<String> {

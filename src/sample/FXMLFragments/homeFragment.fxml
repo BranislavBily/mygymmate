@@ -15,7 +15,7 @@
         <DropShadow />
     </effect>
     <children>
-        <TextArea layoutX="31.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;&#10;-Look at all your workouts&#10;&#10;-Add new workouts&#10;&#10;-Track your progress&#10;&#10;-Track your ORM&#10;&#10;&#10;">
+        <TextArea editable="false" layoutX="31.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;&#10;-Look at all your workouts&#10;&#10;-Add new workouts&#10;&#10;-Track your progress&#10;&#10;-Track your ORM&#10;&#10;&#10;">
          <font>
             <Font size="14.0" />
          </font></TextArea>
@@ -27,7 +27,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <TextArea layoutX="271.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;&#10;-Keep track of calories&#10;&#10;-Intake enough of protein&#10;&#10;- Track your water intake&#10;&#10;-Calculate BMI&#10;&#10;-Track weight&#10;&#10;">
+        <TextArea editable="false" layoutX="271.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;&#10;-Keep track of calories&#10;&#10;-Intake enough of protein&#10;&#10;- Track your water intake&#10;&#10;-Calculate BMI&#10;&#10;-Track weight&#10;&#10;">
          <font>
             <Font size="14.0" />
          </font></TextArea>
@@ -39,7 +39,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <TextArea layoutX="512.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;&#10;-Track all your muscles&#10;&#10;-Watch your progress&#10;&#10;">
+        <TextArea editable="false" layoutX="512.0" layoutY="220.0" prefHeight="296.0" prefWidth="200.0" styleClass="textAreas" text="&#10;&#10;&#10;-Track all your muscles&#10;&#10;-Watch your progress&#10;&#10;">
          <font>
             <Font size="14.0" />
          </font></TextArea>

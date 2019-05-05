@@ -57,7 +57,7 @@ public class SettingsFragmentController extends Controller {
      */
     public void onCreate() {
         databaseModuleUser = new DatabaseModuleUser();
-        ProfileData profileData = databaseModuleUser.loadUserProfileData();
+        ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
         fillControlsWithData(profileData);
     }
 
