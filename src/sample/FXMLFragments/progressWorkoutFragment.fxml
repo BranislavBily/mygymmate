@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.WorkoutSceneFragments.ProgressWorkoutController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.WorkoutSceneFragments.ProgressWorkoutController">
    <children>
-      <Label layoutX="216.0" layoutY="339.0" prefHeight="17.0" prefWidth="303.0" text="This is progress" />
+      <ChoiceBox fx:id="choiceBoxExercise" layoutX="216.0" layoutY="91.0" prefWidth="150.0" />
+      <Label fx:id="labelWorkouts" layoutX="14.0" layoutY="187.0" prefHeight="10.0" prefWidth="617.0" text="Label">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
