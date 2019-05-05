@@ -15,8 +15,8 @@
       <AnchorPane layoutX="44.0" layoutY="48.0" prefHeight="662.0" prefWidth="660.0" style="-fx-background-color: #FFFF; -fx-background-radius: 5;">
          <children>
             <ProgressBar fx:id="waterProgressBar" layoutX="44.0" layoutY="493.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
-            <ProgressBar fx:id="proteinProgressBar" layoutX="44.0" layoutY="322.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
-            <ProgressBar fx:id="caloriesProgressBar" layoutX="44.0" layoutY="158.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" />
+            <ProgressBar fx:id="proteinProgressBar" layoutX="44.0" layoutY="322.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" styleClass="protein_bar" />
+            <ProgressBar fx:id="caloriesProgressBar" layoutX="44.0" layoutY="158.0" prefHeight="46.0" prefWidth="571.0" progress="0.0" styleClass="calories_bar" />
             <Label layoutX="61.0" layoutY="237.0" prefHeight="35.0" prefWidth="310.0" text="Put yout calories intake (kcal) :">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -53,7 +53,7 @@
                </font>
             </Label>
             <Line endX="493.7999267578125" layoutX="139.0" layoutY="103.0" startX="-111.79999542236328" stroke="#03383f" />
-            <Button fx:id="buttonSaveCalories" layoutX="507.0" layoutY="237.0" mnemonicParsing="false" onAction="#onButtonSaveCaloriesPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+            <Button fx:id="buttonSaveCalories" layoutX="507.0" layoutY="237.0" mnemonicParsing="false" onAction="#onButtonSaveCaloriesPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Ok" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -61,7 +61,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonSaveProtein" layoutX="507.0" layoutY="405.0" mnemonicParsing="false" onAction="#onButtonSaveProteinPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+            <Button fx:id="buttonSaveProtein" layoutX="507.0" layoutY="405.0" mnemonicParsing="false" onAction="#onButtonSaveProteinPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Ok" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -69,7 +69,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="buttonSaveWater" layoutX="507.0" layoutY="567.0" mnemonicParsing="false" onAction="#onButtonSaveWaterPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+            <Button fx:id="buttonSaveWater" layoutX="507.0" layoutY="567.0" mnemonicParsing="false" onAction="#onButtonSaveWaterPressed" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #03383f#03383f;" text="Ok" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -77,6 +77,21 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Label fx:id="labelCalories" layoutX="281.0" layoutY="166.0" prefHeight="30.0" prefWidth="150.0" text="1000 / 3000">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelProtein" layoutX="288.0" layoutY="330.0" prefHeight="30.0" prefWidth="143.0" text="100 / 160">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelWater" layoutX="281.0" layoutY="501.0" prefHeight="30.0" prefWidth="160.0" text="1000 / 3000">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow />

@@ -6,4 +6,5 @@ package sample.Resources;
 public interface ResourceTables {
     String USERS = "Users";
     String WORKOUTS = "Workouts";
+    String DIET ="Diet";
 }

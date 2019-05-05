@@ -85,6 +85,9 @@
 
 }
 
+.protein_bar  { -fx-accent: green;  }
+.calories_bar    { -fx-accent: red;    }
+
 
 .mainButtons:hover {
     -fx-effect: dropshadow(three-pass-box, #e1f2f1, 15, 0.7, 0, 0);

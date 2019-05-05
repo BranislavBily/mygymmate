@@ -137,6 +137,29 @@ public class DatabaseModuleUser {
         }
     }
 
+    public boolean insertUserDietIntoDatabase(RegisteredUser registerUser){
+
+        String query = "insert into " + ResourceTables.DIET + " (username, password, status, firstName, lastName, weight, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, registerUser.getUsername());
+            preparedStatement.setString(2, registerUser.getPassword());
+            preparedStatement.setString(3, registerUser.getStatus());
+            preparedStatement.setString(4, registerUser.getFirstName());
+            preparedStatement.setString(5, registerUser.getLastName());
+            preparedStatement.setDouble(6, registerUser.getWeight());
+            preparedStatement.setDouble(7, registerUser.getHeight());
+            preparedStatement.setString(8, registerUser.getGender());
+            preparedStatement.setString(9, registerUser.getTypeOfTraining());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
     public ProfileData loadUserProfileData(int userID) {
         ResultSet resultSet;
         ProfileData profileData = new ProfileData();
