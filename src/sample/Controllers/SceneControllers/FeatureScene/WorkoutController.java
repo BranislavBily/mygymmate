@@ -12,12 +12,10 @@ import sample.Controllers.FragmentControllers.WorkoutSceneFragments.WorkoutsFrag
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceUserType;
-import sample.Session;
 
 import java.io.IOException;
 
 public class WorkoutController extends HomeSceneController {
-    private int userID;
 
     @FXML
     private AnchorPane mainFragment;
@@ -30,15 +28,16 @@ public class WorkoutController extends HomeSceneController {
     @FXML
     private Label labelUsername;
 
+    private DatabaseModuleUser databaseModuleUser;
+
     public void onCreate() {
-        userID = Session.getUserID();
+        databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onButtonWorkoutsPressed();
     }
 
     private void setLabel() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
+        String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 
@@ -76,8 +75,7 @@ public class WorkoutController extends HomeSceneController {
 
     @FXML
     private void onGoBackImagePressed() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String status = databaseModuleUser.getUserStatus(userID);
+        String status = databaseModuleUser.getUserStatus();
         if(status.equals(ResourceUserType.TRAINEE)) {
             setSceneToTraineeHomeScene(buttonWorkouts.getScene());
         } else {

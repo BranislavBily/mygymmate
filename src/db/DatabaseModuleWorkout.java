@@ -18,8 +18,8 @@ public class DatabaseModuleWorkout {
 
     public DatabaseModuleWorkout() {
         connection = SqliteConnection.connector();
-        userID = Session.getUserID();
         if (connection == null) System.exit(1);
+        userID = Session.getUserID();
     }
 
     public ArrayList<Workout> loadWorkouts() {

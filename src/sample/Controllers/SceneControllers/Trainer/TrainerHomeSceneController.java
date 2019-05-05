@@ -42,17 +42,16 @@ public class TrainerHomeSceneController extends HomeSceneController {
     @FXML
     private Button buttonAboutUs;
 
-    private int userID;
+    private DatabaseModuleUser databaseModuleUser;
 
     public void onCreate() {
-        userID = Session.getUserID();
+        databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onHomeButtonClicked();
     }
 
     private void setLabel() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
+        String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 

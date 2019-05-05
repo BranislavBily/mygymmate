@@ -13,6 +13,7 @@ import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Session;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class AdminHomeSceneController extends HomeSceneController {
@@ -32,17 +33,17 @@ public class AdminHomeSceneController extends HomeSceneController {
     @FXML
     private Button buttonLogOut;
 
+    private DatabaseModuleUser databaseModuleUser;
 
-    private int userID;
 
     public void onCreate() {
-        userID = Session.getUserID();
+        databaseModuleUser = new DatabaseModuleUser();
         setLabel();
     }
 
     private void setLabel() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
+        databaseModuleUser = new DatabaseModuleUser();
+        String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 

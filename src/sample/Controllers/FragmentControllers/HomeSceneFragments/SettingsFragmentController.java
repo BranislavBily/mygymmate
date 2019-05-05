@@ -50,13 +50,14 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private Button buttonDelete;
 
+    private DatabaseModuleUser databaseModuleUser;
+
     /**
      * Prepares scene for use
      */
     public void onCreate() {
-        userID = Session.getUserID();
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        ProfileData profileData = databaseModuleUser.loadUserProfileData(userID);
+        databaseModuleUser = new DatabaseModuleUser();
+        ProfileData profileData = databaseModuleUser.loadUserProfileData();
         fillControlsWithData(profileData);
     }
 
@@ -79,7 +80,6 @@ public class SettingsFragmentController extends Controller {
         resetFeedback();
         if(correctUserData()) {
             ProfileData profileData = loadProfileDataFromScene();
-            DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
             if (databaseModuleUser.updateUser(profileData)) {
                 System.out.println("Settings saved");
                 labelFeedback.setVisible(true);
@@ -176,7 +176,6 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         if (databaseModuleUser.correctUserPassword(passwordFromDialog)) {
             if (!databaseModuleUser.deleteLoggedInUser()) {
                 System.out.println("Error while deleting user");

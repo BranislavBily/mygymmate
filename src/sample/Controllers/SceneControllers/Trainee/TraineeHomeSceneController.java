@@ -44,13 +44,13 @@ public class TraineeHomeSceneController extends HomeSceneController {
     @FXML
     private Label labelQuote;
 
-    private int userID;
+    private DatabaseModuleUser databaseModuleUser;
 
     /**
      * Prepares scene for use
      */
     public void onCreate() {
-        userID = Session.getUserID();
+        databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onHomeButtonClicked();
     }
@@ -59,8 +59,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
      * Sets username of logged in user into {@code Label}
      */
     private void setLabel() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
+        String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 

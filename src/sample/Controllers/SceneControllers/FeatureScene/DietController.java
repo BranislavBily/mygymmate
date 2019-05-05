@@ -13,13 +13,11 @@ import sample.Controllers.FragmentControllers.DietSceneFragments.WeightFragmentC
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceUserType;
-import sample.Session;
 
 import java.io.IOException;
 
 public class DietController extends HomeSceneController {
 
-    private int userID;
     @FXML
     private AnchorPane mainFragment;
     @FXML
@@ -31,22 +29,22 @@ public class DietController extends HomeSceneController {
     @FXML
     private Label labelUsername;
 
+    private DatabaseModuleUser databaseModuleUser;
+
     public void onCreate() {
-        userID = Session.getUserID();
+        databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onButtonDietPressed();
     }
 
     private void setLabel() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
+        String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 
     @FXML
     private void onGoBackImagePressed() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String status = databaseModuleUser.getUserStatus(userID);
+        String status = databaseModuleUser.getUserStatus();
         if(status.equals(ResourceUserType.TRAINEE)) {
             setSceneToTraineeHomeScene(buttonDiet.getScene());
         } else {

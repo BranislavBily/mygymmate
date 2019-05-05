@@ -27,7 +27,6 @@ public class ProgressWorkoutController {
     }
 
     private void loadChoiceBox() {
-        databaseModuleWorkout = new DatabaseModuleWorkout();
         LinkedHashSet<String> exercises = databaseModuleWorkout.getAllUsersExercises();
         choiceBoxExercise.setItems(FXCollections.observableArrayList(exercises));
         choiceBoxExercise.setValue(exercises.iterator().next());
@@ -49,7 +48,6 @@ public class ProgressWorkoutController {
     }
 
     private void setLabelWorkoutsByExercise(String exercise) {
-        databaseModuleWorkout = new DatabaseModuleWorkout();
         ArrayList<Workout> workouts = databaseModuleWorkout.getWorkoutsByExerciseName(exercise);
         if (workouts != null) labelWorkouts.setText(workouts.toString());
     }

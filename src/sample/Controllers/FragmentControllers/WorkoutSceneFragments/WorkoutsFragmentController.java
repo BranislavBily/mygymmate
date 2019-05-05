@@ -15,7 +15,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Resources.ResourceFXML;
-import sample.Session;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +34,10 @@ public class WorkoutsFragmentController {
     @FXML
     private Button buttonAddWorkout;
 
+    private DatabaseModuleWorkout databaseModuleWorkout;
+
     public void onCreate() {
+        databaseModuleWorkout = new DatabaseModuleWorkout();
         loadWorkoutsIntoTable();
     }
 
@@ -56,8 +58,7 @@ public class WorkoutsFragmentController {
         }
     }
     private void loadWorkoutsIntoTable() {
-        DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
-        ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts(Session.getUserID());
+        ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts();
         tableColumnExercise.setCellValueFactory(new PropertyValueFactory("Exercise"));
         tableColumnRepetitions.setCellValueFactory(new PropertyValueFactory("Repetitions"));
         tableColumnWeight.setCellValueFactory(new PropertyValueFactory("Weight"));

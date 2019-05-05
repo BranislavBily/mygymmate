@@ -28,26 +28,27 @@ public class AddWorkoutController {
     @FXML
     private void onButtonSavePressed() {
         resetAllFeedback();
-        boolean badInput=false;
+        boolean badInput = false;
 
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
 
-        if(textFieldNameOfExcersise.getText().equals("")){
-            badInput=true;
+        if (textFieldNameOfExcersise.getText().equals("")) {
+            badInput = true;
             labelEmptyFieldError.setVisible(true);
             displayFeedBack(textFieldNameOfExcersise);
 
-        }if (textFieldRepetitions.getText().equals("")||!numberOrNot(textFieldRepetitions.getText())){
-            badInput=true;
+        }
+        if (textFieldRepetitions.getText().equals("") || !numberOrNot(textFieldRepetitions.getText())) {
+            badInput = true;
             labelEmptyFieldError.setVisible(true);
             displayFeedBack(textFieldRepetitions);
         }
-        if (textFieldWeight.getText().equals("")|| !numberOrNot(textFieldWeight.getText()) ){
-            badInput=true;
+        if (textFieldWeight.getText().equals("") || !numberOrNot(textFieldWeight.getText())) {
+            badInput = true;
             labelEmptyFieldError.setVisible(true);
             displayFeedBack(textFieldWeight);
         }
-        if (!badInput){
+        if (!badInput) {
             Workout workout = loadWorkoutFromInput();
             databaseModuleWorkout.insertWorkout(workout);
             labelWorkoutAdded.setVisible(true);
@@ -72,6 +73,7 @@ public class AddWorkoutController {
         }
         return true;
     }
+
     private void displayFeedBack(TextField textField) {
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(10);
@@ -83,8 +85,8 @@ public class AddWorkoutController {
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(0);
         dropShadow.setColor(Color.color(0, 0, 0));
-       textFieldNameOfExcersise.setEffect(dropShadow);
-       textFieldRepetitions.setEffect(dropShadow);
+        textFieldNameOfExcersise.setEffect(dropShadow);
+        textFieldRepetitions.setEffect(dropShadow);
         textFieldWeight.setEffect(dropShadow);
         labelEmptyFieldError.setVisible(false);
         labelWorkoutAdded.setVisible(false);

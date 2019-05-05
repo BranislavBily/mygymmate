@@ -2,6 +2,7 @@ package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
+import db.DatabaseModuleWorkout;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,10 +25,13 @@ public class ProfileFragmentController {
     @FXML
     private Label labelTypeOfTraining;
 
+    private DatabaseModuleUser databaseModuleUser;
+
     /**
      * Method prepares scene for use, fills it with profile data
      */
     public void onCreate() {
+        databaseModuleUser = new DatabaseModuleUser();
         loadProfileInfo();
     }
 
@@ -35,8 +39,7 @@ public class ProfileFragmentController {
      * Loads profile info from the database and sets the data into controls
      */
     private void loadProfileInfo() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
+        ProfileData profileData = databaseModuleUser.loadUserProfileData();
         labelName.setText(profileData.getRealName());
         labelGender.setText(profileData.getGender());
         labelStatus.setText(profileData.getStatus());
