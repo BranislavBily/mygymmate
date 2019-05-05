@@ -102,7 +102,23 @@ public class DatabaseModuleWorkout {
         return false;
     }
 
-
-
-
+    /**
+     * Returns {@code LinkedHasSet<String>} of all exercises that the logged in user has ever done
+     * @return {@code LinkedHasSet<String>} of all exercises
+     */
+    public LinkedHashSet<String> getAllUsersExercises() {
+        LinkedHashSet<String> exercises = new LinkedHashSet<>();
+        String query = "select exercise from " + ResourceTables.WORKOUTS + " where userID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                exercises.add(resultSet.getString("exercise"));
+            }
+            return exercises;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
