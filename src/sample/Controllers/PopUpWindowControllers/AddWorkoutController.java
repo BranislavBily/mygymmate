@@ -1,24 +1,14 @@
 package sample.Controllers.PopUpWindowControllers;
 
-import com.sun.org.apache.bcel.internal.generic.LADD;
 import db.DTO.Workout;
-import db.DatabaseModuleUser;
 import db.DatabaseModuleWorkout;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
-import sample.Controllers.FragmentControllers.WorkoutSceneFragments.WorkoutsFragmentController;
-import sample.Session;
 
-import javax.xml.soap.Text;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class AddWorkoutController {
@@ -39,7 +29,6 @@ public class AddWorkoutController {
     private void onButtonSavePressed() {
         resetAllFeedback();
         boolean badInput=false;
-        String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
 
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
 
@@ -59,18 +48,21 @@ public class AddWorkoutController {
             displayFeedBack(textFieldWeight);
         }
         if (!badInput){
-            databaseModuleWorkout.insertWorkout(textFieldNameOfExcersise.getText(),Integer.parseInt(textFieldRepetitions.getText()),Integer.parseInt(textFieldWeight.getText()),date);
+            Workout workout = loadWorkoutFromInput();
+            databaseModuleWorkout.insertWorkout(workout);
             labelWorkoutAdded.setVisible(true);
-
-
         }
-
-
-
     }
 
-
-
+    private Workout loadWorkoutFromInput() {
+        String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+        Workout workout = new Workout();
+        workout.setExercise(textFieldNameOfExcersise.getText());
+        workout.setRepetitions(Integer.parseInt(textFieldRepetitions.getText()));
+        workout.setWeight(textFieldWeight.getText());
+        workout.setDate(date);
+        return workout;
+    }
 
     private boolean numberOrNot(String input) {
         try {
