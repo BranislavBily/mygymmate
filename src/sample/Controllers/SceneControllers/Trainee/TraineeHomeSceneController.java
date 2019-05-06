@@ -64,29 +64,14 @@ public class TraineeHomeSceneController extends HomeSceneController {
     }
 
     @FXML
-    public void onButtonLogOutPressed() {
-        super.onButtonLogOutPressed(buttonLogOut);
+    private void onButtonLogOutPressed() {
+        onButtonLogOutPressed(buttonLogOut);
     }
 
-    @FXML
-    private void onButtonWorkoutPressed() {
-        setSceneToWorkout(buttonWorkout.getScene());
-    }
-
-    @FXML
-    private void onButtonMeasurePressed() {
-        setSceneToMeasure(buttonWithMeasure.getScene());
-    }
-
-    @FXML
-    private void onButtonDietPressed() {
-        setSceneToDiet(buttonDiet.getScene());
-    }
 
     /**
-     * Sets {@code mainFragment} container into {@code ProfileFragment}
+     * Sets {@code mainFragment} container into {@code HomeFragment}
      */
-
     @FXML
     private void onHomeButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.HOME_FRAGMENT));
@@ -101,7 +86,9 @@ public class TraineeHomeSceneController extends HomeSceneController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Sets {@code mainFragment} container into {@code ProfileFragment}
+     */
     @FXML
     private void onProfileButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.PROFILE_FRAGMENT));

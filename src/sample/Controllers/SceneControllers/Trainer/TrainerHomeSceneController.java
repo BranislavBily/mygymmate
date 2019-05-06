@@ -44,39 +44,33 @@ public class TrainerHomeSceneController extends HomeSceneController {
 
     private DatabaseModuleUser databaseModuleUser;
 
+    /**
+     * Prepares scene for use
+     */
     public void onCreate() {
         databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onHomeButtonClicked();
     }
 
+    /**
+     * Sets username of logged in user into {@code Label}
+     */
     private void setLabel() {
         String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 
-    @FXML
-    private void onButtonWorkoutPressed() {
-        setSceneToWorkout(buttonWorkout.getScene());
-    }
-
-    @FXML
-    private void onButtonDietPressed() {
-        setSceneToDiet(buttonDiet.getScene());
-    }
-
-    @FXML
-    private void onButtonMeasurePressed() {
-        setSceneToMeasure(buttonDiet.getScene());
-    }
-
+    /**
+     * Logs out
+     */
     @FXML
     private void onButtonLogOutPressed() {
-        super.onButtonLogOutPressed(buttonLogOut);
+        onButtonLogOutPressed(buttonLogOut);
     }
 
     /**
-     * Sets {@code mainFragment} container into {@code ProfileFragment}
+     * Sets {@code mainFragment} container into {@code HomeFragment}
      */
     @FXML
     private void onHomeButtonClicked() {
@@ -93,6 +87,9 @@ public class TrainerHomeSceneController extends HomeSceneController {
         }
     }
 
+    /**
+     * Sets {@code mainFragment} container in {@code ProfileFragment}
+     */
     @FXML
     private void onProfileButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.PROFILE_FRAGMENT));
@@ -137,6 +134,10 @@ public class TrainerHomeSceneController extends HomeSceneController {
         removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
         buttonTraineeInfo.getStyleClass().add("buttonActive");
     }
+
+    /**
+     * Sets {@code mainFragment} container into {@code AboutUsFragment}
+     */
     @FXML
     private void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
