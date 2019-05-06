@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 
 public class DatabaseModuleWorkout {
 
@@ -129,4 +131,50 @@ public class DatabaseModuleWorkout {
             return null;
         }
     }
+
+    /**
+     * Gets all repetitions and date of {@code String} argument exercise
+     * @param exercise an {@code String} exercise
+     * @return {@code Map<String, Integer>}, {@code String} date and {@code Integer} repetitions
+     */
+    public Map<String, Integer> getAllRepetitionsByExercise(String exercise) {
+        Map<String, Integer> dataForChart = new LinkedHashMap<>();
+        String query = "select date, repetitions from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY date(date) ASC";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2, exercise);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                dataForChart.put(resultSet.getString("date"), resultSet.getInt("repetitions"));
+            }
+            return dataForChart;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Gets all weight and date {@code String} argument exercise
+     * @param exercise an {@code String} exercise
+     * @return {@code Map<String, Double>}, {@code String} date and {@code Double} weight
+     */
+    public Map<String, Double> getAllWeightByExercise(String exercise) {
+        Map<String, Double> dataForChart = new LinkedHashMap<>();
+        String query = "select date, weight from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY date(date) ASC";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2, exercise);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                dataForChart.put(resultSet.getString("date"), resultSet.getDouble("weight"));
+            }
+            return dataForChart;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 }
