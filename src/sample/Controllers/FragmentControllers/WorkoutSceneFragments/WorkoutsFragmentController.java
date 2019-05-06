@@ -58,7 +58,7 @@ public class WorkoutsFragmentController {
         }
     }
     private void loadWorkoutsIntoTable() {
-        ArrayList<Workout> workouts = databaseModuleWorkout.loadWorkouts();
+        ArrayList<Workout> workouts = databaseModuleWorkout.getWorkouts();
         tableColumnExercise.setCellValueFactory(new PropertyValueFactory("Exercise"));
         tableColumnRepetitions.setCellValueFactory(new PropertyValueFactory("Repetitions"));
         tableColumnWeight.setCellValueFactory(new PropertyValueFactory("Weight"));
