@@ -22,7 +22,11 @@ public class DatabaseModuleWorkout {
         userID = Session.getUserID();
     }
 
-    public ArrayList<Workout> loadWorkouts() {
+    /**
+     * Gets all workouts of logged in user
+     * @return {@code ArrayList<Workout>} of all user's workouts;
+     */
+    public ArrayList<Workout> getWorkouts() {
         ArrayList<Workout> workouts = new ArrayList<>();
         String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -84,9 +88,13 @@ public class DatabaseModuleWorkout {
             e.printStackTrace();
             return null;
         }
-
     }
 
+    /**
+     * Inserts workout into the database
+     * @param workout data that are to be inserted
+     * @return {@code true} if update was successful of {@code false} if it was not
+     */
     public boolean insertWorkout(Workout workout) {
         String query = "insert into  " + ResourceTables.WORKOUTS + "(exercise, repetitions, weight , date, userId) values (?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -104,9 +112,9 @@ public class DatabaseModuleWorkout {
 
     /**
      * Returns {@code LinkedHasSet<String>} of all exercises that the logged in user has ever done
-     * @return {@code LinkedHasSet<String>} of all exercises
+     * @return {@code LinkedHasSet<String>} of all exercises or {@code null} if no exercises where in the database
      */
-    public LinkedHashSet<String> getAllUsersExercises() {
+    public LinkedHashSet<String> getAllUserExercises() {
         LinkedHashSet<String> exercises = new LinkedHashSet<>();
         String query = "select exercise from " + ResourceTables.WORKOUTS + " where userID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
