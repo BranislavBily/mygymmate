@@ -19,13 +19,13 @@ public interface ResourceFXML {
         String TRAINER_INFO_FRAGMENT="../../../FXMLFragments/trainerInfoFragment.fxml";
         String TRAINEE_INFO_FRAGMENT="../../../FXMLFragments/traineeInfoFragment.fxml";
         String CHANGE_PASSWORD="../../../PopUpWindowsFXML/changePassword.fxml";
+        String UPDATE_WORKOUT="../../../PopUpWindowsFXML/updateWorkout.fxml";
         String ADD_WORKOUT="../../../PopUpWindowsFXML/addWorkout.fxml";
         String HOME_FRAGMENT="../../../FXMLFragments/homeFragment.fxml";
         String HOME_ADMIN_FRAGMENT="../../../FXMLFragments/homeAdminFragment.fxml";
         String DIET_FRAGMENT = "../../../FXMLFragments/dietFragment.fxml";
         String BMI_FRAGMENT = "../../../FXMLFragments/BMIFragment.fxml";
         String WEIGHT_FRAGMENT = "../../../FXMLFragments/weightFragment.fxml";
-        String ADD_WORKOUT_FRAGMENT = "../../../FXMLFragments/addWorkoutFragment.fxml";
         String WORKOUTS_FRAGMENT = "../../../FXMLFragments/workoutsFragment.fxml";
         String PROGRESS_WORKOUT_FRAGMENT = "../../../FXMLFragments/progressWorkoutFragment.fxml";
         String PROGRESS_MEASURE_FRAGMENT = "../../../FXMLFragments/progressMeasureFragment.fxml";
