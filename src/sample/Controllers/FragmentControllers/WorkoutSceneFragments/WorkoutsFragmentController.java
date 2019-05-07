@@ -1,6 +1,7 @@
 package sample.Controllers.FragmentControllers.WorkoutSceneFragments;
 
 import db.DTO.Workout;
+import db.DatabaseModuleUser;
 import db.DatabaseModuleWorkout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,16 +9,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.Controllers.PopUpWindowControllers.UpdateWorkoutController;
+import sample.Dialogs.DeleteWorkoutDialog;
 import sample.Resources.ResourceFXML;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class WorkoutsFragmentController {
 
@@ -33,6 +35,10 @@ public class WorkoutsFragmentController {
     private TableColumn<Workout, String> tableColumnDate;
     @FXML
     private Button buttonAddWorkout;
+    @FXML
+    private MenuItem menuItemUpdate;
+    @FXML
+    private MenuItem menuItemDelete;
 
     private DatabaseModuleWorkout databaseModuleWorkout;
 
@@ -65,5 +71,63 @@ public class WorkoutsFragmentController {
         tableColumnDate.setCellValueFactory(new PropertyValueFactory("Date"));
         ObservableList<Workout> workoutObservableList = FXCollections.observableList(workouts);
         tableViewWorkouts.setItems(workoutObservableList);
+    }
+
+    @FXML
+    private void onMenuItemUpdatePressed() {
+        Workout workout = tableViewWorkouts.getSelectionModel().getSelectedItem();
+        System.out.println(workout.toString());
+        if(workout == null) {
+            System.out.println("Nekliklo na nic");
+        } else {
+            //TODO Otvor update workout
+            openUpdateWorkoutScene(workout.getId());
+        }
+        System.out.println("update");
+    }
+
+    private void openUpdateWorkoutScene(int id) {
+        Stage stage =  new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.UPDATE_WORKOUT));
+        try {
+            Parent root = loader.load();
+            UpdateWorkoutController updateWorkoutController = loader.getController();
+            updateWorkoutController.onCreate(id);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Add Workout");
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onMenuItemDeletePressed() {
+        Workout workout = tableViewWorkouts.getSelectionModel().getSelectedItem();
+        System.out.println(workout.toString());
+        if(workout == null) {
+            System.out.println("Nekliklo na nic");
+        } else {
+            boolean dialogAnswer = getDialogAnswer();
+            if(dialogAnswer) {
+                if(databaseModuleWorkout.deleteWorkout(workout.getId())) {
+                    System.out.println("Uspesne vymazanie");
+                    loadWorkoutsIntoTable();
+                } else {
+                    System.out.println("Nastal error");
+                }
+            } else {
+                System.out.println("Vypol sa dialog");
+            }
+        }
+    }
+
+    private boolean getDialogAnswer() {
+        DeleteWorkoutDialog deleteWorkoutDialog = new DeleteWorkoutDialog(Alert.AlertType.CONFIRMATION);
+        Optional<ButtonType> result = deleteWorkoutDialog.showAndWait();
+        return result.get() == ButtonType.OK;
     }
 }
