@@ -53,6 +53,7 @@ public class DatabaseModuleWorkout {
     private Workout loadWorkoutFromResultSet(ResultSet resultSet) {
         Workout workout = new Workout();
         try {
+            workout.setId(resultSet.getInt("ID"));
             workout.setExercise(resultSet.getString("exercise"));
             workout.setRepetitions(resultSet.getInt("repetitions"));
             String weight = Double.toString(resultSet.getDouble("weight"));
@@ -68,24 +69,15 @@ public class DatabaseModuleWorkout {
         }
     }
 
-    /**
-     * Gets all workouts of logged in user of certain exercise
-     * @param exercise What workouts will be loaded
-     * @return all workouts of certain exercise
-     */
-    public ArrayList<Workout> getWorkoutsByExerciseName(String exercise) {
-        ArrayList<Workout> workouts = new ArrayList<>();
-        String query = "select * from " + ResourceTables.WORKOUTS +
-                " where userID = ? and exercise = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, userID);
-            preparedStatement.setString(2, exercise);
+    public Workout getWorkout(int id) {
+        String query = "select * from " + ResourceTables.WORKOUTS + " where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Workout workout = loadWorkoutFromResultSet(resultSet);
-                if (workout != null) workouts.add(workout);
+            while(resultSet.next()) {
+                return loadWorkoutFromResultSet(resultSet);
             }
-            return workouts;
+            return null;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -173,6 +165,32 @@ public class DatabaseModuleWorkout {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean deleteWorkout(int workoutsID) {
+        String query = "delete from " +ResourceTables.WORKOUTS+ " where id = ? and userID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, workoutsID);
+            preparedStatement.setInt(2,userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateWorkout(Workout workout) {
+        String query = "update " + ResourceTables.WORKOUTS+ " set exercise = ?, repetitions = ?,  weight = ? where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, workout.getExercise());
+            preparedStatement.setString(2, String.valueOf(workout.getRepetitions()));
+            preparedStatement.setString(3, workout.getWeight());
+            preparedStatement.setInt(4, workout.getId());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
