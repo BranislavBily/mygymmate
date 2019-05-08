@@ -13,20 +13,12 @@ import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmen
 import sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
-import sample.Session;
-
 import java.io.IOException;
 
 public class TraineeHomeSceneController extends HomeSceneController {
 
     @FXML
     private Button buttonLogOut;
-    @FXML
-    private Button buttonWorkout;
-    @FXML
-    private Button buttonDiet;
-    @FXML
-    private Button buttonWithMeasure;
     @FXML
     private AnchorPane mainFragment;
     @FXML

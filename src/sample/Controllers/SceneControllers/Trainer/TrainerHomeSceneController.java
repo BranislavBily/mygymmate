@@ -12,8 +12,6 @@ import sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragment
 import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
-import sample.Session;
-
 import java.io.IOException;
 
 public class TrainerHomeSceneController extends HomeSceneController {
@@ -23,12 +21,6 @@ public class TrainerHomeSceneController extends HomeSceneController {
 
     @FXML
     private Button buttonLogOut;
-    @FXML
-    private Button buttonWorkout;
-    @FXML
-    private Button buttonDiet;
-    @FXML
-    private Button buttonMeasure;
     @FXML
     private AnchorPane mainFragment;
     @FXML

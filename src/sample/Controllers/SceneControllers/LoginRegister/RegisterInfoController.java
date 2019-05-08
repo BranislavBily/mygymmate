@@ -1,5 +1,7 @@
 package sample.Controllers.SceneControllers.LoginRegister;
 
+import db.DTO.RegisteredUser;
+import db.DTO.User;
 import db.DatabaseModuleUser;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -8,10 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.LoginRegistrationController;
-import db.DTO.RegisteredUser;
-import db.DTO.User;
 
 public class RegisterInfoController extends LoginRegistrationController {
 

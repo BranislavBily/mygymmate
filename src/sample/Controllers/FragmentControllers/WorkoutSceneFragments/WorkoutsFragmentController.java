@@ -1,7 +1,6 @@
 package sample.Controllers.FragmentControllers.WorkoutSceneFragments;
 
 import db.DTO.Workout;
-import db.DatabaseModuleUser;
 import db.DatabaseModuleWorkout;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,12 +35,6 @@ public class WorkoutsFragmentController {
     private TableColumn<Workout, String> tableColumnWeight;
     @FXML
     private TableColumn<Workout, String> tableColumnDate;
-    @FXML
-    private Button buttonAddWorkout;
-    @FXML
-    private MenuItem menuItemUpdate;
-    @FXML
-    private MenuItem menuItemDelete;
 
     private DatabaseModuleWorkout databaseModuleWorkout;
 
@@ -87,7 +83,6 @@ public class WorkoutsFragmentController {
         if(workout == null) {
             System.out.println("Nekliklo na nic");
         } else {
-            //TODO Otvor update workout
             openUpdateWorkoutScene(workout.getId());
         }
         System.out.println("update");

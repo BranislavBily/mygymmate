@@ -1,18 +1,13 @@
 package sample.Controllers.SceneControllers;
 
+import db.DTO.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceTitles;
-import db.DTO.User;
 
 import java.io.IOException;
 

@@ -203,6 +203,4 @@ public class DatabaseModuleWorkout {
             return false;
         }
     }
-
-
 }

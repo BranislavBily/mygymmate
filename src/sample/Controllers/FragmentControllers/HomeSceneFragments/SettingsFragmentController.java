@@ -6,47 +6,35 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.Controller;
 import sample.Dialogs.PasswordConfirmation;
 import sample.Dialogs.WrongPasswordDialog;
 import sample.Session;
 
- import java.util.Optional;
-public class SettingsFragmentController extends Controller {
+import java.util.Optional;
 
-    private int userID;
+public class SettingsFragmentController extends Controller {
 
     @FXML
     private Label labelFeedback;
-
     @FXML
     private Label labelDatabaseError;
-
     @FXML
     private Label labelUsernameError;
-
     @FXML
     private Label labelFirstNameError;
-
     @FXML
     private Label labelLastNameError;
-
     @FXML
     private TextField textFieldUsername;
-
     @FXML
     private TextField textFieldFirstName;
-
     @FXML
     private TextField textFieldLastName;
-
     @FXML
     private ChoiceBox choiceBoxGender;
-
     @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
-
     @FXML
     private Button buttonDelete;
 

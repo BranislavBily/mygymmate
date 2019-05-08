@@ -2,7 +2,6 @@ package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import sample.Controllers.SceneControllers.Controller;
 import sample.Controllers.SceneControllers.HomeSceneController;
 
 public class HomeFragmentController extends HomeSceneController {

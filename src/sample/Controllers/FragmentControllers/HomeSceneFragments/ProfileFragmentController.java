@@ -2,7 +2,6 @@ package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
 import db.DatabaseModuleUser;
-import db.DatabaseModuleWorkout;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
