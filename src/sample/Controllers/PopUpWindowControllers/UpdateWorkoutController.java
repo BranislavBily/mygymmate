@@ -26,6 +26,8 @@ public class UpdateWorkoutController {
     private Label labelWeightError;
     @FXML
     private CheckBox checkBoxBodyweight;
+    @FXML
+    private Label labelWeightSmall;
 
     private DatabaseModuleWorkout databaseModuleWorkout;
 
@@ -90,10 +92,9 @@ public class UpdateWorkoutController {
                 labelWeightError.setText("Please insert weight!");
                 labelWeightError.setVisible(true);
                 badInput = true;
-            } else if (Integer.parseInt(textFieldWeight.getText()) < 1) {
+            } else if (Double.parseDouble(textFieldWeight.getText()) < 1) {
                 displayFeedBack(textFieldWeight);
-                labelWeightError.setText("Weight needs to be heavier than 1kg!");
-                labelWeightError.setVisible(true);
+                labelWeightSmall.setVisible(true);
                 badInput = true;
             }
         }
@@ -132,6 +133,7 @@ public class UpdateWorkoutController {
         labelWeightError.setVisible(false);
         labelRepetitionsError.setVisible(false);
         labelExerciseError.setVisible(false);
+        labelWeightSmall.setVisible(false);
     }
 
     private void displayFeedBack(TextField textField) {

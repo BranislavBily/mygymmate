@@ -48,7 +48,7 @@
             <Font name="System Bold Italic" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="labelSuccess" layoutX="77.0" layoutY="477.0" text="Workout saved successfully!" textFill="#107f74" visible="false">
+      <Label fx:id="labelSuccess" layoutX="81.0" layoutY="484.0" text="Workout saved successfully!" textFill="#107f74" visible="false">
          <font>
             <Font size="15.0" />
          </font>
@@ -64,7 +64,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="labelWeightError" layoutX="120.0" layoutY="400.0" text="LabelWeightError" textFill="RED" visible="false">
+      <Label fx:id="labelWeightError" alignment="CENTER" layoutX="117.0" layoutY="400.0" text="LabelWeightError" textAlignment="CENTER" textFill="RED" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelWeightSmall" alignment="CENTER" layoutX="60.0" layoutY="410.0" text="Weight needs to be aleast 1kg heavy!" textAlignment="CENTER" textFill="RED" visible="false">
          <font>
             <Font size="15.0" />
          </font>
