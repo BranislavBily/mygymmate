@@ -7,9 +7,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
+import sample.Controllers.FeedbackController;
 
-public class UpdateWorkoutController {
+public class UpdateWorkoutController extends FeedbackController {
     @FXML
     private TextField textFieldNameOfExcersise;
     @FXML
@@ -64,7 +64,7 @@ public class UpdateWorkoutController {
 
     private boolean checkInput() {
         resetAllFeedback();
-        boolean badInput = false;
+        boolean goodInput = true;
 
         String repetitions = textFieldRepetitions.getText();
         String exercise = textFieldNameOfExcersise.getText();
@@ -73,32 +73,37 @@ public class UpdateWorkoutController {
             displayFeedBack(textFieldNameOfExcersise);
             labelExerciseError.setText("Please fill an exercise!");
             labelExerciseError.setVisible(true);
-            badInput = true;
+            goodInput = false;
         }
 
-        if (repetitions.isEmpty() || !numberOrNot(repetitions) || repetitions.contains(" ")) {
+        if (repetitions.isEmpty() || !isInteger(repetitions) || repetitions.contains(" ")) {
             displayFeedBack(textFieldRepetitions);
             labelRepetitionsError.setText("Please set repetitions!");
             labelRepetitionsError.setVisible(true);
-            badInput = true;
+            goodInput = false;
+        } else if (Integer.parseInt(repetitions) < 0) {
+            displayFeedBack(textFieldRepetitions);
+            labelRepetitionsError.setText("Please set repetitions!");
+            labelRepetitionsError.setVisible(true);
         }
 
         if (textFieldWeight.isVisible()) {
             System.out.println("Beriem weight");
-            if (!numberOrNot(textFieldWeight.getText()) ||
+            if (!isDouble(textFieldWeight.getText()) ||
                     textFieldWeight.getText().contains(" ") ||
                     textFieldWeight.getText().isEmpty()) {
                 displayFeedBack(textFieldWeight);
                 labelWeightError.setText("Please insert weight!");
                 labelWeightError.setVisible(true);
-                badInput = true;
+                goodInput = false;
             } else if (Double.parseDouble(textFieldWeight.getText()) < 1) {
                 displayFeedBack(textFieldWeight);
+                labelWeightError.setText("Weight needs to be 1kg and heavier!");
                 labelWeightSmall.setVisible(true);
-                badInput = true;
+                goodInput = false;
             }
         }
-        return !badInput;
+        return goodInput;
     }
 
     @FXML
@@ -118,15 +123,16 @@ public class UpdateWorkoutController {
     private void onCheckBoxStateChange() {
         if (checkBoxBodyweight.isSelected()) {
             textFieldWeight.setVisible(false);
+            labelWeightError.setVisible(false);
+            labelWeightSmall.setVisible(false);
         } else {
             textFieldWeight.setVisible(true);
+
         }
     }
 
     private void resetAllFeedback() {
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(0);
-        dropShadow.setColor(Color.color(0, 0, 0));
+        DropShadow dropShadow = getCleanDropShadow();
         textFieldNameOfExcersise.setEffect(dropShadow);
         textFieldRepetitions.setEffect(dropShadow);
         textFieldWeight.setEffect(dropShadow);
@@ -134,22 +140,6 @@ public class UpdateWorkoutController {
         labelRepetitionsError.setVisible(false);
         labelExerciseError.setVisible(false);
         labelWeightSmall.setVisible(false);
-    }
-
-    private void displayFeedBack(TextField textField) {
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(10);
-        dropShadow.setColor(Color.color(1, 0, 0));
-        textField.setEffect(dropShadow);
-    }
-
-    private boolean numberOrNot(String input) {
-        try {
-            Double.parseDouble(input);
-        } catch (NumberFormatException ex) {
-            return false;
-        }
-        return true;
     }
 
 

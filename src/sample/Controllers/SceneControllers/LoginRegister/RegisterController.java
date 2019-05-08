@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.LoginRegistrationController;
 
 public class RegisterController extends LoginRegistrationController {
@@ -50,13 +49,13 @@ public class RegisterController extends LoginRegistrationController {
 
         //If username is empty
         if (username == null || username.equals("")) {
-            displayErrorFeedbackUsername(textFieldUsername);
+            displayFeedBack(textFieldUsername);
             mandatoryError.setVisible(true);
             System.out.println("This field is mandatory");
             errorRegistering = true;
             //Else if username is in the database
         } else if (databaseModuleUser.isUsernameTaken(username)) {
-            displayErrorFeedbackUsername(textFieldUsername);
+            displayFeedBack(textFieldUsername);
             labelUsernameTaken.setVisible(true);
             errorRegistering = true;
             System.out.println("Username taken");
@@ -64,15 +63,15 @@ public class RegisterController extends LoginRegistrationController {
         }
         //If either of them is empty
         if (password == null || passwordAgain == null || password.equals("") || passwordAgain.equals("")) {
-            displayErrorFeedbackPassword(passwordFieldPassword);
-            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
+            displayFeedBack(passwordFieldPassword);
+            displayFeedBack(passwordFieldPasswordAgain);
             mandatoryError2.setVisible(true);
             errorRegistering = true;
             System.out.println("Error: These fields are mandatory");
             //If passwords do not match
         } else if (!password.equals(passwordAgain)) {
-            displayErrorFeedbackPassword(passwordFieldPassword);
-            displayErrorFeedbackPassword(passwordFieldPasswordAgain);
+            displayFeedBack(passwordFieldPassword);
+            displayFeedBack(passwordFieldPasswordAgain);
             labelPasswordMismatch.setVisible(true);
             errorRegistering = true;
             System.out.println("Passwords do not match");
@@ -88,12 +87,10 @@ public class RegisterController extends LoginRegistrationController {
         labelUsernameTaken.setVisible(false);
         mandatoryError.setVisible(false);
         mandatoryError2.setVisible(false);
-        DropShadow usernameShadow = (DropShadow) textFieldUsername.getEffect();
-        usernameShadow.setColor(Color.BLACK);
+        DropShadow usernameShadow = getCleanDropShadow();
         textFieldUsername.setEffect(usernameShadow);
         passwordFieldPassword.setEffect(usernameShadow);
         passwordFieldPasswordAgain.setEffect(usernameShadow);
-
     }
 
     @FXML

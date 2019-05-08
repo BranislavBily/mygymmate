@@ -5,10 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sample.Controllers.FeedbackController;
 import sample.Controllers.SceneControllers.Admin.AdminHomeSceneController;
 import sample.Controllers.SceneControllers.Trainee.TraineeHomeSceneController;
 import sample.Controllers.SceneControllers.Trainer.TrainerHomeSceneController;
@@ -20,7 +19,7 @@ import java.io.IOException;
 /**
  * Controller for methods used in all scenes
  */
-public class Controller extends AnchorPane {
+public class Controller extends FeedbackController {
 
     protected void setSceneToLogin(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
@@ -110,30 +109,6 @@ public class Controller extends AnchorPane {
         labelUsername.setLayoutX(140 - ((username.length() + 1) * 5.14));
     }
 
-
-    protected void removeButtonActiveEffect(Button buttonHome, Button buttonProfile, Button buttonSettings, Button buttonTrainerInfo, Button buttonAboutUs){
-        buttonHome.getStyleClass().remove("buttonActive");
-        buttonProfile.getStyleClass().remove("buttonActive");
-        buttonSettings.getStyleClass().remove("buttonActive");
-        buttonTrainerInfo.getStyleClass().remove("buttonActive");
-        buttonAboutUs.getStyleClass().remove("buttonActive");
-    }
-    protected void removeAdminButtonActiveEffect(Button buttonHome ,Button buttonProfile, Button buttonSettings, Button buttonAboutUs){
-        buttonHome.getStyleClass().remove("buttonActive");
-        buttonProfile.getStyleClass().remove("buttonActive");
-        buttonSettings.getStyleClass().remove("buttonActive");
-        buttonAboutUs.getStyleClass().remove("buttonActive");
-    }
-
-    protected void removeButtonActiveEffect(Button button1 ,Button button2, Button button3){
-        button1.getStyleClass().remove("buttonActive");
-        button2.getStyleClass().remove("buttonActive");
-        button3.getStyleClass().remove("buttonActive");
-    }
-    protected void removeButtonActiveEffect(Button button1 ,Button button2){
-        button1.getStyleClass().remove("buttonActive");
-        button2.getStyleClass().remove("buttonActive");
-    }
 
 
     @FXML
