@@ -168,8 +168,13 @@ public class DatabaseModuleWorkout {
         }
     }
 
+    /**
+     * Deletes workout based on {@code int} id
+     * @param workoutsID of workout to be deleted
+     * @return {@code true} if delete was successful, {@code false} if it was not
+     */
     public boolean deleteWorkout(int workoutsID) {
-        String query = "delete from " +ResourceTables.WORKOUTS+ " where id = ? and userID = ?";
+        String query = "delete from " + ResourceTables.WORKOUTS + " where id = ? and userID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, workoutsID);
             preparedStatement.setInt(2,userID);
@@ -180,6 +185,11 @@ public class DatabaseModuleWorkout {
         }
     }
 
+    /**
+     * Updates workout with new data
+     * @param workout source of new data
+     * @return {@code true} if update was successful, {@code false} if it was not
+     */
     public boolean updateWorkout(Workout workout) {
         String query = "update " + ResourceTables.WORKOUTS+ " set exercise = ?, repetitions = ?,  weight = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
