@@ -47,6 +47,9 @@ public class WorkoutsFragmentController {
         loadWorkoutsIntoTable();
     }
 
+    /**
+     * Creates new AddWorkout scene
+     */
     @FXML
     private void onButtonAddWorkout() {
         Stage stage =  new Stage();
@@ -63,6 +66,10 @@ public class WorkoutsFragmentController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Loads workouts into the table
+     */
     private void loadWorkoutsIntoTable() {
         ArrayList<Workout> workouts = databaseModuleWorkout.getWorkouts();
         tableColumnExercise.setCellValueFactory(new PropertyValueFactory("Exercise"));
