@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Module for handling data from Users table
@@ -17,11 +19,13 @@ import java.sql.SQLException;
 public class DatabaseModuleUser {
 
     private Connection connection;
+    private int usedId;
 
     public DatabaseModuleUser() {
 
         connection = SqliteConnection.connector();
         if(connection == null) System.exit(1);
+        this.usedId=Session.getUserID();
     }
 
     /**
@@ -137,19 +141,17 @@ public class DatabaseModuleUser {
         }
     }
 
-    public boolean insertUserDietIntoDatabase(RegisteredUser registerUser){
+    public boolean insertUserDietIntoDatabase(int id){
 
-        String query = "insert into " + ResourceTables.DIET + " (username, password, status, firstName, lastName, weight, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into " + ResourceTables.DIET + " (userId, calories, protein, water, date) values(?, ?, ?, ?, ?)";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, registerUser.getUsername());
-            preparedStatement.setString(2, registerUser.getPassword());
-            preparedStatement.setString(3, registerUser.getStatus());
-            preparedStatement.setString(4, registerUser.getFirstName());
-            preparedStatement.setString(5, registerUser.getLastName());
-            preparedStatement.setDouble(6, registerUser.getWeight());
-            preparedStatement.setDouble(7, registerUser.getHeight());
-            preparedStatement.setString(8, registerUser.getGender());
-            preparedStatement.setString(9, registerUser.getTypeOfTraining());
+            preparedStatement.setInt(1, id);
+            preparedStatement.setInt(2, 0);
+            preparedStatement.setInt(3, 0);
+            preparedStatement.setInt(4, 0);
+            preparedStatement.setString(5,new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+
+
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {

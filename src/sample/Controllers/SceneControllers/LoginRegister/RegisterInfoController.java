@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.LoginRegistrationController;
 import db.DTO.RegisteredUser;
 import db.DTO.User;
+import sample.Session;
 
 public class RegisterInfoController extends LoginRegistrationController {
 
@@ -123,7 +124,9 @@ public class RegisterInfoController extends LoginRegistrationController {
                     Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "));
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
             if(databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
-                setSceneToLogin(buttonGoBack.getScene());
+                if(databaseModuleUser.insertUserDietIntoDatabase(databaseModuleUser.isUser(user.getUsername(),user.getPassword()))){
+                setSceneToLogin(buttonGoBack.getScene());}
+
             } else {
                 System.out.println("Error while inserting");
             }

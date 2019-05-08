@@ -1,8 +1,7 @@
 package db;
 
 import db.DTO.Diet;
-import db.DTO.ProfileData;
-import db.DTO.Workout;
+import db.DTO.UserDietInfo;
 import sample.Resources.ResourceTables;
 import sample.Session;
 
@@ -10,9 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class DatabaseModuleDiet {
 
@@ -49,7 +45,7 @@ public class DatabaseModuleDiet {
             diet.setActualCalories(resultSet.getInt("calories"));
             diet.setActualProtein(resultSet.getInt("protein"));
             diet.setActualWater(resultSet.getInt("water"));
-            diet.setDate(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+            diet.setDate(resultSet.getString("date"));
             return diet;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -94,6 +90,39 @@ public class DatabaseModuleDiet {
         return false;
     }
 
+    public boolean upadteDate(String date){
+        int userID = Session.getUserID();
+        String query = "update " + ResourceTables.DIET + " set date = ? where userId = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, date);
+            preparedStatement.setInt(2, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
 
+    }
+
+    public UserDietInfo getUserDietInfo(int userID) {
+        ResultSet resultSet;
+        UserDietInfo userDietInfo=new UserDietInfo();
+        String query = "select * from " + ResourceTables.USERS+ " where ID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                userDietInfo.setGender(resultSet.getString("gender"));
+                userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
+                userDietInfo.setHeight(resultSet.getInt("height"));
+                userDietInfo.setWeight(resultSet.getInt("weight"));
+                return userDietInfo;
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }
