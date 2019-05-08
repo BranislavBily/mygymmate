@@ -70,7 +70,7 @@ public class WorkoutsFragmentController {
         ArrayList<Workout> workouts = databaseModuleWorkout.getWorkouts();
         tableColumnExercise.setCellValueFactory(new PropertyValueFactory("Exercise"));
         tableColumnRepetitions.setCellValueFactory(new PropertyValueFactory("Repetitions"));
-        tableColumnWeight.setCellValueFactory(new PropertyValueFactory("Weight in kgs"));
+        tableColumnWeight.setCellValueFactory(new PropertyValueFactory("Weight"));
         tableColumnDate.setCellValueFactory(new PropertyValueFactory("Date"));
         ObservableList<Workout> workoutObservableList = FXCollections.observableList(workouts);
         tableViewWorkouts.setItems(workoutObservableList);
