@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.WorkoutSceneFragments.ProgressWorkoutController">
    <children>
-      <Label layoutX="216.0" layoutY="339.0" prefHeight="17.0" prefWidth="303.0" text="This is progress" />
+      <ChoiceBox fx:id="choiceBoxExercise" layoutX="216.0" layoutY="91.0" prefWidth="150.0" styleClass="cb" stylesheets="@../CSS/HomePage.css" />
+      <LineChart fx:id="lineChartRepetitions" alternativeRowFillVisible="false" animated="false" layoutX="14.0" layoutY="187.0" legendVisible="false" prefHeight="280.0" prefWidth="719.0" title="Repetitions" titleSide="BOTTOM">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <LineChart fx:id="lineChartWeight" layoutX="27.0" layoutY="467.0" legendVisible="false" prefHeight="280.0" prefWidth="694.0" title="Weight" titleSide="BOTTOM">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label layoutX="55.0" layoutY="96.0" text="Select your exercise">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

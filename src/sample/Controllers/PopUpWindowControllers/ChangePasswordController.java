@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
+import sample.Controllers.FeedbackController;
 
-public class ChangePasswordController {
+public class ChangePasswordController extends FeedbackController {
 
     @FXML
     private Button buttonSave;
@@ -33,19 +33,19 @@ public class ChangePasswordController {
         String passwordNew = passwordFieldNew.getText();
         String passwordNewAgain = passwordFieldNewAgain.getText();
         DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        boolean badInput = false;
+        boolean goodInput = true;
 
         if (passwordCurrent.isEmpty()) {
             labelCurrentPasswordError.setText("Fill this field!");
             labelCurrentPasswordError.setVisible(true);
             System.out.println("Empty current password");
-            badInput = true;
+            goodInput = false;
             displayFeedBack(passwordFieldCurrent);
         } else if (!databaseModuleUser.correctUserPassword(passwordCurrent)) {
             labelCurrentPasswordError.setText("Wrong user password!");
             labelCurrentPasswordError.setVisible(true);
             System.out.println("Wrong user password");
-            badInput = true;
+            goodInput = false;
             displayFeedBack(passwordFieldCurrent);
         }
 
@@ -55,25 +55,25 @@ public class ChangePasswordController {
             System.out.println("Empty new passwords");
             displayFeedBack(passwordFieldNew);
             displayFeedBack(passwordFieldNewAgain);
-            badInput = true;
+            goodInput = false;
         } else if (!passwordNew.equals(passwordNewAgain)) {
             labelNewPasswordError.setText("Passwords do not match!");
             labelNewPasswordError.setVisible(true);
             System.out.println("New password do not match!");
             displayFeedBack(passwordFieldNew);
             displayFeedBack(passwordFieldNewAgain);
-            badInput = true;
+            goodInput = false;
         } else if (passwordCurrent.equals(passwordNew)) {
             labelNewPasswordError.setText("You need to enter new password!");
             labelNewPasswordError.setVisible(true);
-            badInput = true;
+            goodInput = false;
             displayFeedBack(passwordFieldCurrent);
             displayFeedBack(passwordFieldNew);
             displayFeedBack(passwordFieldNewAgain);
             System.out.println("Heslo sa zhoduju");
         }
 
-        if (!badInput) {
+        if (goodInput) {
             if (!databaseModuleUser.updateUserPassword(passwordNew)) {
                 System.out.println("Error while updating user password");
             } else {
@@ -83,17 +83,8 @@ public class ChangePasswordController {
         }
     }
 
-    private void displayFeedBack(PasswordField passwordField) {
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(10);
-        dropShadow.setColor(Color.color(1, 0, 0));
-        passwordField.setEffect(dropShadow);
-    }
-
     private void resetAllFeedback() {
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(0);
-        dropShadow.setColor(Color.color(0, 0, 0));
+        DropShadow dropShadow = getCleanDropShadow();
         passwordFieldCurrent.setEffect(dropShadow);
         passwordFieldNew.setEffect(dropShadow);
         passwordFieldNewAgain.setEffect(dropShadow);

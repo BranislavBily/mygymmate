@@ -5,10 +5,19 @@ package db.DTO;
  */
 public class Workout {
 
+    private int id;
     private String exercise;
     private int repetitions;
     private String weight;
     private String date;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getExercise() {
         return exercise;
@@ -45,9 +54,10 @@ public class Workout {
     @Override
     public String toString() {
         return "Workout{" +
-                "exercise='" + exercise + '\'' +
+                "id=" + id +
+                ", exercise='" + exercise + '\'' +
                 ", repetitions=" + repetitions +
-                ", weight=" + weight +
+                ", weight='" + weight + '\'' +
                 ", date='" + date + '\'' +
                 '}';
     }

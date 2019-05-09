@@ -1,5 +1,7 @@
 package sample.Controllers.SceneControllers.LoginRegister;
 
+import db.DTO.RegisteredUser;
+import db.DTO.User;
 import db.DatabaseModuleUser;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -8,7 +10,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.LoginRegistrationController;
 import db.DTO.RegisteredUser;
 import db.DTO.User;
@@ -48,23 +49,14 @@ public class RegisterInfoController extends LoginRegistrationController {
     @FXML
     private Label mandatoryError;
 
-
-    public void setUser(User user) {
+    /**
+     * Prepares scene for use
+     * @param user data from previous scene
+     */
+    public void onCreate(User user) {
         this.user = user;
-        System.out.println(this.user.toString());
-    }
-
-    public Label getLabelUsername() {
-        return labelUsername;
-    }
-
-    public void setLabelUsername(Label labelUsername) {
-        this.labelUsername = labelUsername;
-    }
-
-    @FXML
-    private void onButtonGoBackPressed() {
-        setSceneToRegister(buttonGoBack.getScene());
+        setChoiceBoxItems();
+        setLabelUsernameInRegisterInfo(user.getUsername());
     }
 
     @FXML
@@ -77,28 +69,32 @@ public class RegisterInfoController extends LoginRegistrationController {
         String height = textFieldHeight.getText();
 
         if (firstName.equals("")) {
-            displayErrorFeedbackUsername(textFieldFirstName);
+            displayFeedBack(textFieldFirstName);
             errorRegistering = true;
             mandatoryError.setVisible(true);
             System.out.println("Name is empty");
         }
         if (lastName.equals("")) {
-            displayErrorFeedbackUsername(textFieldLastName);
+            displayFeedBack(textFieldLastName);
             errorRegistering = true;
             mandatoryError.setVisible(true);
             System.out.println("LastName is empty");
         }
-        if (weight.equals("") || !numberOrNot(weight) || impossibleWeight(weight)) {
-            displayErrorFeedbackUsername(textFieldWeight);
+        if (weight.equals("") || !isDouble(weight) || impossibleWeight(weight)) {
+            displayFeedBack(textFieldWeight);
             System.out.println("Empty Weight");
             mandatoryError.setVisible(true);
             errorRegistering = true;
+        } else if (impossibleWeight(weight)) {
+            //TODO Vlastny error an rozhas vahy
         }
-        if (height.equals("") || !numberOrNot(height) || impossibleHeight(height)) {
-            displayErrorFeedbackUsername(textFieldHeight);
+        if (height.equals("") || !isDouble(height)) {
+            displayFeedBack(textFieldHeight);
             System.out.println("Empty Height");
             mandatoryError.setVisible(true);
             errorRegistering = true;
+        } else if (impossibleHeight(height)) {
+            //TODO Vlastny error na rozsah vysky
         }
         if (choiceBoxStatus.getValue() == null) {
             displayErrorFeedbackChoiceBox(choiceBoxStatus);
@@ -133,12 +129,6 @@ public class RegisterInfoController extends LoginRegistrationController {
         }
     }
 
-    public void onCreate(User user) {
-        this.user = user;
-        setChoiceBoxItems();
-        setLabelUsernameInRegisterInfo(user.getUsername());
-    }
-
     private void setChoiceBoxItems() {
         choiceBoxGender.setItems(FXCollections.observableArrayList(
                 "Male", "Female")
@@ -154,10 +144,8 @@ public class RegisterInfoController extends LoginRegistrationController {
     }
 
     private void resetAllFeedback() {
+        DropShadow dropShadow = getCleanDropShadow();
         mandatoryError.setVisible(false);
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(10);
-        dropShadow.setColor(Color.color(0, 0, 0));
         textFieldFirstName.setEffect(dropShadow);
         textFieldLastName.setEffect(dropShadow);
         textFieldHeight.setEffect(dropShadow);
@@ -165,15 +153,6 @@ public class RegisterInfoController extends LoginRegistrationController {
         choiceBoxStatus.setEffect(dropShadow);
         choiceBoxTypeOfTraining.setEffect(dropShadow);
         choiceBoxGender.setEffect(dropShadow);
-    }
-
-    private boolean numberOrNot(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException ex) {
-            return false;
-        }
-        return true;
     }
 
     private boolean impossibleWeight(String sWeight) {
@@ -190,6 +169,10 @@ public class RegisterInfoController extends LoginRegistrationController {
     private void setLabelUsernameInRegisterInfo(String username) {
         labelUsername.setText("Hi " + username + "!");
         labelUsername.setLayoutX(182 - ((username.length() + 1) * 5.5));
+    }
+    @FXML
+    private void onButtonGoBackPressed() {
+        setSceneToRegister(buttonGoBack.getScene());
     }
 
 }

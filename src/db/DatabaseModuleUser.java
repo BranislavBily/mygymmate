@@ -22,10 +22,9 @@ public class DatabaseModuleUser {
     private int usedId;
 
     public DatabaseModuleUser() {
-
         connection = SqliteConnection.connector();
         if(connection == null) System.exit(1);
-        this.usedId=Session.getUserID();
+        userID = Session.getUserID();
     }
 
     /**
@@ -70,19 +69,14 @@ public class DatabaseModuleUser {
         }
     }
 
-    /**
-     * Method used for loading username into Labels
-     * @param userID ID of user in database
-     * @return String with username of user, <code>null</code> if no user is found
-     */
-    public String getUsername(int userID) {
+    public String getUserStatus() {
         ResultSet resultSet;
-        String query = "select username from " + ResourceTables.USERS + " where ID = ?";
+        String query = "select status from " + ResourceTables.USERS + " where ID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                return resultSet.getString("username");
+                return resultSet.getString("status");
             }
             return null;
         } catch (Exception e) {
@@ -91,8 +85,11 @@ public class DatabaseModuleUser {
         }
     }
 
+    /**
+     * Method used for loading username into Labels
+     * @return String with username of user, <code>null</code> if no user is found
+     */
     public String getUsername() {
-        int userID = Session.getUserID();
         ResultSet resultSet;
         String query = "select username from " + ResourceTables.USERS + " where ID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -186,7 +183,6 @@ public class DatabaseModuleUser {
     }
 
     public boolean updateUser(ProfileData profileData) {
-        int userID = Session.getUserID();
         String query = "update " + ResourceTables.USERS + " set username = ?, firstName = ?, lastName = ?, " +
                 "gender = ?, typeOfTraining = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -204,7 +200,6 @@ public class DatabaseModuleUser {
     }
 
     public boolean deleteLoggedInUser() {
-        int userID = Session.getUserID();
         String query = "delete from " + ResourceTables.USERS + " where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
@@ -216,13 +211,11 @@ public class DatabaseModuleUser {
     }
 
     public boolean correctUserPassword(String password) {
-        int userID = Session.getUserID();
-        String username = getUsername(userID);
+        String username = getUsername();
         return isUser(username, password) !=  null;
     }
 
     public boolean updateUserPassword(String newPassword) {
-        int userID = Session.getUserID();
         String query = "update " + ResourceTables.USERS + " set password = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, newPassword);

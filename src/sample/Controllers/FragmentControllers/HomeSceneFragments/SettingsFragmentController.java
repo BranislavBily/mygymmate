@@ -6,57 +6,46 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import sample.Controllers.SceneControllers.Controller;
 import sample.Dialogs.PasswordConfirmation;
 import sample.Dialogs.WrongPasswordDialog;
 import sample.Session;
 
- import java.util.Optional;
-public class SettingsFragmentController extends Controller {
+import java.util.Optional;
 
-    private int userID;
+public class SettingsFragmentController extends Controller {
 
     @FXML
     private Label labelFeedback;
-
     @FXML
     private Label labelDatabaseError;
-
     @FXML
     private Label labelUsernameError;
-
     @FXML
     private Label labelFirstNameError;
-
     @FXML
     private Label labelLastNameError;
-
     @FXML
     private TextField textFieldUsername;
-
     @FXML
     private TextField textFieldFirstName;
-
     @FXML
     private TextField textFieldLastName;
-
     @FXML
     private ChoiceBox choiceBoxGender;
-
     @FXML
     private ChoiceBox choiceBoxTypeOfTraining;
-
     @FXML
     private Button buttonDelete;
+
+    private DatabaseModuleUser databaseModuleUser;
 
     /**
      * Prepares scene for use
      */
     public void onCreate() {
-        userID = Session.getUserID();
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        ProfileData profileData = databaseModuleUser.loadUserProfileData(userID);
+        databaseModuleUser = new DatabaseModuleUser();
+        ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
         fillControlsWithData(profileData);
     }
 
@@ -77,9 +66,8 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private void onButtonSavePressed() {
         resetFeedback();
-        if(correctUserData()) {
+        if (correctUserData()) {
             ProfileData profileData = loadProfileDataFromScene();
-            DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
             if (databaseModuleUser.updateUser(profileData)) {
                 System.out.println("Settings saved");
                 labelFeedback.setVisible(true);
@@ -92,6 +80,7 @@ public class SettingsFragmentController extends Controller {
 
     /**
      * Checks all user input and returns if there was a bad input or not
+     *
      * @return {@code true} if there was no bad input found, {@code false} when there was a bad input
      */
     private boolean correctUserData() {
@@ -99,60 +88,60 @@ public class SettingsFragmentController extends Controller {
         String username = textFieldUsername.getText().trim();
         String firstName = textFieldFirstName.getText().trim();
         String lastName = textFieldLastName.getText().trim();
-        boolean badInput = false;
+        boolean goodInput = true;
 
         //Checks username textField
-        if(username.isEmpty()) {
+        if (username.isEmpty()) {
             System.out.println("Empty username");
             labelUsernameError.setText("Please fill your username!");
             labelUsernameError.setVisible(true);
-            displayErrorFeedbackUsername(textFieldUsername);
-            badInput = true;
+            displayFeedBack(textFieldUsername);
+            goodInput = false;
         } else if (username.contains(" ")) {
             System.out.println("Space in username");
             labelUsernameError.setText("Please fill your username!");
             labelUsernameError.setVisible(true);
-            badInput = true;
-            displayErrorFeedbackUsername(textFieldUsername);
+            goodInput = false;
+            displayFeedBack(textFieldUsername);
             //If he changed his username and its in the database so its taken
         } else if (!databaseModuleUser.getUsername().equals(username) && databaseModuleUser.isUsernameTaken(username)) {
             System.out.println("Username already taken");
             labelUsernameError.setText("Username already taken!");
             labelUsernameError.setVisible(true);
-            badInput = true;
-            displayErrorFeedbackUsername(textFieldUsername);
+            goodInput = false;
+            displayFeedBack(textFieldUsername);
         }
 
         //Checks firstName textField
-        if(firstName.isEmpty()) {
+        if (firstName.isEmpty()) {
             System.out.println("Empty first name");
             labelFirstNameError.setText("Please enter your first name!");
             labelFirstNameError.setVisible(true);
-            displayErrorFeedbackUsername(textFieldFirstName);
-            badInput = true;
+            displayFeedBack(textFieldFirstName);
+            goodInput = false;
         } else if (firstName.contains(" ")) {
             System.out.println("Space in first name");
             labelFirstNameError.setText("Please enter your first name!");
             labelFirstNameError.setVisible(true);
-            displayErrorFeedbackUsername(textFieldFirstName);
-            badInput = true;
+            displayFeedBack(textFieldFirstName);
+            goodInput = false;
         }
 
         //Checks lastName textField
-        if(lastName.isEmpty()) {
+        if (lastName.isEmpty()) {
             System.out.println("Empty last name name");
             labelLastNameError.setText("Please enter your last name!");
             labelLastNameError.setVisible(true);
-            displayErrorFeedbackUsername(textFieldLastName);
-            badInput = true;
+            displayFeedBack(textFieldLastName);
+            goodInput = false;
         } else if (lastName.contains(" ")) {
             System.out.println("Space in last name");
             labelLastNameError.setText("Please enter your first name!");
             labelLastNameError.setVisible(true);
-            displayErrorFeedbackUsername(textFieldLastName);
-            badInput = true;
+            displayFeedBack(textFieldLastName);
+            goodInput = false;
         }
-        return !badInput;
+        return goodInput;
     }
 
     /**
@@ -176,7 +165,6 @@ public class SettingsFragmentController extends Controller {
     @FXML
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
         if (databaseModuleUser.correctUserPassword(passwordFromDialog)) {
             if (!databaseModuleUser.deleteLoggedInUser()) {
                 System.out.println("Error while deleting user");
@@ -212,9 +200,7 @@ public class SettingsFragmentController extends Controller {
     }
 
     private void resetFeedback() {
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(0);
-        dropShadow.setColor(Color.color(0, 0, 0));
+        DropShadow dropShadow = getCleanDropShadow();
         textFieldUsername.setEffect(dropShadow);
         textFieldFirstName.setEffect(dropShadow);
         textFieldLastName.setEffect(dropShadow);
@@ -223,12 +209,5 @@ public class SettingsFragmentController extends Controller {
         labelUsernameError.setVisible(false);
         labelFirstNameError.setVisible(false);
         labelLastNameError.setVisible(false);
-    }
-
-    private void displayErrorFeedbackUsername(TextField textField){
-        DropShadow dropShadowUsername = new DropShadow();
-        dropShadowUsername.setRadius(10);
-        dropShadowUsername.setColor(Color.color(1,0,0));
-        textField.setEffect(dropShadowUsername);
     }
 }

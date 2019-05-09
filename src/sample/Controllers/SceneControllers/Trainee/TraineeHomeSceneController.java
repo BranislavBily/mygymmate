@@ -13,20 +13,12 @@ import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmen
 import sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
-import sample.Session;
-
 import java.io.IOException;
 
 public class TraineeHomeSceneController extends HomeSceneController {
 
     @FXML
     private Button buttonLogOut;
-    @FXML
-    private Button buttonWorkout;
-    @FXML
-    private Button buttonDiet;
-    @FXML
-    private Button buttonWithMeasure;
     @FXML
     private AnchorPane mainFragment;
     @FXML
@@ -44,13 +36,13 @@ public class TraineeHomeSceneController extends HomeSceneController {
     @FXML
     private Label labelQuote;
 
-    private int userID;
+    private DatabaseModuleUser databaseModuleUser;
 
     /**
      * Prepares scene for use
      */
     public void onCreate() {
-        userID = Session.getUserID();
+        databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onHomeButtonClicked();
     }
@@ -59,35 +51,19 @@ public class TraineeHomeSceneController extends HomeSceneController {
      * Sets username of logged in user into {@code Label}
      */
     private void setLabel() {
-        DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-        String username = databaseModuleUser.getUsername(userID);
+        String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 
     @FXML
-    public void onButtonLogOutPressed() {
-        super.onButtonLogOutPressed(buttonLogOut);
+    private void onButtonLogOutPressed() {
+        onButtonLogOutPressed(buttonLogOut);
     }
 
-    @FXML
-    private void onButtonWorkoutPressed() {
-        setSceneToWorkout(buttonWorkout.getScene());
-    }
-
-    @FXML
-    private void onButtonMeasurePressed() {
-        setSceneToMeasure(buttonWithMeasure.getScene());
-    }
-
-    @FXML
-    private void onButtonDietPressed() {
-        setSceneToDiet(buttonDiet.getScene());
-    }
 
     /**
-     * Sets {@code mainFragment} container into {@code ProfileFragment}
+     * Sets {@code mainFragment} container into {@code HomeFragment}
      */
-
     @FXML
     private void onHomeButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.HOME_FRAGMENT));
@@ -102,7 +78,9 @@ public class TraineeHomeSceneController extends HomeSceneController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Sets {@code mainFragment} container into {@code ProfileFragment}
+     */
     @FXML
     private void onProfileButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.PROFILE_FRAGMENT));

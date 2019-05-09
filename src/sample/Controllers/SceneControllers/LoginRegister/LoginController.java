@@ -42,8 +42,8 @@ public class LoginController extends LoginRegistrationController {
             }
         //If user was not logged in
         } else {
-            displayErrorFeedbackUsername(textFieldUserName);
-            displayErrorFeedbackPassword(passwordFieldPassword);
+            displayFeedBack(textFieldUserName);
+            displayFeedBack(passwordFieldPassword);
             loginError.setVisible(true);
             System.out.println("Login not successful");
         }

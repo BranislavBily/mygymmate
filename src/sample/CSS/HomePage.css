@@ -9,8 +9,6 @@
     -fx-font-family: "Arial Black";
     -fx-font-size: 16;
     -fx-text-fill: white;
-
-
 }
 
 .textAreas .scroll-pane {
@@ -92,4 +90,22 @@
 .mainButtons:hover {
     -fx-effect: dropshadow(three-pass-box, #e1f2f1, 15, 0.7, 0, 0);
 
+}
+
+.cb .menu-item:focused {
+    -fx-background-color: #107f74 ; /* for example */
+}
+
+
+.cb {
+    -fx-mark-color: #0b5851 ;
+    -fx-background-color: #107f74;
+}
+
+.cb .context-menu {
+    -fx-background-color: #236862;
+}
+
+.cb .label {
+    -fx-text-fill: white;
 }

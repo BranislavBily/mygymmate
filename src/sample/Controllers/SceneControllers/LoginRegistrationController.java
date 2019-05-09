@@ -1,18 +1,13 @@
 package sample.Controllers.SceneControllers;
 
+import db.DTO.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.Controllers.SceneControllers.LoginRegister.RegisterInfoController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceTitles;
-import db.DTO.User;
 
 import java.io.IOException;
 
@@ -20,28 +15,6 @@ import java.io.IOException;
  * Controller for methods used in Login and Registration Scenes
  */
 public class LoginRegistrationController extends Controller {
-
-    protected void displayErrorFeedbackUsername(TextField textField){
-        textField.setText("");
-        DropShadow dropShadowUsername = new DropShadow();
-        dropShadowUsername.setRadius(20);
-        dropShadowUsername.setColor(Color.color(1,0,0));
-        textField.setEffect(dropShadowUsername);
-    }
-
-    protected void displayErrorFeedbackPassword(PasswordField passwordField){
-        passwordField.setText("");
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(20);
-        dropShadow.setColor(Color.color(1,0,0));
-        passwordField.setEffect(dropShadow);
-    }
-    protected void displayErrorFeedbackChoiceBox(ChoiceBox choiceBox){
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setRadius(20);
-        dropShadow.setColor(Color.color(1,0,0));
-        choiceBox.setEffect(dropShadow);
-    }
 
     protected void setSceneToRegister(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
