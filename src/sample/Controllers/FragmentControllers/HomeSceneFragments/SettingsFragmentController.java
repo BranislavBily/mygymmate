@@ -2,6 +2,7 @@ package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
 import db.DatabaseModuleDiet;
+import db.DatabaseModuleMeasurements;
 import db.DatabaseModuleUser;
 import db.DatabaseModuleWorkout;
 import javafx.collections.FXCollections;
@@ -216,11 +217,14 @@ public class SettingsFragmentController extends Controller {
     public boolean successfulDeletion() {
         DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
+        DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
         if(!databaseModuleUser.deleteLoggedInUser()) {
             return false;
         } else if (!databaseModuleDiet.deleteUserDiet()) {
             return false;
         } else if (!databaseModuleWorkout.deleteAllUserWorkouts()) {
+            return false;
+        } else if (!databaseModuleMeasurements.deleteAllUserMeasurement()) {
             return false;
         }
         return true;

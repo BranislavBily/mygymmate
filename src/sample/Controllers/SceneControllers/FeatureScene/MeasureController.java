@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.FeatureScene;
 
+import db.DatabaseModuleMeasurements;
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,11 +29,14 @@ public class MeasureController extends HomeSceneController {
     private Label labelUsername;
 
     private DatabaseModuleUser databaseModuleUser;
+    private DatabaseModuleMeasurements databaseModuleMeasurements;
 
     public void onCreate() {
         databaseModuleUser = new DatabaseModuleUser();
+        databaseModuleMeasurements = new DatabaseModuleMeasurements();
         setLabel();
         onButtonMeasurementsPressed();
+        System.out.println(databaseModuleMeasurements.getUserMeasurement().toString());
     }
 
     @FXML
