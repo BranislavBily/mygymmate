@@ -214,7 +214,7 @@ public class SettingsFragmentController extends Controller {
         labelLastNameError.setVisible(false);
     }
 
-    public boolean successfulDeletion() {
+    private boolean successfulDeletion() {
         DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
         DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
