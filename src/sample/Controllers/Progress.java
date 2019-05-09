@@ -1,4 +1,4 @@
-package sample.Controllers.FragmentControllers.WorkoutSceneFragments;
+package sample.Controllers;
 
 public interface Progress {
      void loadChoiceBox();
