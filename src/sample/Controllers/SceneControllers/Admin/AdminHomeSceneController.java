@@ -8,15 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.HomeAdminFragmentController;
-import sample.Controllers.FragmentControllers.HomeSceneFragments.HomeFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
+import sample.Interfaces.HomeScene;
 import sample.Resources.ResourceFXML;
-import sample.Session;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 
-public class AdminHomeSceneController extends HomeSceneController {
+public class AdminHomeSceneController extends HomeSceneController implements HomeScene {
 
     @FXML
     private Label labelUsername;
@@ -35,29 +33,28 @@ public class AdminHomeSceneController extends HomeSceneController {
 
     private DatabaseModuleUser databaseModuleUser;
 
-
+    @Override
     public void onCreate() {
         databaseModuleUser = new DatabaseModuleUser();
         setLabel();
     }
 
-    private void setLabel() {
+    @Override
+    public void setLabel() {
         databaseModuleUser = new DatabaseModuleUser();
         String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 
-    public Label getLabelUsername() {
-        return labelUsername;
-    }
-
     @FXML
+    @Override
     public void onButtonLogOutPressed() {
         onButtonLogOutPressed(buttonLogOut);
     }
 
     @FXML
-    private void onHomeButtonClicked() {
+    @Override
+    public void onHomeButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.HOME_ADMIN_FRAGMENT));
         try {
             Parent fragment = fxmlLoader.load();
@@ -71,7 +68,8 @@ public class AdminHomeSceneController extends HomeSceneController {
         }
     }
     @FXML
-    private void onProfileButtonClicked() {
+    @Override
+    public void onProfileButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.PROFILE_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonHome , buttonProfile, buttonSettings, buttonAboutUs);
@@ -79,14 +77,16 @@ public class AdminHomeSceneController extends HomeSceneController {
 
     }
     @FXML
-    private void onSettingsButtonClicked() {
+    @Override
+    public void onSettingsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.SETTINGS_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonHome , buttonProfile, buttonSettings, buttonAboutUs);
         buttonSettings.getStyleClass().add("buttonActive");
     }
     @FXML
-    private void onAboutUsButtonClicked() {
+    @Override
+    public void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeAdminButtonActiveEffect(buttonHome , buttonProfile, buttonSettings, buttonAboutUs);
