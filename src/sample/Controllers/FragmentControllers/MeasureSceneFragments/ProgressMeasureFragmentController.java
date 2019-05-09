@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
-import sample.Controllers.Progress;
+import sample.Interfaces.Progress;
 
 import java.util.Map;
 
@@ -93,7 +93,7 @@ public class ProgressMeasureFragmentController implements Progress {
         if(dataForChart == null) {
             System.out.println("No data");
         } else {
-            System.out.println("Top chart " + dataForChart.toString());
+            System.out.println("Bottom chart " + dataForChart.toString());
             for (Map.Entry<String, Double> data : dataForChart.entrySet()) {
                 //Date is too big, temporary solution for now
                 String date = data.getKey().substring(0, 5);

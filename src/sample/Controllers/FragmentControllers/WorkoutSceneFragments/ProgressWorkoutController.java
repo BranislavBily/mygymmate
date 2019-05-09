@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
-import sample.Controllers.Progress;
+import sample.Interfaces.Progress;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
