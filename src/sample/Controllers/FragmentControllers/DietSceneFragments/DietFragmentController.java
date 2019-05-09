@@ -14,13 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import sample.Controllers.FeedbackController;
 import sample.Session;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class DietFragmentController {
+public class DietFragmentController extends FeedbackController {
 
     @FXML
     private ProgressBar caloriesProgressBar;
@@ -46,6 +48,13 @@ public class DietFragmentController {
     private Label labelProtein;
     @FXML
     private Label labelWater;
+    @FXML
+    private Label labelInvalidInput1;
+    @FXML
+    private Label labelInvalidInput2;
+    @FXML
+    private Label labelInvalidInput3;
+
 
 
     private int recommendedCalories = 3000;
@@ -70,13 +79,16 @@ public class DietFragmentController {
     @FXML
     private void onButtonSaveCaloriesPressed() {
 
-
+    resetFeedback();
         if (!caloriesTextField.getText().equals("") && numberOrNot(caloriesTextField.getText())) {
             diet.setActualCalories(diet.getActualCalories() + Integer.parseInt(caloriesTextField.getText()));
             if (databaseModuleDiet.updateCalories(diet.getActualCalories())) {
                 caloriesTextField.setText("");
                 System.out.println("Calories collumn updated !");
             }
+        }else {
+            labelInvalidInput1.setVisible(true);
+            displayFeedBack(caloriesTextField);
         }
 
 
@@ -86,13 +98,16 @@ public class DietFragmentController {
 
     @FXML
     private void onButtonSaveProteinPressed() {
+        resetFeedback();
         if (!proteinTextField.getText().equals("") && numberOrNot(proteinTextField.getText())) {
             diet.setActualProtein(diet.getActualProtein() + Integer.parseInt(proteinTextField.getText()));
             if (databaseModuleDiet.updateProtein(diet.getActualProtein())) {
                 proteinTextField.setText("");
                 System.out.println("Protein collumn updated !");
             }
-        }
+        }else {labelInvalidInput2.setVisible(true);
+
+            displayFeedBack(proteinTextField);}
 
 
         loadDietIntoLabels();
@@ -102,20 +117,27 @@ public class DietFragmentController {
 
     @FXML
     private void onButtonSaveWaterPressed() {
+        resetFeedback();
         if (!waterTextField.getText().equals("") && numberOrNot(waterTextField.getText())) {
             diet.setActualWater(diet.getActualWater() + Integer.parseInt(waterTextField.getText()));
             if (databaseModuleDiet.updateWater(diet.getActualWater())) {
                 waterTextField.setText("");
                 System.out.println("Protein collumn updated !");
             }
-        }
+        }else{
 
+            labelInvalidInput3.setVisible(true);
+            displayFeedBack(waterTextField);
+
+        }
         loadDietIntoLabels();
 
 
     }
 
     private void loadDietIntoLabels() {
+
+
         caloriesProgressBar.setProgress((double) diet.getActualCalories() / recommendedCalories);
         proteinProgressBar.setProgress((double) diet.getActualProtein() / recommendedProtein);
         waterProgressBar.setProgress((double) diet.getActualWater() / recommendedWater);
@@ -182,9 +204,9 @@ public class DietFragmentController {
         int recommendedCalories = 0;
         if (gender.equals("Male")) {
             if (typeOfTraining.equals("Gain Muscle")) {
-                recommendedCalories = (int) ((int) (10 * weight + 6.25 * height - 120) * 1.65 + 500);
+                recommendedCalories = (int) ((int) (10 * weight + 6.25 * height - 120) * 1.65 + 400);
             } else if (typeOfTraining.equals("Lose Weight")) {
-                recommendedCalories = (int) ((int) (10 * weight + 6.25 * height - 120) * 1.65 - 500);
+                recommendedCalories = (int) ((int) (10 * weight + 6.25 * height - 120) * 1.65 - 400);
             }
 
         } else if (gender.equals("Female")) {
@@ -210,6 +232,17 @@ public class DietFragmentController {
 
     private int getRecommendedWater(double weight) {
         return (int) Math.round((((weight * 2.2) / 3 * 2) / 33.96 + 1) * 10);
+    }
+
+    private void resetFeedback(){
+        DropShadow dropShadow=getCleanDropShadow();
+        labelInvalidInput1.setVisible(false);
+        labelInvalidInput2.setVisible(false);
+        labelInvalidInput3.setVisible(false);
+
+        caloriesTextField.setEffect(dropShadow);
+        proteinTextField.setEffect(dropShadow);
+        waterTextField.setEffect(dropShadow);
     }
 
 

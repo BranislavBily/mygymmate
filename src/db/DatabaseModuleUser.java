@@ -19,7 +19,7 @@ import java.util.Date;
 public class DatabaseModuleUser {
 
     private Connection connection;
-    private int usedId;
+    private int userID;
 
     public DatabaseModuleUser() {
         connection = SqliteConnection.connector();

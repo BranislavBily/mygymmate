@@ -92,6 +92,9 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <Label fx:id="labelInvalidInput1" layoutX="368.0" layoutY="287.0" text="Invalid Input !" textFill="RED" visible="false" />
+            <Label fx:id="labelInvalidInput3" layoutX="368.0" layoutY="615.0" text="Invalid Input !" textFill="RED" visible="false" />
+            <Label fx:id="labelInvalidInput2" layoutX="368.0" layoutY="455.0" text="Invalid Input !" textFill="RED" visible="false" />
          </children>
          <effect>
             <DropShadow />
