@@ -203,4 +203,15 @@ public class DatabaseModuleWorkout {
             return false;
         }
     }
+
+    public boolean deleteAllUserWorkouts() {
+        String query = "delete from " + ResourceTables.WORKOUTS + " where userID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

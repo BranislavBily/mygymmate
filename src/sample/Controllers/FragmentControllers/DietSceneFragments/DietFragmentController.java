@@ -3,11 +3,8 @@ package sample.Controllers.FragmentControllers.DietSceneFragments;
 
 import db.DTO.Diet;
 import db.DTO.UserDietInfo;
-import db.DTO.Workout;
 import db.DatabaseModuleDiet;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -62,14 +59,12 @@ public class DietFragmentController extends FeedbackController {
     private int recommendedWater = 30;
 
     DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
-    Diet diet = databaseModuleDiet.loadDiet(Session.getUserID());
+    Diet diet = databaseModuleDiet.loadDiet();
 
     public void onCreate() {
-
         if (!diet.getDate().equals(new SimpleDateFormat("dd.MM.yyyy").format(new Date()))) {
             nullDiet();
             System.out.println("new day");
-
         }
         setRecommendedNutrition();
         loadDietIntoLabels();
@@ -90,8 +85,6 @@ public class DietFragmentController extends FeedbackController {
             labelInvalidInput1.setVisible(true);
             displayFeedBack(caloriesTextField);
         }
-
-
         loadDietIntoLabels();
 
     }
@@ -177,7 +170,7 @@ public class DietFragmentController extends FeedbackController {
         databaseModuleDiet.updateCalories(0);
         databaseModuleDiet.updateProtein(0);
         databaseModuleDiet.updateWater(0);
-        databaseModuleDiet.upadteDate(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+        databaseModuleDiet.updateDate(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
     }
 
     private boolean numberOrNot(String input) {
@@ -191,7 +184,7 @@ public class DietFragmentController extends FeedbackController {
 
 
     private void setRecommendedNutrition() {
-        UserDietInfo userDietInfo = databaseModuleDiet.getUserDietInfo(Session.getUserID());
+        UserDietInfo userDietInfo = databaseModuleDiet.getUserDietInfo();
         userDietInfo.toString();
 
         recommendedCalories = getRecommendedCalories(userDietInfo.getWeight(), userDietInfo.getHeight(), userDietInfo.getGender(), userDietInfo.getTypeOfTraining());

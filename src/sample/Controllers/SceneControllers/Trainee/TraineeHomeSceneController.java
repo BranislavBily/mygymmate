@@ -12,10 +12,11 @@ import sample.Controllers.FragmentControllers.HomeSceneFragments.ProfileFragment
 import sample.Controllers.FragmentControllers.HomeSceneFragments.SettingsFragmentController;
 import sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
+import sample.Interfaces.HomeScene;
 import sample.Resources.ResourceFXML;
 import java.io.IOException;
 
-public class TraineeHomeSceneController extends HomeSceneController {
+public class TraineeHomeSceneController extends HomeSceneController implements HomeScene {
 
     @FXML
     private Button buttonLogOut;
@@ -41,6 +42,7 @@ public class TraineeHomeSceneController extends HomeSceneController {
     /**
      * Prepares scene for use
      */
+    @Override
     public void onCreate() {
         databaseModuleUser = new DatabaseModuleUser();
         setLabel();
@@ -50,13 +52,15 @@ public class TraineeHomeSceneController extends HomeSceneController {
     /**
      * Sets username of logged in user into {@code Label}
      */
-    private void setLabel() {
+    @Override
+    public void setLabel() {
         String username = databaseModuleUser.getUsername();
         setLabelUsername(labelUsername, username);
     }
 
     @FXML
-    private void onButtonLogOutPressed() {
+    @Override
+    public void onButtonLogOutPressed() {
         onButtonLogOutPressed(buttonLogOut);
     }
 
@@ -65,7 +69,8 @@ public class TraineeHomeSceneController extends HomeSceneController {
      * Sets {@code mainFragment} container into {@code HomeFragment}
      */
     @FXML
-    private void onHomeButtonClicked() {
+    @Override
+    public void onHomeButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.HOME_FRAGMENT));
         try {
             Parent fragment = fxmlLoader.load();
@@ -82,7 +87,8 @@ public class TraineeHomeSceneController extends HomeSceneController {
      * Sets {@code mainFragment} container into {@code ProfileFragment}
      */
     @FXML
-    private void onProfileButtonClicked() {
+    @Override
+    public void onProfileButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.PROFILE_FRAGMENT));
         try {
             Parent fragment = fxmlLoader.load();
@@ -100,7 +106,8 @@ public class TraineeHomeSceneController extends HomeSceneController {
      * Sets {@code mainFragment} container info {@code SettingsFragment}
      */
     @FXML
-    private void onSettingsButtonClicked() {
+    @Override
+    public void onSettingsButtonClicked() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ResourceFXML.SETTINGS_FRAGMENT));
         try {
             Parent fragment = fxmlLoader.load();
@@ -137,7 +144,8 @@ public class TraineeHomeSceneController extends HomeSceneController {
      * Sets {@code mainFragment} container into {@code AboutUsFragment }
      */
     @FXML
-    private void onAboutUsButtonClicked() {
+    @Override
+    public void onAboutUsButtonClicked() {
         Parent fragment= loadFragmentFromFXML(ResourceFXML.ABOUT_US_FRAGMENT);
         mainFragment.getChildren().setAll(fragment);
         removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);

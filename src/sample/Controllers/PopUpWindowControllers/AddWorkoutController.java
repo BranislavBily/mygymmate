@@ -3,6 +3,7 @@ package sample.Controllers.PopUpWindowControllers;
 import db.DTO.Workout;
 import db.DatabaseModuleWorkout;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
@@ -20,9 +21,17 @@ public class AddWorkoutController extends FeedbackController {
     @FXML
     private TextField textFieldWeight;
     @FXML
-    private Label labelEmptyFieldError;
-    @FXML
     private Label labelWorkoutAdded;
+    @FXML
+    private Label labelExerciseError;
+    @FXML
+    private Label labelRepetitionsError;
+    @FXML
+    private Label labelWeightError;
+    @FXML
+    private CheckBox checkBoxBodyweight;
+    @FXML
+    private Label labelWeightSmall;
 
 
     @FXML
@@ -34,20 +43,36 @@ public class AddWorkoutController extends FeedbackController {
 
         if (textFieldNameOfExcersise.getText().equals("")) {
             goodInput = false;
-            labelEmptyFieldError.setVisible(true);
+            labelExerciseError.setText("Please fill an exercise!");
+            labelExerciseError.setVisible(true);
             displayFeedBack(textFieldNameOfExcersise);
 
         }
         if (textFieldRepetitions.getText().equals("") || !isInteger(textFieldRepetitions.getText())) {
             goodInput = false;
-            labelEmptyFieldError.setVisible(true);
+            labelRepetitionsError.setText("Please set repetitions!");
+            labelRepetitionsError.setVisible(true);
             displayFeedBack(textFieldRepetitions);
+        } else if (Integer.parseInt(textFieldRepetitions.getText()) < 0) {
+            displayFeedBack(textFieldRepetitions);
+            labelRepetitionsError.setText("Please set repetitions!");
+            labelRepetitionsError.setVisible(true);
         }
-        if (textFieldWeight.getText().equals("") || !isDouble(textFieldWeight.getText())) {
-            goodInput = false;
-            labelEmptyFieldError.setVisible(true);
-            displayFeedBack(textFieldWeight);
+
+        if(textFieldWeight.isVisible()) {
+            if (textFieldWeight.getText().equals("") || !isDouble(textFieldWeight.getText())) {
+                goodInput = false;
+                displayFeedBack(textFieldWeight);
+                labelWeightError.setText("Please insert weight!");
+                labelWeightError.setVisible(true);
+            } else if (Double.parseDouble(textFieldWeight.getText()) < 1) {
+                displayFeedBack(textFieldWeight);
+                labelWeightSmall.setText("Weight needs to be 1kg and heavier!");
+                labelWeightSmall.setVisible(true);
+                goodInput = false;
+            }
         }
+
         if (goodInput) {
             Workout workout = loadWorkoutFromInput();
             databaseModuleWorkout.insertWorkout(workout);
@@ -60,7 +85,8 @@ public class AddWorkoutController extends FeedbackController {
         Workout workout = new Workout();
         workout.setExercise(textFieldNameOfExcersise.getText());
         workout.setRepetitions(Integer.parseInt(textFieldRepetitions.getText()));
-        workout.setWeight(textFieldWeight.getText());
+        String weight = textFieldWeight.isVisible() ? textFieldWeight.getText() : "Bodyweight";
+        workout.setWeight(weight);
         workout.setDate(date);
         return workout;
     }
@@ -70,7 +96,18 @@ public class AddWorkoutController extends FeedbackController {
         textFieldNameOfExcersise.setEffect(dropShadow);
         textFieldRepetitions.setEffect(dropShadow);
         textFieldWeight.setEffect(dropShadow);
-        labelEmptyFieldError.setVisible(false);
-        labelWorkoutAdded.setVisible(false);
+        labelWeightError.setVisible(false);
+        labelRepetitionsError.setVisible(false);
+        labelExerciseError.setVisible(false);
+        labelWeightSmall.setVisible(false);
+    }
+
+    @FXML
+    private void onCheckBoxStateChange() {
+        if (checkBoxBodyweight.isSelected()) {
+            textFieldWeight.setVisible(false);
+        } else {
+            textFieldWeight.setVisible(true);
+        }
     }
 }

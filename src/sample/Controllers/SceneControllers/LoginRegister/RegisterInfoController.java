@@ -11,9 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import sample.Controllers.SceneControllers.LoginRegistrationController;
-import db.DTO.RegisteredUser;
-import db.DTO.User;
-import sample.Session;
 
 public class RegisterInfoController extends LoginRegistrationController {
 

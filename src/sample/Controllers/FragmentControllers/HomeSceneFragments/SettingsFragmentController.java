@@ -1,7 +1,10 @@
 package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
+import db.DatabaseModuleDiet;
+import db.DatabaseModuleMeasurements;
 import db.DatabaseModuleUser;
+import db.DatabaseModuleWorkout;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -166,7 +169,7 @@ public class SettingsFragmentController extends Controller {
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
         if (databaseModuleUser.correctUserPassword(passwordFromDialog)) {
-            if (!databaseModuleUser.deleteLoggedInUser()) {
+            if (!successfulDeletion()) {
                 System.out.println("Error while deleting user");
             } else {
                 setSceneToLogin(buttonDelete.getScene());
@@ -209,5 +212,21 @@ public class SettingsFragmentController extends Controller {
         labelUsernameError.setVisible(false);
         labelFirstNameError.setVisible(false);
         labelLastNameError.setVisible(false);
+    }
+
+    private boolean successfulDeletion() {
+        DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
+        DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
+        DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
+        if(!databaseModuleUser.deleteLoggedInUser()) {
+            return false;
+        } else if (!databaseModuleDiet.deleteUserDiet()) {
+            return false;
+        } else if (!databaseModuleWorkout.deleteAllUserWorkouts()) {
+            return false;
+        } else if (!databaseModuleMeasurements.deleteAllUserMeasurement()) {
+            return false;
+        }
+        return true;
     }
 }

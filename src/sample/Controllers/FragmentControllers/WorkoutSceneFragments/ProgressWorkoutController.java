@@ -8,11 +8,12 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
+import sample.Interfaces.Progress;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-public class ProgressWorkoutController {
+public class ProgressWorkoutController implements Progress {
 
     @FXML
     private ChoiceBox<String> choiceBoxExercise;
@@ -33,10 +34,12 @@ public class ProgressWorkoutController {
         loadChoiceBox();
     }
 
+
     /**
      * Loads all exercises into the ChoiceBox
      */
-    private void loadChoiceBox() {
+    @Override
+    public void loadChoiceBox() {
         LinkedHashSet<String> exercises = databaseModuleWorkout.getAllUserExercises();
         if(exercises.size() > 0) {
             choiceBoxExercise.setItems(FXCollections.observableArrayList(exercises));
