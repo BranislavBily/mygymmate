@@ -19,7 +19,7 @@ import java.util.Date;
 public class DatabaseModuleUser {
 
     private Connection connection;
-    private int usedId;
+    private int userID;
 
     public DatabaseModuleUser() {
         connection = SqliteConnection.connector();
@@ -199,17 +199,6 @@ public class DatabaseModuleUser {
         return false;
     }
 
-    public boolean deleteLoggedInUser() {
-        String query = "delete from " + ResourceTables.USERS + " where id = ?";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, userID);
-            return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     public boolean correctUserPassword(String password) {
         String username = getUsername();
         return isUser(username, password) !=  null;
@@ -220,6 +209,17 @@ public class DatabaseModuleUser {
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, newPassword);
             preparedStatement.setInt(2, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean deleteLoggedInUser() {
+        String query = "delete from " + ResourceTables.USERS + " where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

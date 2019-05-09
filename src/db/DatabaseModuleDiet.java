@@ -13,13 +13,15 @@ import java.sql.SQLException;
 public class DatabaseModuleDiet {
 
     private Connection connection;
+    private int userID;
 
     public DatabaseModuleDiet() {
         connection = SqliteConnection.connector();
         if (connection == null) System.exit(1);
+        userID = Session.getUserID();
     }
 
-    public Diet loadDiet(int userID) {
+    public Diet loadDiet() {
         Diet diet = new Diet();
         ResultSet resultSet;
         String query = "select * from " + ResourceTables.DIET + " where userID = ?";
@@ -51,7 +53,6 @@ public class DatabaseModuleDiet {
     }
 
     public boolean updateCalories(int calories) {
-        int userID = Session.getUserID();
         String query = "update " + ResourceTables.DIET + " set calories = ? where userId = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, calories);
@@ -64,7 +65,6 @@ public class DatabaseModuleDiet {
     }
 
     public boolean updateProtein(int protein) {
-        int userID = Session.getUserID();
         String query = "update " + ResourceTables.DIET + " set protein= ? where userId = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, protein);
@@ -77,7 +77,6 @@ public class DatabaseModuleDiet {
     }
 
     public boolean updateWater(int water) {
-        int userID = Session.getUserID();
         String query = "update " + ResourceTables.DIET + " set water = ? where userId = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, water);
@@ -89,8 +88,7 @@ public class DatabaseModuleDiet {
         return false;
     }
 
-    public boolean upadteDate(String date){
-        int userID = Session.getUserID();
+    public boolean updateDate(String date){
         String query = "update " + ResourceTables.DIET + " set date = ? where userId = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, date);
@@ -100,10 +98,9 @@ public class DatabaseModuleDiet {
             e.printStackTrace();
         }
         return false;
-
     }
 
-    public UserDietInfo getUserDietInfo(int userID) {
+    public UserDietInfo getUserDietInfo() {
         ResultSet resultSet;
         UserDietInfo userDietInfo=new UserDietInfo();
         String query = "select * from " + ResourceTables.USERS+ " where ID = ?";
@@ -121,6 +118,17 @@ public class DatabaseModuleDiet {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean deleteUserDiet() {
+        String query = "delete from " + ResourceTables.DIET + " where userID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
