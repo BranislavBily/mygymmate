@@ -121,6 +121,27 @@ public class DatabaseModuleDiet {
         }
     }
 
+    public UserDietInfo getUserDietInfo(int userID) {
+        ResultSet resultSet;
+        UserDietInfo userDietInfo=new UserDietInfo();
+        String query = "select * from " + ResourceTables.USERS+ " where ID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                userDietInfo.setGender(resultSet.getString("gender"));
+                userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
+                userDietInfo.setHeight(resultSet.getInt("height"));
+                userDietInfo.setWeight(resultSet.getInt("weight"));
+                return userDietInfo;
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public boolean deleteUserDiet() {
         String query = "delete from " + ResourceTables.DIET + " where userID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
