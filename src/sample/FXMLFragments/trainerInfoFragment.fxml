@@ -2,14 +2,12 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TrainerInfoFragmentController">
    <children>
-      <Label layoutX="83.0" layoutY="152.0" text="Branci smrdi trainer info">
-         <font>
-            <Font size="53.0" />
-         </font>
-      </Label>
+      <Label fx:id="labelUsername" layoutX="100.0" layoutY="101.0" text="Meno" />
+      <Label fx:id="labelWorkouts" layoutX="16.0" layoutY="188.0" text="Workouts" />
+      <Label fx:id="labelDiet" layoutX="14.0" layoutY="404.0" text="Diet" />
+      <Label fx:id="labelMeasurements" layoutX="14.0" layoutY="669.0" text="Measurements" />
    </children>
 </AnchorPane>
