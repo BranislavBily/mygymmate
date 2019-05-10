@@ -117,9 +117,9 @@ public class RegisterInfoController extends LoginRegistrationController {
                     Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "));
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
             if(databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
-                if(databaseModuleUser.insertUserDietIntoDatabase(databaseModuleUser.isUser(user.getUsername(),user.getPassword()))){
+                int id = databaseModuleUser.isUser(user.getUsername(),user.getPassword());
+                if(databaseModuleUser.insertUserDietIntoDatabase(id)){
                 setSceneToLogin(buttonGoBack.getScene());}
-
             } else {
                 System.out.println("Error while inserting");
             }
