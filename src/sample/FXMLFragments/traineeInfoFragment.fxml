@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TraineeInfoFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TraineeInfoFragmentController">
    <children>
-      <Label layoutX="83.0" layoutY="152.0" text="Branci smrdi trainee info">
-         <font>
-            <Font size="44.0" />
-         </font>
-      </Label>
+      <TableView fx:id="tableViewTrainees" layoutX="122.0" layoutY="141.0" prefHeight="445.0" prefWidth="429.0">
+        <columns>
+          <TableColumn fx:id="tableColumnFirstName" prefWidth="118.0" text="First Name" />
+          <TableColumn fx:id="tableColumnLastName" prefWidth="126.0" text="Last Name" />
+            <TableColumn fx:id="tableColumnTypeOfTraining" prefWidth="183.0" text="Type Of Training" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
