@@ -37,12 +37,11 @@ public class DatabaseModuleUser {
      */
     //TODO Javadoc
     public Integer isUser(String username, String password) {
-        ResultSet resultSet;
         String query = "select ID from "+ ResourceTables.USERS+" where Username = ? and Password = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 return resultSet.getInt("ID");
             }
@@ -157,23 +156,13 @@ public class DatabaseModuleUser {
         }
     }
 
-
-
-    public ProfileData loadUserProfileData(int userID) {
-        ResultSet resultSet;
-        ProfileData profileData = new ProfileData();
+    public ProfileData getUserProfileData() {
         String query = "select * from " + ResourceTables.USERS + " where ID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
-            resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                profileData.setFirstName(resultSet.getString("FirstName"));
-                profileData.setLastName(resultSet.getString("LastName"));
-                profileData.setGender(resultSet.getString("gender"));
-                profileData.setStatus(resultSet.getString("status"));
-                profileData.setTypeOfTraining(resultSet.getString("typeOfTraining"));
-                profileData.setUsername(resultSet.getString("username"));
-                return profileData;
+                return getProfileDataFromResultSet(resultSet);
             }
             return null;
         } catch (SQLException e) {
@@ -227,4 +216,22 @@ public class DatabaseModuleUser {
         return false;
     }
 
+
+
+    private ProfileData getProfileDataFromResultSet(ResultSet resultSet) {
+        try {
+            ProfileData profileData = new ProfileData();
+            profileData.setId(resultSet.getInt("ID"));
+            profileData.setFirstName(resultSet.getString("FirstName"));
+            profileData.setLastName(resultSet.getString("LastName"));
+            profileData.setGender(resultSet.getString("gender"));
+            profileData.setStatus(resultSet.getString("status"));
+            profileData.setTypeOfTraining(resultSet.getString("typeOfTraining"));
+            profileData.setUsername(resultSet.getString("username"));
+            return profileData;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
