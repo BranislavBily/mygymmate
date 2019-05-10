@@ -26,7 +26,7 @@ public class BMIFragmentController {
     DatabaseModuleDiet databaseModuleDiet=new DatabaseModuleDiet();
     UserDietInfo userDietInfo=new UserDietInfo();
     public void onCreate() {
-        userDietInfo=databaseModuleDiet.getUserDietInfo(Session.getUserID());
+        userDietInfo=databaseModuleDiet.getUserDietInfo();
         labelBMI.setText(""+ Math.round( getMyBMI(userDietInfo.getWeight(),userDietInfo.getHeight())* 10.0) / 10.0);
         setArrow(Math.round( getMyBMI(userDietInfo.getWeight(),userDietInfo.getHeight())* 10.0) / 10.0);
     }
