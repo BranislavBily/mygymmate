@@ -4,10 +4,7 @@ import db.DTO.ProfileData;
 import sample.Resources.ResourceTables;
 import sample.Session;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -81,7 +78,7 @@ public class DatabaseModuleInfo {
         }
     }
 
-    public ProfileData getUserProfileData(int id) {
+    private ProfileData getUserProfileData(int id) {
         String query = "select * from " + ResourceTables.USERS + " where ID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
@@ -93,6 +90,69 @@ public class DatabaseModuleInfo {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public ArrayList<ProfileData> getAllTraineesByName(String firstName) {
+        ArrayList<ProfileData> users = new ArrayList<>();
+        String query = "select * from " + ResourceTables.USERS +
+                " where status = ? and firstName like ? and TrainerID is null";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "Trainee");
+            preparedStatement.setString(2, firstName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                ProfileData profileData = getProfileDataFromResultSet(resultSet);
+                if(profileData != null) users.add(profileData);
+            }
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<ProfileData> getAllTraineesByName(String firstName, String lastName) {
+        ArrayList<ProfileData> users = new ArrayList<>();
+        String query = "select * from " + ResourceTables.USERS +
+                " where status = ? and firstName like ? and lastName like ? and TrainerID is null ";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "Trainee");
+            preparedStatement.setString(2, firstName);
+            preparedStatement.setString(3, lastName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                ProfileData profileData = getProfileDataFromResultSet(resultSet);
+                if(profileData != null) users.add(profileData);
+            }
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean addTraineeToTrainer(String username) {
+        String query = "update " + ResourceTables.USERS + " set TrainerID = ? where username = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2, username);
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteTraineeFromTrainer(String username) {
+        String query = "update " + ResourceTables.USERS + " set TrainerID = ? where username = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, null);
+            preparedStatement.setString(2, username);
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
