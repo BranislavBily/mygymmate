@@ -66,11 +66,11 @@ public class AddTraineeController {
 
     private void setTextFieldNameOnChangeListener() {
         textFieldName.textProperty().addListener((observable, oldValue, newValue) -> {
-            String search = newValue;
-            if(search.isEmpty()) {
+            if(newValue.isEmpty()) {
                 tableViewTrainees.getItems().clear();
             } else {
-                String[] name = search.split(" ");
+                labelSuccess.setVisible(false);
+                String[] name = newValue.split(" ");
                 ArrayList<ProfileData> trainees;
                 try {
                     trainees = databaseModuleInfo.getAllTraineesByName(name[0].concat("%"), name[1].concat("%"));
