@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TraineeInfoFragmentController">
    <children>
-      <TableView fx:id="tableViewTrainees" layoutX="122.0" layoutY="141.0" prefHeight="445.0" prefWidth="429.0">
-        <columns>
-          <TableColumn fx:id="tableColumnFirstName" prefWidth="118.0" text="First Name" />
-          <TableColumn fx:id="tableColumnLastName" prefWidth="126.0" text="Last Name" />
-            <TableColumn fx:id="tableColumnTypeOfTraining" prefWidth="183.0" text="Type Of Training" />
-        </columns>
-      </TableView>
+      <AnchorPane layoutX="83.0" layoutY="43.0" prefHeight="681.0" prefWidth="580.0" style="-fx-background-radius: 5;">
+         <children>
+            <TableView fx:id="tableViewTrainees" layoutX="76.0" layoutY="119.0" prefHeight="445.0" prefWidth="429.0">
+              <columns>
+                <TableColumn fx:id="tableColumnFirstName" prefWidth="118.0" text="First Name" />
+                <TableColumn fx:id="tableColumnLastName" prefWidth="126.0" text="Last Name" />
+                  <TableColumn fx:id="tableColumnTypeOfTraining" prefWidth="183.0" text="Type Of Training" />
+              </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                        <MenuItem fx:id="menuItemDelete" mnemonicParsing="false" onAction="#onMenuItemDeletePressed" text="Delete Trainee" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <Button fx:id="buttonAddTrainee" layoutX="225.0" layoutY="607.0" mnemonicParsing="false" onAction="#onButtonAddTraineePressed" prefHeight="35.0" style="-fx-background-color: #03383f#03383f;" text="Add new Trainee" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
