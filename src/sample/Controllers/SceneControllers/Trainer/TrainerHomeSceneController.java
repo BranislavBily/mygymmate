@@ -137,7 +137,7 @@ public class TrainerHomeSceneController extends HomeSceneController implements H
 
             mainFragment.getChildren().setAll(fragment);
             removeButtonActiveEffect(buttonHome, buttonProfile, buttonSettings, buttonTraineeInfo, buttonAboutUs);
-            buttonSettings.getStyleClass().add("buttonActive");
+            buttonTraineeInfo.getStyleClass().add("buttonActive");
         } catch (IOException e) {
             e.printStackTrace();
         }
