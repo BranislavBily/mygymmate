@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.PopUpWindowControllers.AddTraineeController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.PopUpWindowControllers.SearchForTraineeController">
    <children>
       <AnchorPane layoutX="83.0" layoutY="43.0" prefHeight="681.0" prefWidth="580.0" style="-fx-background-radius: 5;">
          <children>
-            <Label layoutX="76.0" layoutY="22.0" text="Name:" textFill="#107f74">
+            <Label layoutX="34.0" layoutY="47.0" text="Name:" textFill="#107f74">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TableView fx:id="tableViewTrainees" layoutX="49.0" layoutY="118.0" prefHeight="445.0" prefWidth="480.0">
+            <TableView fx:id="tableViewTrainees" layoutX="34.0" layoutY="118.0" prefHeight="521.0" prefWidth="513.0">
                <columns>
                   <TableColumn fx:id="tableColumnUsername" prefWidth="85.0" text="Username" />
                   <TableColumn fx:id="tableColumnFirstName" prefWidth="108.0" text="First Name" />
@@ -27,7 +27,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TextField fx:id="textFieldName" layoutX="76.0" layoutY="53.0" prefHeight="27.0" prefWidth="269.0" promptText="Enter Trainee name" />
+            <TextField fx:id="textFieldName" layoutX="34.0" layoutY="75.0" prefHeight="27.0" prefWidth="269.0" promptText="Enter Trainee name" />
             <Label fx:id="labelSuccess" layoutX="196.0" layoutY="606.0" text="Trainee added to your list!" textFill="#107f74" visible="false">
                <font>
                   <Font size="15.0" />

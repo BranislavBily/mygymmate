@@ -13,7 +13,7 @@ import sample.Dialogs.DeleteTraineeDialog;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class AddTraineeController {
+public class SearchForTraineeController {
 
     @FXML
     private TableView<ProfileData> tableViewTrainees;

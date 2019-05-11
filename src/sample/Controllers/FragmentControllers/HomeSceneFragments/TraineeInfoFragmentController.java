@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.Controllers.PopUpWindowControllers.AddTraineeController;
+import sample.Controllers.PopUpWindowControllers.SearchForTraineeController;
 import sample.Controllers.PopUpWindowControllers.TraineeInfoController;
 import sample.Dialogs.DeleteTraineeDialog;
 import sample.Resources.ResourceFXML;
@@ -86,11 +86,11 @@ public class TraineeInfoFragmentController {
     @FXML
     private void onButtonAddTraineePressed() {
         Stage stage =  new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.ADD_TRAINEE));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.SEARCH_FOR_TRAINEE));
         try {
             Parent root = loader.load();
-            AddTraineeController addTraineeController = loader.getController();
-            addTraineeController.onCreate();
+            SearchForTraineeController searchForTraineeController = loader.getController();
+            searchForTraineeController.onCreate();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("TraineeInfo");
