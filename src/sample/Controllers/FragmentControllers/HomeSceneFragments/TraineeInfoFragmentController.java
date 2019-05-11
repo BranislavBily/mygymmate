@@ -31,6 +31,8 @@ public class TraineeInfoFragmentController {
     private TableColumn<ProfileData, String> tableColumnLastName;
     @FXML
     private TableColumn<ProfileData, String> tableColumnTypeOfTraining;
+    @FXML
+    private TableColumn<ProfileData, String> tableColumnUsername;
 
     private DatabaseModuleInfo databaseModuleInfo;
 
@@ -55,6 +57,7 @@ public class TraineeInfoFragmentController {
 
     private void loadTraineesIntoTable() {
         ArrayList<ProfileData> trainees = databaseModuleInfo.getTraineesOfLoggedTrainer();
+        tableColumnUsername.setCellValueFactory(new PropertyValueFactory("Username"));
         tableColumnFirstName.setCellValueFactory(new PropertyValueFactory("FirstName"));
         tableColumnLastName.setCellValueFactory(new PropertyValueFactory("LastName"));
         tableColumnTypeOfTraining.setCellValueFactory(new PropertyValueFactory("TypeOfTraining"));
