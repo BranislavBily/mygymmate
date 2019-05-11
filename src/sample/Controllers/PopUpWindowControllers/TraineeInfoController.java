@@ -1,5 +1,6 @@
 package sample.Controllers.PopUpWindowControllers;
 
+import db.DTO.Measurement;
 import db.DatabaseModuleDiet;
 import db.DatabaseModuleMeasurements;
 import db.DatabaseModuleWorkout;
@@ -29,8 +30,12 @@ public class TraineeInfoController {
         labelDiet.setText(databaseModuleDiet.getUserDietInfo(traineeID).toString());
         labelDiet.setWrapText(true);
         labelDiet.setMaxWidth(500);
-        labelMeasurements.setText(databaseModuleMeasurements.getUserMeasurement(traineeID).toString());
-        labelMeasurements.setWrapText(true);
-        labelMeasurements.setMaxWidth(500);
+        Measurement measurement = databaseModuleMeasurements.getUserMeasurement(traineeID);
+        if(measurement != null) {
+            labelMeasurements.setText(measurement.toString());
+            labelMeasurements.setWrapText(true);
+            labelMeasurements.setMaxWidth(500);
+        }
+
     }
 }
