@@ -22,6 +22,7 @@ public interface ResourceFXML {
         String UPDATE_WORKOUT="../../../PopUpWindowsFXML/updateWorkout.fxml";
         String ADD_WORKOUT="../../../PopUpWindowsFXML/addWorkout.fxml";
         String TRAINEE_INFO="../../../PopUpWindowsFXML/traineeInfo.fxml";
+        String ADD_TRAINEE="../../../PopUpWindowsFXML/addTrainee.fxml";
         String HOME_FRAGMENT="../../../FXMLFragments/homeFragment.fxml";
         String HOME_ADMIN_FRAGMENT="../../../FXMLFragments/homeAdminFragment.fxml";
         String DIET_FRAGMENT = "../../../FXMLFragments/dietFragment.fxml";
