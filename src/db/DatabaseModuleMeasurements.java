@@ -39,7 +39,12 @@ public class DatabaseModuleMeasurements {
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1,userID);
             ResultSet resultSet = preparedStatement.executeQuery();
-            return getMeasurementFromResultSet(resultSet);
+            if(resultSet.next()) {
+                return getMeasurementFromResultSet(resultSet);
+            } else {
+                return null;
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
