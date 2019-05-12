@@ -29,6 +29,6 @@ public class WeightFragmentController {
 
     private void loadDataIntoLabels(){
 
-        
+
     }
 }
