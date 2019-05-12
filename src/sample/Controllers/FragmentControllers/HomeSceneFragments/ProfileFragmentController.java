@@ -7,12 +7,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Resources.ResourceFXML;
-import sample.Session;
+
+
+import java.io.File;
 
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class ProfileFragmentController {
     @FXML
@@ -65,5 +69,26 @@ public class ProfileFragmentController {
     @FXML
     private void onButtonCheckPasswordPressed() {
         System.out.println("Check password");
+    }
+
+    @FXML
+    private void onButtonChangeProfilePicturePressed(){
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        FileChooser.ExtensionFilter imageFilter
+                = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
+        fileChooser.getExtensionFilters().add(imageFilter);
+        File file =fileChooser.showOpenDialog(stage);
+        System.out.println(file.getPath());
+        try {
+            byte[] bFile = Files.readAllBytes(file.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
     }
 }

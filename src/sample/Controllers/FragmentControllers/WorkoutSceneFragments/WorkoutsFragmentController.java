@@ -93,7 +93,7 @@ public class WorkoutsFragmentController {
     /**
      * Creates new AddWorkout scene
      */
-   
+
 
     private void openUpdateWorkoutScene(int id) {
         Stage stage =  new Stage();
