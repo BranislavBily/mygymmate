@@ -7,6 +7,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
+import javafx.stage.Stage;
 import sample.Controllers.FeedbackController;
 
 import java.text.SimpleDateFormat;
@@ -78,6 +79,9 @@ public class AddWorkoutController extends FeedbackController {
             databaseModuleWorkout.insertWorkout(workout);
             labelWorkoutAdded.setVisible(true);
         }
+
+        Stage stage = (Stage) labelWorkoutAdded.getScene().getWindow();
+        stage.close();
     }
 
     private Workout loadWorkoutFromInput() {

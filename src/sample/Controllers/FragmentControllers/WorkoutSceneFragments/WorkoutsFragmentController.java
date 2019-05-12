@@ -57,10 +57,12 @@ public class WorkoutsFragmentController {
             stage.setTitle("Add Workout");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+            stage.showAndWait();
+            loadWorkoutsIntoTable();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -100,7 +102,8 @@ public class WorkoutsFragmentController {
             stage.setTitle("Add Workout");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+            stage.showAndWait();
+            loadWorkoutsIntoTable();
         } catch (IOException e) {
             e.printStackTrace();
         }
