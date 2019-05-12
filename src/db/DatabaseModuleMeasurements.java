@@ -18,16 +18,19 @@ public class DatabaseModuleMeasurements {
 
     public DatabaseModuleMeasurements() {
         connection = SqliteConnection.connector();
-        if(connection == null) System.exit(1);
+        if (connection == null) System.exit(1);
         userID = Session.getUserID();
     }
 
     public Measurement getUserMeasurement() {
         String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) ASC LIMIT 1";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,userID);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
-            return getMeasurementFromResultSet(resultSet);
+            if (resultSet.next()) {
+                return getMeasurementFromResultSet(resultSet);
+            }
+            return null;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,14 +39,13 @@ public class DatabaseModuleMeasurements {
 
     public Measurement getUserMeasurement(int userID) {
         String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) ASC LIMIT 1";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,userID);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 return getMeasurementFromResultSet(resultSet);
-            } else {
-                return null;
             }
+            return null;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,10 +56,10 @@ public class DatabaseModuleMeasurements {
     public LinkedHashMap<String, Double> getAllMeasurementsByBodyPart(String bodyPart) {
         LinkedHashMap<String, Double> measurements = new LinkedHashMap<>();
         String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ?";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,userID);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 measurements.put(resultSet.getString("date"), resultSet.getDouble(bodyPart));
             }
             return measurements;
@@ -88,9 +90,9 @@ public class DatabaseModuleMeasurements {
         }
     }
 
-    public boolean deleteAllUserMeasurement() {
+    public boolean deleteAllUserMeasurements() {
         String query = "delete from " + ResourceTables.MEASUREMENTS + " where userID = ?";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
