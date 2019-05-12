@@ -58,9 +58,9 @@ public class BMIFragmentController extends FeedbackController {
     private void setArrow(double bmi) {
 
         if(bmi>35){
-            labelArrow.setLayoutX(625);
+            labelArrow.setLayoutX(595);
         }else if (bmi<16){
-            labelArrow.setLayoutX(15);
+            labelArrow.setLayoutX(25);
         }else {
         labelArrow.setLayoutX((int) bmi * 30.5 - 447);
         }
@@ -119,7 +119,7 @@ public class BMIFragmentController extends FeedbackController {
         System.out.println(bmi);
         if(bmi>=19&&bmi<25){
             labelInfo.setText("   You are in healthy state.   ");
-            labelInfo.setLayoutX(233);
+            labelInfo.setLayoutX(225);
         }else if (bmi>=25){
             kg= ((height / 100) * (height / 100))*25;
             weightToGo=weight-kg;
