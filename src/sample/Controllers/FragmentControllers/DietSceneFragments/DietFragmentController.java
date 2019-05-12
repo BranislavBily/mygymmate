@@ -4,16 +4,14 @@ package sample.Controllers.FragmentControllers.DietSceneFragments;
 import db.DTO.Diet;
 import db.DTO.UserDietInfo;
 import db.DatabaseModuleDiet;
-
+import db.DatabaseModuleWeight;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import sample.Controllers.FeedbackController;
-import sample.Session;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,6 +57,7 @@ public class DietFragmentController extends FeedbackController {
     private int recommendedWater = 30;
 
     DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
+    DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
     Diet diet = databaseModuleDiet.loadDiet();
 
     public void onCreate() {
@@ -186,10 +185,13 @@ public class DietFragmentController extends FeedbackController {
     private void setRecommendedNutrition() {
         UserDietInfo userDietInfo = databaseModuleDiet.getUserDietInfo();
         userDietInfo.toString();
+        Double weight = databaseModuleWeight.getUserWeight();
+        if(weight != null) {
+            recommendedCalories = getRecommendedCalories(weight, userDietInfo.getHeight(), userDietInfo.getGender(), userDietInfo.getTypeOfTraining());
+            recommendedProtein = getRecommendedProtein(weight, userDietInfo.getGender());
+            recommendedWater = getRecommendedWater(weight);
+        }
 
-        recommendedCalories = getRecommendedCalories(userDietInfo.getWeight(), userDietInfo.getHeight(), userDietInfo.getGender(), userDietInfo.getTypeOfTraining());
-        recommendedProtein = getRecommendedProtein(userDietInfo.getWeight(), userDietInfo.getGender());
-        recommendedWater = getRecommendedWater(userDietInfo.getWeight());
     }
 
 

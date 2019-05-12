@@ -2,6 +2,7 @@ package sample.Controllers.FragmentControllers.DietSceneFragments;
 
 import db.DTO.UserDietInfo;
 import db.DatabaseModuleDiet;
+import db.DatabaseModuleWeight;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -35,13 +36,17 @@ public class BMIFragmentController extends FeedbackController {
 
 
     DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
+    DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
     UserDietInfo userDietInfo = new UserDietInfo();
 
     public void onCreate() {
         userDietInfo = databaseModuleDiet.getUserDietInfo();
-        labelBMI.setText("" + Math.round(getMyBMI(userDietInfo.getWeight(), userDietInfo.getHeight()) * 10.0) / 10.0);
-        setArrow(Math.round(getMyBMI(userDietInfo.getWeight(), userDietInfo.getHeight()) * 10.0) / 10.0);
-        setLabelInfo(userDietInfo.getWeight(),userDietInfo.getHeight());
+        Double weight = databaseModuleWeight.getUserWeight();
+        if(weight != null) {
+            labelBMI.setText("" + Math.round(getMyBMI(weight, userDietInfo.getHeight()) * 10.0) / 10.0);
+            setArrow(Math.round(getMyBMI(weight, userDietInfo.getHeight()) * 10.0) / 10.0);
+            setLabelInfo(weight,userDietInfo.getHeight());
+        }
     }
 
 

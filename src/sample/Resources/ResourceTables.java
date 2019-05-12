@@ -8,4 +8,5 @@ public interface ResourceTables {
     String WORKOUTS = "Workouts";
     String DIET ="Diet";
     String MEASUREMENTS = "Measurements";
+    String WEIGHT = "Weight";
 }
