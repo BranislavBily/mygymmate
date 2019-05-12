@@ -89,12 +89,6 @@ public class WorkoutsFragmentController {
         }
         System.out.println("update");
     }
-
-    /**
-     * Creates new AddWorkout scene
-     */
-
-
     private void openUpdateWorkoutScene(int id) {
         Stage stage =  new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.UPDATE_WORKOUT));
