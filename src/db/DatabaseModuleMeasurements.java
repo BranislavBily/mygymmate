@@ -34,6 +34,23 @@ public class DatabaseModuleMeasurements {
         return null;
     }
 
+    public Measurement getUserMeasurement(int userID) {
+        String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) ASC LIMIT 1";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1,userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return getMeasurementFromResultSet(resultSet);
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public LinkedHashMap<String, Double> getAllMeasurementsByBodyPart(String bodyPart) {
         LinkedHashMap<String, Double> measurements = new LinkedHashMap<>();
         String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ?";
@@ -53,17 +70,17 @@ public class DatabaseModuleMeasurements {
     private Measurement getMeasurementFromResultSet(ResultSet resultSet) {
         Measurement measurement = new Measurement();
         try {
-            measurement.setLeftArm(resultSet.getDouble("LeftArm"));
-            measurement.setRightArm(resultSet.getDouble("RightArm"));
-            measurement.setLeftForeArm(resultSet.getDouble("LeftForeArm"));
-            measurement.setRightForeArm(resultSet.getDouble("RightForeArm"));
+            measurement.setLeftArm(resultSet.getDouble("Left Arm"));
+            measurement.setRightArm(resultSet.getDouble("Right Arm"));
+            measurement.setLeftForeArm(resultSet.getDouble("Left ForeArm"));
+            measurement.setRightForeArm(resultSet.getDouble("Right ForeArm"));
             measurement.setShoulders(resultSet.getDouble("Shoulders"));
             measurement.setWaist(resultSet.getDouble("Waist"));
             measurement.setChest(resultSet.getDouble("Chest"));
-            measurement.setLeftThigh(resultSet.getDouble("LeftThigh"));
-            measurement.setRightThigh(resultSet.getDouble("RightThigh"));
-            measurement.setLeftCalf(resultSet.getDouble("LeftCalf"));
-            measurement.setRightCalf(resultSet.getDouble("RightCalf"));
+            measurement.setLeftThigh(resultSet.getDouble("Left Thigh"));
+            measurement.setRightThigh(resultSet.getDouble("Right Thigh"));
+            measurement.setLeftCalf(resultSet.getDouble("Left Calf"));
+            measurement.setRightCalf(resultSet.getDouble("Right Calf"));
             return measurement;
         } catch (SQLException e) {
             e.printStackTrace();

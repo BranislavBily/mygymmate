@@ -131,7 +131,7 @@ public class TraineeHomeSceneController extends HomeSceneController implements H
         try {
             Parent fragment = fxmlLoader.load();
             TrainerInfoFragmentController trainerInfoFragmentController = fxmlLoader.getController();
-
+            trainerInfoFragmentController.onCreate();
             mainFragment.getChildren().setAll(fragment);
             removeButtonActiveEffect(buttonHome ,buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
             buttonTrainerInfo.getStyleClass().add("buttonActive");

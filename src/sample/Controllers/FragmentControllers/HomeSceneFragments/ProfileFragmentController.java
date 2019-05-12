@@ -38,7 +38,7 @@ public class ProfileFragmentController {
      * Loads profile info from the database and sets the data into controls
      */
     private void loadProfileInfo() {
-        ProfileData profileData = databaseModuleUser.loadUserProfileData(Session.getUserID());
+        ProfileData profileData = databaseModuleUser.getUserProfileData();
         labelName.setText(profileData.getRealName());
         labelGender.setText(profileData.getGender());
         labelStatus.setText(profileData.getStatus());

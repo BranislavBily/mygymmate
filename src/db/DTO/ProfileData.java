@@ -1,12 +1,21 @@
 package db.DTO;
 
 public class ProfileData {
+    private int id;
     private String username;
     private String firstName;
     private String lastName;
     private String gender;
     private String status;
     private String typeOfTraining;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -58,5 +67,18 @@ public class ProfileData {
 
     public String getRealName() {
         return firstName + " " + lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfileData{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", status='" + status + '\'' +
+                ", typeOfTraining='" + typeOfTraining + '\'' +
+                '}';
     }
 }

@@ -35,8 +35,8 @@ public class MeasureController extends HomeSceneController {
         databaseModuleUser = new DatabaseModuleUser();
         databaseModuleMeasurements = new DatabaseModuleMeasurements();
         setLabel();
-        onButtonMeasurementsPressed();
         System.out.println(databaseModuleMeasurements.getUserMeasurement().toString());
+        onButtonMeasurementsPressed();
     }
 
     @FXML

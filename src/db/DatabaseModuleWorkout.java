@@ -46,6 +46,29 @@ public class DatabaseModuleWorkout {
     }
 
     /**
+     * Returns {@code ArrayList} of {@code Workout} of user based on {@code int} userID
+     * @param userID id of user that we want to {@code Workout}
+     * @return {@code ArrayList} of {@code Workout} if any Workouts were returned from the
+     *         database, or {@code null} if you workouts were found
+     */
+    public ArrayList<Workout> getWorkouts(int userID) {
+        ArrayList<Workout> workouts = new ArrayList<>();
+        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Workout workout = loadWorkoutFromResultSet(resultSet);
+                if (workout != null) workouts.add(workout);
+            }
+            return workouts;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * Returns Workout from ResultSet
      * @param resultSet from which workout will be loaded
      * @return Workout from ResultSet
@@ -69,6 +92,11 @@ public class DatabaseModuleWorkout {
         }
     }
 
+    /**
+     * Returns one {@code Workout} from the database based on {@code int} ID of the workout
+     * @param id of workout that you want to get
+     * @return {@code Workout} from the database, {@code null} if you workout was found
+     */
     public Workout getWorkout(int id) {
         String query = "select * from " + ResourceTables.WORKOUTS + " where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
