@@ -5,6 +5,7 @@ import db.DTO.ProfileData;
 import db.DTO.RegisteredUser;
 import sample.Resources.ResourceTables;
 import sample.Session;
+import sun.jvm.hotspot.utilities.BitMap;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -118,17 +119,16 @@ public class DatabaseModuleUser {
     }
 
     public boolean insertUserIntoDatabase(RegisteredUser registerUser) {
-        String query = "insert into " + ResourceTables.USERS + " (username, password, status, firstName, lastName, weight, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into " + ResourceTables.USERS + " (username, password, status, firstName, lastName, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?)";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, registerUser.getUsername());
             preparedStatement.setString(2, registerUser.getPassword());
             preparedStatement.setString(3, registerUser.getStatus());
             preparedStatement.setString(4, registerUser.getFirstName());
             preparedStatement.setString(5, registerUser.getLastName());
-            preparedStatement.setDouble(6, registerUser.getWeight());
-            preparedStatement.setDouble(7, registerUser.getHeight());
-            preparedStatement.setString(8, registerUser.getGender());
-            preparedStatement.setString(9, registerUser.getTypeOfTraining());
+            preparedStatement.setDouble(6, registerUser.getHeight());
+            preparedStatement.setString(7, registerUser.getGender());
+            preparedStatement.setString(8, registerUser.getTypeOfTraining());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -146,10 +146,7 @@ public class DatabaseModuleUser {
             preparedStatement.setInt(3, 0);
             preparedStatement.setInt(4, 0);
             preparedStatement.setString(5,new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
-
-
-            preparedStatement.executeUpdate();
-            return true;
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -184,13 +181,14 @@ public class DatabaseModuleUser {
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     public boolean correctUserPassword(String password) {
         String username = getUsername();
         return isUser(username, password) !=  null;
+
     }
 
     public boolean updateUserPassword(String newPassword) {
@@ -201,8 +199,8 @@ public class DatabaseModuleUser {
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     public boolean deleteLoggedInUser() {
@@ -212,8 +210,8 @@ public class DatabaseModuleUser {
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
 
