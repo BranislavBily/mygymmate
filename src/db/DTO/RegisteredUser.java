@@ -7,23 +7,20 @@ public class RegisteredUser {
     private String status;
     private String firstName;
     private String lastName;
-    private double weight;
     private double height;
     private String gender;
     private String typeOfTraining;
 
-    public RegisteredUser(String username, String password, String status, String firstName, String lastName, double weight, double height, String gender, String typeOfTraining) {
+    public RegisteredUser(String username, String password, String status, String firstName, String lastName, double height, String gender, String typeOfTraining) {
         this.username = username;
         this.password = password;
         this.status = status;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.weight = weight;
         this.height = height;
         this.gender = gender;
         this.typeOfTraining = typeOfTraining;
     }
-
 
     public String getUsername() {
         return username;
@@ -50,11 +47,6 @@ public class RegisteredUser {
     }
 
 
-    public double getWeight() {
-        return weight;
-    }
-
-
     public double getHeight() {
         return height;
     }
@@ -77,7 +69,6 @@ public class RegisteredUser {
                 ", status='" + status + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", weight=" + weight +
                 ", height=" + height +
                 ", gender='" + gender + '\'' +
                 ", typeOfTraining='" + typeOfTraining + '\'' +

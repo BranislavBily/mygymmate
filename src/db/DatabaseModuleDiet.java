@@ -111,7 +111,6 @@ public class DatabaseModuleDiet {
                 userDietInfo.setGender(resultSet.getString("gender"));
                 userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
                 userDietInfo.setHeight(resultSet.getInt("height"));
-                userDietInfo.setWeight(resultSet.getInt("weight"));
                 return userDietInfo;
             }
             return null;
@@ -132,7 +131,6 @@ public class DatabaseModuleDiet {
                 userDietInfo.setGender(resultSet.getString("gender"));
                 userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
                 userDietInfo.setHeight(resultSet.getInt("height"));
-                userDietInfo.setWeight(resultSet.getInt("weight"));
                 return userDietInfo;
             }
             return null;
