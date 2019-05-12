@@ -12,7 +12,6 @@ import javafx.scene.effect.DropShadow;
 import sample.Controllers.SceneControllers.Controller;
 import sample.Dialogs.PasswordConfirmation;
 import sample.Dialogs.WrongPasswordDialog;
-import sample.Session;
 
 import java.util.Optional;
 
@@ -169,11 +168,8 @@ public class SettingsFragmentController extends Controller {
     private void onButtonDeletePressed() {
         String passwordFromDialog = getPasswordFromPasswordDialog();
         if (databaseModuleUser.correctUserPassword(passwordFromDialog)) {
-            if (!successfulDeletion()) {
-                System.out.println("Error while deleting user");
-            } else {
-                setSceneToLogin(buttonDelete.getScene());
-            }
+            deleteAllUserData();
+            setSceneToLogin(buttonDelete.getScene());
         } else if (!passwordFromDialog.isEmpty()) {
             new WrongPasswordDialog(Alert.AlertType.ERROR);
             System.out.println("Wrong password");
@@ -214,19 +210,14 @@ public class SettingsFragmentController extends Controller {
         labelLastNameError.setVisible(false);
     }
 
-    private boolean successfulDeletion() {
+    private void deleteAllUserData() {
         DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
         DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
-        if(!databaseModuleUser.deleteLoggedInUser()) {
-            return false;
-        } else if (!databaseModuleDiet.deleteUserDiet()) {
-            return false;
-        } else if (!databaseModuleWorkout.deleteAllUserWorkouts()) {
-            return false;
-        } else if (!databaseModuleMeasurements.deleteAllUserMeasurement()) {
-            return false;
-        }
-        return true;
+        databaseModuleUser.deleteLoggedInUser();
+        databaseModuleDiet.deleteUserDiet();
+        databaseModuleWorkout.deleteAllUserWorkouts();
+        databaseModuleMeasurements.deleteAllUserMeasurements();
+
     }
 }
