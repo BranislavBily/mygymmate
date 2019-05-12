@@ -3,6 +3,7 @@ package sample.Controllers.SceneControllers.LoginRegister;
 import db.DTO.RegisteredUser;
 import db.DTO.User;
 import db.DatabaseModuleUser;
+import db.DatabaseModuleWeight;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -48,6 +49,7 @@ public class RegisterInfoController extends LoginRegistrationController {
 
     /**
      * Prepares scene for use
+     *
      * @param user data from previous scene
      */
     public void onCreate(User user) {
@@ -113,13 +115,17 @@ public class RegisterInfoController extends LoginRegistrationController {
         }
         if (!errorRegistering) {
             RegisteredUser registeredUser = new RegisteredUser(user.getUsername(), user.getPassword(), choiceBoxStatus.getValue().toString(),
-                    textFieldFirstName.getText(), textFieldLastName.getText(), Double.parseDouble(textFieldWeight.getText()),
+                    textFieldFirstName.getText(), textFieldLastName.getText(),
                     Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "));
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-            if(databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
-                int id = databaseModuleUser.isUser(user.getUsername(),user.getPassword());
-                if(databaseModuleUser.insertUserDietIntoDatabase(id)){
-                setSceneToLogin(buttonGoBack.getScene());}
+            if (databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
+                int id = databaseModuleUser.isUser(user.getUsername(), user.getPassword());
+                if (databaseModuleUser.insertUserDietIntoDatabase(id)) {
+                    DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
+                    if(databaseModuleWeight.insertWeight(id, Double.parseDouble(textFieldWeight.getText()))) {
+                        setSceneToLogin(buttonGoBack.getScene());
+                    }
+                }
             } else {
                 System.out.println("Error while inserting");
             }
@@ -167,6 +173,7 @@ public class RegisterInfoController extends LoginRegistrationController {
         labelUsername.setText("Hi " + username + "!");
         labelUsername.setLayoutX(182 - ((username.length() + 1) * 5.5));
     }
+
     @FXML
     private void onButtonGoBackPressed() {
         setSceneToRegister(buttonGoBack.getScene());
