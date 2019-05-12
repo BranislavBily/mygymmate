@@ -184,14 +184,9 @@ public class DietFragmentController extends FeedbackController {
 
     private void setRecommendedNutrition() {
         UserDietInfo userDietInfo = databaseModuleDiet.getUserDietInfo();
-        userDietInfo.toString();
-        Double weight = databaseModuleWeight.getUserWeight();
-        if(weight != null) {
-            recommendedCalories = getRecommendedCalories(weight, userDietInfo.getHeight(), userDietInfo.getGender(), userDietInfo.getTypeOfTraining());
-            recommendedProtein = getRecommendedProtein(weight, userDietInfo.getGender());
-            recommendedWater = getRecommendedWater(weight);
-        }
-
+            recommendedCalories = getRecommendedCalories(userDietInfo.getWeight(), userDietInfo.getHeight(), userDietInfo.getGender(), userDietInfo.getTypeOfTraining());
+            recommendedProtein = getRecommendedProtein(userDietInfo.getWeight(), userDietInfo.getGender());
+            recommendedWater = getRecommendedWater(userDietInfo.getWeight());
     }
 
 

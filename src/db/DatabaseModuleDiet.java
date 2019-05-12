@@ -103,7 +103,7 @@ public class DatabaseModuleDiet {
     public UserDietInfo getUserDietInfo() {
         ResultSet resultSet;
         UserDietInfo userDietInfo=new UserDietInfo();
-        String query = "select * from " + ResourceTables.USERS+ " where ID = ?";
+        String query = "select users.gender, users.typeOfTraining, users.height, weight.weight from " + ResourceTables.USERS+ " JOIN weight on weight.userID = users.ID where users.ID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
@@ -111,6 +111,7 @@ public class DatabaseModuleDiet {
                 userDietInfo.setGender(resultSet.getString("gender"));
                 userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
                 userDietInfo.setHeight(resultSet.getInt("height"));
+                userDietInfo.setWeight(resultSet.getDouble("weight"));
                 return userDietInfo;
             }
             return null;

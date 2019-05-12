@@ -36,17 +36,13 @@ public class BMIFragmentController extends FeedbackController {
 
 
     DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
-    DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
     UserDietInfo userDietInfo = new UserDietInfo();
 
     public void onCreate() {
         userDietInfo = databaseModuleDiet.getUserDietInfo();
-        Double weight = databaseModuleWeight.getUserWeight();
-        if(weight != null) {
-            labelBMI.setText("" + Math.round(getMyBMI(weight, userDietInfo.getHeight()) * 10.0) / 10.0);
-            setArrow(Math.round(getMyBMI(weight, userDietInfo.getHeight()) * 10.0) / 10.0);
-            setLabelInfo(weight,userDietInfo.getHeight());
-        }
+        labelBMI.setText("" + Math.round(getMyBMI(userDietInfo.getWeight(), userDietInfo.getHeight()) * 10.0) / 10.0);
+        setArrow(Math.round(getMyBMI(userDietInfo.getWeight(), userDietInfo.getHeight()) * 10.0) / 10.0);
+        setLabelInfo(userDietInfo.getWeight(), userDietInfo.getHeight());
     }
 
 
@@ -57,12 +53,12 @@ public class BMIFragmentController extends FeedbackController {
 
     private void setArrow(double bmi) {
 
-        if(bmi>35){
+        if (bmi > 35) {
             labelArrow.setLayoutX(595);
-        }else if (bmi<16){
+        } else if (bmi < 16) {
             labelArrow.setLayoutX(25);
-        }else {
-        labelArrow.setLayoutX((int) bmi * 30.5 - 447);
+        } else {
+            labelArrow.setLayoutX((int) bmi * 30.5 - 447);
         }
 
 
@@ -72,27 +68,28 @@ public class BMIFragmentController extends FeedbackController {
     private void onButtonManualPressed() {
 
         resetAllFeedback();
-        boolean error=false;
-        if ((textFieldHeight.getText().equals("") || !isDouble(textFieldHeight.getText()))|| Double.parseDouble(textFieldHeight.getText())>250 ||Double.parseDouble(textFieldHeight.getText())<120) {
+        boolean error = false;
+        if ((textFieldHeight.getText().equals("") || !isDouble(textFieldHeight.getText())) || Double.parseDouble(textFieldHeight.getText()) > 250 || Double.parseDouble(textFieldHeight.getText()) < 120) {
             displayFeedBack(textFieldHeight);
             labelInvalidInputHeight.setVisible(true);
-            error=true;
-        }if ((textFieldWeight.getText().equals("") || !isDouble(textFieldWeight.getText()))|| Double.parseDouble(textFieldWeight.getText())>500 ||Double.parseDouble(textFieldWeight.getText())<35 ){
+            error = true;
+        }
+        if ((textFieldWeight.getText().equals("") || !isDouble(textFieldWeight.getText())) || Double.parseDouble(textFieldWeight.getText()) > 500 || Double.parseDouble(textFieldWeight.getText()) < 35) {
             displayFeedBack(textFieldWeight);
             labelInvalidInputWeight.setVisible(true);
-            error=true;
+            error = true;
         }
 
-        if(!error){
+        if (!error) {
             setManualBMI(Double.parseDouble(textFieldWeight.getText()), Double.parseDouble(textFieldHeight.getText()));
         }
 
     }
 
-    private void resetAllFeedback(){
+    private void resetAllFeedback() {
         labelInvalidInputWeight.setVisible(false);
         labelInvalidInputHeight.setVisible(false);
-        DropShadow dropShadow=getCleanDropShadow();
+        DropShadow dropShadow = getCleanDropShadow();
         textFieldWeight.setEffect(dropShadow);
         textFieldHeight.setEffect(dropShadow);
 
@@ -108,28 +105,28 @@ public class BMIFragmentController extends FeedbackController {
 
         labelBMI.setText("" + Math.round(getMyBMI(weight, height) * 10.0) / 10.0);
         setArrow(Math.round(getMyBMI(weight, height) * 10.0) / 10.0);
-        setLabelInfo(weight,height);
+        setLabelInfo(weight, height);
 
     }
 
-    private void setLabelInfo(double weight, double height){
+    private void setLabelInfo(double weight, double height) {
         double bmi = weight / ((height / 100) * (height / 100));
         double kg;
         double weightToGo;
         System.out.println(bmi);
-        if(bmi>=19&&bmi<25){
+        if (bmi >= 19 && bmi < 25) {
             labelInfo.setText("   You are in healthy state.   ");
             labelInfo.setLayoutX(225);
-        }else if (bmi>=25){
-            kg= ((height / 100) * (height / 100))*25;
-            weightToGo=weight-kg;
-            labelInfo.setText("   You need to lose "+Math.round(weightToGo*10.0)/10.0+" kg to be in healthy state.   ");
+        } else if (bmi >= 25) {
+            kg = ((height / 100) * (height / 100)) * 25;
+            weightToGo = weight - kg;
+            labelInfo.setText("   You need to lose " + Math.round(weightToGo * 10.0) / 10.0 + " kg to be in healthy state.   ");
             labelInfo.setLayoutX(143);
 
-        }else if (bmi<19){
-            kg= ((height / 100) * (height / 100))*19;
-            weightToGo=weight-kg;
-            labelInfo.setText("   You need to gain "+Math.abs(Math.round(weightToGo*10.0)/10.0)+" kg to be in healthy state.   ");
+        } else if (bmi < 19) {
+            kg = ((height / 100) * (height / 100)) * 19;
+            weightToGo = weight - kg;
+            labelInfo.setText("   You need to gain " + Math.abs(Math.round(weightToGo * 10.0) / 10.0) + " kg to be in healthy state.   ");
             labelInfo.setLayoutX(143);
         }
 
