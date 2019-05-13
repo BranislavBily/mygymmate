@@ -93,6 +93,12 @@ public class DatabaseModuleInfo {
         }
     }
 
+    /**
+     * Returns {@code ArrayList<ProfileData>} of all the users based on first and last name
+     * @param firstName {@code String} firstName of Trainee
+     * @return {@code ArrayList<ProfileData>} if all users based on search,
+     *         empty {@code ArrayList<ProfileData>} if no users found or {@code null} if an error occurred
+     */
     public ArrayList<ProfileData> getAllTraineesByName(String firstName) {
         ArrayList<ProfileData> users = new ArrayList<>();
         String query = "select * from " + ResourceTables.USERS +
@@ -112,6 +118,13 @@ public class DatabaseModuleInfo {
         }
     }
 
+    /**
+     * Returns {@code ArrayList<ProfileData>} of all the users based on first and last name
+     * @param firstName {@code String} firstName of Trainee
+     * @param lastName {@code String} lastName of Trainee
+     * @return {@code ArrayList<ProfileData>} if all users based on search,
+     *          empty {@code ArrayList<ProfileData>} if no users found or {@code null} if an error occurred
+     */
     public ArrayList<ProfileData> getAllTraineesByName(String firstName, String lastName) {
         ArrayList<ProfileData> users = new ArrayList<>();
         String query = "select * from " + ResourceTables.USERS +
