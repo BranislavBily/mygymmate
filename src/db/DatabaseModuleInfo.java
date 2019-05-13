@@ -132,11 +132,16 @@ public class DatabaseModuleInfo {
         }
     }
 
-    public boolean addTraineeToTrainer(String username) {
-        String query = "update " + ResourceTables.USERS + " set TrainerID = ? where username = ?";
+    /**
+     * Adds {@code int} TrainerID to the user based on id
+     * @param id {@code int} id of the user that is adding Trainer
+     * @return {@code true} if TrainerID added, {@code false} if not
+     */
+    public boolean addTraineeToTrainer(int id) {
+        String query = "update " + ResourceTables.USERS + " set TrainerID = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
-            preparedStatement.setString(2, username);
+            preparedStatement.setInt(2, id);
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -144,11 +149,16 @@ public class DatabaseModuleInfo {
         }
     }
 
-    public boolean deleteTraineeFromTrainer(String username) {
-        String query = "update " + ResourceTables.USERS + " set TrainerID = ? where username = ?";
+    /**
+     * Deletes connection between Trainer and Trainee
+     * @param id {@code int} of the user that is bye bye with Trainer
+     * @return {@code true} if connection deleted, {@code false} if not
+     */
+    public boolean deleteTraineeFromTrainer(int id) {
+        String query = "update " + ResourceTables.USERS + " set TrainerID = ? where id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, null);
-            preparedStatement.setString(2, username);
+            preparedStatement.setInt(2, id);
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
