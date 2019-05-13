@@ -33,12 +33,17 @@
                </font>
             </Label>
             <TextField fx:id="textFieldWeight" layoutX="271.0" layoutY="185.0" prefHeight="35.0" prefWidth="94.0" promptText="(kg)" />
-            <Label fx:id="labelLastUpdate" layoutX="488.0" layoutY="254.0" text="Last update 15.5.2019">
+            <Label fx:id="labelLastUpdate" layoutX="468.0" layoutY="254.0" text="Last update 15.5.2019">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Label layoutX="94.0" layoutY="151.0" text="For best result weight your self on empty stomach right after u wake up !">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelInvalidInput" layoutX="380.0" layoutY="194.0" text="Invalid input !" textFill="RED" visible="false">
                <font>
                   <Font size="14.0" />
                </font>
