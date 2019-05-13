@@ -37,13 +37,12 @@ public class DatabaseModuleWeight {
     }
 
     public Weight getUserWeight() {
-        String query = "select weight, date from " + ResourceTables.WEIGHT + " where userID = ?  order By date(date) asc LIMIT 1";
+        String query = "select weight, date from " + ResourceTables.WEIGHT + " where userID = ?  order By date desc LIMIT 1";
         Weight weight=new Weight();
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-
                 weight.setWeight(resultSet.getDouble("weight"));
                 weight.setDate(resultSet.getString("date"));
                 return weight;
