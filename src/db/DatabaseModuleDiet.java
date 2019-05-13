@@ -103,7 +103,7 @@ public class DatabaseModuleDiet {
     public UserDietInfo getUserDietInfo() {
         ResultSet resultSet;
         UserDietInfo userDietInfo=new UserDietInfo();
-        String query = "select users.gender, users.typeOfTraining, users.height, weight.weight from " + ResourceTables.USERS+ " JOIN weight on weight.userID = users.ID where users.ID = ?";
+        String query = "select * from " + ResourceTables.USERS+ " where ID = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
@@ -111,7 +111,7 @@ public class DatabaseModuleDiet {
                 userDietInfo.setGender(resultSet.getString("gender"));
                 userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
                 userDietInfo.setHeight(resultSet.getInt("height"));
-                userDietInfo.setWeight(resultSet.getDouble("weight"));
+                userDietInfo.setWeight(getUserWeight());
                 return userDietInfo;
             }
             return null;
@@ -119,6 +119,11 @@ public class DatabaseModuleDiet {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private double getUserWeight() {
+        DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
+        return  databaseModuleWeight.getUserWeight().getWeight();
     }
 
     public UserDietInfo getUserDietInfo(int userID) {
@@ -132,6 +137,7 @@ public class DatabaseModuleDiet {
                 userDietInfo.setGender(resultSet.getString("gender"));
                 userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
                 userDietInfo.setHeight(resultSet.getInt("height"));
+                userDietInfo.setWeight(getUserWeight());
                 return userDietInfo;
             }
             return null;
@@ -151,5 +157,7 @@ public class DatabaseModuleDiet {
             return false;
         }
     }
+
+
 
 }
