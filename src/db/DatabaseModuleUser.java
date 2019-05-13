@@ -145,7 +145,7 @@ public class DatabaseModuleUser {
             preparedStatement.setInt(2, 0);
             preparedStatement.setInt(3, 0);
             preparedStatement.setInt(4, 0);
-            preparedStatement.setString(5,new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+            preparedStatement.setString(5,new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

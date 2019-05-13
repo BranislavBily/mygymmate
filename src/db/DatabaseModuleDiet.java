@@ -9,6 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class DatabaseModuleDiet {
 
@@ -38,15 +43,22 @@ public class DatabaseModuleDiet {
         }
     }
 
+    private String getDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue() + "." + (localDate.getYear()));
+    }
+
     private Diet loadDietFromResultSet(ResultSet resultSet) {
         Diet diet = new Diet();
         try {
             diet.setActualCalories(resultSet.getInt("calories"));
             diet.setActualProtein(resultSet.getInt("protein"));
             diet.setActualWater(resultSet.getInt("water"));
-            diet.setDate(resultSet.getString("date"));
+            diet.setDate(getDate(resultSet.getString("date")));
             return diet;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
             return null;
         }
