@@ -2,12 +2,14 @@ package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import sample.Controllers.SceneControllers.HomeSceneController;
+import sample.Quotes;
 
 public class HomeFragmentController extends HomeSceneController {
 
     public void onCreate() {
-
+            setRandomQuote();
     }
 
     @FXML
@@ -16,6 +18,9 @@ public class HomeFragmentController extends HomeSceneController {
     private Button buttonDiet;
     @FXML
     private Button buttonWithMeasure;
+
+    @FXML
+    private Label labelQuote;
 
     @FXML
     private void onButtonWorkoutPressed() {
@@ -30,6 +35,12 @@ public class HomeFragmentController extends HomeSceneController {
     @FXML
     private void onButtonDietPressed() {
         setSceneToDiet(buttonDiet.getScene());
+    }
+
+    public void setRandomQuote(){
+        Quotes quotes=new Quotes();
+        labelQuote.setText(quotes.getRandomQuote());
+
     }
 
 }
