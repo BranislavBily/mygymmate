@@ -265,4 +265,20 @@ public class DatabaseModuleWorkout {
         }
         return false;
     }
+
+
+    public boolean workoutAddedToday(Workout workout) {
+        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? and date = ?";
+        System.out.println(workout.toString());
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2,workout.getExercise());
+            preparedStatement.setString(3, workout.getDate());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
