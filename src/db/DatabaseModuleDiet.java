@@ -33,7 +33,7 @@ public class DatabaseModuleDiet {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
-            if (loadDietFromResultSet(resultSet) != null) {
+            if(resultSet.next()) {
                 diet = loadDietFromResultSet(resultSet);
             }
             return diet;
@@ -43,22 +43,15 @@ public class DatabaseModuleDiet {
         }
     }
 
-    private String getDate(String dateKey) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse(dateKey);
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue() + "." + (localDate.getYear()));
-    }
-
     private Diet loadDietFromResultSet(ResultSet resultSet) {
         Diet diet = new Diet();
         try {
             diet.setActualCalories(resultSet.getInt("calories"));
             diet.setActualProtein(resultSet.getInt("protein"));
             diet.setActualWater(resultSet.getInt("water"));
-            diet.setDate(getDate(resultSet.getString("date")));
+            diet.setDate(resultSet.getString("date"));
             return diet;
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
