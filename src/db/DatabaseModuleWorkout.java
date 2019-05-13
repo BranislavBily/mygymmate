@@ -8,10 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 public class DatabaseModuleWorkout {
 
@@ -30,7 +31,7 @@ public class DatabaseModuleWorkout {
      */
     public ArrayList<Workout> getWorkouts() {
         ArrayList<Workout> workouts = new ArrayList<>();
-        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ?";
+        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ? ORDER BY date(date) desc ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -53,7 +54,7 @@ public class DatabaseModuleWorkout {
      */
     public ArrayList<Workout> getWorkouts(int userID) {
         ArrayList<Workout> workouts = new ArrayList<>();
-        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ?";
+        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ? ORDER BY date(date) desc ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -84,9 +85,22 @@ public class DatabaseModuleWorkout {
                 weight = "Bodyweight";
             }
             workout.setWeight(weight);
-            workout.setDate(resultSet.getString("date"));
+            String date = formatDate(resultSet.getString("date"));
+            workout.setDate(date);
             return workout;
         } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private String formatDate(String date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date dateD = format.parse(date);
+            LocalDate localDate = dateD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            return localDate.getDayOfMonth() + "." + (localDate.getMonthValue()) + "." + (localDate.getYear());
+        } catch (ParseException e) {
             e.printStackTrace();
             return null;
         }
@@ -159,7 +173,7 @@ public class DatabaseModuleWorkout {
      */
     public Map<String, Integer> getAllRepetitionsByExercise(String exercise) {
         Map<String, Integer> dataForChart = new LinkedHashMap<>();
-        String query = "select date, repetitions from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY date(date) ASC";
+        String query = "select date, repetitions from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY date(date) asc";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             preparedStatement.setString(2, exercise);
@@ -181,7 +195,7 @@ public class DatabaseModuleWorkout {
      */
     public Map<String, Double> getAllWeightByExercise(String exercise) {
         Map<String, Double> dataForChart = new LinkedHashMap<>();
-        String query = "select date, weight from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY date(date) ASC";
+        String query = "select date, weight from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY date(date) asc";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             preparedStatement.setString(2, exercise);

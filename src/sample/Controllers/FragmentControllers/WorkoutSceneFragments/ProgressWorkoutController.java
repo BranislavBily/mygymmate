@@ -10,7 +10,14 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
 import sample.Interfaces.Progress;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.Locale;
 import java.util.Map;
 
 public class ProgressWorkoutController implements Progress {
@@ -76,10 +83,13 @@ public class ProgressWorkoutController implements Progress {
         } else {
             System.out.println("Repetitions chart" + dataForChart.toString());
             for(Map.Entry<String, Integer> data : dataForChart.entrySet()) {
-                //Date is too big, temporary solution for now
-                String date = data.getKey().substring(0, 5);
-                Integer repetitions = data.getValue();
-                series.getData().add(new XYChart.Data<>(date, repetitions));
+                try {
+                    String date = getDate(data.getKey());
+                    Integer repetitions = data.getValue();
+                    series.getData().add(new XYChart.Data<>(date, repetitions));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
             lineChartRepetitions.getData().add(series);
         }
@@ -98,13 +108,23 @@ public class ProgressWorkoutController implements Progress {
         } else {
             System.out.println("Weight chart" + dataForChart.toString());
             for(Map.Entry<String, Double> data : dataForChart.entrySet()) {
-                //Date is too big, temporary solution for now
-                String date = data.getKey().substring(0, 5);
-                Double weight = data.getValue();
-                series.getData().add(new XYChart.Data<>(date, weight));
+                try {
+                    String date = getDate(data.getKey());
+                    Double weight = data.getValue();
+                    series.getData().add(new XYChart.Data<>(date, weight));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
             lineChartWeight.getData().add(series);
         }
 
+    }
+
+    private String getDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
     }
 }
