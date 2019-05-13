@@ -61,7 +61,7 @@ public class AddWorkoutController extends FeedbackController {
         }
 
         if(textFieldWeight.isVisible()) {
-            if (textFieldWeight.getText().equals("") || !isDouble(textFieldWeight.getText())) {
+            if (textFieldWeight.getText().isEmpty() || !isDouble(textFieldWeight.getText())) {
                 goodInput = false;
                 displayFeedBack(textFieldWeight);
                 labelWeightError.setText("Please insert weight!");
@@ -78,14 +78,13 @@ public class AddWorkoutController extends FeedbackController {
             Workout workout = loadWorkoutFromInput();
             databaseModuleWorkout.insertWorkout(workout);
             labelWorkoutAdded.setVisible(true);
+            Stage stage = (Stage) labelWorkoutAdded.getScene().getWindow();
+            stage.close();
         }
-
-        Stage stage = (Stage) labelWorkoutAdded.getScene().getWindow();
-        stage.close();
     }
 
     private Workout loadWorkoutFromInput() {
-        String date = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         Workout workout = new Workout();
         workout.setExercise(textFieldNameOfExcersise.getText());
         workout.setRepetitions(Integer.parseInt(textFieldRepetitions.getText()));
