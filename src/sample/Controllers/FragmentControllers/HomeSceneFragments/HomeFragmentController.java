@@ -40,6 +40,7 @@ public class HomeFragmentController extends HomeSceneController {
     public void setRandomQuote(){
         Quotes quotes=new Quotes();
         labelQuote.setText(quotes.getRandomQuote());
+        labelQuote.setLayoutX(368-labelQuote.getText().length()*3);
 
     }
 
