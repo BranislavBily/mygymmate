@@ -13,6 +13,9 @@ public class Measurement {
     private double rightThigh;
     private double leftCalf;
     private double rightCalf;
+    private String date;
+
+
 
     public double getLeftArm() {
         return leftArm;
@@ -102,6 +105,14 @@ public class Measurement {
         this.rightCalf = rightCalf;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Measurement{" +
@@ -116,6 +127,7 @@ public class Measurement {
                 ", rightThigh=" + rightThigh +
                 ", leftCalf=" + leftCalf +
                 ", rightCalf=" + rightCalf +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

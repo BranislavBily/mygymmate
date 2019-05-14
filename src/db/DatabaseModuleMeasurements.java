@@ -8,8 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 
 public class DatabaseModuleMeasurements {
 
@@ -53,6 +57,35 @@ public class DatabaseModuleMeasurements {
         return null;
     }
 
+    public boolean insertMeasures(Measurement measurement){
+        String query = "insert into  " + ResourceTables.MEASUREMENTS + " (UserID, Left Arm, Right Arm , Left Forearm, Right Forearm, Shoulders, Waist, Chest, Left Thigh, Right Thigh, Left Calf, Right Calf, Date) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setDouble(2, measurement.getLeftArm());
+            preparedStatement.setDouble(3, measurement.getRightArm());
+            preparedStatement.setDouble(4, measurement.getLeftForeArm());
+            preparedStatement.setDouble(5, measurement.getRightForeArm());
+            preparedStatement.setDouble(5, measurement.getShoulders());
+            preparedStatement.setDouble(7, measurement.getWaist());
+            preparedStatement.setDouble(8, measurement.getChest());
+            preparedStatement.setDouble(9, measurement.getLeftThigh());
+            preparedStatement.setDouble(10, measurement.getRightThigh());
+            preparedStatement.setDouble(11, measurement.getLeftCalf());
+            preparedStatement.setDouble(12, measurement.getRightCalf());
+            preparedStatement.setString(13, formatDate(measurement.getDate()));
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    private String formatDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
+    }
+
     public LinkedHashMap<String, Double> getAllMeasurementsByBodyPart(String bodyPart) {
         LinkedHashMap<String, Double> measurements = new LinkedHashMap<>();
         String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ?";
@@ -69,6 +102,7 @@ public class DatabaseModuleMeasurements {
         }
     }
 
+
     private Measurement getMeasurementFromResultSet(ResultSet resultSet) {
         Measurement measurement = new Measurement();
         try {
@@ -83,8 +117,9 @@ public class DatabaseModuleMeasurements {
             measurement.setRightThigh(resultSet.getDouble("Right Thigh"));
             measurement.setLeftCalf(resultSet.getDouble("Left Calf"));
             measurement.setRightCalf(resultSet.getDouble("Right Calf"));
+            measurement.setDate(formatDate(resultSet.getString("date")));
             return measurement;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
             return null;
         }
