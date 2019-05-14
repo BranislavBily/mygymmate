@@ -7,12 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.FragmentControllers.MeasureSceneFragments.MeasurementsFragmentController;
 import sample.Controllers.FragmentControllers.MeasureSceneFragments.ProgressMeasureFragmentController;
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceUserType;
+
 
 import java.io.IOException;
 
@@ -27,6 +30,8 @@ public class MeasureController extends HomeSceneController {
     private Button buttonProgress;
     @FXML
     private Label labelUsername;
+    @FXML
+    private ImageView imageViewStatus;
 
     private DatabaseModuleUser databaseModuleUser;
     private DatabaseModuleMeasurements databaseModuleMeasurements;
@@ -37,6 +42,7 @@ public class MeasureController extends HomeSceneController {
         setLabel();
         System.out.println(databaseModuleMeasurements.getUserMeasurement().toString());
         onButtonMeasurementsPressed();
+        setImageViewStatus();
     }
 
     @FXML
@@ -82,4 +88,15 @@ public class MeasureController extends HomeSceneController {
             setSceneToTrainerHomeScene(buttonMeasurements.getScene());
         }
     }
+
+    private void setImageViewStatus(){
+        if(databaseModuleUser.getUserStatus().equals("Trainer")){
+            imageViewStatus.setImage(new Image(getClass().getResourceAsStream("../../../Images/trainer.png")));
+            imageViewStatus.setLayoutY(56);
+            imageViewStatus.setLayoutX(91);
+        }else if(databaseModuleUser.getUserStatus().equals("Trainee")){
+            imageViewStatus.setImage(new Image(getClass().getResourceAsStream("../../../Images/user.png")));
+        }
+    }
+
 }

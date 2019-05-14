@@ -54,7 +54,7 @@
                         <DropShadow />
                     </effect>
                 </Circle>
-                <ImageView fitHeight="117.0" fitWidth="105.0" layoutX="90.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="imageViewStatus" fitHeight="117.0" fitWidth="105.0" layoutX="90.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Images/user.png" />
                     </image>

@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import sample.Controllers.FragmentControllers.DietSceneFragments.BMIFragmentController;
 import sample.Controllers.FragmentControllers.DietSceneFragments.DietFragmentController;
@@ -13,6 +15,7 @@ import sample.Controllers.FragmentControllers.DietSceneFragments.WeightFragmentC
 import sample.Controllers.SceneControllers.HomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceUserType;
+
 
 import java.io.IOException;
 
@@ -28,6 +31,8 @@ public class DietController extends HomeSceneController {
     private Button buttonBMI;
     @FXML
     private Label labelUsername;
+    @FXML
+    private ImageView imageViewStatus;
 
     private DatabaseModuleUser databaseModuleUser;
 
@@ -35,6 +40,7 @@ public class DietController extends HomeSceneController {
         databaseModuleUser = new DatabaseModuleUser();
         setLabel();
         onButtonDietPressed();
+        setImageViewStatus();
     }
 
     private void setLabel() {
@@ -96,6 +102,16 @@ public class DietController extends HomeSceneController {
             e.printStackTrace();
         }
         System.out.println("BMI");
+    }
+
+    private void setImageViewStatus(){
+        if(databaseModuleUser.getUserStatus().equals("Trainer")){
+            imageViewStatus.setImage(new Image(getClass().getResourceAsStream("../../../Images/trainer.png")));
+            imageViewStatus.setLayoutY(56);
+            imageViewStatus.setLayoutX(91);
+        }else if(databaseModuleUser.getUserStatus().equals("Trainee")){
+            imageViewStatus.setImage(new Image(getClass().getResourceAsStream("../../../Images/user.png")));
+        }
     }
 
 
