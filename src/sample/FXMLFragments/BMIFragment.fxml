@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.DietSceneFragments.BMIFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.DietSceneFragments.BMIFragmentController">
    <children>
       <AnchorPane layoutX="29.0" layoutY="53.0" prefHeight="662.0" prefWidth="660.0" style="-fx-background-color: #FFFF; -fx-background-radius: 5;">
          <children>

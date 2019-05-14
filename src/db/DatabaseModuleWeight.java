@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class DatabaseModuleWeight {
 
@@ -69,5 +71,27 @@ public class DatabaseModuleWeight {
         }
     }
 
+
+    public Map<String, Double> getAllWeight() {
+        Map<String, Double> dataForChart = new LinkedHashMap<>();
+        String query = "select date, weight from " + ResourceTables.WEIGHT + " where userID = ? ORDER BY date(date) asc";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                dataForChart.put(getDate(resultSet.getString("date")), resultSet.getDouble("weight"));
+            }
+            return dataForChart;
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private String getDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
+    }
 
 }
