@@ -7,6 +7,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
+import javafx.stage.Stage;
 import sample.Controllers.FeedbackController;
 
 public class UpdateWorkoutController extends FeedbackController {
@@ -16,8 +17,6 @@ public class UpdateWorkoutController extends FeedbackController {
     private TextField textFieldRepetitions;
     @FXML
     private TextField textFieldWeight;
-    @FXML
-    private Label labelSuccess;
     @FXML
     private Label labelExerciseError;
     @FXML
@@ -111,7 +110,8 @@ public class UpdateWorkoutController extends FeedbackController {
         if (checkInput()) {
             Workout workout = getWorkoutFromInput();
             if (databaseModuleWorkout.updateWorkout(workout)) {
-                labelSuccess.setVisible(true);
+                Stage stage = (Stage) labelExerciseError.getScene().getWindow();
+                stage.close();
             } else {
                 System.out.println("Error in inserting update");
             }
@@ -127,7 +127,6 @@ public class UpdateWorkoutController extends FeedbackController {
             labelWeightSmall.setVisible(false);
         } else {
             textFieldWeight.setVisible(true);
-
         }
     }
 
@@ -141,6 +140,4 @@ public class UpdateWorkoutController extends FeedbackController {
         labelExerciseError.setVisible(false);
         labelWeightSmall.setVisible(false);
     }
-
-
 }

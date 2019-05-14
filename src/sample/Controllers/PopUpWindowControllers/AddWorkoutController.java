@@ -22,8 +22,6 @@ public class AddWorkoutController extends FeedbackController {
     @FXML
     private TextField textFieldWeight;
     @FXML
-    private Label labelWorkoutAdded;
-    @FXML
     private Label labelExerciseError;
     @FXML
     private Label labelRepetitionsError;
@@ -83,8 +81,7 @@ public class AddWorkoutController extends FeedbackController {
                 labelAlreadyWorkout.setVisible(true);
             } else {
                 databaseModuleWorkout.insertWorkout(workout);
-                labelWorkoutAdded.setVisible(true);
-                Stage stage = (Stage) labelWorkoutAdded.getScene().getWindow();
+                Stage stage = (Stage) labelWeightError.getScene().getWindow();
                 stage.close();
             }
         }
