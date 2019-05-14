@@ -39,9 +39,10 @@ public class TrainerInfoFragmentController {
             labelDiet.setText(databaseModuleDiet.getUserDietInfo(trainerID).toString());
             labelDiet.setWrapText(true);
             labelDiet.setMaxWidth(500);
+            if(databaseModuleMeasurements.getUserMeasurement(trainerID)!=null){
             labelMeasurements.setText(databaseModuleMeasurements.getUserMeasurement(trainerID).toString());
             labelMeasurements.setWrapText(true);
-            labelMeasurements.setMaxWidth(500);
+            labelMeasurements.setMaxWidth(500);}
         }
     }
 }
