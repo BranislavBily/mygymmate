@@ -45,6 +45,6 @@ public class Quotes {
     public String getRandomQuote(){
 
 
-        return quotes.get((int) (Math.random()*quotes.size()+1));
+        return quotes.get((int) (Math.random()*quotes.size()));
     }
 }

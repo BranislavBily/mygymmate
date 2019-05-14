@@ -9,6 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class DatabaseModuleDiet {
 
@@ -28,7 +33,7 @@ public class DatabaseModuleDiet {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             resultSet = preparedStatement.executeQuery();
-            if (loadDietFromResultSet(resultSet) != null) {
+            if(resultSet.next()) {
                 diet = loadDietFromResultSet(resultSet);
             }
             return diet;

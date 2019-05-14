@@ -33,6 +33,8 @@ public class AddWorkoutController extends FeedbackController {
     private CheckBox checkBoxBodyweight;
     @FXML
     private Label labelWeightSmall;
+    @FXML
+    private Label labelAlreadyWorkout;
 
 
     @FXML
@@ -76,10 +78,15 @@ public class AddWorkoutController extends FeedbackController {
 
         if (goodInput) {
             Workout workout = loadWorkoutFromInput();
-            databaseModuleWorkout.insertWorkout(workout);
-            labelWorkoutAdded.setVisible(true);
-            Stage stage = (Stage) labelWorkoutAdded.getScene().getWindow();
-            stage.close();
+            if(databaseModuleWorkout.workoutAddedToday(workout)) {
+                System.out.println("Dnes bolo pridanie take");
+                labelAlreadyWorkout.setVisible(true);
+            } else {
+                databaseModuleWorkout.insertWorkout(workout);
+                labelWorkoutAdded.setVisible(true);
+                Stage stage = (Stage) labelWorkoutAdded.getScene().getWindow();
+                stage.close();
+            }
         }
     }
 
@@ -103,6 +110,7 @@ public class AddWorkoutController extends FeedbackController {
         labelRepetitionsError.setVisible(false);
         labelExerciseError.setVisible(false);
         labelWeightSmall.setVisible(false);
+        labelAlreadyWorkout.setVisible(false);
     }
 
     @FXML

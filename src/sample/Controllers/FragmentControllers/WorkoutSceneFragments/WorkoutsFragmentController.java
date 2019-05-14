@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -76,6 +73,7 @@ public class WorkoutsFragmentController {
         tableColumnDate.setCellValueFactory(new PropertyValueFactory("Date"));
         ObservableList<Workout> workoutObservableList = FXCollections.observableList(workouts);
         tableViewWorkouts.setItems(workoutObservableList);
+        tableViewWorkouts.setPlaceholder(new Label("No workouts found!"));
     }
 
     @FXML

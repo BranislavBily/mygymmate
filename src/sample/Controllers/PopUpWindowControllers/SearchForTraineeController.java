@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Dialogs.AddTraineeDialog;
-import sample.Dialogs.DeleteTraineeDialog;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -45,11 +44,12 @@ public class SearchForTraineeController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     ProfileData profileData = row.getItem();
-                    boolean addTrainee = getAddTraineeDialogAnswer(profileData);
-                    if(addTrainee) {
-                        if(databaseModuleInfo.addTraineeToTrainer(profileData.getUsername())) {
+                    boolean deleteConfirmed = getAddTraineeDialogAnswer(profileData.getRealName());
+                    if(deleteConfirmed) {
+                        if(databaseModuleInfo.addTraineeToTrainer(profileData.getId())) {
                             labelSuccess.setVisible(true);
                             System.out.println("Trainee added");
+                            //If trainee added, clears table
                             textFieldName.setText("");
                         } else {
                             System.out.println("Error occurred when adding user");
@@ -72,9 +72,11 @@ public class SearchForTraineeController {
                 labelSuccess.setVisible(false);
                 String[] name = newValue.split(" ");
                 ArrayList<ProfileData> trainees;
+                //If user entered first and last name
                 try {
                     trainees = databaseModuleInfo.getAllTraineesByName(name[0].concat("%"), name[1].concat("%"));
                 } catch (ArrayIndexOutOfBoundsException e) {
+                    //If he only entered first name
                     trainees = databaseModuleInfo.getAllTraineesByName(name[0].concat("%"));
                 }
                 loadTraineesIntoTable(trainees);
@@ -91,8 +93,13 @@ public class SearchForTraineeController {
         tableViewTrainees.setItems(profileDataObservableList);
     }
 
-    private boolean getAddTraineeDialogAnswer(ProfileData profileData) {
-        AddTraineeDialog addTraineeDialog = new AddTraineeDialog(Alert.AlertType.CONFIRMATION, profileData.getRealName());
+    /**
+     * Opens up a dialog and returns {@code true} if user confirmed action, {@code false} if not
+     * @param name - Name of the trainee that is to be deleted
+     * @return {@code true} if user confirmed action, {@code false} if he did not
+     */
+    private boolean getAddTraineeDialogAnswer(String name) {
+        AddTraineeDialog addTraineeDialog = new AddTraineeDialog(Alert.AlertType.CONFIRMATION, name);
         Optional<ButtonType> result = addTraineeDialog.showAndWait();
         return result.get() == ButtonType.OK;
     }

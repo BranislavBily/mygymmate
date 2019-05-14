@@ -48,7 +48,7 @@ public class ProgressWorkoutController implements Progress {
     @Override
     public void loadChoiceBox() {
         LinkedHashSet<String> exercises = databaseModuleWorkout.getAllUserExercises();
-        if(exercises.size() > 0) {
+        if (exercises.size() > 0) {
             choiceBoxExercise.setItems(FXCollections.observableArrayList(exercises));
             choiceBoxExercise.getSelectionModel().selectedItemProperty().addListener(new MyChoiceBoxListener(choiceBoxExercise));
         } else {
@@ -59,6 +59,7 @@ public class ProgressWorkoutController implements Progress {
 
     private class MyChoiceBoxListener implements ChangeListener<String> {
         final ChoiceBox<String> cb;
+
         MyChoiceBoxListener(ChoiceBox<String> cb) {
             this.cb = cb;
         }
@@ -72,24 +73,21 @@ public class ProgressWorkoutController implements Progress {
 
     /**
      * Loads all data for chart from {@code String} argument and displays it in the chart
+     *
      * @param exercise a {@code String} exercise
      */
     private void createRepetitionsChart(String exercise) {
         lineChartRepetitions.getData().clear();
         XYChart.Series<String, Integer> series = new XYChart.Series<>();
         Map<String, Integer> dataForChart = databaseModuleWorkout.getAllRepetitionsByExercise(exercise);
-        if(dataForChart == null) {
+        if (dataForChart == null) {
             System.out.println("No data");
         } else {
             System.out.println("Repetitions chart" + dataForChart.toString());
-            for(Map.Entry<String, Integer> data : dataForChart.entrySet()) {
-                try {
-                    String date = getDate(data.getKey());
-                    Integer repetitions = data.getValue();
-                    series.getData().add(new XYChart.Data<>(date, repetitions));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+            for (Map.Entry<String, Integer> data : dataForChart.entrySet()) {
+                String date = (data.getKey());
+                Integer repetitions = data.getValue();
+                series.getData().add(new XYChart.Data<>(date, repetitions));
             }
             lineChartRepetitions.getData().add(series);
         }
@@ -97,34 +95,27 @@ public class ProgressWorkoutController implements Progress {
 
     /**
      * Loads all data for chart from {@code String} argument and displays it in the chart
+     *
      * @param exercise a {@code String} exercise
      */
     private void createWeightChart(String exercise) {
         lineChartWeight.getData().clear();
         XYChart.Series<String, Double> series = new XYChart.Series<>();
         Map<String, Double> dataForChart = databaseModuleWorkout.getAllWeightByExercise(exercise);
-        if(dataForChart == null) {
+        if (dataForChart == null) {
             System.out.println("no data");
         } else {
             System.out.println("Weight chart" + dataForChart.toString());
-            for(Map.Entry<String, Double> data : dataForChart.entrySet()) {
-                try {
-                    String date = getDate(data.getKey());
-                    Double weight = data.getValue();
-                    series.getData().add(new XYChart.Data<>(date, weight));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+            for (Map.Entry<String, Double> data : dataForChart.entrySet()) {
+                String date = data.getKey();
+                Double weight = data.getValue();
+                series.getData().add(new XYChart.Data<>(date, weight));
+
             }
             lineChartWeight.getData().add(series);
         }
 
     }
 
-    private String getDate(String dateKey) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse(dateKey);
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
-    }
+
 }

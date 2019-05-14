@@ -111,7 +111,7 @@ public class TraineeInfoFragmentController {
         } else {
             boolean deleteTrainee = getDeleteTraineeDialogAnswer(profileData);
             if(deleteTrainee) {
-                if(databaseModuleInfo.deleteTraineeFromTrainer(profileData.getUsername())) {
+                if(databaseModuleInfo.deleteTraineeFromTrainer(profileData.getId())) {
                     loadTraineesIntoTable();
                     System.out.println("Success");
                 } else {

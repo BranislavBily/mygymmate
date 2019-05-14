@@ -179,10 +179,10 @@ public class DatabaseModuleWorkout {
             preparedStatement.setString(2, exercise);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                dataForChart.put(resultSet.getString("date"), resultSet.getInt("repetitions"));
+                dataForChart.put(getDate(resultSet.getString("date")), resultSet.getInt("repetitions"));
             }
             return dataForChart;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
             return null;
         }
@@ -201,14 +201,23 @@ public class DatabaseModuleWorkout {
             preparedStatement.setString(2, exercise);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                dataForChart.put(resultSet.getString("date"), resultSet.getDouble("weight"));
+                dataForChart.put(getDate(resultSet.getString("date")), resultSet.getDouble("weight"));
             }
             return dataForChart;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
             return null;
         }
     }
+
+    private String getDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
+    }
+
+
 
     /**
      * Deletes workout based on {@code int} id
@@ -255,5 +264,21 @@ public class DatabaseModuleWorkout {
             e.printStackTrace();
         }
         return false;
+    }
+
+
+    public boolean workoutAddedToday(Workout workout) {
+        String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? and date = ?";
+        System.out.println(workout.toString());
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2,workout.getExercise());
+            preparedStatement.setString(3, workout.getDate());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
