@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.effect.DropShadow;
+import javafx.stage.Stage;
 import sample.Controllers.FeedbackController;
 
 public class ChangePasswordController extends FeedbackController {
@@ -77,7 +78,8 @@ public class ChangePasswordController extends FeedbackController {
             if (!databaseModuleUser.updateUserPassword(passwordNew)) {
                 System.out.println("Error while updating user password");
             } else {
-                labelPasswordChanged.setVisible(true);
+                Stage stage = (Stage) labelCurrentPasswordError.getScene().getWindow();
+                stage.close();
                 System.out.println("Heslo uspesne zmenene");
             }
         }
