@@ -2,36 +2,46 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.Controller">
    <children>
-      <Label layoutX="31.0" layoutY="34.0" text="Who are The Burning Systems?">
-         <font>
-            <Font size="46.0" />
-         </font>
-      </Label>
-      <Label layoutX="31.0" layoutY="102.0" prefHeight="159.0" prefWidth="647.0" text=" We are passionate developers for Slovakia. We are making free software for all the people like us. We want to track our progress, checkout out trainer and what he is all about etc. But, there was no app for that. So we decided to built one for free for all the people to enjoy. Since more than billion devices run Java, this is the technology we decided to use." wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="31.0" layoutY="261.0" prefHeight="75.0" prefWidth="647.0" text="But of cource, writing good software is not cheap. Since we decided to make this app free, we fully run on donations. If you want to support us and show your appreciating, feel free to buy us cup of coffee with PayPal button down below." wrapText="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <ImageView id="buttonPayPal" fitHeight="150.0" fitWidth="200.0" layoutX="42.0" layoutY="356.0" onMouseClicked="#onHyperLinkPaypalPressed" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/paypal.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
+      <AnchorPane layoutX="35.0" layoutY="34.0" prefHeight="470.0" prefWidth="674.0" style="-fx-background-color: #FFFF; -fx-background-radius: 10;">
+         <children>
+            <Label layoutX="23.0" layoutY="33.0" text="Who are The Burning Systems?">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="101.0" prefHeight="159.0" prefWidth="647.0" text="We are passionate developers for Slovakia. We are making free software for all the people like us. We want to track our progress, checkout out trainer and what he is all about etc. But, there was no app for that. So we decided to built one for free for all the people to enjoy. Since more than billion devices run Java, this is the technology we decided to use." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="260.0" prefHeight="75.0" prefWidth="647.0" text="But of cource, writing good software is not cheap. Since we decided to make this app free, we fully run on donations. If you want to support us and show your appreciating, feel free to buy us cup of coffee with PayPal button down below." wrapText="true">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <ImageView id="buttonPayPal" fitHeight="150.0" fitWidth="200.0" layoutX="23.0" layoutY="391.0" onMouseClicked="#onHyperLinkPaypalPressed" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/paypal.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Line endX="530.4000244140625" layoutX="101.0" layoutY="101.0" startX="-81.60001373291016" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
       <ImageView fitHeight="89.0" fitWidth="134.0" layoutX="597.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/logo.png" />
