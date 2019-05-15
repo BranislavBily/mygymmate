@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TraineeInfoFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.HomeSceneFragments.TraineeInfoFragmentController">
    <children>
       <AnchorPane layoutX="83.0" layoutY="43.0" prefHeight="681.0" prefWidth="580.0" style="-fx-background-radius: 5;">
          <children>
@@ -31,7 +31,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="buttonAddTrainee" layoutX="226.0" layoutY="623.0" mnemonicParsing="false" onAction="#onButtonAddTraineePressed" prefHeight="35.0" style="-fx-background-color: #03383f#03383f;" text="Add new Trainee" textFill="WHITE">
+            <Button fx:id="buttonAddTrainee" layoutX="216.0" layoutY="621.0" mnemonicParsing="false" onAction="#onButtonAddTraineePressed" prefHeight="46.0" prefWidth="152.0" style="-fx-background-color: #03383f#03383f;" text="Add new Trainee" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
