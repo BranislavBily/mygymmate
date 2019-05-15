@@ -7,6 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import sample.Controllers.FeedbackController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class MeasurementsFragmentController extends FeedbackController {
 
@@ -67,17 +70,22 @@ public class MeasurementsFragmentController extends FeedbackController {
     private Measurement loadDataIntoMeasurement(){
         Measurement measurement=new Measurement();
         measurement.setRightArm(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setLeftArm(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setLeftArm(Double.parseDouble(textFieldLeftArm.getText()));
         measurement.setRightForeArm(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setLeftForeArm(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setLeftForeArm(Double.parseDouble(textFieldLeftForeArm.getText()));
         measurement.setRightThigh(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setLeftThigh(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setLeftThigh(Double.parseDouble(textFieldLeftThigh.getText()));
         measurement.setRightCalf(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setLeftCalf(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setChest(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setShoulders(Double.parseDouble(textFieldRightArm.getText()));
-        measurement.setWaist(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setLeftCalf(Double.parseDouble(textFieldLeftCalf.getText()));
+        measurement.setChest(Double.parseDouble(textFieldChest.getText()));
+        measurement.setShoulders(Double.parseDouble(textFieldShoulders.getText()));
+        measurement.setWaist(Double.parseDouble(textFieldWaist.getText()));
+        measurement.setDate(getDate());
         return measurement;
+    }
+
+    private String getDate(){
+        return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 
     private void setDisabledTextfields() {
@@ -156,7 +164,12 @@ public class MeasurementsFragmentController extends FeedbackController {
 
         if (goodInput){
             Measurement measurement=loadDataIntoMeasurement();
-            databaseModuleMeasurements.insertMeasures(measurement);
+            System.out.println(measurement.toString());
+            if(databaseModuleMeasurements.insertMeasures(measurement)) {
+                System.out.println("Measurement saved!");
+
+            }
+
         }
     }
 

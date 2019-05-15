@@ -22,7 +22,7 @@ public class WorkoutTest {
         System.out.println("Testing WorkoutTest");
     }
 
-    //Declares new Workout, so there is no way methods will cause any harm to each other
+
     @Before
     public void before() {
         workout = new Workout();

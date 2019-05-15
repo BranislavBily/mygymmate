@@ -58,23 +58,23 @@ public class DatabaseModuleMeasurements {
     }
 
     public boolean insertMeasures(Measurement measurement){
-        String query = "insert into  " + ResourceTables.MEASUREMENTS + " (UserID, Left Arm, Right Arm , Left Forearm, Right Forearm, Shoulders, Waist, Chest, Left Thigh, Right Thigh, Left Calf, Right Calf, Date) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into  " + ResourceTables.MEASUREMENTS + " (UserID, LeftArm, RightArm , LeftForearm, RightForearm, Shoulders, Waist, Chest, LeftThigh, RightThigh, LeftCalf, RightCalf, Date) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             preparedStatement.setDouble(2, measurement.getLeftArm());
             preparedStatement.setDouble(3, measurement.getRightArm());
             preparedStatement.setDouble(4, measurement.getLeftForeArm());
             preparedStatement.setDouble(5, measurement.getRightForeArm());
-            preparedStatement.setDouble(5, measurement.getShoulders());
+            preparedStatement.setDouble(6, measurement.getShoulders());
             preparedStatement.setDouble(7, measurement.getWaist());
             preparedStatement.setDouble(8, measurement.getChest());
             preparedStatement.setDouble(9, measurement.getLeftThigh());
             preparedStatement.setDouble(10, measurement.getRightThigh());
             preparedStatement.setDouble(11, measurement.getLeftCalf());
             preparedStatement.setDouble(12, measurement.getRightCalf());
-            preparedStatement.setString(13, formatDate(measurement.getDate()));
+            preparedStatement.setString(13, measurement.getDate());
             return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -106,17 +106,17 @@ public class DatabaseModuleMeasurements {
     private Measurement getMeasurementFromResultSet(ResultSet resultSet) {
         Measurement measurement = new Measurement();
         try {
-            measurement.setLeftArm(resultSet.getDouble("Left Arm"));
-            measurement.setRightArm(resultSet.getDouble("Right Arm"));
-            measurement.setLeftForeArm(resultSet.getDouble("Left ForeArm"));
-            measurement.setRightForeArm(resultSet.getDouble("Right ForeArm"));
+            measurement.setLeftArm(resultSet.getDouble("LeftArm"));
+            measurement.setRightArm(resultSet.getDouble("RightArm"));
+            measurement.setLeftForeArm(resultSet.getDouble("LeftForeArm"));
+            measurement.setRightForeArm(resultSet.getDouble("RightForeArm"));
             measurement.setShoulders(resultSet.getDouble("Shoulders"));
             measurement.setWaist(resultSet.getDouble("Waist"));
             measurement.setChest(resultSet.getDouble("Chest"));
-            measurement.setLeftThigh(resultSet.getDouble("Left Thigh"));
-            measurement.setRightThigh(resultSet.getDouble("Right Thigh"));
-            measurement.setLeftCalf(resultSet.getDouble("Left Calf"));
-            measurement.setRightCalf(resultSet.getDouble("Right Calf"));
+            measurement.setLeftThigh(resultSet.getDouble("LeftThigh"));
+            measurement.setRightThigh(resultSet.getDouble("RightThigh"));
+            measurement.setLeftCalf(resultSet.getDouble("LeftCalf"));
+            measurement.setRightCalf(resultSet.getDouble("RightCalf"));
             measurement.setDate(formatDate(resultSet.getString("date")));
             return measurement;
         } catch (SQLException | ParseException e) {

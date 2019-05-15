@@ -52,15 +52,15 @@ public class ProgressMeasureFragmentController implements Progress {
                 loadTopChart(newValue);
             } else if(newValue.equals("Calves")) {
                 lineChartSizeBottom.setVisible(true);
-                String leftBodyPart = "Left Calf";
-                String rightBodyPart = "Right Calf";
+                String leftBodyPart = "LeftCalf";
+                String rightBodyPart = "RightCalf";
                 lineChartSizeTop.setTitle(leftBodyPart);
                 lineChartSizeBottom.setTitle(rightBodyPart);
                 loadBothCharts(leftBodyPart, rightBodyPart);
             } else {
                 lineChartSizeBottom.setVisible(true);
-                String leftBodyPart = "Left " + newValue.replace("s", "");
-                String rightBodyPart = "Right " + newValue.replace("s", "");
+                String leftBodyPart = "Left" + newValue.replace("s", "");
+                String rightBodyPart = "Right" + newValue.replace("s", "");
                 lineChartSizeTop.setTitle(leftBodyPart);
                 lineChartSizeBottom.setTitle(rightBodyPart);
                 loadBothCharts(leftBodyPart, rightBodyPart);
@@ -78,7 +78,7 @@ public class ProgressMeasureFragmentController implements Progress {
             System.out.println("Top chart " + dataForChart.toString());
             for (Map.Entry<String, Double> data : dataForChart.entrySet()) {
                 //Date is too big, temporary solution for now
-                String date = data.getKey().substring(0, 5);
+                String date = data.getKey().substring(5, 10);
                 Double measurement = data.getValue();
                 series.getData().add(new XYChart.Data<>(date, measurement));
             }
@@ -96,7 +96,7 @@ public class ProgressMeasureFragmentController implements Progress {
             System.out.println("Bottom chart " + dataForChart.toString());
             for (Map.Entry<String, Double> data : dataForChart.entrySet()) {
                 //Date is too big, temporary solution for now
-                String date = data.getKey().substring(0, 5);
+                String date = data.getKey().substring(5, 10);
                 Double measurement = data.getValue();
                 series.getData().add(new XYChart.Data<>(date, measurement));
             }
