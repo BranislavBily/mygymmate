@@ -41,7 +41,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="buttonSave" layoutX="585.0" layoutY="694.0" mnemonicParsing="false" onAction="#onButtonSavePressed" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+      <Button fx:id="buttonSave" layoutX="583.0" layoutY="696.0" mnemonicParsing="false" onAction="#onButtonSavePressed" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -54,7 +54,6 @@
       </Button>
       <Line endX="-26.4000244140625" endY="22.399993896484375" layoutX="481.0" layoutY="244.0" startX="50.19061279296875" startY="-2.399993896484375" />
       <Line endX="-60.0" endY="21.399993896484375" layoutX="529.0" layoutY="313.0" startX="2.19061279296875" startY="11.0" />
-      <Line endX="-179.60003662109375" endY="-116.79998779296875" layoutX="579.0" layoutY="468.0" startX="-33.0" startY="-40.199981689453125" />
       <Line endX="-57.79998779296875" endY="-5.79998779296875" layoutX="462.0" layoutY="461.0" startX="18.20001220703125" startY="23.800018310546875" />
       <Line endX="-41.20001220703125" endY="11.0" layoutX="447.0" layoutY="589.0" startX="21.20001220703125" startY="11.0" />
       <Line endX="-100.60002136230469" endY="36.79998779296875" layoutX="333.0" layoutY="120.0" startX="-39.20001220703125" startY="66.39999389648438" />
@@ -62,12 +61,12 @@
       <Line endX="-129.99998474121094" endY="56.600006103515625" layoutX="329.0" layoutY="269.0" startX="-66.40000915527344" startY="63.0" />
       <Line endX="-127.99998474121094" endY="81.60000610351562" layoutX="377.0" layoutY="404.0" startX="-42.4000244140625" startY="53.600006103515625" />
       <Line endX="-113.60002136230469" endY="95.0" layoutX="381.0" layoutY="505.0" startX="-49.60003662109375" startY="95.0" />
-      <Label layoutX="87.0" layoutY="42.0" prefHeight="35.0" prefWidth="156.0" text="Right side" textFill="#03383f">
+      <Label layoutX="155.0" layoutY="42.0" text="Right side" textFill="#03383f">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="465.0" layoutY="42.0" prefHeight="35.0" prefWidth="156.0" text="Left side" textFill="#03383f">
+      <Label layoutX="465.0" layoutY="42.0" text="Left side" textFill="#03383f">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
