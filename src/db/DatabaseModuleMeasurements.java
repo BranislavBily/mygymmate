@@ -27,7 +27,7 @@ public class DatabaseModuleMeasurements {
     }
 
     public Measurement getUserMeasurement() {
-        String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) ASC LIMIT 1";
+        String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) desc LIMIT 1";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -42,7 +42,7 @@ public class DatabaseModuleMeasurements {
     }
 
     public Measurement getUserMeasurement(int userID) {
-        String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) ASC LIMIT 1";
+        String query = "select * from " + ResourceTables.MEASUREMENTS + " where userID = ? ORDER BY date(date) desc LIMIT 1";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -78,12 +78,6 @@ public class DatabaseModuleMeasurements {
             e.printStackTrace();
         }
         return false;
-    }
-    private String formatDate(String dateKey) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse(dateKey);
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
     }
 
     public LinkedHashMap<String, Double> getAllMeasurementsByBodyPart(String bodyPart) {
@@ -125,6 +119,19 @@ public class DatabaseModuleMeasurements {
         }
     }
 
+    public boolean measurementAlreadyAddedToday(Measurement measurement) {
+        String query = "select * from " +ResourceTables.MEASUREMENTS + " where userID = ? and date = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setString(2, measurement.getDate());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean deleteAllUserMeasurements() {
         String query = "delete from " + ResourceTables.MEASUREMENTS + " where userID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -134,5 +141,18 @@ public class DatabaseModuleMeasurements {
             e.printStackTrace();
             return false;
         }
+    }
+
+    /**
+     * Turns data format required for SQLITE database into european time format
+     * @param dateKey {@code String} date from database in american format
+     * @return {@code String} date of workout in european format
+     * @throws ParseException
+     */
+    private String formatDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
     }
 }

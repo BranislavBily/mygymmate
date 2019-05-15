@@ -4,6 +4,7 @@ import db.DTO.Measurement;
 import db.DatabaseModuleMeasurements;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.Controllers.FeedbackController;
 
@@ -41,7 +42,8 @@ public class MeasurementsFragmentController extends FeedbackController {
     private Button buttonUpdate;
     @FXML
     private Button buttonSave;
-
+    @FXML
+    private Label labelAlreadyMeasurement;
 
 
     public void onCreate() {
@@ -53,7 +55,6 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     private void loadDataIntoTextFields() {
         Measurement measurement = databaseModuleMeasurements.getUserMeasurement();
-        System.out.println(measurement.toString());
         textFieldChest.setText(String.valueOf(measurement.getChest()));
         textFieldLeftArm.setText(String.valueOf(measurement.getLeftArm()));
         textFieldLeftCalf.setText(String.valueOf(measurement.getLeftCalf()));
@@ -67,8 +68,8 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldWaist.setText(String.valueOf(measurement.getWaist()));
     }
 
-    private Measurement loadDataIntoMeasurement(){
-        Measurement measurement=new Measurement();
+    private Measurement loadDataIntoMeasurement() {
+        Measurement measurement = new Measurement();
         measurement.setRightArm(Double.parseDouble(textFieldRightArm.getText()));
         measurement.setLeftArm(Double.parseDouble(textFieldLeftArm.getText()));
         measurement.setRightForeArm(Double.parseDouble(textFieldRightArm.getText()));
@@ -84,7 +85,7 @@ public class MeasurementsFragmentController extends FeedbackController {
         return measurement;
     }
 
-    private String getDate(){
+    private String getDate() {
         return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 
@@ -162,20 +163,27 @@ public class MeasurementsFragmentController extends FeedbackController {
             goodInput = false;
         }
 
-        if (goodInput){
-            Measurement measurement=loadDataIntoMeasurement();
+        if (goodInput) {
+            Measurement measurement = loadDataIntoMeasurement();
             System.out.println(measurement.toString());
-            if(databaseModuleMeasurements.insertMeasures(measurement)) {
+            if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
+                System.out.println("Measurement already added today");
+                labelAlreadyMeasurement.setVisible(true);
+                loadDataIntoTextFields();
+            } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
                 System.out.println("Measurement saved!");
-
+                loadDataIntoTextFields();
+            } else {
+                System.out.println("Error while inserting measurement");
+                loadDataIntoTextFields();
             }
-
         }
     }
 
     @FXML
     private void onButtonUpdatePressed() {
         enableTextFields();
+        labelAlreadyMeasurement.setVisible(false);
         buttonSave.setDisable(false);
         buttonUpdate.setDisable(true);
     }
@@ -184,6 +192,7 @@ public class MeasurementsFragmentController extends FeedbackController {
     private void onButtonSavePressed() {
         setDisabledTextfields();
         checkTextfields();
+        labelAlreadyMeasurement.setVisible(false);
         buttonSave.setDisable(true);
         buttonUpdate.setDisable(false);
     }
