@@ -11,26 +11,26 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.MeasureSceneFragments.MeasurementsFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.MeasureSceneFragments.MeasurementsFragmentController">
    <children>
       <ImageView fitHeight="663.0" fitWidth="348.0" layoutX="199.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/male_body.png" />
          </image>
       </ImageView>
-      <TextField fx:id="textFieldRightArm" layoutX="165.0" layoutY="243.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldLeftArm" layoutX="460.0" layoutY="243.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldRightForeArm" layoutX="145.0" layoutY="312.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldLeftForeArm" layoutX="477.0" layoutY="312.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldShoulders" layoutX="178.0" layoutY="157.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldWaist" layoutX="543.0" layoutY="460.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldRightThigh" layoutX="198.0" layoutY="454.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldLeftThigh" layoutX="427.0" layoutY="454.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldRightCalf" layoutX="198.0" layoutY="575.0" prefHeight="25.0" prefWidth="66.0" />
-      <TextField fx:id="textFieldLeftCalf" layoutX="411.0" layoutY="575.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldRightArm" layoutX="132.0" layoutY="228.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldLeftArm" layoutX="532.0" layoutY="228.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldRightForeArm" layoutX="132.0" layoutY="310.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldLeftForeArm" layoutX="532.0" layoutY="310.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldShoulders" layoutX="166.0" layoutY="143.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldWaist" layoutX="549.0" layoutY="423.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldRightThigh" layoutX="181.0" layoutY="473.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldLeftThigh" layoutX="480.0" layoutY="474.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldRightCalf" layoutX="199.0" layoutY="587.0" prefHeight="25.0" prefWidth="66.0" />
+      <TextField fx:id="textFieldLeftCalf" layoutX="467.0" layoutY="587.0" prefHeight="25.0" prefWidth="66.0" />
       <TextField fx:id="textFieldChest" layoutX="460.0" layoutY="121.0" prefHeight="25.0" prefWidth="66.0" />
       <Line endX="-120.0" endY="85.0" layoutX="460.0" layoutY="140.0" />
-      <Button fx:id="buttonUpdate" layoutX="509.0" layoutY="696.0" mnemonicParsing="false" onAction="#onButtonUpdatePressed" style="-fx-background-color: #03383f#03383f;" text="Update" textFill="WHITE">
+      <Button fx:id="buttonUpdate" layoutX="478.0" layoutY="689.0" mnemonicParsing="false" onAction="#onButtonUpdatePressed" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: #03383f#03383f;" text="Update" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -41,7 +41,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="buttonSave" layoutX="583.0" layoutY="696.0" mnemonicParsing="false" onAction="#onButtonSavePressed" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
+      <Button fx:id="buttonSave" layoutX="607.0" layoutY="689.0" mnemonicParsing="false" onAction="#onButtonSavePressed" prefHeight="44.0" prefWidth="96.0" style="-fx-background-color: #03383f#03383f;" text="Save" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -59,8 +59,8 @@
       <Line endX="-100.60002136230469" endY="36.79998779296875" layoutX="333.0" layoutY="120.0" startX="-39.20001220703125" startY="66.39999389648438" />
       <Line endX="-129.99998474121094" endY="38.0" layoutX="329.0" layoutY="206.0" startX="-48.79998779296875" startY="52.399993896484375" />
       <Line endX="-129.99998474121094" endY="56.600006103515625" layoutX="329.0" layoutY="269.0" startX="-66.40000915527344" startY="63.0" />
-      <Line endX="-127.99998474121094" endY="81.60000610351562" layoutX="377.0" layoutY="404.0" startX="-42.4000244140625" startY="53.600006103515625" />
-      <Line endX="-113.60002136230469" endY="95.0" layoutX="381.0" layoutY="505.0" startX="-49.60003662109375" startY="95.0" />
+      <Line endX="-127.99998474121094" endY="81.60000610351562" layoutX="377.0" layoutY="404.0" startX="-45.800018310546875" startY="54.399993896484375" />
+      <Line endX="-115.60003662109375" endY="94.79998779296875" layoutX="381.0" layoutY="505.0" startX="-49.60003662109375" startY="95.0" />
       <Label layoutX="155.0" layoutY="42.0" text="Right side" textFill="#03383f">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -71,7 +71,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Line endX="-85.0" endY="84.5" layoutX="471.0" layoutY="313.0" startX="59.0" startY="160.5" />
+      <Line endX="-55.79998779296875" endY="65.39999389648438" layoutX="471.0" layoutY="313.0" startX="78.0" startY="122.80001831054688" />
       <Label fx:id="labelAlreadyMeasurement" alignment="CENTER" layoutX="204.0" layoutY="729.0" text="You can only one measurement a day!" textAlignment="CENTER" textFill="RED" visible="false">
          <font>
             <Font size="15.0" />
