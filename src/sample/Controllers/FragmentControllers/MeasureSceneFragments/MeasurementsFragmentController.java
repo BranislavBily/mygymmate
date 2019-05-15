@@ -44,16 +44,18 @@ public class MeasurementsFragmentController extends FeedbackController {
     private Button buttonSave;
     @FXML
     private Label labelAlreadyMeasurement;
+    @FXML
+    private Label labelMeasurementsFrom;
 
 
     public void onCreate() {
         databaseModuleMeasurements = new DatabaseModuleMeasurements();
-        loadDataIntoTextFields();
+        loadDataIntoControls();
         buttonSave.setDisable(true);
         setDisabledTextfields();
     }
 
-    private void loadDataIntoTextFields() {
+    private void loadDataIntoControls() {
         Measurement measurement = databaseModuleMeasurements.getUserMeasurement();
         textFieldChest.setText(String.valueOf(measurement.getChest()));
         textFieldLeftArm.setText(String.valueOf(measurement.getLeftArm()));
@@ -66,6 +68,7 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldRightForeArm.setText(String.valueOf(measurement.getRightForeArm()));
         textFieldShoulders.setText(String.valueOf(measurement.getShoulders()));
         textFieldWaist.setText(String.valueOf(measurement.getWaist()));
+        labelMeasurementsFrom.setText("Measurements from " + measurement.getFullDate());
     }
 
     private Measurement loadDataIntoMeasurement() {
@@ -188,14 +191,14 @@ public class MeasurementsFragmentController extends FeedbackController {
         System.out.println(measurement.toString());
         if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
             System.out.println("Measurement already added today");
-            loadDataIntoTextFields();
+            loadDataIntoControls();
             labelAlreadyMeasurement.setVisible(true);
         } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
             System.out.println("Measurement saved!");
-            loadDataIntoTextFields();
+            loadDataIntoControls();
         } else {
             System.out.println("Error while inserting measurement");
-            loadDataIntoTextFields();
+            loadDataIntoControls();
         }
     }
 }

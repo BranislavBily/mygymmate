@@ -14,8 +14,7 @@ public class Measurement {
     private double leftCalf;
     private double rightCalf;
     private String date;
-
-
+    private String fullDate;
 
     public double getLeftArm() {
         return leftArm;
@@ -111,6 +110,14 @@ public class Measurement {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getFullDate() {
+        return fullDate;
+    }
+
+    public void setFullDate(String fullDate) {
+        this.fullDate = fullDate;
     }
 
     @Override

@@ -112,6 +112,7 @@ public class DatabaseModuleMeasurements {
             measurement.setLeftCalf(resultSet.getDouble("LeftCalf"));
             measurement.setRightCalf(resultSet.getDouble("RightCalf"));
             measurement.setDate(formatDate(resultSet.getString("date")));
+            measurement.setFullDate(formatFullDate(resultSet.getString("date")));
             return measurement;
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
@@ -144,7 +145,7 @@ public class DatabaseModuleMeasurements {
     }
 
     /**
-     * Turns data format required for SQLITE database into european time format
+     * Turns data format required for SQLITE database into european time format without year
      * @param dateKey {@code String} date from database in american format
      * @return {@code String} date of workout in european format
      * @throws ParseException
@@ -154,5 +155,18 @@ public class DatabaseModuleMeasurements {
         Date date = format.parse(dateKey);
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
+    }
+
+    /**
+     * Turns data format required for SQLITE database into european time format
+     * @param dateKey {@code String} date from database in american format
+     * @return {@code String} date of workout in european format
+     * @throws ParseException
+     */
+    private String formatFullDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue() + "." + (localDate.getYear()));
     }
 }
