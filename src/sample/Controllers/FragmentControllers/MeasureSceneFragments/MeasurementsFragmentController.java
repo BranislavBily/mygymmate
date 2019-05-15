@@ -117,7 +117,7 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldChest.setDisable(false);
     }
 
-    private void checkTextfields() {
+    private boolean checkTextfields() {
         boolean goodInput = true;
         if (textFieldWaist.getText().isEmpty() || !isDouble(textFieldWaist.getText())) {
             displayFeedBack(textFieldWaist);
@@ -162,22 +162,7 @@ public class MeasurementsFragmentController extends FeedbackController {
             displayFeedBack(textFieldLeftForeArm);
             goodInput = false;
         }
-
-        if (goodInput) {
-            Measurement measurement = loadDataIntoMeasurement();
-            System.out.println(measurement.toString());
-            if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
-                System.out.println("Measurement already added today");
-                labelAlreadyMeasurement.setVisible(true);
-                loadDataIntoTextFields();
-            } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
-                System.out.println("Measurement saved!");
-                loadDataIntoTextFields();
-            } else {
-                System.out.println("Error while inserting measurement");
-                loadDataIntoTextFields();
-            }
-        }
+        return goodInput;
     }
 
     @FXML
@@ -190,11 +175,27 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     @FXML
     private void onButtonSavePressed() {
-        setDisabledTextfields();
-        checkTextfields();
-        labelAlreadyMeasurement.setVisible(false);
-        buttonSave.setDisable(true);
-        buttonUpdate.setDisable(false);
+        if(checkTextfields()) {
+            insertMeasurement();
+            buttonSave.setDisable(true);
+            buttonUpdate.setDisable(false);
+            setDisabledTextfields();
+        }
     }
 
+    private void insertMeasurement() {
+        Measurement measurement = loadDataIntoMeasurement();
+        System.out.println(measurement.toString());
+        if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
+            System.out.println("Measurement already added today");
+            loadDataIntoTextFields();
+            labelAlreadyMeasurement.setVisible(true);
+        } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
+            System.out.println("Measurement saved!");
+            loadDataIntoTextFields();
+        } else {
+            System.out.println("Error while inserting measurement");
+            loadDataIntoTextFields();
+        }
+    }
 }
