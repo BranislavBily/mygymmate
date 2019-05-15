@@ -88,24 +88,11 @@ public class DatabaseModuleWorkout {
             String date = formatDate(resultSet.getString("date"));
             workout.setDate(date);
             return workout;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
             return null;
         }
     }
-
-    private String formatDate(String date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date dateD = format.parse(date);
-            LocalDate localDate = dateD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            return localDate.getDayOfMonth() + "." + (localDate.getMonthValue()) + "." + (localDate.getYear());
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     /**
      * Returns one {@code Workout} from the database based on {@code int} ID of the workout
      * @param id of workout that you want to get
@@ -179,7 +166,7 @@ public class DatabaseModuleWorkout {
             preparedStatement.setString(2, exercise);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                dataForChart.put(getDate(resultSet.getString("date")), resultSet.getInt("repetitions"));
+                dataForChart.put(formatDate(resultSet.getString("date")), resultSet.getInt("repetitions"));
             }
             return dataForChart;
         } catch (SQLException | ParseException e) {
@@ -201,7 +188,7 @@ public class DatabaseModuleWorkout {
             preparedStatement.setString(2, exercise);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                dataForChart.put(getDate(resultSet.getString("date")), resultSet.getDouble("weight"));
+                dataForChart.put(formatDate(resultSet.getString("date")), resultSet.getDouble("weight"));
             }
             return dataForChart;
         } catch (SQLException | ParseException e) {
@@ -209,15 +196,6 @@ public class DatabaseModuleWorkout {
             return null;
         }
     }
-
-    private String getDate(String dateKey) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse(dateKey);
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
-    }
-
-
 
     /**
      * Deletes workout based on {@code int} id
@@ -255,19 +233,7 @@ public class DatabaseModuleWorkout {
         }
     }
 
-    public boolean deleteAllUserWorkouts() {
-        String query = "delete from " + ResourceTables.WORKOUTS + " where userID = ?";
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, userID);
-            return preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
-    public boolean workoutAddedToday(Workout workout) {
+    public boolean workoutAlreadyAddedToday(Workout workout) {
         String query = "select * from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? and date = ?";
         System.out.println(workout.toString());
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -281,4 +247,29 @@ public class DatabaseModuleWorkout {
             return false;
         }
     }
+
+    public boolean deleteAllUserWorkouts() {
+        String query = "delete from " + ResourceTables.WORKOUTS + " where userID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Turns data format required for SQLITE database into european time format
+     * @param dateKey {@code String} date from database in american format
+     * @return {@code String} date of workout in european format
+     * @throws ParseException
+     */
+    private String formatDate(String dateKey) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateKey);
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
+    }
+
 }

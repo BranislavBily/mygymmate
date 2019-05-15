@@ -76,7 +76,7 @@ public class AddWorkoutController extends FeedbackController {
 
         if (goodInput) {
             Workout workout = loadWorkoutFromInput();
-            if(databaseModuleWorkout.workoutAddedToday(workout)) {
+            if(databaseModuleWorkout.workoutAlreadyAddedToday(workout)) {
                 System.out.println("Dnes bolo pridanie take");
                 labelAlreadyWorkout.setVisible(true);
             } else {
