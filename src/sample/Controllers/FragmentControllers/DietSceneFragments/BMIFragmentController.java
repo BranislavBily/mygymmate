@@ -46,7 +46,7 @@ public class BMIFragmentController extends FeedbackController {
     }
 
 
-    private double getMyBMI(double weight, double height) {
+    public double getMyBMI(double weight, double height) {
 
         return weight / ((height / 100) * (height / 100));
     }
