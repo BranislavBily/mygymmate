@@ -169,6 +169,33 @@ public class DatabaseModuleMeasurements {
     }
 
     /**
+     * Inserts row for newly created user
+     * @return {@code true} if insert was successful, {@code false} if not
+     */
+    public boolean insertNewMeasure(int id){
+        String query = "insert into  " + ResourceTables.MEASUREMENTS + " (UserID, LeftArm, RightArm , LeftForearm, RightForearm, Shoulders, Waist, Chest, LeftThigh, RightThigh, LeftCalf, RightCalf, Date) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setDouble(2, 0);
+            preparedStatement.setDouble(3, 0);
+            preparedStatement.setDouble(4, 0);
+            preparedStatement.setDouble(5, 0);
+            preparedStatement.setDouble(6, 0);
+            preparedStatement.setDouble(7, 0);
+            preparedStatement.setDouble(8, 0);
+            preparedStatement.setDouble(9, 0);
+            preparedStatement.setDouble(10, 0);
+            preparedStatement.setDouble(11, 0);
+            preparedStatement.setDouble(12, 0);
+            preparedStatement.setString(13, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
      * Turns data format required for SQLITE database into european time format without year
      * @param dateKey {@code String} date from database in american format
      * @return {@code String} date of workout in european format

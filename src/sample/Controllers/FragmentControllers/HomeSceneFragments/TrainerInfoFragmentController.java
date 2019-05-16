@@ -36,15 +36,19 @@ public class TrainerInfoFragmentController {
     DatabaseModuleMeasurements databaseModuleMeasurements;
     DatabaseModuleWeight databaseModuleWeight;
     DatabaseModuleInfo databaseModuleInfo;
-    private int trainerID;
+    private Integer trainerID;
 
-    public void onCreate(int trainerID) {
-
-        this.trainerID=trainerID;
-        System.out.println(trainerID);
-        loadLabels();
-        loadChoiceBox();
-
+    public void onCreate() {
+        databaseModuleInfo = new DatabaseModuleInfo();
+        trainerID=databaseModuleInfo.getMyTrainerID();
+        if(trainerID == null) {
+            System.out.println("No trainer");
+        } else {
+            System.out.println("Trainer");
+            System.out.println(trainerID);
+            loadLabels();
+            loadChoiceBox();
+        }
     }
 
     public double getBMI(double weight, double height) {

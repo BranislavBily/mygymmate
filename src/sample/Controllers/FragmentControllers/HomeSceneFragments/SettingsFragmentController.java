@@ -1,10 +1,7 @@
 package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
+import db.*;
 import db.DTO.ProfileData;
-import db.DatabaseModuleDiet;
-import db.DatabaseModuleMeasurements;
-import db.DatabaseModuleUser;
-import db.DatabaseModuleWorkout;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -214,10 +211,12 @@ public class SettingsFragmentController extends Controller {
         DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
         DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
         DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
+        DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
         databaseModuleUser.deleteLoggedInUser();
         databaseModuleDiet.deleteUserDiet();
         databaseModuleWorkout.deleteAllUserWorkouts();
         databaseModuleMeasurements.deleteAllUserMeasurements();
+        databaseModuleWeight.deteleAllWeights();
 
     }
 }

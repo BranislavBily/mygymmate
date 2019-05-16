@@ -2,6 +2,7 @@ package sample.Controllers.SceneControllers.LoginRegister;
 
 import db.DTO.RegisteredUser;
 import db.DTO.User;
+import db.DatabaseModuleMeasurements;
 import db.DatabaseModuleUser;
 import db.DatabaseModuleWeight;
 import javafx.collections.FXCollections;
@@ -85,7 +86,7 @@ public class RegisterInfoController extends LoginRegistrationController {
             mandatoryError.setVisible(true);
             errorRegistering = true;
         } else if (impossibleWeight(weight)) {
-            //TODO Vlastny error an rozhas vahy
+            //TODO Vlastny error an rozsah vahy
         }
         if (height.equals("") || !isDouble(height)) {
             displayFeedBack(textFieldHeight);
@@ -118,17 +119,14 @@ public class RegisterInfoController extends LoginRegistrationController {
                     textFieldFirstName.getText(), textFieldLastName.getText(),
                     Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "));
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
-            if (databaseModuleUser.insertUserIntoDatabase(registeredUser)) {
-                int id = databaseModuleUser.isUser(user.getUsername(), user.getPassword());
-                if (databaseModuleUser.insertUserDietIntoDatabase(id)) {
-                    DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
-                    if(databaseModuleWeight.insertWeight(id, Double.parseDouble(textFieldWeight.getText()))) {
-                        setSceneToLogin(buttonGoBack.getScene());
-                    }
-                }
-            } else {
-                System.out.println("Error while inserting");
-            }
+            databaseModuleUser.insertUserIntoDatabase(registeredUser);
+            int id = databaseModuleUser.isUser(user.getUsername(), user.getPassword());
+            databaseModuleUser.insertUserDietIntoDatabase(id);
+            DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
+            databaseModuleWeight.insertWeight(id, Double.parseDouble(textFieldWeight.getText()));
+            DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
+            databaseModuleMeasurements.insertNewMeasure(id);
+            setSceneToLogin(buttonGoBack.getScene());
         }
     }
 

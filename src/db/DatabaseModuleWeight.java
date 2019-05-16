@@ -106,6 +106,18 @@ public class DatabaseModuleWeight {
             return null;
         }
     }
+
+    public boolean deteleAllWeights() {
+        String query = "delete from " + ResourceTables.WEIGHT + " where userID = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private String getDate(String dateKey) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = format.parse(dateKey);
