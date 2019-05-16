@@ -102,7 +102,7 @@ public class TrainerInfoFragmentController {
         labelBMI.setWrapText(true);
         labelBMI.setMaxWidth(500);
 
-        labelWeight.setText(databaseModuleWeight.getUserWeight(trainerID).toString());
+        labelWeight.setText("Weight: "+databaseModuleWeight.getUserWeight(trainerID));
         labelWeight.setWrapText(true);
         labelWeight.setMaxWidth(500);
 

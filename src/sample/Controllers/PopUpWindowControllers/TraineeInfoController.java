@@ -96,7 +96,7 @@ public class TraineeInfoController {
         labelBMI.setWrapText(true);
         labelBMI.setMaxWidth(500);
 
-        labelWeight.setText(databaseModuleWeight.getUserWeight(traineeID).toString());
+        labelWeight.setText("Weight: "+databaseModuleWeight.getUserWeight(traineeID));
         labelWeight.setWrapText(true);
         labelWeight.setMaxWidth(500);
 
