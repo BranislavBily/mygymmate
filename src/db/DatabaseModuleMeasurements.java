@@ -133,6 +133,30 @@ public class DatabaseModuleMeasurements {
         }
     }
 
+    public boolean updateMeasurement(Measurement measurement) {
+        String query = "update " +ResourceTables.MEASUREMENTS + " set LeftArm = ?, RightArm = ?, LeftForearm = ?, RightForearm = ?, " +
+                "Chest = ?, Shoulders = ?, Waist = ?, LeftThigh = ?, RightThigh = ?, LeftCalf = ?, RightCalf = ? where userID = ? and date = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setDouble(1, measurement.getLeftArm());
+            preparedStatement.setDouble(2, measurement.getRightArm());
+            preparedStatement.setDouble(3, measurement.getLeftForeArm());
+            preparedStatement.setDouble(4, measurement.getRightForeArm());
+            preparedStatement.setDouble(5, measurement.getChest());
+            preparedStatement.setDouble(6, measurement.getShoulders());
+            preparedStatement.setDouble(7, measurement.getWaist());
+            preparedStatement.setDouble(8, measurement.getLeftThigh());
+            preparedStatement.setDouble(9, measurement.getRightThigh());
+            preparedStatement.setDouble(10, measurement.getLeftCalf());
+            preparedStatement.setDouble(11, measurement.getRightCalf());
+            preparedStatement.setInt(12, userID);
+            preparedStatement.setString(13, measurement.getDate());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean deleteAllUserMeasurements() {
         String query = "delete from " + ResourceTables.MEASUREMENTS + " where userID = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {

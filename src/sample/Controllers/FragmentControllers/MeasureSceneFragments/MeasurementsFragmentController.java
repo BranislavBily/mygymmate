@@ -77,14 +77,15 @@ public class MeasurementsFragmentController extends FeedbackController {
         measurement.setLeftArm(Double.parseDouble(textFieldLeftArm.getText()));
         measurement.setRightForeArm(Double.parseDouble(textFieldRightArm.getText()));
         measurement.setLeftForeArm(Double.parseDouble(textFieldLeftForeArm.getText()));
-        measurement.setRightThigh(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setRightThigh(Double.parseDouble(textFieldRightThigh.getText()));
         measurement.setLeftThigh(Double.parseDouble(textFieldLeftThigh.getText()));
-        measurement.setRightCalf(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setRightCalf(Double.parseDouble(textFieldRightCalf.getText()));
         measurement.setLeftCalf(Double.parseDouble(textFieldLeftCalf.getText()));
         measurement.setChest(Double.parseDouble(textFieldChest.getText()));
         measurement.setShoulders(Double.parseDouble(textFieldShoulders.getText()));
         measurement.setWaist(Double.parseDouble(textFieldWaist.getText()));
         measurement.setDate(getDate());
+        System.out.println(measurement.toString());
         return measurement;
     }
 
@@ -120,7 +121,7 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldChest.setDisable(false);
     }
 
-    private boolean checkTextfields() {
+    private boolean checkTextFields() {
         boolean goodInput = true;
         if (textFieldWaist.getText().isEmpty() || !isDouble(textFieldWaist.getText())) {
             displayFeedBack(textFieldWaist);
@@ -178,7 +179,7 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     @FXML
     private void onButtonSavePressed() {
-        if(checkTextfields()) {
+        if(checkTextFields()) {
             insertMeasurement();
             buttonSave.setDisable(true);
             buttonUpdate.setDisable(false);
@@ -188,11 +189,14 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     private void insertMeasurement() {
         Measurement measurement = loadDataIntoMeasurement();
-        System.out.println(measurement.toString());
         if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
             System.out.println("Measurement already added today");
-            loadDataIntoControls();
-            labelAlreadyMeasurement.setVisible(true);
+            if(databaseModuleMeasurements.updateMeasurement(measurement)) {
+                System.out.println("Measurement updated!");
+                loadDataIntoControls();
+            } else {
+                System.out.println("Error while updating");
+            }
         } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
             System.out.println("Measurement saved!");
             loadDataIntoControls();
