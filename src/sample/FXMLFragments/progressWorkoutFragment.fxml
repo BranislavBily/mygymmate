@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.WorkoutSceneFragments.ProgressWorkoutController">
    <children>
       <ChoiceBox fx:id="choiceBoxExercise" layoutX="216.0" layoutY="91.0" prefWidth="150.0" styleClass="cb" stylesheets="@../CSS/HomePage.css" />
-      <LineChart fx:id="lineChartRepetitions" alternativeRowFillVisible="false" animated="false" layoutX="14.0" layoutY="187.0" legendVisible="false" prefHeight="280.0" prefWidth="719.0" title="Repetitions" titleSide="BOTTOM">
+      <LineChart fx:id="lineChartRepetitions" alternativeRowFillVisible="false" layoutX="14.0" layoutY="187.0" legendVisible="false" prefHeight="280.0" prefWidth="719.0" title="Repetitions" titleSide="BOTTOM">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

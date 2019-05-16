@@ -1,9 +1,6 @@
 package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
-import db.DatabaseModuleDiet;
-import db.DatabaseModuleInfo;
-import db.DatabaseModuleMeasurements;
-import db.DatabaseModuleWorkout;
+import db.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -17,6 +14,8 @@ public class TrainerInfoFragmentController {
     private Label labelDiet;
     @FXML
     private Label labelMeasurement;
+    @FXML
+    private Label labelWeight;
 
     public void onCreate() {
         loadTrainerInfo();
@@ -35,9 +34,9 @@ public class TrainerInfoFragmentController {
             labelWorkout.setText(databaseModuleWorkout.getWorkouts(trainerID).toString());
             labelWorkout.setWrapText(true);
             labelWorkout.setMaxWidth(500);
-            labelDiet.setText(databaseModuleDiet.getUserDietInfo(trainerID).toString());
-            labelDiet.setWrapText(true);
-            labelDiet.setMaxWidth(500);
+            labelWeight.setText(databaseModuleDiet.getUserDietInfo(trainerID).toString());
+            labelWeight.setWrapText(true);
+            labelWeight.setMaxWidth(500);
             if (databaseModuleMeasurements.getUserMeasurement(trainerID) != null) {
                 labelMeasurement.setText(databaseModuleMeasurements.getUserMeasurement(trainerID).toString());
                 labelMeasurement.setWrapText(true);

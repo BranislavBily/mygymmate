@@ -21,4 +21,11 @@ public class Weight {
     public void setDate(String date) {
         this.date = date;
     }
+
+
+    @Override
+    public String toString() {
+        return
+                "Weight= " + weight +"kg"+ "                Last Updated :" + date;
+    }
 }

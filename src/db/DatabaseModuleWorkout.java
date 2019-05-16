@@ -152,6 +152,21 @@ public class DatabaseModuleWorkout {
             return null;
         }
     }
+    public LinkedHashSet<String> getAllUserExercises(int id) {
+        LinkedHashSet<String> exercises = new LinkedHashSet<>();
+        String query = "select exercise from " + ResourceTables.WORKOUTS + " where userID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                exercises.add(resultSet.getString("exercise"));
+            }
+            return exercises;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /**
      * Gets all repetitions and date of {@code String} argument exercise
@@ -169,6 +184,24 @@ public class DatabaseModuleWorkout {
                 dataForChart.put(formatDate(resultSet.getString("date")), resultSet.getInt("repetitions"));
             }
             return dataForChart;
+        } catch (SQLException | ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Workout getMaxRepetitionsByExercise(String exercise, int id) {
+        Workout workout = new Workout();
+        String query = "select date, repetitions from " + ResourceTables.WORKOUTS + " where userID = ? and exercise = ? ORDER BY repetitions desc LIMIT 1";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, exercise);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+                workout.setDate(formatDate(resultSet.getString("date")));
+                workout.setRepetitions(resultSet.getInt("repetitions"));
+
+            return workout;
         } catch (SQLException | ParseException e) {
             e.printStackTrace();
             return null;
@@ -269,7 +302,7 @@ public class DatabaseModuleWorkout {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = format.parse(dateKey);
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue());
+        return localDate.getDayOfMonth() + "." + (localDate.getMonthValue())+ "."+(localDate.getYear());
     }
 
 }

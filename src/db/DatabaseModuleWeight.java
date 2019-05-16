@@ -70,6 +70,23 @@ public class DatabaseModuleWeight {
             return null;
         }
     }
+    public Weight getUserWeight(int id) {
+        String query = "select weight, date from " + ResourceTables.WEIGHT + " where userID = ?  order By datetime(date) desc LIMIT 1";
+        Weight weight=new Weight();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                weight.setWeight(resultSet.getDouble("weight"));
+                weight.setDate(formatDate(resultSet.getString("date")));
+                return weight;
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     public Map<String, Double> getAllWeight() {

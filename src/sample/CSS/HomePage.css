@@ -111,7 +111,7 @@
 }
 
 .table-view{
-    -fx-background-color: black;
+    -fx-background-color: transparent;
     -fx-background-radius: 10;
 }
 
