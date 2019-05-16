@@ -12,9 +12,11 @@ public class TraineeInfoController {
     @FXML
     private Label labelWorkout;
     @FXML
-    private Label labelDiet;
+    private Label labelWeight;
     @FXML
     private Label labelMeasurements;
+    @FXML
+    private Label labelBMI;
 
     DatabaseModuleWorkout databaseModuleWorkout;
     DatabaseModuleDiet databaseModuleDiet;
@@ -27,11 +29,11 @@ public class TraineeInfoController {
         labelWorkout.setText(databaseModuleWorkout.getWorkouts(traineeID).toString());
         labelWorkout.setMaxWidth(500);
         labelWorkout.setWrapText(true);
-        labelDiet.setText(databaseModuleDiet.getUserDietInfo(traineeID).toString());
-        labelDiet.setWrapText(true);
-        labelDiet.setMaxWidth(500);
+        labelWeight.setText(databaseModuleDiet.getUserDietInfo(traineeID).toString());
+        labelWeight.setWrapText(true);
+        labelWeight.setMaxWidth(500);
         Measurement measurement = databaseModuleMeasurements.getUserMeasurement(traineeID);
-        if(measurement != null) {
+        if (measurement != null) {
             labelMeasurements.setText(measurement.toString());
             labelMeasurements.setWrapText(true);
             labelMeasurements.setMaxWidth(500);

@@ -18,11 +18,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Label layoutX="29.0" layoutY="126.0" prefHeight="17.0" text="Workouts last week: ">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Label fx:id="labelWorkout" layoutX="29.0" layoutY="176.0" prefHeight="17.0" text="Workout:">
+            <Label fx:id="labelWorkout" layoutX="29.0" layoutY="109.0" prefHeight="17.0" text="Workouts (Max):">
                <font>
                   <Font size="14.0" />
                </font></Label>
@@ -33,14 +29,13 @@
       </AnchorPane>
       <AnchorPane layoutX="25.0" layoutY="279.0" prefHeight="237.0" prefWidth="531.0" style="-fx-background-radius: 10; -fx-background-color: #FFF;">
          <children>
-            <Label fx:id="labelDiet" layoutX="31.0" layoutY="173.0" text="Diet:" />
             <Label layoutX="243.0" layoutY="19.0" text="Diet" textFill="#03383f">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="30.0" layoutY="119.0" text="BMI:" />
-            <Label layoutX="30.0" layoutY="64.0" text="Weight:" />
+            <Label fx:id="labelBMI" layoutX="30.0" layoutY="119.0" text="BMI:" />
+            <Label fx:id="labelWeight" layoutX="30.0" layoutY="64.0" text="Weight:" />
          </children>
          <effect>
             <DropShadow />
@@ -53,7 +48,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="labelMeasurements" layoutX="30.0" layoutY="73.0" text="Measurements:" />
+            <Label fx:id="labelMeasurements" layoutX="29.0" layoutY="56.0" text="Measurements:" />
          </children>
          <effect>
             <DropShadow />

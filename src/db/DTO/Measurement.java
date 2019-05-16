@@ -122,19 +122,17 @@ public class Measurement {
 
     @Override
     public String toString() {
-        return "Measurement{" +
-                "leftArm=" + leftArm +
-                ", rightArm=" + rightArm +
-                ", leftForeArm=" + leftForeArm +
-                ", rightForeArm=" + rightForeArm +
-                ", shoulders=" + shoulders +
-                ", waist=" + waist +
-                ", chest=" + chest +
-                ", leftThigh=" + leftThigh +
-                ", rightThigh=" + rightThigh +
-                ", leftCalf=" + leftCalf +
-                ", rightCalf=" + rightCalf +
-                ", date='" + date + '\'' +
-                '}';
+        return  "Left Arm= " + leftArm +"cm"+
+                ", Right Arm= " + rightArm +"cm"+"\n"+
+                "Left Fore Arm=" + leftForeArm +"cm"+
+                ", Right Fore Arm=" + rightForeArm +"cm"+"\n"+
+                "Shoulders=" + shoulders +"cm"+"\n"+
+                "Waist=" + waist +"cm"+"\n"+
+                "Chest=" + chest +"cm"+"\n"+
+                "Left Thigh=" + leftThigh +"cm"+
+                ", Right Thigh=" + rightThigh +"cm"+"\n"+
+                "Left Calf=" + leftCalf +"cm"+
+                ", Right Calf=" + rightCalf +"cm"+
+                "                   Last Updated :" + fullDate ;
     }
 }
