@@ -1,11 +1,14 @@
 package sample.Controllers.FragmentControllers.MeasureSceneFragments;
 
 import db.DTO.Measurement;
+import db.DTO.ProfileData;
 import db.DatabaseModuleMeasurements;
+import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import sample.Controllers.FeedbackController;
 
 import java.text.SimpleDateFormat;
@@ -15,6 +18,7 @@ import java.util.Date;
 public class MeasurementsFragmentController extends FeedbackController {
 
     private DatabaseModuleMeasurements databaseModuleMeasurements;
+    private DatabaseModuleUser databaseModuleUser;
 
     @FXML
     private TextField textFieldRightArm;
@@ -46,13 +50,21 @@ public class MeasurementsFragmentController extends FeedbackController {
     private Label labelAlreadyMeasurement;
     @FXML
     private Label labelMeasurementsFrom;
+    @FXML
+    private ImageView imageMaleBody;
+    @FXML
+    private ImageView imageFemaleBody;
 
 
     public void onCreate() {
         databaseModuleMeasurements = new DatabaseModuleMeasurements();
+        databaseModuleUser = new DatabaseModuleUser();
         loadDataIntoControls();
         buttonSave.setDisable(true);
         setDisabledTextFields();
+        imageMaleBody.setVisible(false);
+        imageFemaleBody.setVisible(false);
+        setImage();
     }
 
     /**
@@ -224,6 +236,16 @@ public class MeasurementsFragmentController extends FeedbackController {
         } else {
             System.out.println("Error while inserting measurement");
             loadDataIntoControls();
+        }
+    }
+
+    private void setImage(){
+        ProfileData profileData = databaseModuleUser.getUserProfileData();
+        if (profileData.getGender().equals("Female")){
+            imageFemaleBody.setVisible(true);
+        }
+        else{
+            imageMaleBody.setVisible(true);
         }
     }
 }

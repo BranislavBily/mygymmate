@@ -1,4 +1,4 @@
-package Test;
+/*package Test;
 
 import Test.Diet.DietTestSuite;
 import Test.Workout.WorkoutTestSuite;
@@ -14,4 +14,4 @@ import org.junit.runners.Suite;
 })
 
 public class JunitTestSuite {
-}
+}*/

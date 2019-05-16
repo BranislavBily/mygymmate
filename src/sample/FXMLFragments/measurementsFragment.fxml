@@ -11,11 +11,16 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.MeasureSceneFragments.MeasurementsFragmentController">
+<AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.MeasureSceneFragments.MeasurementsFragmentController">
    <children>
-      <ImageView fitHeight="663.0" fitWidth="348.0" layoutX="199.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageMaleBody" fitHeight="663.0" fitWidth="348.0" layoutX="199.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/male_body.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imageFemaleBody" fitHeight="663.0" fitWidth="348.0" layoutX="199.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/female_body.png" />
          </image>
       </ImageView>
       <TextField fx:id="textFieldRightArm" layoutX="132.0" layoutY="228.0" prefHeight="25.0" prefWidth="66.0" />

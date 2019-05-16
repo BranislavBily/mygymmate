@@ -1,4 +1,4 @@
-package Test.Workout;
+/*package Test.Workout;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -14,4 +14,4 @@ public class WorkoutTestRunner {
 
         System.out.println(result.wasSuccessful());
     }
-}
+}*/

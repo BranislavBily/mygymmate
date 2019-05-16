@@ -1,4 +1,4 @@
-package Test.Diet;
+/*package Test.Diet;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -14,4 +14,4 @@ public class DietTestRunner {
 
         System.out.println(result.wasSuccessful());
     }
-}
+}*/
