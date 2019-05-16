@@ -52,9 +52,12 @@ public class MeasurementsFragmentController extends FeedbackController {
         databaseModuleMeasurements = new DatabaseModuleMeasurements();
         loadDataIntoControls();
         buttonSave.setDisable(true);
-        setDisabledTextfields();
+        setDisabledTextFields();
     }
 
+    /**
+     * Loads data from database into controls
+     */
     private void loadDataIntoControls() {
         Measurement measurement = databaseModuleMeasurements.getUserMeasurement();
         textFieldChest.setText(String.valueOf(measurement.getChest()));
@@ -71,6 +74,11 @@ public class MeasurementsFragmentController extends FeedbackController {
         labelMeasurementsFrom.setText("Measurements from " + measurement.getFullDate());
     }
 
+    /**
+     * Loads data from TextField, returns {@code Measurement} with that data
+     *
+     * @return {@code Measurement} with data from TextFields
+     */
     private Measurement loadDataIntoMeasurement() {
         Measurement measurement = new Measurement();
         measurement.setRightArm(Double.parseDouble(textFieldRightArm.getText()));
@@ -84,16 +92,21 @@ public class MeasurementsFragmentController extends FeedbackController {
         measurement.setChest(Double.parseDouble(textFieldChest.getText()));
         measurement.setShoulders(Double.parseDouble(textFieldShoulders.getText()));
         measurement.setWaist(Double.parseDouble(textFieldWaist.getText()));
-        measurement.setDate(getDate());
+        measurement.setDate(getTodayDate());
         System.out.println(measurement.toString());
         return measurement;
     }
 
-    private String getDate() {
+    /**
+     * Returns {@code String} today's date  with formatting for the database
+     *
+     * @return {@code String} today's date  with formatting for the database
+     */
+    private String getTodayDate() {
         return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
     }
 
-    private void setDisabledTextfields() {
+    private void setDisabledTextFields() {
         textFieldWaist.setDisable(true);
         textFieldShoulders.setDisable(true);
         textFieldRightForeArm.setDisable(true);
@@ -121,6 +134,11 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldChest.setDisable(false);
     }
 
+    /**
+     * Checks TextFields, returns {@code true} if all input is good, {@code false} if there's an error in input
+     *
+     * @return {@code true} if all input is good, {@code false} if there's an error in input
+     */
     private boolean checkTextFields() {
         boolean goodInput = true;
         if (textFieldWaist.getText().isEmpty() || !isDouble(textFieldWaist.getText())) {
@@ -179,24 +197,27 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     @FXML
     private void onButtonSavePressed() {
-        if(checkTextFields()) {
+        if (checkTextFields()) {
             insertMeasurement();
             buttonSave.setDisable(true);
             buttonUpdate.setDisable(false);
-            setDisabledTextfields();
+            setDisabledTextFields();
         }
     }
 
     private void insertMeasurement() {
         Measurement measurement = loadDataIntoMeasurement();
+        //If measurement was already added today
         if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
             System.out.println("Measurement already added today");
-            if(databaseModuleMeasurements.updateMeasurement(measurement)) {
+            //Update todays measurement
+            if (databaseModuleMeasurements.updateMeasurement(measurement)) {
                 System.out.println("Measurement updated!");
                 loadDataIntoControls();
             } else {
                 System.out.println("Error while updating");
             }
+            //If not, insert measurement into the database
         } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
             System.out.println("Measurement saved!");
             loadDataIntoControls();
