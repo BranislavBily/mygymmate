@@ -42,7 +42,7 @@ public class DatabaseModuleWeight {
     }
 
     private String formatDate(String date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date dateD = format.parse(date);
             LocalDate localDate = dateD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
