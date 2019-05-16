@@ -26,7 +26,11 @@ public class DatabaseModuleDiet {
         userID = Session.getUserID();
     }
 
-    public Diet loadDiet() {
+    /**
+     * Returns user {@code Diet} from the the database
+     * @return user {@code Diet} from the the database
+     */
+    public Diet getUserDiet() {
         Diet diet = new Diet();
         ResultSet resultSet;
         String query = "select * from " + ResourceTables.DIET + " where userID = ?";
@@ -43,6 +47,11 @@ public class DatabaseModuleDiet {
         }
     }
 
+    /**
+     * Returns {@code Diet} with data from ResultSet
+     * @param resultSet source of data
+     * @return {@code Diet} with data from ResultSet
+     */
     private Diet loadDietFromResultSet(ResultSet resultSet) {
         Diet diet = new Diet();
         try {
@@ -131,6 +140,11 @@ public class DatabaseModuleDiet {
         return  databaseModuleWeight.getUserWeight().getWeight();
     }
 
+    private double getUserWeight(int id) {
+        DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
+        return  databaseModuleWeight.getUserWeight(id).getWeight();
+    }
+
     public UserDietInfo getUserDietInfo(int userID) {
         ResultSet resultSet;
         UserDietInfo userDietInfo=new UserDietInfo();
@@ -142,7 +156,7 @@ public class DatabaseModuleDiet {
                 userDietInfo.setGender(resultSet.getString("gender"));
                 userDietInfo.setTypeOfTraining(resultSet.getString("typeOfTraining"));
                 userDietInfo.setHeight(resultSet.getInt("height"));
-                userDietInfo.setWeight(getUserWeight());
+                userDietInfo.setWeight(getUserWeight(userID));
                 return userDietInfo;
             }
             return null;
