@@ -1,5 +1,6 @@
 package sample.Controllers.SceneControllers.Trainee;
 
+import db.DatabaseModuleInfo;
 import db.DatabaseModuleUser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,7 @@ public class TraineeHomeSceneController extends HomeSceneController implements H
     private Label labelQuote;
 
     private DatabaseModuleUser databaseModuleUser;
+    private DatabaseModuleInfo databaseModuleInfo;
 
     /**
      * Prepares scene for use
@@ -45,6 +47,7 @@ public class TraineeHomeSceneController extends HomeSceneController implements H
     @Override
     public void onCreate() {
         databaseModuleUser = new DatabaseModuleUser();
+        databaseModuleInfo = new DatabaseModuleInfo();
         setLabel();
         onHomeButtonClicked();
     }
@@ -131,7 +134,7 @@ public class TraineeHomeSceneController extends HomeSceneController implements H
         try {
             Parent fragment = fxmlLoader.load();
             TrainerInfoFragmentController trainerInfoFragmentController = fxmlLoader.getController();
-            trainerInfoFragmentController.onCreate();
+            trainerInfoFragmentController.onCreate(databaseModuleInfo.getMyTrainerID());
             mainFragment.getChildren().setAll(fragment);
             removeButtonActiveEffect(buttonHome ,buttonProfile, buttonSettings, buttonTrainerInfo, buttonAboutUs);
             buttonTrainerInfo.getStyleClass().add("buttonActive");

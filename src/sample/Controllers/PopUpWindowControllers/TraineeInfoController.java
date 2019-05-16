@@ -112,7 +112,7 @@ public class TraineeInfoController {
         Workout workout=databaseModuleWorkout.getMaxRepetitionsByExercise(excersise,traineeID);
         System.out.println(workout.toString());
         String excer=excersise;
-        labelWorkout.setText( excer.toUpperCase()+" max repetitions : "+workout.getRepetitions()+  "               Last Updated : "+workout.getDate());
+        labelWorkout.setText( excer.toUpperCase()+" max repetitions : "+workout.getRepetitions()+  "        Last Updated : "+workout.getDate());
 
     }
 }

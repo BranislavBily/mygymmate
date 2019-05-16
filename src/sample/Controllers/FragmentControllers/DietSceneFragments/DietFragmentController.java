@@ -58,7 +58,7 @@ public class DietFragmentController extends FeedbackController {
 
     DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
     DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
-    Diet diet = databaseModuleDiet.loadDiet();
+    Diet diet = databaseModuleDiet.getUserDiet();
 
     public void onCreate() {
         if (!diet.getDate().equals(new SimpleDateFormat("dd.MM.yyyy").format(new Date()))) {
