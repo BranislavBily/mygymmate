@@ -18,7 +18,7 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <Label layoutX="13.0" layoutY="101.0" prefHeight="159.0" prefWidth="647.0" text="We are passionate developers for Slovakia. We are making free software for all the people like us. We want to track our progress, checkout out trainer and what he is all about etc. But, there was no app for that. So we decided to built one for free for all the people to enjoy. Since more than billion devices run Java, this is the technology we decided to use." wrapText="true">
+            <Label layoutX="13.0" layoutY="101.0" prefHeight="159.0" prefWidth="647.0" text="We are passionate developers from Slovakia. We are making free software for all the people like us. We want to track our progress, checkout out trainer and what he is all about etc. But, there was no app for that. So we decided to built one for free for all the people to enjoy. Since more than billion devices run Java, this is the technology we decided to use." wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

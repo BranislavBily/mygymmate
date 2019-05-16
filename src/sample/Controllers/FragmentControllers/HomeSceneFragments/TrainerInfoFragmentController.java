@@ -12,37 +12,37 @@ public class TrainerInfoFragmentController {
     @FXML
     private Label labelUsername;
     @FXML
-    private Label labelWorkouts;
+    private Label labelWorkout;
     @FXML
     private Label labelDiet;
     @FXML
-    private Label labelMeasurements;
-
-    private DatabaseModuleMeasurements databaseModuleMeasurements;
-    private DatabaseModuleDiet databaseModuleDiet;
-    private DatabaseModuleWorkout databaseModuleWorkout;
-    private DatabaseModuleInfo databaseModuleInfo;
+    private Label labelMeasurement;
 
     public void onCreate() {
-        databaseModuleWorkout = new DatabaseModuleWorkout();
-        databaseModuleDiet = new DatabaseModuleDiet();
-        databaseModuleMeasurements = new DatabaseModuleMeasurements();
-        databaseModuleInfo = new DatabaseModuleInfo();
+        loadTrainerInfo();
+    }
+
+    private void loadTrainerInfo() {
+        DatabaseModuleWorkout databaseModuleWorkout = new DatabaseModuleWorkout();
+        DatabaseModuleDiet databaseModuleDiet = new DatabaseModuleDiet();
+        DatabaseModuleMeasurements databaseModuleMeasurements = new DatabaseModuleMeasurements();
+        DatabaseModuleInfo databaseModuleInfo = new DatabaseModuleInfo();
         Integer trainerID = databaseModuleInfo.getMyTrainerID();
-        if(trainerID == null) {
+        if (trainerID == null) {
             labelUsername.setText("No trainer");
         } else {
             labelUsername.setText(databaseModuleInfo.getMyTrainer().getRealName());
-            labelWorkouts.setText(databaseModuleWorkout.getWorkouts(trainerID).toString());
-            labelWorkouts.setWrapText(true);
-            labelWorkouts.setMaxWidth(500);
+            labelWorkout.setText(databaseModuleWorkout.getWorkouts(trainerID).toString());
+            labelWorkout.setWrapText(true);
+            labelWorkout.setMaxWidth(500);
             labelDiet.setText(databaseModuleDiet.getUserDietInfo(trainerID).toString());
             labelDiet.setWrapText(true);
             labelDiet.setMaxWidth(500);
-            if(databaseModuleMeasurements.getUserMeasurement(trainerID)!=null){
-            labelMeasurements.setText(databaseModuleMeasurements.getUserMeasurement(trainerID).toString());
-            labelMeasurements.setWrapText(true);
-            labelMeasurements.setMaxWidth(500);}
+            if (databaseModuleMeasurements.getUserMeasurement(trainerID) != null) {
+                labelMeasurement.setText(databaseModuleMeasurements.getUserMeasurement(trainerID).toString());
+                labelMeasurement.setWrapText(true);
+                labelMeasurement.setMaxWidth(500);
+            }
         }
     }
 }
