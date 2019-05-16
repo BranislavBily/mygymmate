@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.FragmentControllers.WorkoutSceneFragments.WorkoutsFragmentController">
    <children>
-      <TableView fx:id="tableViewWorkouts" layoutX="42.0" layoutY="31.0" prefHeight="639.0" prefWidth="659.0" style="-fx-background-color-fx-background-color: transparent transparent;">
+      <TableView fx:id="tableViewWorkouts" layoutX="42.0" layoutY="31.0" prefHeight="628.0" prefWidth="659.0" style="-fx-background-color-fx-background-color: transparent transparent;">
          <columns>
             <TableColumn fx:id="tableColumnExercise" prefWidth="156.0" text="Exercise" />
             <TableColumn fx:id="tableColumnRepetitions" prefWidth="181.0" text="Repetitions" />

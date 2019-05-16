@@ -44,16 +44,18 @@ public class MeasurementsFragmentController extends FeedbackController {
     private Button buttonSave;
     @FXML
     private Label labelAlreadyMeasurement;
+    @FXML
+    private Label labelMeasurementsFrom;
 
 
     public void onCreate() {
         databaseModuleMeasurements = new DatabaseModuleMeasurements();
-        loadDataIntoTextFields();
+        loadDataIntoControls();
         buttonSave.setDisable(true);
         setDisabledTextfields();
     }
 
-    private void loadDataIntoTextFields() {
+    private void loadDataIntoControls() {
         Measurement measurement = databaseModuleMeasurements.getUserMeasurement();
         textFieldChest.setText(String.valueOf(measurement.getChest()));
         textFieldLeftArm.setText(String.valueOf(measurement.getLeftArm()));
@@ -66,6 +68,7 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldRightForeArm.setText(String.valueOf(measurement.getRightForeArm()));
         textFieldShoulders.setText(String.valueOf(measurement.getShoulders()));
         textFieldWaist.setText(String.valueOf(measurement.getWaist()));
+        labelMeasurementsFrom.setText("Measurements from " + measurement.getFullDate());
     }
 
     private Measurement loadDataIntoMeasurement() {
@@ -74,14 +77,15 @@ public class MeasurementsFragmentController extends FeedbackController {
         measurement.setLeftArm(Double.parseDouble(textFieldLeftArm.getText()));
         measurement.setRightForeArm(Double.parseDouble(textFieldRightArm.getText()));
         measurement.setLeftForeArm(Double.parseDouble(textFieldLeftForeArm.getText()));
-        measurement.setRightThigh(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setRightThigh(Double.parseDouble(textFieldRightThigh.getText()));
         measurement.setLeftThigh(Double.parseDouble(textFieldLeftThigh.getText()));
-        measurement.setRightCalf(Double.parseDouble(textFieldRightArm.getText()));
+        measurement.setRightCalf(Double.parseDouble(textFieldRightCalf.getText()));
         measurement.setLeftCalf(Double.parseDouble(textFieldLeftCalf.getText()));
         measurement.setChest(Double.parseDouble(textFieldChest.getText()));
         measurement.setShoulders(Double.parseDouble(textFieldShoulders.getText()));
         measurement.setWaist(Double.parseDouble(textFieldWaist.getText()));
         measurement.setDate(getDate());
+        System.out.println(measurement.toString());
         return measurement;
     }
 
@@ -117,7 +121,7 @@ public class MeasurementsFragmentController extends FeedbackController {
         textFieldChest.setDisable(false);
     }
 
-    private boolean checkTextfields() {
+    private boolean checkTextFields() {
         boolean goodInput = true;
         if (textFieldWaist.getText().isEmpty() || !isDouble(textFieldWaist.getText())) {
             displayFeedBack(textFieldWaist);
@@ -175,7 +179,7 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     @FXML
     private void onButtonSavePressed() {
-        if(checkTextfields()) {
+        if(checkTextFields()) {
             insertMeasurement();
             buttonSave.setDisable(true);
             buttonUpdate.setDisable(false);
@@ -185,17 +189,20 @@ public class MeasurementsFragmentController extends FeedbackController {
 
     private void insertMeasurement() {
         Measurement measurement = loadDataIntoMeasurement();
-        System.out.println(measurement.toString());
         if (databaseModuleMeasurements.measurementAlreadyAddedToday(measurement)) {
             System.out.println("Measurement already added today");
-            loadDataIntoTextFields();
-            labelAlreadyMeasurement.setVisible(true);
+            if(databaseModuleMeasurements.updateMeasurement(measurement)) {
+                System.out.println("Measurement updated!");
+                loadDataIntoControls();
+            } else {
+                System.out.println("Error while updating");
+            }
         } else if (databaseModuleMeasurements.insertMeasures(measurement)) {
             System.out.println("Measurement saved!");
-            loadDataIntoTextFields();
+            loadDataIntoControls();
         } else {
             System.out.println("Error while inserting measurement");
-            loadDataIntoTextFields();
+            loadDataIntoControls();
         }
     }
 }

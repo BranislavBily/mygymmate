@@ -59,7 +59,7 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="57.0" layoutY="368.0" prefHeight="370.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+      <AnchorPane layoutX="57.0" layoutY="368.0" prefHeight="264.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 5;">
          <children>
             <Label layoutX="24.0" layoutY="28.0" prefHeight="29.0" prefWidth="113.0" text="Security" textFill="#03383f">
                <font>
@@ -67,15 +67,7 @@
                </font>
             </Label>
             <Line endX="124.06671142578125" endY="3.0517578125E-5" layoutX="136.0" layoutY="74.0" startX="-111.0" stroke="#03383f" />
-            <Button fx:id="buttonChangePassword" layoutX="71.0" layoutY="116.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f #03383f;" text="Change Password" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="buttonCheckPassword" layoutX="73.0" layoutY="241.0" mnemonicParsing="false" onAction="#onButtonCheckPasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f;" text="Check Password &#10;Strenght" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonChangePassword" layoutX="70.0" layoutY="138.0" mnemonicParsing="false" onAction="#onButtonChangePasswordPressed" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #03383f#03383f #03383f;" text="Change Password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
