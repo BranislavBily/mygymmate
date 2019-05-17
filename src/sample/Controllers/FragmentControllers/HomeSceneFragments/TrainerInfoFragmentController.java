@@ -43,6 +43,7 @@ public class TrainerInfoFragmentController {
         trainerID=databaseModuleInfo.getMyTrainerID();
         if(trainerID == null) {
             System.out.println("No trainer");
+            labelUsername.setText("No trainer");
         } else {
             System.out.println("Trainer");
             System.out.println(trainerID);
