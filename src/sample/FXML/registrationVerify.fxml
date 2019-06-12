@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.RegisterVerifyController">
+   <stylesheets>
+      <URL value="@../CSS/LoginAndRegistration.css" />
+   </stylesheets>
+   <children>
+      <AnchorPane layoutX="312.0" layoutY="119.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color:rgb(16,127,116,0.75);">
+         <children>
+            <TextField fx:id="textFieldVerificationCode" layoutX="85.0" layoutY="228.0" prefHeight="46.0" prefWidth="236.0" promptText="Verification Code">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
+            <Button fx:id="buttonCheckCode" defaultButton="true" layoutX="231.0" layoutY="329.0" mnemonicParsing="false" onAction="#onButtonCheckCodePressed" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #107f74;" text="Check" textFill="WHITE">
+
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+
+            <Label fx:id="labelUsername" layoutX="162.0" prefHeight="46.0" prefWidth="190.0" textAlignment="CENTER" textFill="WHITE">
+
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="23.0" prefHeight="46.0" prefWidth="361.0" text="   Enter your verification code. " textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="480.6" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.399999999999977" AnchorPane.topAnchor="23.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <Line endX="188.60003662109375" layoutX="196.0" layoutY="69.0" startX="-179.79998779296875" stroke="WHITE" />
+
+
+            <Button fx:id="buttonGoBack" cancelButton="true" layoutX="67.0" layoutY="329.0" mnemonicParsing="false" onAction="#onButtonGoBackPressed" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #107f74;" text="Go back" textFill="WHITE">
+
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label fx:id="mandatoryError" layoutX="117.0" layoutY="445.0" prefHeight="33.0" prefWidth="214.0" text="Please fill all the fields !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="hyperLinkSendNewCode" layoutX="82.0" layoutY="397.0" onAction="#onHyperLinkSendNewCodePressed" prefHeight="31.0" prefWidth="242.0" text="Don´t have code? Send new !" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Label fx:id="codeIsNotCorrect" layoutX="127.0" layoutY="455.0" prefHeight="33.0" prefWidth="214.0" text="Enter correct validation code !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </AnchorPane>
+      <ImageView fitHeight="103.0" fitWidth="167.0" layoutX="839.0" layoutY="643.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logoWhite.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</Pane>

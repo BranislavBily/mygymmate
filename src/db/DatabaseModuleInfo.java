@@ -178,4 +178,21 @@ public class DatabaseModuleInfo {
             return false;
         }
     }
+
+    public String getTraineeEmailFromDbByUsername(String username){
+
+        String query = "select email from " + ResourceTables.USERS +
+                " where username = ? ";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
+    }
 }

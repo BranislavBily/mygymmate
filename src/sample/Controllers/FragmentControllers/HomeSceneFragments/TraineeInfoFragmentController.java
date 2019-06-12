@@ -1,6 +1,7 @@
 package sample.Controllers.FragmentControllers.HomeSceneFragments;
 
 import db.DTO.ProfileData;
+import db.DTO.User;
 import db.DatabaseModuleInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Controllers.PopUpWindowControllers.SearchForTraineeController;
 import sample.Controllers.PopUpWindowControllers.TraineeInfoController;
+import sample.Controllers.SceneControllers.Controller;
+import sample.Controllers.SceneControllers.LoginRegister.LoginController;
 import sample.Dialogs.DeleteTraineeDialog;
 import sample.Resources.ResourceFXML;
 
@@ -21,7 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class TraineeInfoFragmentController {
+public class TraineeInfoFragmentController extends Controller {
 
     @FXML
     private TableView<ProfileData> tableViewTrainees;
@@ -35,11 +38,15 @@ public class TraineeInfoFragmentController {
     private TableColumn<ProfileData, String> tableColumnUsername;
 
     private DatabaseModuleInfo databaseModuleInfo;
+    private String TrainerUsername = LoginController.LoggedUserName;
+    private String TrainerEmail=LoginController.LoggedUserEmail;
+
 
     public void onCreate() {
         databaseModuleInfo = new DatabaseModuleInfo();
         loadTraineesIntoTable();
         setTableViewOnDoubleClickListener();
+
     }
 
     private void setTableViewOnDoubleClickListener() {
@@ -49,6 +56,7 @@ public class TraineeInfoFragmentController {
                 if(event.getClickCount() == 2 && (!row.isEmpty())) {
                     ProfileData profileData = row.getItem();
                     openTraineeInfoScene(profileData.getId());
+
                 }
             });
             return row;
@@ -114,6 +122,10 @@ public class TraineeInfoFragmentController {
                 if(databaseModuleInfo.deleteTraineeFromTrainer(profileData.getId())) {
                     loadTraineesIntoTable();
                     System.out.println("Success");
+                    String email = databaseModuleInfo.getTraineeEmailFromDbByUsername(profileData.getUsername());
+                    addingNotification(email);
+
+
                 } else {
                     System.out.println("Error while deleting Trainee from Trainer");
                 }
@@ -128,5 +140,12 @@ public class TraineeInfoFragmentController {
         DeleteTraineeDialog deleteTraineeDialog = new DeleteTraineeDialog(Alert.AlertType.CONFIRMATION, profileData);
         Optional<ButtonType> result = deleteTraineeDialog.showAndWait();
         return result.get() == ButtonType.OK;
+    }
+
+    @Override
+    protected void addingNotification(String email){
+        String subject = "Trainer Notification";
+        String content ="<div><b> Hi , you was deleted from "+TrainerUsername+"´s training group by <strong style=\"color:blue;\">"+TrainerUsername+"</strong>.<br> If you have some questions contact him by email : <strong style=\"color:blue;\">"+TrainerEmail+"</strong></b></div>";
+        sendEmail(email,subject,content);
     }
 }

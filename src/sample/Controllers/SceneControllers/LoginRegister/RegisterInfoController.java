@@ -48,6 +48,7 @@ public class RegisterInfoController extends LoginRegistrationController {
     @FXML
     private Label mandatoryError;
 
+
     /**
      * Prepares scene for use
      *
@@ -117,9 +118,10 @@ public class RegisterInfoController extends LoginRegistrationController {
         if (!errorRegistering) {
             RegisteredUser registeredUser = new RegisteredUser(user.getUsername(), user.getPassword(), choiceBoxStatus.getValue().toString(),
                     textFieldFirstName.getText(), textFieldLastName.getText(),
-                    Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "));
+                    Double.parseDouble(textFieldHeight.getText()), choiceBoxGender.getValue().toString(), choiceBoxTypeOfTraining.getValue().toString().replace("_", " "),user.getEmail());
             DatabaseModuleUser databaseModuleUser = new DatabaseModuleUser();
             databaseModuleUser.insertUserIntoDatabase(registeredUser);
+            //Sorry za toto
             int id = databaseModuleUser.isUser(user.getUsername(), user.getPassword());
             databaseModuleUser.insertUserDietIntoDatabase(id);
             DatabaseModuleWeight databaseModuleWeight = new DatabaseModuleWeight();
@@ -154,6 +156,8 @@ public class RegisterInfoController extends LoginRegistrationController {
         choiceBoxStatus.setEffect(dropShadow);
         choiceBoxTypeOfTraining.setEffect(dropShadow);
         choiceBoxGender.setEffect(dropShadow);
+
+
     }
 
     private boolean impossibleWeight(String sWeight) {
@@ -171,6 +175,10 @@ public class RegisterInfoController extends LoginRegistrationController {
         labelUsername.setText("Hi " + username + "!");
         labelUsername.setLayoutX(182 - ((username.length() + 1) * 5.5));
     }
+
+
+
+
 
     @FXML
     private void onButtonGoBackPressed() {

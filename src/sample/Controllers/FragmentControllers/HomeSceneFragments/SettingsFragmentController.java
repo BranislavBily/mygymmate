@@ -219,4 +219,9 @@ public class SettingsFragmentController extends Controller {
         databaseModuleWeight.deteleAllWeights();
 
     }
+
+    @Override
+    protected void addingNotification(String email) {
+
+    }
 }

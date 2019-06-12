@@ -10,7 +10,8 @@ import sample.Controllers.SceneControllers.LoginRegistrationController;
 import sample.Session;
 
 public class LoginController extends LoginRegistrationController {
-
+    public static String LoggedUserEmail;
+    public static String LoggedUserName;
     @FXML
     private TextField textFieldUserName;
 
@@ -40,6 +41,11 @@ public class LoginController extends LoginRegistrationController {
                 case "Trainer" : setSceneToTrainerHomeScene(buttonLogIn.getScene());break;
                 case "Admin" : setSceneToAdminHomeScene(buttonLogIn.getScene());break;
             }
+
+            LoggedUserEmail=databaseModuleUser.getUserEmailByUserName(username);
+            LoggedUserName=username;
+
+
         //If user was not logged in
         } else {
             displayFeedBack(textFieldUserName);
@@ -48,6 +54,8 @@ public class LoginController extends LoginRegistrationController {
             System.out.println("Login not successful");
         }
     }
+
+
 
     @FXML
     private void onButtonSignUpPressed() {

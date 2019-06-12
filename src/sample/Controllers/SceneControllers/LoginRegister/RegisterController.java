@@ -13,6 +13,12 @@ import sample.Controllers.SceneControllers.LoginRegistrationController;
 public class RegisterController extends LoginRegistrationController {
 
     @FXML
+    public Label labelEmailNotCorrect;
+    @FXML
+    public Label labelEmailTaken;
+    @FXML
+    private TextField textFieldEmail;
+    @FXML
     private Hyperlink hyperLinkAlreadyMember;
 
     @FXML
@@ -45,6 +51,7 @@ public class RegisterController extends LoginRegistrationController {
         String username = textFieldUsername.getText();
         String password = passwordFieldPassword.getText();
         String passwordAgain = passwordFieldPasswordAgain.getText();
+        String email = textFieldEmail.getText();
 
 
         //If username is empty
@@ -60,6 +67,22 @@ public class RegisterController extends LoginRegistrationController {
             errorRegistering = true;
             System.out.println("Username taken");
 
+        }else if ( email== null || email.equals("")) {
+            displayFeedBack(textFieldEmail);
+            mandatoryError.setVisible(true);
+            System.out.println("This field is mandatory");
+            errorRegistering = true;
+
+        }else if (databaseModuleUser.isEmailTaken(email)) {
+            displayFeedBack(textFieldUsername);
+            labelUsernameTaken.setVisible(true);
+            errorRegistering = true;
+            System.out.println("Email Taken");
+        } else if (databaseModuleUser.isEmailCorrect(email)==false) {
+            displayFeedBack(textFieldEmail);
+            labelEmailNotCorrect.setVisible(true);
+            errorRegistering = true;
+            System.out.println("Email not correct");
         }
         //If either of them is empty
         if (password == null || passwordAgain == null || password.equals("") || passwordAgain.equals("")) {
@@ -77,8 +100,14 @@ public class RegisterController extends LoginRegistrationController {
             System.out.println("Passwords do not match");
         }
         if (!errorRegistering) {
-            User user = new User(username, password);
-            setSceneToRegisterInfo(textFieldUsername.getScene(), user);
+            String code= generateValidationCode(5);
+            System.out.println("The code is : "+code);
+            String content="<div><b> Hi , your validation code is : <h1 style=\"color:blue;\">"+code+"<h1/></b></div>";
+
+            sendEmail(email,"Validation Code",content);
+            User user = new User(username, password,email,code);
+            System.out.println("user is : "+user);
+            setSceneToRegisterVerify(textFieldUsername.getScene(), user);
         }
     }
     //In case user corrects himself, All feedback must be gone so when he makes mistake only the correct feedback will be shown
@@ -87,11 +116,17 @@ public class RegisterController extends LoginRegistrationController {
         labelUsernameTaken.setVisible(false);
         mandatoryError.setVisible(false);
         mandatoryError2.setVisible(false);
+        //After Email
+        labelEmailNotCorrect.setVisible(false);
+        labelEmailTaken.setVisible(false);
+
         DropShadow usernameShadow = getCleanDropShadow();
         textFieldUsername.setEffect(usernameShadow);
         passwordFieldPassword.setEffect(usernameShadow);
         passwordFieldPasswordAgain.setEffect(usernameShadow);
     }
+
+
 
     @FXML
     private void onHyperLinkAlreadySignedInPressed() {

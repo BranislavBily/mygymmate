@@ -94,4 +94,9 @@ public class HomeSceneController extends Controller {
         }
         return fragment;
     }
+
+    @Override
+    protected void addingNotification(String email) {
+
+    }
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.RegisterController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.SceneControllers.LoginRegister.RegisterController">
 
 
         <stylesheets>
@@ -25,7 +25,7 @@
             <AnchorPane layoutX="314.0" layoutY="118.0" prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgb(16,127,116,0.75);">
                 <children>
 
-                    <TextField fx:id="textFieldUsername" layoutX="65.0" layoutY="104.0" prefHeight="60.0" prefWidth="275.0" promptText="Username" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="104.0">
+                    <TextField fx:id="textFieldUsername" layoutX="65.0" layoutY="84.0" prefHeight="60.0" prefWidth="275.0" promptText="Username" AnchorPane.bottomAnchor="405.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="84.0">
 
                         <font>
                             <Font name="System Bold" size="14.0" />
@@ -34,18 +34,16 @@
                             <DropShadow />
                         </effect>
                     </TextField>
+            <TextField fx:id="textFieldEmail" layoutX="65.0" layoutY="176.0" prefHeight="60.0" prefWidth="275.0" promptText="Email">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </TextField>
 
-                    <PasswordField fx:id="passwordFieldPassword" layoutX="65.0" layoutY="210.0" prefHeight="60.0" prefWidth="275.0" promptText="Password">
-
-                        <font>
-                            <Font name="System Bold" size="14.0" />
-                        </font>
-                        <effect>
-                            <DropShadow />
-                        </effect>
-                    </PasswordField>
-
-                    <PasswordField fx:id="passwordFieldPasswordAgain" layoutX="65.0" layoutY="315.0" prefHeight="60.0" prefWidth="275.0" promptText="Password again">
+                    <PasswordField fx:id="passwordFieldPassword" layoutX="62.0" layoutY="268.0" prefHeight="60.0" prefWidth="275.0" promptText="Password">
 
                         <font>
                             <Font name="System Bold" size="14.0" />
@@ -55,7 +53,17 @@
                         </effect>
                     </PasswordField>
 
-                    <Button defaultButton="true" layoutX="140.0" layoutY="440.0" mnemonicParsing="false" onAction="#onButtonSignUpPressed" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: #107f74;" text="Sign Up" textFill="WHITE">
+                    <PasswordField fx:id="passwordFieldPasswordAgain" layoutX="62.0" layoutY="356.0" prefHeight="60.0" prefWidth="275.0" promptText="Password again">
+
+                        <font>
+                            <Font name="System Bold" size="14.0" />
+                        </font>
+                        <effect>
+                            <DropShadow />
+                        </effect>
+                    </PasswordField>
+
+                    <Button defaultButton="true" layoutX="139.0" layoutY="446.0" mnemonicParsing="false" onAction="#onButtonSignUpPressed" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: #107f74;" text="Sign Up" textFill="WHITE">
 
                         <font>
                             <Font name="Arial Black" size="14.0" />
@@ -68,7 +76,7 @@
                         </cursor>
                     </Button>
 
-                    <Hyperlink fx:id="hyperLinkAlreadyMember" layoutX="100.0" layoutY="496.0" onAction="#onHyperLinkAlreadySignedInPressed" prefHeight="31.0" prefWidth="206.0" text="Already member? Log in !" textAlignment="CENTER" textFill="WHITE">
+                    <Hyperlink fx:id="hyperLinkAlreadyMember" layoutX="99.0" layoutY="504.0" onAction="#onHyperLinkAlreadySignedInPressed" prefHeight="31.0" prefWidth="206.0" text="Already member? Log in !" textAlignment="CENTER" textFill="WHITE">
 
                         <font>
                             <Font name="Arial Black" size="14.0" />
@@ -79,22 +87,32 @@
                             <Font name="Arial Black" size="30.0" />
                         </font>
                     </Label>
-            <Label fx:id="labelUsernameTaken" layoutX="106.0" layoutY="176.0" text="Username is already taken !" textFill="RED" visible="false">
+            <Label fx:id="labelUsernameTaken" layoutX="100.0" layoutY="148.0" text="Username is already taken !" textFill="RED" visible="false">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelPasswordMismatch" layoutX="109.0" layoutY="386.0" prefHeight="18.0" prefWidth="194.0" text="Passwords do not match !" textFill="RED" visible="false">
+            <Label fx:id="labelPasswordMismatch" layoutX="100.0" layoutY="420.0" prefHeight="18.0" prefWidth="194.0" text="Passwords do not match !" textFill="RED" visible="false">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="mandatoryError" layoutX="116.0" layoutY="176.0" text="This is mandatory field !" textFill="RED" visible="false">
+            <Label fx:id="mandatoryError" layoutX="109.0" layoutY="148.0" text="This is mandatory field !" textFill="RED" visible="false">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="mandatoryError2" layoutX="116.0" layoutY="386.0" text="Both fields are mandatory!" textFill="RED" visible="false">
+            <Label fx:id="mandatoryError2" layoutX="100.0" layoutY="420.0" text="Both fields are mandatory!" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelEmailTaken" layoutX="109.0" layoutY="241.0" text="Email is already taken !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Black" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelEmailNotCorrect" layoutX="109.0" layoutY="241.0" text="Email address is not correct !" textFill="RED" visible="false">
                <font>
                   <Font name="Arial Black" size="13.0" />
                </font>

@@ -14,12 +14,16 @@ import sample.Controllers.SceneControllers.Trainer.TrainerHomeSceneController;
 import sample.Resources.ResourceFXML;
 import sample.Resources.ResourceTitles;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Controller for methods used in all scenes
  */
-public class Controller extends FeedbackController {
+public abstract class Controller extends FeedbackController {
 
     protected void setSceneToLogin(Scene scene) {
         Stage stage = (Stage) scene.getWindow();
@@ -120,6 +124,48 @@ public class Controller extends FeedbackController {
         };
         application.getHostServices().showDocument("https://paypal.me/pools/c/8dO80GARuK");
     }
+
+    public void sendEmail(String email,String subject, String messageem) {
+
+        final String username = "testemailsending29@gmail.com";
+        final String password = "Heslo+123456";
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "465");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.socketFactory.port", "465");
+        prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("testemailsending29@gmail.com"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(email)
+            );
+            message.setSubject(subject);
+            message.setContent(messageem, "text/html; charset=utf-8");
+
+            Transport.send(message);
+
+            System.out.println("Email was send");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    protected abstract void addingNotification(String email);
 }
 
 

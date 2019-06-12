@@ -13,4 +13,5 @@ public interface ResourceTitles {
     String WORKOUTS = "Workouts";
     String MEASURE = "Measure";
     String DIET = "Diet";
+    String REGISTER_VERIFY = "Enter verification code";
 }

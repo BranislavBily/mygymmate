@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Module for handling data from Users table
@@ -118,8 +120,32 @@ public class DatabaseModuleUser {
         }
     }
 
+    //After email
+    public boolean isEmailTaken(String email) {
+        ResultSet resultSet;
+        String query = "select * from "+ ResourceTables.USERS+" where email = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //Email validation
+    public boolean isEmailCorrect(String email) {
+        String regex = "^[\\w!#$%&'*+\\/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+\\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+
+
     public boolean insertUserIntoDatabase(RegisteredUser registerUser) {
-        String query = "insert into " + ResourceTables.USERS + " (username, password, status, firstName, lastName, height, gender, typeOfTraining) values(?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into " + ResourceTables.USERS + " (username, password, status, firstName, lastName, height, gender, typeOfTraining, email) values(?, ?, ?, ?, ?, ?, ?, ?,?)";
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, registerUser.getUsername());
             preparedStatement.setString(2, registerUser.getPassword());
@@ -129,6 +155,7 @@ public class DatabaseModuleUser {
             preparedStatement.setDouble(6, registerUser.getHeight());
             preparedStatement.setString(7, registerUser.getGender());
             preparedStatement.setString(8, registerUser.getTypeOfTraining());
+            preparedStatement.setString(9, registerUser.getEmail());
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -160,6 +187,21 @@ public class DatabaseModuleUser {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 return getProfileDataFromResultSet(resultSet);
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getUserEmailByUserName(String username){
+        String query = "select email from " + ResourceTables.USERS + " where username = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getString(1);
             }
             return null;
         } catch (SQLException e) {
