@@ -113,18 +113,6 @@ public abstract class Controller extends FeedbackController {
         labelUsername.setLayoutX(140 - ((username.length() + 1) * 5.14));
     }
 
-
-
-    @FXML
-    private void onHyperLinkPaypalPressed() {
-        Application application = new Application() {
-            @Override
-            public void start(Stage primaryStage) {
-            }
-        };
-        application.getHostServices().showDocument("https://paypal.me/pools/c/8dO80GARuK");
-    }
-
     public void sendEmail(String email,String subject, String messageem) {
 
         final String username = "testemailsending29@gmail.com";

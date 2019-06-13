@@ -31,11 +31,11 @@ public class TrainerInfoFragmentController {
     private ChoiceBox<String> choiceBoxExercise;
 
 
-    DatabaseModuleWorkout databaseModuleWorkout;
-    DatabaseModuleDiet databaseModuleDiet;
-    DatabaseModuleMeasurements databaseModuleMeasurements;
-    DatabaseModuleWeight databaseModuleWeight;
-    DatabaseModuleInfo databaseModuleInfo;
+    private DatabaseModuleWorkout databaseModuleWorkout;
+    private DatabaseModuleDiet databaseModuleDiet;
+    private DatabaseModuleMeasurements databaseModuleMeasurements;
+    private DatabaseModuleWeight databaseModuleWeight;
+    private DatabaseModuleInfo databaseModuleInfo;
     private Integer trainerID;
 
     public void onCreate() {
