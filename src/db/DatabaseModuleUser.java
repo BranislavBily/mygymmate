@@ -3,6 +3,7 @@ package db;
 
 import db.DTO.ProfileData;
 import db.DTO.RegisteredUser;
+import sample.Controllers.SceneControllers.Controller;
 import sample.Resources.ResourceTables;
 import sample.Session;
 
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 /**
  * Module for handling data from Users table
  */
-public class DatabaseModuleUser {
+public class DatabaseModuleUser extends Controller {
 
     private Connection connection;
     private int userID;
@@ -210,6 +211,21 @@ public class DatabaseModuleUser {
         }
     }
 
+    public String getUserEmailByUserID(int userID){
+        String query = "select email from " + ResourceTables.USERS + " where id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getString(1);
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public boolean updateUser(ProfileData profileData) {
         String query = "update " + ResourceTables.USERS + " set username = ?, firstName = ?, lastName = ?, " +
                 "gender = ?, typeOfTraining = ? where id = ?";
@@ -273,5 +289,10 @@ public class DatabaseModuleUser {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    protected void addingNotification(String email) {
+
     }
 }

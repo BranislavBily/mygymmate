@@ -145,7 +145,7 @@ public class TraineeInfoFragmentController extends Controller {
     @Override
     protected void addingNotification(String email){
         String subject = "Trainer Notification";
-        String content ="<div><b> Hi , you was deleted from "+TrainerUsername+"´s training group by <strong style=\"color:blue;\">"+TrainerUsername+"</strong>.<br> If you have some questions contact him by email : <strong style=\"color:blue;\">"+TrainerEmail+"</strong></b></div>";
+        String content ="<div><b> Hi, you have been deleted from "+TrainerUsername+"´s training group by <strong style=\"color:blue;\">"+TrainerUsername+"</strong>.<br> If you have any questions contact him by email : <strong style=\"color:blue;\">"+TrainerEmail+"</strong></b></div>";
         sendEmail(email,subject,content);
     }
 }

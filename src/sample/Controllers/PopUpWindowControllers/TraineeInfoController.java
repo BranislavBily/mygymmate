@@ -1,22 +1,29 @@
 package sample.Controllers.PopUpWindowControllers;
 
+import db.*;
 import db.DTO.Measurement;
 import db.DTO.Workout;
-import db.DatabaseModuleDiet;
-import db.DatabaseModuleMeasurements;
-import db.DatabaseModuleWeight;
-import db.DatabaseModuleWorkout;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import sample.Controllers.FragmentControllers.WorkoutSceneFragments.ProgressWorkoutController;
+import sample.Controllers.SceneControllers.Controller;
+import sample.Controllers.SceneControllers.LoginRegister.LoginController;
+import sample.Resources.ResourceFXML;
 
+import java.io.IOException;
 import java.util.LinkedHashSet;
 
-public class TraineeInfoController {
+public class TraineeInfoController extends DatabaseModuleUser{
 
     @FXML
     private Label labelWorkout;
@@ -32,11 +39,15 @@ public class TraineeInfoController {
     private ChoiceBox<String> choiceBoxExercise;
 
 
-    DatabaseModuleWorkout databaseModuleWorkout;
-    DatabaseModuleDiet databaseModuleDiet;
-    DatabaseModuleMeasurements databaseModuleMeasurements;
-    DatabaseModuleWeight databaseModuleWeight;
+    private DatabaseModuleWorkout databaseModuleWorkout;
+    private DatabaseModuleDiet databaseModuleDiet;
+    private DatabaseModuleMeasurements databaseModuleMeasurements;
+    private DatabaseModuleWeight databaseModuleWeight;
+
     private int traineeID;
+    private String traineeEmail;
+
+
 
     public void onCreate(int traineeID) {
         this.traineeID=traineeID;
@@ -62,6 +73,31 @@ public class TraineeInfoController {
             System.out.println("No exercises");
         }
     }
+
+    public void onButtonSendMotivationEmailPressed() {
+        Stage stage =  new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ResourceFXML.SEND_MOTIVATION));
+        try {
+            Parent root = loader.load();
+            TraineeInfoController traineeInfoController = loader.getController();
+            traineeInfoController.onCreate(traineeID);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Send Motivation email");
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    protected void addingNotification(String email) {
+
+    }
+
 
     private class MyChoiceBoxListener implements ChangeListener<String> {
         final ChoiceBox<String> cb;
@@ -115,4 +151,6 @@ public class TraineeInfoController {
         labelWorkout.setText( excer.toUpperCase()+" max repetitions : "+workout.getRepetitions()+  "        Last Updated : "+workout.getDate());
 
     }
+
+
 }

@@ -33,5 +33,6 @@ public interface ResourceFXML {
         String PROGRESS_WORKOUT_FRAGMENT = "../../../FXMLFragments/progressWorkoutFragment.fxml";
         String PROGRESS_MEASURE_FRAGMENT = "../../../FXMLFragments/progressMeasureFragment.fxml";
         String MEASUREMENTS_FRAGMENT = "../../../FXMLFragments/measurementsFragment.fxml";
+        String SEND_MOTIVATION = "../../PopUpWindowsFXML/SendMotivationEmail.fxml";
 
     }

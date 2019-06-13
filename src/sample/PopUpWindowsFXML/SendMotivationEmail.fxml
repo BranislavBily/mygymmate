@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.PopUpWindowControllers.SendMotivationEmailController">
+   <children>
+      <Button fx:id="buttonSendEmail" defaultButton="true" layoutX="125.0" layoutY="455.0" mnemonicParsing="false" onAction="#onButtonSendPressed" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #03383f#03383f;" text="Send" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="21.0" layoutY="23.0" prefHeight="35.0" prefWidth="307.0" text="Compose motivation Email" textFill="#03383f">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="98.0" prefHeight="19.0" prefWidth="137.0" text="Subject :" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="subjectField" layoutX="41.0" layoutY="130.0" prefHeight="31.0" prefWidth="288.0" promptText="Write the subject here" />
+      <Label layoutX="38.0" layoutY="198.0" prefHeight="19.0" prefWidth="113.0" text="Email message:" textFill="#107f74">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelEmptyTextArea" layoutX="41.0" layoutY="420.0" prefHeight="21.0" prefWidth="212.0" text="This area can not be empty" textFill="RED" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelEmptySubject" layoutX="41.0" layoutY="170.0" text="This field can not be empty" textFill="RED" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Line endX="205.75961303710938" layoutX="125.0" layoutY="74.0" startX="-100.0" stroke="#03383f" />
+      <TextArea fx:id="textareaMessage" layoutX="38.0" layoutY="232.0" prefHeight="175.0" prefWidth="288.0" promptText="Write the message here" />
+   </children>
+</AnchorPane>
